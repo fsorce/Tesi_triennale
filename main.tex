@@ -1,5 +1,5 @@
 \documentclass[a4paper]{report}
-\input{../../Templates/preamble.tex}
+\input{preamble.tex}
 %PER CAMBIARE I MARGINI
 \usepackage[margin=4cm]{geometry}
 
@@ -24,12 +24,11 @@
 
 % ============================================
 \title{[TITOLO]\\
-\large Corso dei proff. [NOMI]}
+\large [Sottotitolo]}
 
 \author{Francesco Sorce}
 \date{Università di Pisa\\
-Dipartimento di Matematica\\
-A.A. [ANNO]}
+Dipartimento di Matematica}
 
 \begin{document}
 \maketitle
@@ -38,6 +37,8 @@ A.A. [ANNO]}
 \tableofcontents
 \newpage
 
+\include{01ModuliSpaces}
+\include{02Grassmannians}
 
 %\appendix
 %\include{Riconoscimenti.tex}
