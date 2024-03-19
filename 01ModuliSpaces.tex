@@ -1,0 +1,55 @@
+\chapter{Moduli Spaces}
+Set theoretic issues: whenever I write that something is an element of a class, what I mean is that that object satisfies the proposition that defines the class.
+
+\section{Introduction to moduli problems}
+
+\section{Fine and Coarse moduli spaces}
+
+\section{Zariski site and gluing of fine moduli spaces}
+
+\begin{definition}[Grothendieck pretopology]
+Given a category $\Cc$, a \textbf{Grothendieck pretopology} on it is given by a collection $\Tc$ of sets of morphisms $\cpa{U_i\to U}$ such that the following properties hold:
+\begin{itemize}
+\item If $f:V\to U$ is an isomorphism, then $\cpa{f:V\to U}$ is an element of $\Tc$.
+\item If $f:V\to U$ is a morphism and $\cpa{U_i\to U}\in \Tc$ then the set\footnote{we are implicitly assuming that the category $\Cc$ contains at least the fibered products which appear in this definition.} $\cpa{U_i\times_U V\to V}$ is an element of $\Tc$ (the morphisms are given by the projection from the fibered product to $V$).
+\item If $\cpa{U_i\to U}\in \Tc$ and for all $i$ we have a set $\cpa{V_{ij}\to U_i}\in \Tc$, then the set of compositions $\cpa{V_{ij}\to U}$ is an element of $\Tc$.
+\end{itemize}
+A category together with a Grothendieck pretopology is called a \textbf{site}. The sets in $\Tc$ are called \textbf{covers}.
+\end{definition}
+\begin{remark}
+The axioms above try to mimic the behavior of open covers for a topological space.
+\end{remark}
+\begin{definition}[Zariski site]
+The \textbf{Zariski site} is the category of $S$-schemes together with the following collection of covers:\\
+a set of morphisms $\cpa{f_i:U_i\to U}$ is a cover in the Zariski site if every morphism is an open immersion and $\bigcup_i f_i(U_i)=U$, i.e. the family is \textbf{jointly surjective}.
+\end{definition}
+
+\begin{definition}[Sheaf on a site]
+Let $\Cc$ be a site and $F:\Cc^{op}\to Set$ be a presheaf, then $F$ is a sheaf on $\Cc$ if for any cover $\cpa{U_i\to U}$ the following diagram is an equalizer\footnote{$pr_1^\ast\circ Res=pr_2^\ast\circ Res$ and if we have $q:Q\to \prod_i F(U_i)$ such that $pr_1^\ast\circ q=pr_2^\ast\circ q$ then there exists a morphism $Q\to F(U)$ that makes the resulting diagram commute.}
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJGKFUpIl0sWzIsMCwiXFxkaXNwbGF5c3R5bGUgXFxwcm9kX2lGKFVfaSkiXSxbNCwwLCJcXGRpc3BsYXlzdHlsZSBcXHByb2Rfe2ksan1GKFVfaVxcdGltZXNfVVVfaikiXSxbMCwxLCJSZXMiXSxbMSwyLCJwcl8xXlxcYXN0IiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsInByXzJeXFxhc3QiLDIseyJvZmZzZXQiOjF9XV0=
+\[\begin{tikzcd}
+	{F(U)} && {\displaystyle \prod_iF(U_i)} && {\displaystyle \prod_{i,j}F(U_i\times_UU_j)}
+	\arrow["Res", from=1-1, to=1-3]
+	\arrow["{pr_1^\ast}", shift left, from=1-3, to=1-5]
+	\arrow["{pr_2^\ast}"', shift right, from=1-3, to=1-5]
+\end{tikzcd}\]
+where $Res:F(U)\to \prod_i F(U_i)$ is given by the pullback of $U_i\to U$ in each component. Similarly $pr_k^\ast$ are induced by the two canonical projections from the fibered products in the obvious way.
+\end{definition}
+\begin{remark}
+If $X$ is a fixed topological space and $\Cc$ is the category whose objects are open subsets of $X$ and whose morphisms are inclusions then we can consider $\Cc$ as a site by taking as covers the open covers in $X$. Then a functor $F:\Cc^{op}\to Set$ is a sheaf on $X$ if and only if it's a sheaf on $\Cc$.
+\end{remark}
+
+\begin{proposition}[Representable moduli functors are sheaves on the Zariski site]
+Let $F:(Sch/S)^{op}\to Set$ be a moduli problem, then if there exists a fine moduli space $M$ for $F$ it must be the case that $F$ is a sheaf on the Zariski site.
+\end{proposition}
+\begin{proof}
+By composing with the natural isomorphism we may assume $F=h_M$. Let $\cpa{U_i\to U}$ be a set of jointly surjective open immersions, what we want to show is that the following diagram is an equalizer
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIb20oVSxNKSJdLFsyLDAsIlxcZGlzcGxheXN0eWxlIFxccHJvZF9pIEhvbShVX2ksTSkiXSxbNCwwLCJcXGRpc3BsYXlzdHlsZSBcXHByb2Rfe2ksan1Ib20oVV9pXFx0aW1lc19VVV9qLE0pIl0sWzAsMSwiUmVzIl0sWzEsMiwicHJfMV5cXGFzdCIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJwcl8yXlxcYXN0IiwyLHsib2Zmc2V0IjoxfV1d
+\[\begin{tikzcd}
+	{Hom(U,M)} && {\displaystyle \prod_i Hom(U_i,M)} && {\displaystyle \prod_{i,j}Hom(U_i\times_UU_j,M)}
+	\arrow["Res", from=1-1, to=1-3]
+	\arrow["{pr_1^\ast}", shift left, from=1-3, to=1-5]
+	\arrow["{pr_2^\ast}"', shift right, from=1-3, to=1-5]
+\end{tikzcd}\]
+We may also without loss of generality identify $U_i$ with its image in $U$. Under this identification $U_i\times_U U_j=U_i\cap U_j$ and the proposition follows from basic gluing properties of morphisms.
+\end{proof}
