@@ -1,5 +1,19 @@
 \chapter{Grassmanians}
 
+\section{Classical view of Grassmannians}
+\begin{definition}[Grassmannian]
+Let us fix two natural numbers $k\leq n$. We define the \textbf{$(n,k)$-Grasssmannian}, denoted $Gr(k,n,\K)$ (or just $Gr(k,n)$ if the base field is clear), as the set of $(n-k)$-dimensional $\K$-vector subspaces of $\K^n$.
+\end{definition}
+\begin{remark}[Definition via quotients]
+We may equivalently define $Gr(k,n)$ to be the following set:
+\[\cpa{\ker \vp\mid \vp\in \Hom_\K(\K^n,\K^k),\ \rnk \vp=k}.\]
+To further lean into the definition we will adopt in the case of schemes, we may equivalently consider
+\[\cpa{\vp\in \Hom_\K(\K^n,\K^k)\mid \rnk \vp=k}/\sim,\]
+where\footnote{if $\ker\vp=\ker \vp'$, $\Bc'$ is a basis for it and $\Bc$ is an extension of $\Bc'$ to a basis of $\K^n$, then we can define $\psi$ as the automorphism of $\K^k$ that takes $\vp'(\Bc\bs \Bc')$ to $\vp(\Bc\bs \Bc')$.}
+\[\vp\sim \vp'\coimplies \ker \vp=\ker \vp'\coimplies \exists \psi\in GL_k(\K)\ s.t.\ \vp=\psi\circ \vp'.\]
+\end{remark}
+
+
 \section{Representability of the Grassmannian functor}
 
 \section{Proprieties of the Grassmanian scheme}

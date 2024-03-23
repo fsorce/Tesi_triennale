@@ -2,12 +2,19 @@
 Set theoretic issues: whenever I write that something is an element of a class, what I mean is that that object satisfies the proposition that defines the class.
 
 \section{Introduction to moduli problems}
+\begin{definition}[Presheaf]
+A contravariant functor $F:\Cc\op\to \Set$ is called a \textbf{presheaf} on $\Cc$.
+\end{definition}
+
+\begin{definition}[ModuHomli problem]
+Let $S$ be a scheme. A presheaf on $\Sch S$ is called a \textbf{moduli problem}.
+\end{definition}
 
 \section{Fine and Coarse moduli spaces}
 
-\section{Zariski site and gluing of fine moduli spaces}
+\section{Zariski sheaves and gluing of fine moduli spaces}
 
-\begin{definition}[Grothendieck pretopology]
+\comm{\begin{definition}[Grothendieck pretopology]
 Given a category $\Cc$, a \textbf{Grothendieck pretopology} on it is given by a collection $\Tc$ of sets of morphisms $\cpa{U_i\to U}$ such that the following properties hold:
 \begin{itemize}
 \item If $f:V\to U$ is an isomorphism, then $\cpa{f:V\to U}$ is an element of $\Tc$.
@@ -37,19 +44,91 @@ where $Res:F(U)\to \prod_i F(U_i)$ is given by the pullback of $U_i\to U$ in eac
 \end{definition}
 \begin{remark}
 If $X$ is a fixed topological space and $\Cc$ is the category whose objects are open subsets of $X$ and whose morphisms are inclusions then we can consider $\Cc$ as a site by taking as covers the open covers in $X$. Then a functor $F:\Cc^{op}\to Set$ is a sheaf on $X$ if and only if it's a sheaf on $\Cc$.
-\end{remark}
+\end{remark}}
 
-\begin{proposition}[Representable moduli functors are sheaves on the Zariski site]
-Let $F:(Sch/S)^{op}\to Set$ be a moduli problem, then if there exists a fine moduli space $M$ for $F$ it must be the case that $F$ is a sheaf on the Zariski site.
+
+
+
+
+
+
+
+\begin{definition}[Equalizer]
+Let $\Cc$ be a category, $A,B,C\in \Cc$ and $f,g:B\to C$. We say that the pair $(A,h)$ is an \textbf{equalizer} of the diagram \[B\underset{g}{\overset{f}{\rightrightarrows}} C\]
+if $h:A\to B$ is such that $f\circ h=g\circ h$ and if $(Q,q)$ is another such pair then there exists a unique morphism $Q\to A$ which makes the diagram commute
+\[\begin{tikzcd}
+	A & B & C \\
+	Q
+	\arrow["h", from=1-1, to=1-2]
+	\arrow["f", shift left, from=1-2, to=1-3]
+	\arrow["g"', shift right, from=1-2, to=1-3]
+	\arrow["q"', from=2-1, to=1-2]
+	\arrow[dashed, from=2-1, to=1-1]
+\end{tikzcd}\]
+\end{definition}
+
+
+\begin{definition}[Zariski sheaf]
+A moduli problem $F\in \Psh S\Set$ is a \textbf{Zariski sheaf} if for any $S$-scheme $X$ and any Zariski open cover $\cpa{U_i\to X}$ the following diagram is an equalizer
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJGKFgpIl0sWzIsMCwiXFxkaXNwbGF5c3R5bGUgXFxwcm9kX2sgRihVX2spIl0sWzQsMCwiXFxkaXNwbGF5c3R5bGUgXFxwcm9kX3tpLGp9RihVX2lcXGNhcCBVX2opIl0sWzAsMV0sWzEsMiwiIiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsIiIsMix7Im9mZnNldCI6MX1dXQ==
+\[\begin{tikzcd}
+	{F(X)} && {\displaystyle \prod_k F(U_k)} && {\displaystyle \prod_{i,j}F(U_i\cap U_j)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[shift left, from=1-3, to=1-5]
+	\arrow[shift right, from=1-3, to=1-5]
+\end{tikzcd}\]
+where the arrows are induced by the inclusions.
+\end{definition}
+
+
+\begin{proposition}[Representable moduli functors are Zariski sheaves]
+Let $F:\Psh S\Set$ be a moduli problem, then if there exists a fine moduli space $M$ for $F$ it must be the case that $F$ is a Zariski sheaf.
 \end{proposition}
 \begin{proof}
-By composing with the natural isomorphism we may assume $F=h_M$. Let $\cpa{U_i\to U}$ be a set of jointly surjective open immersions, what we want to show is that the following diagram is an equalizer
+By composing with the natural isomorphism we may assume $F=h_M$. Let $X$ be an $S$-scheme and $\cpa{U_i\to X}$ a Zariski open cover for it. We want to show that the following diagram is an equalizer
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJIb20oVSxNKSJdLFsyLDAsIlxcZGlzcGxheXN0eWxlIFxccHJvZF9pIEhvbShVX2ksTSkiXSxbNCwwLCJcXGRpc3BsYXlzdHlsZSBcXHByb2Rfe2ksan1Ib20oVV9pXFx0aW1lc19VVV9qLE0pIl0sWzAsMSwiUmVzIl0sWzEsMiwicHJfMV5cXGFzdCIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJwcl8yXlxcYXN0IiwyLHsib2Zmc2V0IjoxfV1d
 \[\begin{tikzcd}
-	{Hom(U,M)} && {\displaystyle \prod_i Hom(U_i,M)} && {\displaystyle \prod_{i,j}Hom(U_i\times_UU_j,M)}
-	\arrow["Res", from=1-1, to=1-3]
-	\arrow["{pr_1^\ast}", shift left, from=1-3, to=1-5]
-	\arrow["{pr_2^\ast}"', shift right, from=1-3, to=1-5]
+	{\Mor(X,M)} && {\displaystyle \prod_k \Mor(U_k,M)} && {\displaystyle \prod_{i,j}\Mor(U_i\cap U_j,M)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[shift left, from=1-3, to=1-5]
+	\arrow[shift right, from=1-3, to=1-5]
 \end{tikzcd}\]
-We may also without loss of generality identify $U_i$ with its image in $U$. Under this identification $U_i\times_U U_j=U_i\cap U_j$ and the proposition follows from basic gluing properties of morphisms.
+The arrows in this case correspond to restriction of morphisms, so the thesis is equivalent to the fact that restriction to a given set doesn't depend on the intermediate restrictions and that morphisms of schemes that coincide on double intersections glue to the union, both of which are true.
 \end{proof}
+
+
+\begin{definition}[Subfunctor]
+Let $G:\Cc\to \Dc$ be a functor. A \textbf{subfunctor} of $G$ is a pair $(F,i)$ consisting of a functor $F:\Cc\to \Dc$ and a natural transformation $i:F\to G$ such that $i_X:F(X)\to G(X)$ is a monomorphism for all $X\in \Cc$.
+\end{definition}
+\begin{remark}
+If $\Dc=\Set$ then we can express the same data equivalently as follows:\\
+A functor $F:\Cc\to \Set$ is a subfunctor of $G:\Cc\to \Set$ if for all $X\in \Cc$ and for all $f\in Mor_\Cc(A,B)$
+\[F(X)\subseteq G(X),\qquad\text{and}\qquad F(f)=G(f)\res{F(A)}.\]
+In this case we write $F\subseteq G$.
+\end{remark}
+
+\begin{definition}[Fibered product of presheaves]
+Let $F,G,H:\Cc\op\to\Set$ be presheaves together with two natural transformations $\xi^1:F\to H$ and $\xi^2:G\to H$. We define their fibered product as follows:\\
+If $X\in\Cc$ then 
+\[(F\times_H G)(X)=F(X)\times_{H(X)}G(X),\] 
+if $f:A\to B$ then\footnote{the map is well defined because $\xi^1_A(F(f)(b_1))=H(f)(\xi^1_B(b_1))=H(f)(\xi^2_B(b_2))=\xi^2_A(G(f)(b_2))$.}
+\[(F\times_HG)(f):\funcDef{F(B)\times_{H(B)}G(B)}{F(A)\times_{H(A)}G(A)}{(b_1,b_2)}{(F(f)(b_1),G(f)(b_2))}.\]
+\end{definition}
+\begin{definition}[Open subfunctor]
+Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ is \textbf{open} if for any $S$-scheme $T$ and any natural trasformation $h_T\to F$, the pullback $h_T\times_FG$ is representable by an open subscheme of $T$.
+\end{definition}
+
+\begin{remark}
+By Yonede's lemma, giving a natural trasnformation like in the above definition is equivalent to choosing a family $\xi\in F(T)$. We can thus rephrase the definition as follows:\\
+A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open subscheme $U\subseteq T$ such that the following diagram is natural in $R$ and commutes
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE1vcihSLFUpIl0sWzAsMSwiXFxNb3IoUixUKSJdLFsyLDAsIkcoUikiXSxbMiwxLCJGKFIpIl0sWzAsMSwiXFxzdWJzZXRlcVxcY2lyYyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsMiwiRyhcXHN1YnNldGVxIFxcY2lyYyB+flxcY2RvdH4pKFxceGkpIl0sWzEsMywiRihcXGNkb3QpKFxceGkpIiwyXSxbMiwzLCJcXHN1YnNldGVxIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+\[\begin{tikzcd}
+	{\Mor(R,U)} && {G(R)} \\
+	{\Mor(R,T)} && {F(R)}
+	\arrow["\subseteq\circ"', hook, from=1-1, to=2-1]
+	\arrow["{G(\subseteq \circ ~~\cdot~)(\xi)}", from=1-1, to=1-3]
+	\arrow["{F(\cdot)(\xi)}"', from=2-1, to=2-3]
+	\arrow["\subseteq", hook, from=1-3, to=2-3]
+\end{tikzcd}\]
+and a map $f\in \Mor(R,T)$ factors as $R\overset g\to U\subseteq T$ \underline{if and only if} $F(f)(\xi)\in G(R)$\footnote{the ``only if" is trivially true by commutativity but for the ``if" we are using the fact that $h_U\cong h_T\times_FG$.}.
+\end{remark}
