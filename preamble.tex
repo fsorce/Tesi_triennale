@@ -361,16 +361,19 @@
 \newcommand{\0}{{\underline{0}}}
 \newcommand{\1}{{\vcenter{\hbox{\scalebox{1.2}{$\mathds{1}$}}}}}
 
-\NewDocumentCommand{\PGL}{o m}{
-    \IfNoValueTF{#1}
-        {{\mathbb{P}GL({#2})}}
-    {{\mathbb{P}GL_{#1}({#2})}}
-}
-\NewDocumentCommand{\GL}{o m}{
-    \IfNoValueTF{#1}
-        {{GL({#2})}}
-    {{GL_{#1}({#2})}}
-}
+
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\PGL}{\mathrm{PGL}}
+%\NewDocumentCommand{\PGL}{o m}{
+%    \IfNoValueTF{#1}
+%        {{\mathbb{P}GL({#2})}}
+%    {{\mathbb{P}GL_{#1}({#2})}}
+%}
+%\NewDocumentCommand{\GL}{o m}{
+%    \IfNoValueTF{#1}
+%        {{GL({#2})}}
+%    {{GL_{#1}({#2})}}
+%}
 \newcommand{\znz}[1]{{\Z/{#1}\Z}}
 
 

@@ -1,19 +1,72 @@
 \chapter{Grassmanians}
 
-\section{Classical view of Grassmannians}
+\section{Set-theoretic definition}
 \begin{definition}[Grassmannian]
-Let us fix two natural numbers $k\leq n$. We define the \textbf{$(n,k)$-Grasssmannian}, denoted $Gr(k,n,\K)$ (or just $Gr(k,n)$ if the base field is clear), as the set of $(n-k)$-dimensional $\K$-vector subspaces of $\K^n$.
+Let $k\leq n$ be a pair of positive integers. We define the \textbf{$(n,k)$-Grassmannian}, denoted\footnote{we shall often omit the field when clear from context} $\Gr(k,n,\K)$, as the set of $(n-k)$-dimensional $\K$-vector subspaces of $\K^n$.
 \end{definition}
 \begin{remark}[Definition via quotients]
-We may equivalently define $Gr(k,n)$ to be the following set:
+We may equivalently define $\Gr(k,n)$ to be the following set:
 \[\cpa{\ker \vp\mid \vp\in \Hom_\K(\K^n,\K^k),\ \rnk \vp=k}.\]
-To further lean into the definition we will adopt in the case of schemes, we may equivalently consider
-\[\cpa{\vp\in \Hom_\K(\K^n,\K^k)\mid \rnk \vp=k}/\sim,\]
-where\footnote{if $\ker\vp=\ker \vp'$, $\Bc'$ is a basis for it and $\Bc$ is an extension of $\Bc'$ to a basis of $\K^n$, then we can define $\psi$ as the automorphism of $\K^k$ that takes $\vp'(\Bc\bs \Bc')$ to $\vp(\Bc\bs \Bc')$.}
-\[\vp\sim \vp'\coimplies \ker \vp=\ker \vp'\coimplies \exists \psi\in GL_k(\K)\ s.t.\ \vp=\psi\circ \vp'.\]
 \end{remark}
 
+\begin{lemma}\label{kerAkerBVSActionOfGLk}
+Let $\vp,\psi\in \Hom_\K(\K^n,\K^k)$ be linear maps of full rank. The following conditions are equivalent:
+\begin{enumerate}
+    \item $\ker\vp=\ker\psi$,
+    \item there exists $\theta\in \GL(\K^k)$ such that $\vp=\theta\circ \psi$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+We shall prove the two implications:
+\setlength{\leftmargini}{0cm}
+\begin{itemize}
+\item[$\boxed{2.\implies 1.}$] $\ker(\theta\circ \psi)=\psi\ii(\ker \theta)=\psi\ii(\cpa{0})=\ker \psi$. 
+\item[$\boxed{1.\implies 2.}$] Let $z_1,\cdots, z_{n-k}$ be a basis of $\ker \vp=\ker \psi$ and let $z_1,\cdots, z_{n-k}, v_1,\cdots, v_k$ be a completion of it to a basis of $\K^n$. By construction $\vp(v_1),\cdots, \vp(v_k)$ and $\psi(v_1),\cdots, \psi(v_k)$ are bases of $\K^k$. Let $\theta$ be the linear automorphism of $\K^k$ determined by $\theta(\psi(v_i))=\vp(v_i)$ for all $i$. By construction $\theta$ is nonsingular and $\vp$ agrees with $\theta\circ \psi$ on a basis of $\K^n$.
+\end{itemize}
+\setlength{\leftmargini}{0.5cm}
+\end{proof}
 
-\section{Representability of the Grassmannian functor}
+\begin{corollary}\label{LinearQuotientDefinition}
+We may identify Grassmannians in terms of linear maps as follows:
+\[\Gr(k,n)=\quot{\cpa{\vp\in \Hom_\K(\K^n,\K^k)\mid \vp\ \text{surjective.}}}\sim\]
+where $\vp\sim \psi$ if and only if $\exists \theta\in \GL(\K^k)$ such that $\vp=\theta\circ \psi$.
+\end{corollary}
 
-\section{Proprieties of the Grassmanian scheme}
+\subsection{The Pl\"ucker embedding}
+To make the study of Grassmanians easier, we want to identify $\Gr(k,n)$ with a subset of some projective space.
+
+\begin{definition}[Pl\"ucker map]
+Let $k\leq n$ be a pair of positive integers. We define the \textbf{Pl\"ucker map} as follows:
+\[\phi:\funcDef{\Hom_\K(\K^n,\K^k)}{\bigwedge^k\Hom_\K(\K^n,\K^k)}{\vp}{\wedge^k\vp},\]
+where $(\wedge^k\vp)(v_1,\cdots, v_k)=\vp(v_1)\wedge\cdots\wedge\vp(v_k)$.
+\end{definition}
+\begin{remark}
+$\rnk \vp<k$ if and only if $\phi(\vp)=0$.
+\end{remark}
+\begin{proof}
+$\phi(\vp)$ is the zero map if an only if $\vp(v_1),\cdots, \vp(v_k)$ are always linearly dependent, i.e. if and only if $\vp$ is not of full rank.
+\end{proof}
+
+\begin{proposition}\label{PluckerMapInjectiveOnGrassmaniansUpToScalar}
+Let $\sim$ be the equivalence relation defined in corollary (\ref{LinearQuotientDefinition}), then for linear full rank maps $\vp,\psi:\K^n\to \K^k$
+\[\vp\sim \psi\coimplies \exists \la\in\K^\ast\ s.t.\ \phi(\vp)=\la\phi(\psi).\]
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\section{Definition as a projective scheme}
+In order to write $\K$-algebra morphisms that correspond to what we've done geometrically, we shall switch to the language of matricies.
+\begin{definition}[Multiindicies]
+We define a \textbf{$(k,n)$-multiindex} as an element of $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$.\\
+If $A$ is a $k\times n$ matrix and $I$ is a $(k,n)$-multiindex, we denote the $I$-minor by $A_I$, i.e.
+\[A_I=\mat{a_{1,i_1} &\cdots &a_{1,i_{k}}\\\vdots &\ddots &\vdots\\a_{k,i_1}&\cdots&a_{k,i_k}}.\]
+\end{definition}
+
+
+
+\section{Moduli functor}
+
+\subsection{Affine cover}
+
+\subsection{Representability of the Grassmannian functor}
