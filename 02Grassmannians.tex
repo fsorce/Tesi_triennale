@@ -1,4 +1,4 @@
-\chapter{Grassmanians}
+\chapter{Grassmannians}
 
 \section{Set-theoretic definition}
 \begin{definition}[Grassmannian]
@@ -33,27 +33,111 @@ where $\vp\sim \psi$ if and only if $\exists \theta\in \GL(\K^k)$ such that $\vp
 \end{corollary}
 
 \subsection{The Pl\"ucker embedding}
-To make the study of Grassmanians easier, we want to identify $\Gr(k,n)$ with a subset of some projective space.
+To make the study of Grassmannians easier, we want to identify $\Gr(k,n)$ with a subset of some projective space.
+
+\begin{notation}
+We shall use the following notation for brevity:
+\[\cpa{\al:(\K^n)^k\to \bigwedge^k\K^k\mid \al\text{ multilinear, alternating}}=\bigwedge^k\Hom_{\K}(\K^n,\K^k)\]
+\end{notation}
 
 \begin{definition}[Pl\"ucker map]
-Let $k\leq n$ be a pair of positive integers. We define the \textbf{Pl\"ucker map} as follows:
+Let $k\leq n$ be a pair of positive integers. We define the \textbf{Pl\"ucker map} as:
 \[\phi:\funcDef{\Hom_\K(\K^n,\K^k)}{\bigwedge^k\Hom_\K(\K^n,\K^k)}{\vp}{\wedge^k\vp},\]
-where $(\wedge^k\vp)(v_1,\cdots, v_k)=\vp(v_1)\wedge\cdots\wedge\vp(v_k)$.
+where $(\wedge^k\vp)(v_1,\cdots, v_k)=\vp(v_1)\wedge\cdots\wedge\vp(v_k)=\det\mat{\vp(v_1)|\cdots|\vp(v_k)} e_1\wedge\cdots\wedge e_k$.
 \end{definition}
+
+\begin{remark}\label{CodomainOfPluckerMap}
+The codomain of the Pl\"ucker map is isomorphic to $\bigwedge^k\K^n$, indeed
+\[\bigwedge^k\Hom_\K\pa{\K^n,\K^k}\pasgnl\cong{Univ.Prop.}\Hom_\K\pa{\bigwedge^k\K^n,\bigwedge^k\K^k}\cong \pa{\bigwedge^k\K^n}^{\vee}\cong \bigwedge^k\K^n.\]
+Under this isomorphism the map takes on the following form
+\[\funcDef{\Hom_\K(\K^n,\K^k)}{\bigwedge^k\K^n}{\vp}{\displaystyle\sum_{1\leq i_1<\cdots< i_k\leq n} \det(\vp(e_{i_1})\mid \cdots\mid \vp(e_{i_k}))e_{i_1}\wedge\cdots\wedge e_{i_k}}.\]
+\end{remark}
+
+
 \begin{remark}
+The image of the Pl\"ucker map is a cone.
+\end{remark}
+\begin{proof}
+For any $\la\in \K^\ast$ and any map $\vp\in \Hom_\K(\K^n,\K^k)$ we see that
+\[\la\phi(\vp)=\phi(\al\circ \vp),\]
+for any automorphism $\al$ of $\K^k$ with determinant\footnote{For example $\al(e_i)=\begin{cases}
+\la e_1 &\text{if }i=1\\
+e_i &\text{otherwise}
+\end{cases}$} $\la$.
+\end{proof}
+
+
+\begin{remark}\label{WhenPluckerMapIsZero}
 $\rnk \vp<k$ if and only if $\phi(\vp)=0$.
 \end{remark}
 \begin{proof}
 $\phi(\vp)$ is the zero map if an only if $\vp(v_1),\cdots, \vp(v_k)$ are always linearly dependent, i.e. if and only if $\vp$ is not of full rank.
 \end{proof}
 
-\begin{proposition}\label{PluckerMapInjectiveOnGrassmaniansUpToScalar}
-Let $\sim$ be the equivalence relation defined in corollary (\ref{LinearQuotientDefinition}), then for linear full rank maps $\vp,\psi:\K^n\to \K^k$
+\begin{lemma}\label{CharacterizationOfKernels}
+Let $\vp:\K^n\to \K^k$ be a full rank linear map, then
+\[\ker\vp=\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \phi(\vp)(z,w_2,\cdots,w_k)=0}.\]
+\end{lemma}
+\begin{proof}
+If $\vp(z)=0$ then for any $w_2,\cdots, w_k\in \K^k$ we see that 
+\[\phi(\vp)(z, w_2,\cdots, w_k)=0\wedge \vp(w_2)\wedge\cdots\wedge \vp(w_k)=0.\]
+Suppose now that $\vp(z)\neq 0$ and let $v_2,\cdots, v_k$ be such that $\cpa{\vp(z), v_2,\cdots,v_k}$ form a basis for $\K^k$. Since $\vp$ is surjective there exist $w_2,\cdots, w_k$ such that $\vp(w_i)=v_i$ for all $2\leq i\leq k$.
+By construction 
+\[\phi(\vp)(z,w_2,\cdots, w_k)=\vp(z)\wedge v_2\wedge\cdots\wedge v_k\neq0.\]
+\end{proof}
+
+\begin{proposition}\label{PluckerMapInjectiveOnGrassmanniansUpToScalar}
+Let $\sim$ be the equivalence relation defined in corollary (\ref{LinearQuotientDefinition}), then for any two full rank linear maps $\vp,\psi:\K^n\to \K^k$
 \[\vp\sim \psi\coimplies \exists \la\in\K^\ast\ s.t.\ \phi(\vp)=\la\phi(\psi).\]
 \end{proposition}
 \begin{proof}
-
+Let us prove both implications:
+\setlength{\leftmargini}{0cm}
+\begin{itemize}
+\item[$\boxed{\implies}$] If $\vp=\theta\circ \psi$ for $\theta\in GL(\K^k)$ then it follows easily from known properties of the determinant that \[\phi(\vp)=\phi(\theta\circ \psi)=(\det\theta) \phi(\psi).\]
+\item[$\boxed{\impliedby}$] From lemma (\ref{kerAkerBVSActionOfGLk}) we see that it is enough to prove that $\ker \vp=\ker \psi$. We conclude by applying lemma (\ref{CharacterizationOfKernels}) as follows:
+\begin{align*}
+\ker\vp=&\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \phi(\vp)(z,w_2,\cdots,w_k)=0}\\
+=&\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \la\phi(\psi)(z,w_2,\cdots,w_k)=0}=\\
+=&\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \phi(\psi)(z,w_2,\cdots,w_k)=0}=\ker \psi.
+\end{align*}
+\end{itemize}
+\setlength{\leftmargini}{0.5cm}
 \end{proof}
+
+\begin{remark}
+Because of proposition (\ref{PluckerMapInjectiveOnGrassmanniansUpToScalar}) and remark (\ref{WhenPluckerMapIsZero}) there exists a unique $h$ such that the diagram commutes
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGNwYXtcXHZwXFxpbiBcXEhvbV9cXEsoXFxLXm4sXFxLXmspXFxtaWQgXFxybmsgXFx2cD1rfSJdLFswLDEsIlxcR3IoayxuKSJdLFsxLDAsIlxcUGooXFxiaWd3ZWRnZV5rXFxIb21fXFxLKFxcS15uLFxcS15rKSkiXSxbMCwxLCJcXHBpIl0sWzAsMiwiW1xccGhpXSJdLFsxLDIsImgiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	{\cpa{\vp\in \Hom_\K(\K^n,\K^k)\mid \rnk \vp=k}} & {\Pj(\bigwedge^k\Hom_\K(\K^n,\K^k))} \\
+	{\Gr(k,n)}
+	\arrow["\pi", from=1-1, to=2-1]
+	\arrow["{[\phi]}", from=1-1, to=1-2]
+	\arrow["h"', dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+Moreover, such an $h$ must be injective by proposition (\ref{PluckerMapInjectiveOnGrassmanniansUpToScalar}).
+\end{remark}
+
+\begin{definition}[Pl\"ucker embedding]
+We define the \textbf{Pl\"ucker embedding} as follows
+\[\Pl:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[\vp]_\sim}{[(\det(\vp(e_{i_1})\mid\cdots\mid\vp(e_{i_k})))_{1\leq i_1<\cdots<i_k\leq n}]_{\K^\ast}}.\]
+\end{definition}
+
+\begin{remark}
+If $\zeta$ is the isomorphism $\bigwedge^k\Hom_\K(\K^n,\K^k)\to \bigwedge^k\K^n$ discussed during remark (\ref{CodomainOfPluckerMap}), we see that the following diagram commutes
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXEdyKGssbikiXSxbMCwwLCJcXFBqKFxcYmlnd2VkZ2Vea1xcSG9tX1xcSyhcXEtebixcXEteaykpIl0sWzEsMCwiXFxQaihcXGJpZ3dlZGdlXmtcXEtebikiXSxbMCwxLCJoIiwyXSxbMSwyLCJcXFBqKFxcemV0YSkiXSxbMCwyLCJcXG1hdGhybXtQbH0iLDJdXQ==
+\[\begin{tikzcd}
+	{\Pj(\bigwedge^k\Hom_\K(\K^n,\K^k))} & {\Pj(\bigwedge^k\K^n)} \\
+	{\Gr(k,n)}
+	\arrow["h"', from=2-1, to=1-1]
+	\arrow["{\Pj(\zeta)}", from=1-1, to=1-2]
+	\arrow["{\Pl}"', from=2-1, to=1-2]
+\end{tikzcd}\]
+This proves that the Pl\"ucker embedding is well defined and injective.
+\end{remark}
+
+\noindent We have thus identified $\Gr(k,n)$ with a subset of some projective space. It is possible to show that this subset is in fact Zariski closed\footnote{CITAZIONE DA INSERIRE BENE, PER IL MOMENTO QUESTO \`E IL LINK AD UN PDF CHE TRATTA L'ARGOMENTO \url{https://www.math.uchicago.edu/~may/VIGRE/VIGRE2007/REUPapers/FINALFULL/Hudec.pdf}}
+
 
 \section{Definition as a projective scheme}
 In order to write $\K$-algebra morphisms that correspond to what we've done geometrically, we shall switch to the language of matricies.
@@ -61,7 +145,56 @@ In order to write $\K$-algebra morphisms that correspond to what we've done geom
 We define a \textbf{$(k,n)$-multiindex} as an element of $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$.\\
 If $A$ is a $k\times n$ matrix and $I$ is a $(k,n)$-multiindex, we denote the $I$-minor by $A_I$, i.e.
 \[A_I=\mat{a_{1,i_1} &\cdots &a_{1,i_{k}}\\\vdots &\ddots &\vdots\\a_{k,i_1}&\cdots&a_{k,i_k}}.\]
+We denote the set of \textbf{ordered $(k,n)$-multiindicies} with
+\[\omega(k,n)=\cpa{(i_1,\cdots, i_k)\in \cpa{1,\cdots, n}^k\mid i_1<\cdots<i_k}.\]
 \end{definition}
+
+\begin{remark}
+The set
+\[\cpa{e_{i_1}\wedge\cdots\wedge e_{i_k}\mid 1\leq i_1<\cdots<i_k\leq n}\]
+forms a basis for $\bigwedge^k\K^n$. For brevity, for all multiindicies $I=(i_1,\cdots, i_k)$ we shall define
+\[e_I=e_{i_1}\wedge\cdots\wedge e_{i_k}.\]
+\end{remark}
+\medskip
+
+\noindent
+Under the isomorphism $\Hom_\K(\K^n,\K^k)\cong \Mc(k,n)$ given by choosing a basis, we may redefine
+\[\Gr(k,n)=\quot{\cpa{A\in \Mc(k,n)\mid \rnk A=k}}{\sim},\] 
+where $A\sim B\coimplies \exists P\in \GL_k\ s.t.\ A=PB$, 
+\[\phi:\funcDef{\Mc(k,n)}{\bigwedge^k\K^n}{A}{\sum_{I\in \omega(k,n)}\det A_I e_I}\]
+and
+\[\Pl:\funcDef{Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{[\sum_{I\in \omega(k,n)}\det A_I e_I]_{\K^\ast}}.\]
+
+\begin{remark}
+If we interpret $\Mc(k,n)$ as $\A^{kn}$ and $\bigwedge^k\K^n$ as $\A^{\binom nk}$ then we see that $\phi$ is a polynomial map and thus a morphism of affine varieties.
+\end{remark}
+
+
+To connect Grassmannians to the world of representable functors we shall redefine them scheme-theoretically by mimicing the Pl\"ucker embedding using rings
+
+\begin{definition}[Braket ring]
+We define the \textbf{braket ring} as the ring of polynomial functions on $\bigwedge^k\K^n$, i.e.
+\[\Bc_{k,n}\doteqdot\frac{\K[z_I\mid I\in \cpa{1,\cdots, n}^k]}{(\cpa{z_I-\sgn(\sigma)z_{\sigma(I)}}_{\sigma\in S_k})}\cong \K[z_I\mid I\in \omega(k,n)]\]
+\end{definition}
+
+\begin{notation}
+Let $\K[x_{1,1},\cdots,x_{k,n}]$ denote the polynomial ring with $k\cdot n$ variables. We will interpret this as the coordinate ring of $\Mc(k,n)$. Following this description we denote the \textbf{generic matrix} by
+\[X=\mat{
+    x_{1,1} & \cdots & x_{1,n}\\
+    \vdots & \ddots & \vdots\\
+    x_{k,1} &\cdots & x_{k,n}}\]
+and by the same token we denote by $X_I$ the generic $k\times k$ minor determined by the multiindex $I$ and by $\det X_I$ the formal determinant of this minor.\\
+We shall also denote $\K[x_{1,1},\cdots, x_{k,n}]$ by the compacter notation $\Oc(\Mc(k,n))$.
+\end{notation}
+
+\begin{definition}[Pl\"ucker ring homomorphism]
+We define the \textbf{Pl\"ucker ring homomorphism} as
+\[\phi^\#:\funcDef{\Bc_{k,n}}{\Oc(\Mc(k,n))}{z_I}{\det X_I}\]
+\end{definition}
+
+\begin{proposition}\label{PluckerRingHomomorphismWorksForKPoints}
+The induced map $\Spec \phi^\#:\A^{kn}_\K(\K)\to \A^{\binom nk}_\K(\K)$ has the expected behaviour, i.e. 
+\end{proposition}
 
 
 
