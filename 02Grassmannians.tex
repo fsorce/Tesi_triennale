@@ -136,7 +136,40 @@ If $\zeta$ is the isomorphism $\bigwedge^k\Hom_\K(\K^n,\K^k)\to \bigwedge^k\K^n$
 This proves that the Pl\"ucker embedding is well defined and injective.
 \end{remark}
 
-\noindent We have thus identified $\Gr(k,n)$ with a subset of some projective space. It is possible to show that this subset is in fact Zariski closed\footnote{CITAZIONE DA INSERIRE BENE, PER IL MOMENTO QUESTO \`E IL LINK AD UN PDF CHE TRATTA L'ARGOMENTO \url{https://www.math.uchicago.edu/~may/VIGRE/VIGRE2007/REUPapers/FINALFULL/Hudec.pdf}}
+\noindent We have thus identified $\Gr(k,n)$ with a subset of some projective space. We now need to show that it is a closed subset in the Zariski topology.***********************
+
+*******************************
+\bigskip
+
+\noindent Let us consider the following map: let $\psi:\bigwedge^k\Hom_\K(\K^n,\K^k)$ be any alternating multilinear map, we define $\Phi(\psi)$ as
+\[\Phi(\psi):\funcDef{\K^n}{\bigwedge^{k+1}\K^n}{v}{\displaystyle\sum_{I\in \omega(k,n)}\psi(e_{i_1},\cdots,e_{i_k})e_I\wedge v}.\]
+
+\begin{proposition}
+An alternating multilinear map $\psi\in \bigwedge^k\Hom_\K(\K^n,\K^k)$ is in the image of the Pl\"ucker map $\phi$ if and only if $\Phi(\psi)$ has rank at most $n-k$.
+\end{proposition}
+\begin{proof}
+Suppose that $\psi=\phi(\vp)$ and let $\cpa{z_1,\cdots, z_k,z_{k+1},\cdots, z_{n}}$ be a basis of $\K^n$ such that the first $k$ vectors are a basis of $\ker \vp$. Then
+\[\Phi(\psi)(v)=\sum_{I\in \omega(k,n)}\det(\vp(z_{i_1}\mid \cdots\mid \vp(z_{i_k})))z_I\wedge v.\]
+Notice that if $v\in\ker \vp$ then for any choice of $I$ either the determinant vanishes or $k<i_1$*********************************
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Definition as a projective scheme}
@@ -165,10 +198,6 @@ where $A\sim B\coimplies \exists P\in \GL_k\ s.t.\ A=PB$,
 and
 \[\Pl:\funcDef{Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{[\sum_{I\in \omega(k,n)}\det A_I e_I]_{\K^\ast}}.\]
 
-\begin{remark}
-If we interpret $\Mc(k,n)$ as $\A^{kn}$ and $\bigwedge^k\K^n$ as $\A^{\binom nk}$ then we see that $\phi$ is a polynomial map and thus a morphism of affine varieties.
-\end{remark}
-
 
 To connect Grassmannians to the world of representable functors we shall redefine them scheme-theoretically by mimicing the Pl\"ucker embedding using rings
 
@@ -187,18 +216,53 @@ and by the same token we denote by $X_I$ the generic $k\times k$ minor determine
 We shall also denote $\K[x_{1,1},\cdots, x_{k,n}]$ by the compacter notation $\Oc(\Mc(k,n))$.
 \end{notation}
 
+\begin{remark}
+The familiar $\Mc(k,n)$ and $\bigwedge^k\K^n$ can be identified with the $\K$-points of the affine schemes $\Spec \Oc(\Mc(k,n))$ and $\Spec \Bc_{k,n}$ respectively\footnote{Example 2.3.32 from Qing Liu}.
+\end{remark}
+
 \begin{definition}[Pl\"ucker ring homomorphism]
 We define the \textbf{Pl\"ucker ring homomorphism} as
 \[\phi^\#:\funcDef{\Bc_{k,n}}{\Oc(\Mc(k,n))}{z_I}{\det X_I}\]
 \end{definition}
 
 \begin{proposition}\label{PluckerRingHomomorphismWorksForKPoints}
-The induced map $\Spec \phi^\#:\A^{kn}_\K(\K)\to \A^{\binom nk}_\K(\K)$ has the expected behaviour, i.e. 
+The induced map $\Spec \phi^\#:\A^{kn}(\K)\to \A^{\binom nk}(\K)$ is equal to the Pl\"ucker map $\phi:\Mc(k,n)\to \bigwedge^k\K^n$ under the afformentioned identification, i.e. for any matrix $A\in\Mc(k,n)$ with entries $a_{i,j}$ we have
+\[(\phi^\#)\ii((x_{i,j}-a_{i,j}))=(z_I-\det A_I).\]
 \end{proposition}
+\begin{proof}
+First we observe that for any multiindex $I$
+\[\det X_I-\det A_I\in (x_{i,j}-a_{i,j}),\]
+thus $(z_I-\det A_I)\subseteq (\phi^\#)\ii((x_{i,j}-a_{i,j}))$.\\
+Since $(z_I-\det A_I)$ is a $\K$-point, it is in particular a maximal ideal of the Braket ring, thus we have the desired equality if $1\notin (\phi^\#)\ii((x_{i,j}-a_{i,j}))$, which is the case because otherwise $(x_{i,j}-a_{i,j})$ would not be proper.
+\end{proof}
 
+\begin{lemma}
+The kernel of the Pl\"ucker homomorphism is homogeneous.
+\end{lemma}
+\begin{proof}
+By definition of homogeneous ideal, we want to show that if $f=\sum f_d$ for $d$ homogeneous and $f\in \ker\phi^\#$ then $f_d\in \ker \phi^\#$ for all $d$.\\
+Looking at the definition of $\phi^\#$ we see that $\phi^\#(f_d)$ is a homogeneous polynomial of degree $kd$, in particular if $d\neq h$ then $\deg \phi^\#(f_d)\neq \deg \phi^\#(f_h)$. Since
+\[0=\phi^\#(f)=\sum \phi^\#(f_d)\]
+this proves that $\phi^\#(f_d)=0$ for all $d$.
+\end{proof}
+
+Since $\imm \phi$ is closed and\footnote{Known result of algebraic geometry} $V(\ker\phi^\#)=\ol{\imm \phi}$, we can identify $\Gr(k,n)$ with $V_+(\ker \phi^\#)$. This identification corresponds to the equality \[\Pj(\imm \phi)=V_+(\ker \phi^\#)(\K).\]
 
 
 \section{Moduli functor}
+
+Let us consider the following functor
+\[\G(k,n):\funcDef{(\Sch\K)\op}{Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}\]
+where $Q$ is a locally free sheaf of rank $k$ on $T$ and two surjections $\al:\Oc_T^n\onto Q$, $\beta:\Oc_T^n\onto V$ are equivalent if and only if there exist an isomorphism of sheaves $\theta:Q\to V$ such that the diagram commutes
+\[\begin{tikzcd}
+	{\Oc_T^n} & Q \\
+	& V
+	\arrow["\al", two heads, from=1-1, to=1-2]
+	\arrow["\beta"', two heads, from=1-1, to=2-2]
+	\arrow["\theta", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+\noindent In this this section we will prove that the Grassmannian scheme $V_+(\ker\phi^\#)$ defined above represents this functor.
 
 \subsection{Affine cover}
 

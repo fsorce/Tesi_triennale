@@ -10,6 +10,19 @@ A contravariant functor $F:\Cc\op\to \Set$ is called a \textbf{presheaf} on $\Cc
 Let $S$ be a scheme. A presheaf on $\Sch S$ is called a \textbf{moduli problem}.
 \end{definition}
 
+\begin{theorem}[Yoneda Lemma]\label{YonedaLemma}
+[TO DO]
+\end{theorem}
+
+\begin{lemma}\label{YonedaEmbeddingPreservesLimits}
+The Yoneda embedding preserves limits.
+\end{lemma}
+\begin{proof}
+Suppose $X$ is the limit of the diagram $\cpa{f_{ij}:X_j\to X_i}$. If we apply the Yoneda embedding to the diagram we obtain
+\[\cpa{\circ f_{ij}:h_{X_j}\to h_{X_i}}\]
+Let $F$ be any presheaf on $\Cc$ and suppose that we have morphisms $F\to h_{X_i}$ which make the diagram commute, then for all $T\in \Cc$ we have compatible and natural $F(T)\to \Hom(T,X_i)$. If $f\in T(T)$ then these arrows define several $f_i\in \Hom(T,X_i)$ which compose respecting the diagram. By the universal property of limits this defines uniquely a morphism $f_\ell\in \Hom(T,X)$ and we see that the assignment $f\mapsto f_\ell$ is the unique map from $F(T)$ to $\Hom(T,X)$ which makes the diagram in $Set$ commute. Since all that we have done is natural in $T$ we have effectively constructed a morphism $F\to h_X$ as we desired.
+\end{proof}
+
 \section{Fine and Coarse moduli spaces}
 
 \section{Zariski sheaves and gluing of fine moduli spaces}
@@ -147,82 +160,51 @@ Let $F:\Psh{S}{\Set}$ be a moduli problem which is a Zariski sheaf and let $\cpa
 \end{proposition}
 \begin{proof}
 Let $X_i$ be the fine moduli space for $F_i$ and let $\xi_i\in F_i(X_i)$ be their universal families.\\
-Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ such that the diagram is a cartesian square
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJoX3tVX3tpan19Il0sWzEsMCwiaF97WF9pfSJdLFswLDEsIkZfaiJdLFsxLDEsIkYiXSxbMCwyXSxbMCwxXSxbMiwzXSxbMSwzXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyLWludmVyc2UifX1dXQ==
-\[\begin{tikzcd}
-	{h_{U_{ij}}} & {h_{X_i}} \\
-	{F_j} & F
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
-\end{tikzcd}\]
-Evaluating the diagram on $U_{ij}$ yields
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE1vcihVX3tpan0sVV97aWp9KSJdLFsxLDAsIlxcTW9yKFVfe2lqfSxYX2kpIl0sWzAsMSwiRl9qKFVfe2lqfSkiXSxbMSwxLCJGKFVfe2lqfSkiXSxbMCwyXSxbMCwxXSxbMiwzXSxbMSwzXV0=
-\[\begin{tikzcd}
-	{\Mor(U_{ij},U_{ij})} & {\Mor(U_{ij},X_i)} \\
-	{F_j(U_{ij})} & {F(U_{ij})}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-\end{tikzcd}\]
-The top left set contains $id_{U_{ij}}$, which corresponds to the universal family in \[F_j(U_{ij})\times_{F(U_{ij})}\Mor(U_{ij},X_i),\]
-given by $(\xi\res{U_{ij}},\iota_i)$, where $\iota_i:U_{ij}\to X_i$ is the inclusion and $\xi_j\res{U_{ij}}=F_j(f_i)(\xi_j)$ for % https://q.uiver.app/#q=WzAsNixbMCwwLCJoX3tVX3tpan19KFVfe2lqfSkiXSxbMSwwLCJGX2ooVV97aWp9KVxcdGltZXNfe0YoVV97aWp9KX1oX3tYX2l9KFVfe2lqfSkiXSxbMiwwLCJGX2ooVV97aWp9KSJdLFszLDAsIlxcTW9yKFVfe2lqfSxYX2opIl0sWzAsMSwiaWRfe1Vfe2lqfX0iXSxbMywxLCJmIl0sWzAsMSwiXFxjb25nIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwicHJfMSJdLFsyLDMsIlxcY29uZyIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCwwLCJcXGluIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMywiXFxpbiIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-\[\begin{tikzcd}
-	{h_{U_{ij}}(U_{ij})} & {F_j(U_{ij})\times_{F(U_{ij})}h_{X_i}(U_{ij})} & {F_j(U_{ij})} & {\Mor(U_{ij},X_j)} \\
-	{id_{U_{ij}}} &&& f_i
-	\arrow["\cong"{description}, draw=none, from=1-1, to=1-2]
-	\arrow["{pr_1}", from=1-2, to=1-3]
-	\arrow["\cong"{description}, draw=none, from=1-3, to=1-4]
-	\arrow[maps to, from=2-1, to=2-4]
-	\arrow["\in"{marking, allow upside down}, draw=none, from=2-1, to=1-1]
-	\arrow["\in"{marking, allow upside down}, draw=none, from=2-4, to=1-4]
-\end{tikzcd}\]
-The images of these two elements in $F(U_{ij})$ are $\xi_j\res{U_{ij}}$ (since $F_j\subseteq F$) and $\xi_i\res{U_{ij}}=\iota_i^\ast\xi_i$, so by commutativity
-\[\xi_j\res{U_{ij}}=\xi_i\res{U_{ij}}.\]
+Note that for all $S$-schemes $T$ we have
+\[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
+it follows that $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We can define analogously $F_{i,j,k}$.
 \medskip
 
-\noindent
-We now evaluate the cartesian square that defines $U_{ji}$ on $U_{ij}$:
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE1vcihVX3tqaX0sVV97aWp9KSJdLFsxLDAsIlxcTW9yKFVfe2lqfSxYX2opIl0sWzAsMSwiRl9pKFVfe2lqfSkiXSxbMSwxLCJGKFVfe2lqfSkiXSxbMCwyXSxbMCwxXSxbMiwzXSxbMSwzXV0=
+\noindent Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both moduli spaces for $F_{i,j}$ they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJoX3tVX3tpan19Il0sWzAsMSwiaF97VV97aml9fSJdLFsxLDAsImhfe1hfaX1cXHRpbWVzX0YgRl9qIl0sWzIsMCwiRl97aSxqfSJdLFsyLDEsIkZfe2ksan0iXSxbMSwxLCJGX2lcXHRpbWVzX0YgaF97WF9qfSJdLFsyLDMsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIj0iLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCJcXGFscGhhIiwyXSxbMCwyLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
-	{\Mor(U_{ij},U_{ji})} & {\Mor(U_{ij},X_j)} \\
-	{F_i(U_{ij})} & {F(U_{ij})}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
+	{h_{U_{ij}}} & {h_{X_i}\times_F F_j} & {F_{i,j}} \\
+	{h_{U_{ji}}} & {F_i\times_F h_{X_j}} & {F_{i,j}}
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
+	\arrow["\alpha"', from=1-1, to=2-1]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
 \end{tikzcd}\]
-Given what we have already said, $(\xi_i\res{U_{ij}},f_i)\in F_i(U_{ij})\times_{F(U_{ij})}h_{X_j}(U_{ij})$, so it defines a morphism $\vp_{ij}:U_{ij}\to U_{ji}$. We observe that $\vp_{ij}$ and $\vp_{ji}$ are inverses of each other. Indeed if we consider $\vp_{ji}\circ \vp_{ij}$ as an element of the top left set in the diagram
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE1vcihVX3tpan0sVV97aWp9KSJdLFsxLDAsIlxcTW9yKFVfe2lqfSxYX2kpIl0sWzAsMSwiRl9qKFVfe2lqfSkiXSxbMSwxLCJGKFVfe2lqfSkiXSxbMCwyXSxbMCwxXSxbMiwzXSxbMSwzXV0=
-\[\begin{tikzcd}
-	{\Mor(U_{ij},U_{ij})} & {\Mor(U_{ij},X_i)} \\
-	{F_j(U_{ij})} & {F(U_{ij})}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-\end{tikzcd}\]
-we notice that the two projections are given by \[\iota_i\circ \vp_{ji}\circ \vp_{ij}=f_j\circ \vp_{ij}=f_i\]
-and
-\[F_j(f_i\circ \vp_{ji}\circ \vp_{ij})(\xi_j)=F_j(f_j\circ \vp_{ij})(\xi_j)=F_j(f_i)(\xi_j)=\xi_j\res{U_{ij}},\]
-which are the same projections as $id_{U_{ij}}$, so $\vp_{ji}\circ \vp_{ij}=id_{U_{ij}}$. A symmetric argument yields $\vp_{ij}\circ \vp_{ji}=id_{U_{ji}}$. Note that with our notation $\vp_{ii}=id_{U_{ii}}=id_{X_i}$.\\
-We also remark that \[F(\vp_{ij})(\xi_j)=F_j(\iota_j\circ \vp_{ij})(\xi_j)=F_j(f_i)(\xi_j)=\xi_j\res{U_{ij}}=\xi_i\res{U_{ij}}.\]\medskip
+Note that if $T$ is an $S$-scheme and $f\in h_{U_{ij}}(T)$ then
+\[h_{\vp_{ji}}(f)=\al_{U_{ij}}(id_{U_{ij}})\circ f =\al_T(id_{U_{ij}}\circ f)=\al_T(f),\]
+so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.
+\medskip
 
-\noindent We now want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ij}$.
-\setlength{\leftmargini}{0cm}
-\begin{itemize}
-\item[$\boxed{\text{Intersection}}$] We want to check that \[\vp_{ij}(U_{ij}\cap U_{ik})= U_{ji}\cap U_{jk}.\]
-Given the symmetry of the indicies and having already proven that $\vp_{ji}=\vp_{ij}\ii$, we just need to show inclusion. By the equivalent definition of open subfunctor, we know that the morphism $\vp_{ij}:U_{ij}\cap U_{ik}\to U_{ji}$ factors through $U_{ji}\cap U_{jk}$ if and only if $\vp_{ij}^\ast\xi_j\res{U_{ji}\cap U_{jk}}\in F(U_{ij}\cap U_{ik})$, which is true because \[\vp_{ij}^\ast\xi_j\res{U_{ji}\cap U_{jk}}=\xi_i\res{U_{ij}\cap U_{ik}}.\]
-\item[$\boxed{\text{Cocycle cond.}}$] We now want to verify that
-\[\vp_{jk}\res{U_{ji}\cap U_{jk}}\circ \vp_{ij}\res{U_{ij}\cap U_{ik}}=\vp_{ik}\res{U_{ik}\cap U_{ij}},\]
-but this simply follows from the fact that both maps pullback $\xi_k\res{U_{ki}\cap U_{kj}}$ to $\xi_i\res{U_{ij}\cap U_{ik}}$.
-\end{itemize}
-\setlength{\leftmargini}{0.5cm}
-We can thus define $X$ to be the scheme obtained by gluing the $X_i$ along the $U_{ij}$. Moreover, since $F$ is a Zariski sheaf, the $\xi_i$ must glue to a family $\xi\in F(X)$\footnote{because $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$.}.\medskip
+\noindent We now want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.\\
+The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.\\
+Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJoX3tVX3tpan19XFx0aW1lc197aF97WF9pfX1oX3tVX3tpa319Il0sWzEsMSwiaF97VV97aml9fVxcdGltZXNfe2hfe1hfan19aF97VV97amt9fSJdLFsyLDAsIkZfe2ksan1cXHRpbWVzX3tGX2l9IEZfe2ksa30iXSxbMywwLCJGX3tpLGosa30iXSxbMywxLCJGX3tpLGosa30iXSxbMiwxLCJGX3tpLGp9XFx0aW1lc197Rl9qfSBGX3tqLGt9Il0sWzAsMCwiaF97VV97aWp9XFxjYXAgVV97aWt9fSJdLFswLDEsImhfe1Vfe2ppfVxcY2FwIFVfe2prfX0iXSxbMiwzLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCI9IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwi44KIIl0sWzcsMSwi44KIIl0sWzYsNywiXFx2cF97aml9IiwyXV0=
+\[\begin{tikzcd}
+	{h_{U_{ij}\cap U_{ik}}} & {h_{U_{ij}}\times_{h_{X_i}}h_{U_{ik}}} & {F_{i,j}\times_{F_i} F_{i,k}} & {F_{i,j,k}} \\
+	{h_{U_{ji}\cap U_{jk}}} & {h_{U_{ji}}\times_{h_{X_j}}h_{U_{jk}}} & {F_{i,j}\times_{F_j} F_{j,k}} & {F_{i,j,k}}
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-3, to=1-4]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-3, to=2-4]
+	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+	\arrow["{\text{Yon.}}", from=1-1, to=1-2]
+	\arrow["{\text{Yon.}}", from=2-1, to=2-2]
+	\arrow["{\vp_{ji}}"', from=1-1, to=2-1]
+\end{tikzcd}\]
+thus to prove that $\vp_{kj}\circ \vp_{ji}=\vp_{ki}$ it is enough to see that $id_{F_{i,j,k}}\circ id_{F_{i,j,k}}=id_{F_{i,j,k}}$.
+\bigskip
+
+\noindent
+We can thus define $X$ to be the scheme obtained by gluing the $X_i$ along the $U_{ij}$.\\
+Observe that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\medskip
 
 \noindent We now only need to verify that $(X,\xi)$ is a fine moduli space for $F$:\\
-Let $T$ be an $S$-scheme and and let us consider a family $\zeta\in F(T)$. Since $\cpa{F_i}$ is an open cover of $F$, there exists an open cover $\cpa{V_i}$ of $T$ such that $\zeta_{U_i}\in F_i(V_i)\cong \Mor(V_i,X_i)$. Since $F$ is a sheaf $\zeta_i\res{V_i\cap V_j}=\zeta_j\res{V_i\cap V_j}$, so the morphisms $V_i\to X_i$ corresponding to the $\zeta_i$ glue to a morphism $f:T\to X$ such that $f^\ast\xi=\zeta$ (by construction).
+Let $T$ be an $S$-scheme and and let us consider a family $\zeta\in F(T)$. Since $\cpa{F_i}$ is an open cover of $F$, there exists an open cover $\cpa{V_i}$ of $T$ such that $\zeta\res{V_i}\in F_i(V_i)\cong \Mor(V_i,X_i)$. Since $F$ is a sheaf and $\zeta_i\res{V_i\cap V_j}=\zeta_j\res{V_i\cap V_j}$, the morphisms $V_i\to X_i$ corresponding to the $\zeta_i$ glue to a morphism $f:T\to X$ such that $f^\ast\xi=\zeta$ (by construction).
 \end{proof}
