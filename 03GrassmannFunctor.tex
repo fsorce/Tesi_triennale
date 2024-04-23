@@ -1,0 +1,151 @@
+\chapter{Representability of the Grassmannian functor}
+In this chapter, unless otherwise specified, we have fixed a basis $e_1,\cdots, e_n$ of $\K^n$ and a basis $e_1,\cdots, e_k$ of $\K^k$. In case of ambiguity we will refer to these bases as \textit{canonical}.
+\medskip
+
+\noindent Having fixed a base, we will identify $\Hom_\K(\K^n,\K^k)$ with the set of $k\times n$ matrices with coefficients in $\K$, which we will denote $\Mc(k,n)$. As a consequence of this we find yet another form for $\Gr(k,n)$:
+\[\Gr(k,n)=\quot{\cpa{A\in \Mc(k,n)\mid \rnk A=k}}{\sim},\] 
+where $A\sim B\coimplies \exists P\in \GL(k)\ s.t.\ A=PB$.
+\bigskip
+
+\noindent We may rewrite the maps from the previous chapter as follows:
+\[\phi^s:\funcDef{\Mc(k,n)}{\bigwedge^k\K^n}{A}{\sum_{I\in \omega(k,n)}\det A_I e_I}\]
+\[\Pl^s:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{\spa{\sum_{I\in \omega(k,n)}\det A_I e_I}_{\K^\ast}}\]
+where we use the superscript $s$ to distinguish these maps with the ones we will define for schemes.
+
+\section{Grassmannians as projective schemes}
+To connect Grassmannians to the world of representable functors we shall redefine them scheme-theoretically by emulating the construction from the prievious chapter using rings and ring homomorphisms.
+
+\begin{definition}[Braket ring]
+We define the \textbf{braket ring}(see page 79 of \cite{matroids}) as the ring of polynomial functions on $\bigwedge^k\K^n$, i.e.
+\[\Bc_{k,n}\doteqdot\frac{\K[z_I\mid I\in \cpa{1,\cdots, n}^k]}{(\cpa{z_I-\sgn(\sigma)z_{\sigma(I)}}_{\sigma\in S_k})}\cong \K[z_I\mid I\in \omega(k,n)].\]
+\end{definition}
+
+\begin{definition}[Ring of generic matrices]
+Let $\K[X_{k,n}]\doteqdot\K[x_{1,1},\cdots,x_{k,n}]$ denote the polynomial ring with $k\cdot n$ variables. We define the \textbf{generic matrix} by
+\[X=\mat{
+    x_{1,1} & \cdots & x_{1,n}\\
+    \vdots & \ddots & \vdots\\
+    x_{k,1} &\cdots & x_{k,n}}\]
+and by the same token we denote by $X_I$ the generic $k\times k$ minor determined by the multiindex $I$ and by $\det X_I$ the formal determinant of this minor.
+\end{definition}
+\begin{remark}
+The ring $\K[X_{k,n}]$ is the coordinate ring of $\Mc(k,n)$. 
+\end{remark}
+
+\begin{remark}
+The familiar $\Mc(k,n)$ and $\bigwedge^k\K^n$ can be identified with the $\K$-points of the affine schemes $\Spec \K[X_{k,n}]$ and $\Spec \Bc_{k,n}$ respectively (Example 2.3.32 of \cite{QingLiu}).
+\end{remark}
+
+\begin{definition}[Pl\"ucker ring homomorphism]
+We define the \textbf{Pl\"ucker ring homomorphism} or simply \textbf{Pl\"ucker homomorphism} as
+\[\phi^\#:\funcDef{\Bc_{k,n}}{\K[X_{k,n}]}{z_I}{\det X_I}\]
+For brevity we will denote $\Spec \phi^\#$ by $\phi$.\\
+This definition is inspired by that of $\phi$ at page 79 of \cite{matroids}.
+\end{definition}
+
+\begin{proposition}
+The kernel of the Pl\"ucker homomorphism is an homogeneous prime ideal which does not contain $(\cpa{z_I}_{I\in\omega(k,n)})$.
+\end{proposition}
+\begin{proof}
+Since $\K[X_{k,n}]$ is an integral domain, $\ker\phi^\#$ is prime.\\
+By definition of homogeneous ideal, we want to show that if $f=\sum f_d$ for $d$ homogeneous and $f\in \ker\phi^\#$ then $f_d\in \ker \phi^\#$ for all $d$.\\
+Looking at the definition of $\phi^\#$ we see that $\phi^\#(f_d)$ is a homogeneous polynomial of degree $kd$, in particular if $d\neq h$ then $\deg \phi^\#(f_d)\neq \deg \phi^\#(f_h)$. Since
+\[0=\phi^\#(f)=\sum \phi^\#(f_d)\]
+this proves that $\phi^\#(f_d)=0$ for all $d$.\\
+Finally, observe that $\deg\phi^\#(z_I)=\deg(\det X_I)=k>0$, so $z_I\notin \ker\phi^\#$.
+\end{proof}
+
+\begin{proposition}\label{PluckerRingHomomorphismWorksForKPoints}
+The induced map $\phi\res{\Spec(\K[X_{k,n}])(\K)}:\Spec(\K[X_{k,n}])(\K)\to \Spec(\Bc_{k,n})(\K)$ is equal to $\phi^s:\Mc(k,n)\to \bigwedge^k\K^n$ under the identification mentioned above, i.e. for all matrices $A\in\Mc(k,n)$ with entries $a_{i,j}$ we have
+\[(\phi^\#)\ii((x_{i,j}-a_{i,j}))=(z_I-\det A_I).\]
+\end{proposition}
+\begin{proof}
+First we observe that for any multiindex $I$
+\[\det X_I-\det A_I\in (x_{i,j}-a_{i,j}),\]
+thus $(z_I-\det A_I)\subseteq (\phi^\#)\ii((x_{i,j}-a_{i,j}))$.\\
+Since $(z_I-\det A_I)$ is a $\K$-point, it is in particular a maximal ideal of the Braket ring, thus we have the desired equality if $1\notin (\phi^\#)\ii((x_{i,j}-a_{i,j}))$, which is the case because otherwise $(x_{i,j}-a_{i,j})$ would not be proper.
+\end{proof}
+
+\begin{proposition}
+The $\K$-points of $V_+(\ker(\phi^\#))$ correspond to $\imm \Pl^s$.
+\end{proposition}
+\begin{proof}
+First we note that
+\[V_+(\ker\phi^\#)=\Proj\frac{\Bc_{k,n}}{\ker\phi^\#}\subseteq \Proj\Bc_{k,n}.\]
+Since $\phi$ becomes $\phi^s$ on $\K$-points we see that
+\[Z(\ker\phi^\#)=\ol{\imm \pa{\Spec\phi^\#}\res{\Spec(\K[X_{k,n}])(\K)}}=\ol{\imm \phi^s}\pasgnl={$\emat{\text{previous}\\\text{chapter}}$}\imm \phi^s.\] 
+It follows from Corollary 2.3.44 in \cite{QingLiu} that the $\K$-points of $V_+(\ker\phi^\#)$ correspond to 
+\[Z_+(\ker\phi^\#)=\Pj(Z(\ker\phi^\#))=\Pj(\imm \phi^s)=\imm \Pl^s.\]
+\end{proof}
+
+\noindent This result allows us to redefine the Grassmannian as a projective scheme. We can obtain the Pl\"ucker embedding of the classical Grassmannian back by looking at $\K$-points.
+\medskip
+
+\noindent From now on $\Gr(k,n)$ will denote $V_+(\ker \phi^\#)$, while $\Gr(k,n)(\K)$ will denote what we used to write as $\Gr(k,n)$.
+
+\subsection{Standard affine cover of the Grassmannian scheme}
+
+
+
+
+
+
+\section{Grassmannian moduli functor}
+
+Let us consider the following functor
+\[\G(k,n):\funcDef{(\Sch\K)\op}{Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}\]
+where $Q$ is a locally free sheaf of rank $k$ on $T$ and two surjections $\al:\Oc_T^n\onto Q$, $\beta:\Oc_T^n\onto V$ are equivalent if and only if there exist an isomorphism of sheaves $\theta:Q\to V$ such that the diagram commutes
+\[\begin{tikzcd}
+	{\Oc_T^n} & Q \\
+	& V
+	\arrow["\al", two heads, from=1-1, to=1-2]
+	\arrow["\beta"', two heads, from=1-1, to=2-2]
+	\arrow["\theta", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+\noindent In this this section we will prove that the Grassmannian scheme $V_+(\ker\phi^\#)$ defined above represents this functor.
+
+\subsection{Open subfunctor cover of the Grassmannian}
+\begin{notation}
+For any multiindex $I$ and any scheme $T$ we define the following morphism of sheaves
+\[s_I:\funcDef{\Oc_T^k}{\Oc_T^n}{e_j}{e_{i_j}}.\]
+\end{notation}
+
+\begin{definition}[Principal subfunctor of the Grassmannian]
+Fixed a multiindex $I\in \omega(k,n)$ we define the following functor
+\[\G_I(k,n):\funcDef{(\Sch\K)\op}{Set}{T}{\quot{\cpa{0\to \Oc^k_T\overset{s_I}\to\Oc_T^n\overset{\al}\to Q\to 0}}\sim}\]
+where the elements are short exact sequences and the equivalence relation is the same as the one defined for $\G(k,n)$.
+\end{definition}
+
+
+\begin{proposition}\label{GrIAreOpenSubfunctors}
+The $\G_I(k,n)$ are open subfunctors of $\G(k,n)$.
+\end{proposition}
+\begin{proof}
+We will follow the approach showcased in \cite{Bejleri2}.\\
+Let us prove first that it is a subfunctor, then we shall prove representability of the appropriate fibered products.
+\setlength{\leftmargini}{0cm}
+\begin{itemize}
+\item[$\boxed{Subfunctor}$] It is a functor because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves, then $\ker \psi=\ker\al=\imm s_I$. The inclusion is obvious.
+\item[$\boxed{Open}$] Let $T$ be any $\K$-scheme and let us fix a quotient $\al:\Oc_T^n\onto Q$ in $\G(k,n)(T)$. We can define $\al\circ s_I:\Oc_T^k\to Q$. The locus where this map is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. $\al\circ s_I$ is surjective on $\Oc_{T,x}^k$ if and only if $x\notin \supp\Kc$. Since the support of a locally free sheaf is closed, the set $U_I$ where $\al\circ s_I$ is surjective is an open subset of $T$.\\
+We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$. Let us fix $x\in S$ and $y\in T$ so that $f(x)=y$. By definition $y\in U_i$ if and only if $\al\circ s_I$ is surjective on $\Oc_{T,y}^k$, which by Nakayama's lemma is the same as asking that the following map is surjective
+\[(\al\circ s_I)\res{y}:k(y)^k\to \frac{Q_y}{\mf_y Q_y}.\]
+If we now pull back via $f$ we obtain a map
+\[(f^\ast \al\circ f^\ast s_I)\res{x}:k(x)^k\to\frac{f^\ast Q_x}{\mf_x f^\ast Q_x} \]
+and *******************************************
+\end{itemize}
+\setlength{\leftmargini}{0.5cm}
+
+\end{proof}
+
+
+\subsection{Representability of the Grassmannian functor}
+\begin{proposition}
+The grassmannian functor $\G(k,n)$ is a Zariski sheaf.
+\end{proposition}
+\begin{proof}
+Consider a $\K$-scheme $T$ and an open cover $\cpa{U_i}$. Consider now quotiens $\al_i:\Oc_{U_i}^n\onto Q_i$ such that 
+\[\al_i\res{U_i\cap U_j}\sim \al_j\res{U_i\cap U_j}.\]	
+By definition of $\sim$ there exist isomorphisms of sheaves $\vp_{ji}:Q_i\res{U_{i}\cap U_j}\to Q_j\res{U_i\cap U_j}$. If we define $\vp_{ii}=id_{Q_i}$ and fix the isomorphisms in such a way that $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$ we have the data to glue the $Q_i$ to a locally free sheaf of rank $k$ over $T$, which we denote by $Q$. Now, up to isomorphism let us consider $\al_i:\Oc_{U_i}^n\onto Q\res{U_i}$ for all $i$. If we fix any open set $V\subseteq T$ we see that if $s\in \Oc_T^n(V)$ is a section, we can define $\al_V(s)$ by gluing the $\al_i(s\res{U_i})$, which we can do by construction of $Q$ and the choice of representative for the $\al_i$. By construction $\al_{U_i}=\al_i$ and it is in fact the only such morphism, so we have verified the gluing property of sheaves for $\G(k,n)$.
+\end{proof}
+

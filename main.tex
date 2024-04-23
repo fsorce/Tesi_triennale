@@ -1,5 +1,6 @@
 \documentclass[a4paper]{report}
 \input{preamble.tex}
+%\usepackage{biblatex}
 %PER CAMBIARE I MARGINI
 \usepackage[margin=4cm]{geometry}
 
@@ -35,6 +36,7 @@
 \date{Università di Pisa\\
 Dipartimento di Matematica}
 
+
 \begin{document}
 \maketitle
 
@@ -43,7 +45,12 @@ Dipartimento di Matematica}
 \newpage
 
 \include{01ModuliSpaces}
-\include{02Grassmannians}
+\include{02ClassicalGrassmannians}
+\include{03GrassmannFunctor}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
 
 %\appendix
 %\include{Riconoscimenti.tex}

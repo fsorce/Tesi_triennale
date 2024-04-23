@@ -1,6 +1,11 @@
 \chapter{Moduli Spaces}
 Set theoretic issues: whenever I write that something is an element of a class, what I mean is that that object satisfies the proposition that defines the class.
 
+\medskip
+
+\noindent
+Most definitions given in this chapter follow \cite{Bejleri1}.
+
 \section{Introduction to moduli problems}
 \begin{definition}[Presheaf]
 A contravariant functor $F:\Cc\op\to \Set$ is called a \textbf{presheaf} on $\Cc$.
@@ -155,10 +160,11 @@ A collections of open subfunctors $F_i\subseteq F$ form an open cover of $F$ if 
 \end{remark}
 
 \noindent The definitions above let us state the following criterion for representability:
-\begin{proposition}[Representability by open cover]\label{RepresentabilityByOpenSubfunctorCover}
+\begin{theorem}[Representability by open cover]\label{RepresentabilityByOpenSubfunctorCover}
 Let $F:\Psh{S}{\Set}$ be a moduli problem which is a Zariski sheaf and let $\cpa{F_i}$ be an open cover of it by representable subfunctors, then $F$ is representable.
-\end{proposition}
+\end{theorem}
 \begin{proof}
+For this proof we will mainly follow the version presented in \cite{GortzAlgGeoISchemes} (Theorem 8.9 at page 212).\\
 Let $X_i$ be the fine moduli space for $F_i$ and let $\xi_i\in F_i(X_i)$ be their universal families.\\
 Note that for all $S$-schemes $T$ we have
 \[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
