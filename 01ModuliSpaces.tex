@@ -25,7 +25,7 @@ The Yoneda embedding preserves limits.
 \begin{proof}
 Suppose $X$ is the limit of the diagram $\cpa{f_{ij}:X_j\to X_i}$. If we apply the Yoneda embedding to the diagram we obtain
 \[\cpa{\circ f_{ij}:h_{X_j}\to h_{X_i}}\]
-Let $F$ be any presheaf on $\Cc$ and suppose that we have morphisms $F\to h_{X_i}$ which make the diagram commute, then for all $T\in \Cc$ we have compatible and natural $F(T)\to \Hom(T,X_i)$. If $f\in T(T)$ then these arrows define several $f_i\in \Hom(T,X_i)$ which compose respecting the diagram. By the universal property of limits this defines uniquely a morphism $f_\ell\in \Hom(T,X)$ and we see that the assignment $f\mapsto f_\ell$ is the unique map from $F(T)$ to $\Hom(T,X)$ which makes the diagram in $Set$ commute. Since all that we have done is natural in $T$ we have effectively constructed a morphism $F\to h_X$ as we desired.
+Let $F$ be any presheaf on $\Cc$ and suppose that we have morphisms $F\to h_{X_i}$ which make the diagram commute, then for all $T\in \Cc$ we have compatible and natural $F(T)\to \Hom(T,X_i)$. If $f\in T(T)$ then these arrows define several $f_i\in \Hom(T,X_i)$ which compose respecting the diagram. By the universal property of limits this defines uniquely a morphism $f_\ell\in \Hom(T,X)$ and we see that the assignment $f\mapsto f_\ell$ is the unique map from $F(T)$ to $\Hom(T,X)$ which makes the diagram in $\Set$ commute. Since all that we have done is natural in $T$ we have effectively constructed a morphism $F\to h_X$ as we desired.
 \end{proof}
 
 \section{Fine and Coarse moduli spaces}
@@ -50,7 +50,7 @@ a set of morphisms $\cpa{f_i:U_i\to U}$ is a cover in the Zariski site if every 
 \end{definition}
 
 \begin{definition}[Sheaf on a site]
-Let $\Cc$ be a site and $F:\Cc^{op}\to Set$ be a presheaf, then $F$ is a sheaf on $\Cc$ if for any cover $\cpa{U_i\to U}$ the following diagram is an equalizer\footnote{$pr_1^\ast\circ Res=pr_2^\ast\circ Res$ and if we have $q:Q\to \prod_i F(U_i)$ such that $pr_1^\ast\circ q=pr_2^\ast\circ q$ then there exists a morphism $Q\to F(U)$ that makes the resulting diagram commute.}
+Let $\Cc$ be a site and $F:\Cc^{op}\to \Set$ be a presheaf, then $F$ is a sheaf on $\Cc$ if for any cover $\cpa{U_i\to U}$ the following diagram is an equalizer\footnote{$pr_1^\ast\circ Res=pr_2^\ast\circ Res$ and if we have $q:Q\to \prod_i F(U_i)$ such that $pr_1^\ast\circ q=pr_2^\ast\circ q$ then there exists a morphism $Q\to F(U)$ that makes the resulting diagram commute.}
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJGKFUpIl0sWzIsMCwiXFxkaXNwbGF5c3R5bGUgXFxwcm9kX2lGKFVfaSkiXSxbNCwwLCJcXGRpc3BsYXlzdHlsZSBcXHByb2Rfe2ksan1GKFVfaVxcdGltZXNfVVVfaikiXSxbMCwxLCJSZXMiXSxbMSwyLCJwcl8xXlxcYXN0IiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsInByXzJeXFxhc3QiLDIseyJvZmZzZXQiOjF9XV0=
 \[\begin{tikzcd}
 	{F(U)} && {\displaystyle \prod_iF(U_i)} && {\displaystyle \prod_{i,j}F(U_i\times_UU_j)}
@@ -61,7 +61,7 @@ Let $\Cc$ be a site and $F:\Cc^{op}\to Set$ be a presheaf, then $F$ is a sheaf o
 where $Res:F(U)\to \prod_i F(U_i)$ is given by the pullback of $U_i\to U$ in each component. Similarly $pr_k^\ast$ are induced by the two canonical projections from the fibered products in the obvious way.
 \end{definition}
 \begin{remark}
-If $X$ is a fixed topological space and $\Cc$ is the category whose objects are open subsets of $X$ and whose morphisms are inclusions then we can consider $\Cc$ as a site by taking as covers the open covers in $X$. Then a functor $F:\Cc^{op}\to Set$ is a sheaf on $X$ if and only if it's a sheaf on $\Cc$.
+If $X$ is a fixed topological space and $\Cc$ is the category whose objects are open subsets of $X$ and whose morphisms are inclusions then we can consider $\Cc$ as a site by taking as covers the open covers in $X$. Then a functor $F:\Cc^{op}\to \Set$ is a sheaf on $X$ if and only if it's a sheaf on $\Cc$.
 \end{remark}}
 
 
