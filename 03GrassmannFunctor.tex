@@ -184,9 +184,42 @@ If there is no ambiguity on the scheme we will write $s_I$.
 
 \begin{definition}[Principal subfunctor of the Grassmannian]
 Fixed a multiindex $I\in \omega(k,n)$ we define the following association
-\[\G_I(k,n):\funcDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surjective}}}\sim}\]
+\[\G_I(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surjective}}}\sim}{f}{\al\mapsto f^\ast \al}\]
 where the equivalence relation is the same as the one defined for $\G(k,n)$.
 \end{definition}
+
+\begin{remark}
+The association $\G_I(k,n)$ is functor.
+\end{remark}
+\begin{proof}
+First we observe that $\G_I(k,n)(T)$ is well defined because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves then on each stalk we have
+\[\psi_x\circ (s_I)_x=\theta_x\circ \vp_x\circ (s_I)_x,\]
+which is surjective if and only if $\vp_x\circ (s_I)_x$ is surjective.
+\medskip
+
+\noindent
+Consider now a map $f:S\to T$, then
+\[f^\ast\al \circ s_I^S=f^\ast\al\circ f^\ast s_I^T=f^\ast(\al\circ s_I^T)\]
+is surjective if and only if it is surjective on all stalks, i.e. if and only if for all $s\in S$ we have that the following map is surjective
+\[f^\ast(\al\circ s_I^T)_s=(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s}\]
+which is true because the tensor product is right-exact.
+\end{proof}
+
+\begin{lemma}\label{CriterionForClosedSupport}
+The support of a finite type quasicoherent sheaf $\Fc$ on a scheme $X$ is a
+closed subset\footnote{This statement is presented as Exercise 4.D. in \cite{VakilClass26}}.
+\end{lemma}
+\begin{proof}
+Since the support is a local notion and we can take an open affine cover of any scheme, we may assume $X=\Spec A$.\\
+From the theory of quasicoherent sheaves on affine schemes we know that there exists a finitely generated $A$-module $M$ such that $\Fc=\wt M$. Let $m_1,\cdots, m_k$ be generators for $M$, then 
+\[\Supp M=\bigcup_{i=1}^k\Supp m_{i}.\]
+Since we have written $\Supp M$ as a finite union of sets, it is enough to show that $\Supp m$ is closed for all $m\in M$, which is true because
+\[\Supp m=V(\Ann_A m),\]
+indeed
+\[0=m_\pf\coimplies \exists s\in A\bs \pf\ s.t.\ sm=0\coimplies \exists t\in \Ann_A m\bs \pf,\]
+thus $\pf\in \Supp m$ if and only if $\Ann_A m\subseteq \pf$, i.e. $\pf\in V(\Ann_Am)$.
+\end{proof}
+
 
 
 \begin{proposition}\label{GrIAreOpenSubfunctors}
@@ -194,26 +227,16 @@ The $\G_I(k,n)$ are open subfunctors of $\G(k,n)$.
 \end{proposition}
 \begin{proof}
 We will follow the approach showcased in \cite{Bejleri2}.\\
-Let us prove first that it is a subfunctor, then we shall prove representability of the appropriate fibered products.
-\setlength{\leftmargini}{0cm}
-\begin{itemize}
-\item[$\boxed{Subfunctor}$] The association is well defined because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves then on each stalk we have
-\[\psi_x\circ (s_I)_x=\theta_x\circ \vp_x\circ (s_I)_x,\]
-which is surjective in and only if $\vp_x\circ (s_I)_x$ is surjective.\\
-Consider now a map $f:S\to T$, then
-\[f^\ast\al \circ s_I^S=f^\ast\al\circ f^\ast s_I^T=f^\ast(\al\circ s_I^T)\]
-is surjective if and only if it is surjective on all stalks, i.e. if and only if for all $s\in S$ we have that the following map is surjective
-\[f^\ast(\al\circ s_I^T)_s=(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s}\]
-which is true because the tensor product is right-exact.\\
-The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is evident.
-\item[$\boxed{Open}$] Let $T$ be any $\K$-scheme and let us fix a quotient $\al:\Oc_T^n\onto Q$ in $\G(k,n)(T)$. We can define $\al\circ s_I:\Oc_T^k\to Q$. The locus where this map is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. $\al\circ s_I$ is surjective on $\Oc_{T,x}^k$ if and only if $x\notin \supp\Kc$. Since the support of a locally free sheaf is closed, the set $U_I$ where $\al\circ s_I$ is surjective is an open subset of $T$.\\
-We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$. Let us fix $x\in S$ and $y\in T$ so that $f(x)=y$. By definition $y\in U_i$ if and only if $\al\circ s_I$ is surjective on $\Oc_{T,y}^k$, which by Nakayama's lemma is the same as asking that the following map is surjective
-\[(\al\circ s_I)\res{y}:k(y)^k\to \frac{Q_y}{\mf_y Q_y}.\]
+The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is apparent so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\G(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\G(k,n)}\G_I(k,n)$.\medskip
+
+\noindent Let us fix a representative $\al$ for the given quotient and define $\al\circ s_I:\Oc_T^k\to Q$. The locus where this map is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. $\al\circ s_I$ is surjective on $\Oc_{T,x}^k$ if and only if $x\notin \Supp\Kc$. By lemma (\ref{CriterionForClosedSupport}) the set $U_I$ where $\al\circ s_I$ is surjective is an open subset of $T$ ($\Kc$ is of finite type because locally it is the sheaf associated to the quotient of finite rank free modules).\\
+We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$, which is the case if and only if \[(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s}\]
+is surjective for all $s\in S$.\\ 
+Let us fix $x\in S$ and $y\in T$ so that $f(x)=y$. By definition $y\in U_I$ if and only if $(\al\circ s_I)_y$ is surjective on $\Oc_{T,y}^k$, which by Nakayama's lemma is the same as asking that the following map is surjective
+\[(\al\circ s_I)\res{y}:k(y)^k\to Q_y\otimes_{\Oc_{T,y}} k(y).\]
 If we now pull back via $f$ we obtain a map
-\[(f^\ast \al\circ f^\ast s_I)\res{x}:k(x)^k\to\frac{f^\ast Q_x}{\mf_x f^\ast Q_x} \]
-and *******************************************
-\end{itemize}
-\setlength{\leftmargini}{0.5cm}
+\[(f^\ast \al\circ f^\ast s_I)\res{x}:k(x)^k\to f^\ast Q_x\otimes_{\Oc_{S,x}} k(x)\]
+[I DON'T GET WHY THIS MAP SHOULD BE SURJECTIVE]
 
 \end{proof}
 
@@ -222,7 +245,10 @@ and *******************************************
 The collection $\cpa{\G_I(k,n)}$ is a Zariski open subfunctor cover of $\G(k,n)$.
 \end{proposition}
 \begin{proof}
-TODO
+For any $\K$-scheme $S$ and any quotient $[\al]\in \Gr(k,n)(S)$ (without loss of generality we choose a representative $\al$) we need to show that for any $s\in S$ there exists a multiindex $I$ such that $s\in U_I$ defined as in the previous proposition.\\
+We are therefore looking for a multiindex $I$ such that $(\al\circ s_I)_s$ is surjective. By Nakayama's lemma this is equivalent to showing that there exists and $I$ such that
+\[k(s)^k\overset{s_I}\to k(s)^n\overset{\al_s}\to Q_s\otimes_{\Oc_{S,s}}k(s),\]
+which is trivially true since $\rnk \al_s=k$.
 \end{proof}
 
 
@@ -240,9 +266,33 @@ By definition of $\sim$ there exist isomorphisms of sheaves $\vp_{ji}:Q_i\res{U_
 The affine scheme $\Gr_I(k,n)$ represents the functor $\G_I(k,n)$.
 \end{proposition}
 \begin{proof}
-TODO
+First we prove that for any $\K$-scheme $\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \G_I(T)$, then we need to check that given a map $f:S\to T$ the pullbacks behave well.
+\setlength{\leftmargini}{0cm}
+\begin{itemize}
+\item From our work in the first section of this chapter we can see that
+\[\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}.\]
+Let us now consider the following maps:
+\begin{align*}
+\eta:&\funcDef{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}}{\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\vp}{\eta(\vp)}\\
+\rho:&\funcDef{\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}}{\al}{\frac{\det X_J}{\det X_I}\mapsto \frac{\det \al_J}{\det \al_I}}
+\end{align*}
+where $\det \al_L$ is the determinant of the $L$ minor of the matrix associated to $\al_T$ in the canonical basis and for all $V\subseteq T$ open subsets
+\[\eta(\vp)_V(e_j)=\sum_{i=1}^k (\mathrm{res}^T_V\circ\vp)\pa{\frac{\det X_{I^i_j}}{\det X_I}}e_i.\]
+By construction $\eta$ and $\rho$ are inverses.
+\medskip
+
+\noindent We can reach $\G_I(T)$ as follows:
+\[\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}=\quot{\cpa{\al:\Oc_T^n\onto \Oc_T^k\mid \al\circ s_I\text{ isomorphism}}}\sim.\]
+Since on all stalks $\al\circ s_I$ is an endomorphism of a finitely generated module, $\al\circ s_I$ is an isomorphism if and only if it is surjective.
+\item Let $f:S\to T$ be a morphism of $\K$-schemes. 
+*******************************
+\end{itemize}
+\setlength{\leftmargini}{0.5cm}
 \end{proof}
 
 \begin{theorem}\label{GrassmannianIsModuliSpace}
 The Grassmann scheme $\Gr(k,n)$ is a fine moduli space for the Grassmann functor $\G(k,n)$.
 \end{theorem}
+\begin{proof}
+TODO
+\end{proof}
