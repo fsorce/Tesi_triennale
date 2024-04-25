@@ -15,7 +15,7 @@ If $H\in \Gr(k,n)$, let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $H=\Spa
 0 &\text{if }i\leq n-k\\
 e_{i-n+k} &\text{otherwise}
 \end{cases}\]
-Viceversa, if $\vp$ is a rank $k$ linear map then by the rank-nullity theorem its kernel is an $n-k$ dimentional subspace of $\K^n$.
+On the other hand, if $\vp$ is a rank $k$ linear map then by the rank-nullity theorem its kernel is an $n-k$ dimensional subspace of $\K^n$.
 \end{proof}
 
 \begin{lemma}\label{kerAkerBVSActionOfGLk}
@@ -64,7 +64,7 @@ Whenever a base of $\K^\ell$ is fixed, we will identify $\bigwedge^\ell\K^\ell$ 
 
 \section{The Pl\"ucker embedding}
 To make the study of Grassmannians easier, we want to identify $\Gr(k,n)$ with a projective variety.\\
-Intuitively we seek to transform objects defined by several vectos into objects given by a single vector and then take the projective space construction. This conversion can be made by taking wedge products appropriately.
+Intuitively we seek to transform objects defined by several vectors into objects given by a single vector and then take the projective space construction. This conversion can be made by taking wedge products appropriately.
 
 \begin{definition}[Pl\"ucker map]
 Let $k\leq n$ be a pair of positive integers. We define the \textbf{Pl\"ucker map} as\footnote{the map $\wedge^k\vp$ is well defined because if we view it as a map $\wedge^k\vp:(\K^n)^k\to \bigwedge^k\K^k$ then it is multilinear and alternating.}:
@@ -216,7 +216,7 @@ A multilinear alternating form $\psi\in \Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)
 Let us fix a basis $e_1,\cdots, e_k$ of $\K^k$. Using this basis we identify $\bigwedge^k\K^k$ with $\K$.\\
 Suppose that $\psi=\wedge^k(\vp)$ and let $e_1,\cdots, e_n$ be a basis of $\K^n$ such that $e_1,\cdots, e_{n-k}$ is a basis of $\ker \vp$, then
 \[\sum_{I\in \omega(n-k,n)}\wedge^k\vp(e_{\wh I})e_I=\pa{\vp(e_{n-k+1})\wedge \cdots\wedge \vp(e_{n})} e_{\pa{1,\cdots, n-k}}.\]
-Suppose now that we have the decomposibility above and let us define $\vp$ by
+Suppose now that we have the decomposability above and let us define $\vp$ by
 \[\vp(e_i)=\begin{cases}
 0 & \text{if }1\leq i\leq n-k\\
 \la e_1 & \text{if }i=n-k+1\\
@@ -236,7 +236,7 @@ so $\psi$ and $\wedge^k(\vp)$ agree on a basis of $\bigwedge^k\K^n$ and are thus
 
 \noindent Let us consider the following map: let $\psi:\Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)$ be any alternating multilinear map, we define $\Phi(\psi)$ as
 \[\Phi(\psi):\funcDef{\K^n}{\bigwedge^{n-k+1}\K^n}{v}{\displaystyle\sum_{I\in \omega(n-k,n)}\psi(e_{\wh I})e_I\wedge v}\]
-where $\wh I$ is the ordered $k$-tuple of the indicies in $\cpa{1,\cdots, n}$ missing from $I$.
+where $\wh I$ is the ordered $k$-tuple of the indices in $\cpa{1,\cdots, n}$ missing from $I$.
 
 
 
@@ -248,7 +248,7 @@ Suppose that $\psi=\wedge^k(\vp)$ and let $\cpa{z_1,\cdots, z_{n-k},z_{n-k+1},\c
 \medskip
 
 \noindent
-Suppose now that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the Total decomposibility criterion (\ref{TotalDecomposibilityCriterion}) we have that there exists $\la\in\K$ such that
+Suppose now that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the Total decomposability criterion (\ref{TotalDecomposibilityCriterion}) we have that there exists $\la\in\K$ such that
 \[\sum_{I\in \omega(n-k,n)}\psi(e_{\wh I})e_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
 \end{proof}
 
