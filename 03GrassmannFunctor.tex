@@ -16,7 +16,7 @@ where we use the superscript $s$ to distinguish these maps with the ones we will
 To connect Grassmannians to the world of representable functors we shall redefine them scheme-theoretically by emulating the construction from the previous chapter using rings and ring homomorphisms.
 
 \begin{definition}[Bracket ring]
-We define the \textbf{bracket ring}(see page 79 of \cite{matroids}) as the ring of polynomial functions on $\bigwedge^k\K^n$, i.e.
+We define the \textbf{bracket ring} (see page 79 of \cite{matroids}) as the ring of polynomial functions on $\bigwedge^k\K^n$, i.e.
 \[\Bc_{k,n}\doteqdot\frac{\K[z_I\mid I\in \cpa{1,\cdots, n}^k]}{(\cpa{z_I-\sgn(\sigma)z_{\sigma(I)}}_{\sigma\in S_k})}\cong \K[z_I\mid I\in \omega(k,n)].\]
 \end{definition}
 
@@ -246,15 +246,14 @@ We will follow the approach showcased in \cite{Bejleri2}.\\
 The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is apparent so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\G(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\G(k,n)}\G_I(k,n)$.\medskip
 
 \noindent Let us fix a representative $\al$ for the given quotient and define $\al\circ s_I:\Oc_T^k\to Q$. The locus where this map is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. $\al\circ s_I$ is surjective on $\Oc_{T,x}^k$ if and only if $x\notin \Supp\Kc$. By lemma (\ref{CriterionForClosedSupport}) the set $U_I$ where $\al\circ s_I$ is surjective is an open subset of $T$ ($\Kc$ is of finite type because locally it is the sheaf associated to the quotient of finite rank free modules).\\
-We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$, which is the case if and only if \[(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s}\]
-is surjective for all $s\in S$.\\ 
-Let us fix $x\in S$ and $y\in T$ so that $f(x)=y$. By definition $y\in U_I$ if and only if $(\al\circ s_I)_y$ is surjective on $\Oc_{T,y}^k$, which by Nakayama's lemma is the same as asking that the following map is surjective
-\[(\al\circ s_I)\res{y}:k(y)^k\to Q_y\otimes_{\Oc_{T,y}} k(y).\]
-If we now pull back via $f$ we obtain a map
-\[(f^\ast \al\circ f^\ast s_I)\res{x}:k(x)^k\to f^\ast Q_x\otimes_{\Oc_{S,x}} k(x)\]
-[I DON'T GET WHY THIS MAP SHOULD BE SURJECTIVE]
+We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$.\medskip
 
-[I SHOULD ALSO SHOW WHY CHANGING REPRESENTATIVE IS FINE]
+\noindent Note that $f(s)\in U_I$ if and only if $(\al\circ s_I^T)_{f(s)}$ is surjective which, by Nakayama's lemma applied to the cokernels, is equivalent to the surjectivity of
+\[(\al\circ s_I^T)\res{f(s)}:k(f(s))^k\to Q_{f(s)}\otimes_{\Oc_{T,f(s)}}k(f(s)).\]
+This is a linear map of vector spaces, so we can consider the pullback by the field extension $f^\#_s:k(f(s))\to k(s)$ by keeping the same matrix. This operation preserves surjectivity and yields\footnote{$f^\ast(\al\circ s^T_I)\res s=f^\ast(\al\circ s^T_I)_s\otimes_{\Oc_{S,s}} id_{k(s)}=((\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{\Oc_{S,s}})\otimes_{\Oc_{S,s}}id_{k(s)}=(\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{k(s)}=(\al\circ s^T_I)\res{f(s)}\otimes_{\Oc_{T,f(s)}} id_{k(s)}$ where the last equality is simply emphasizing how the restriction of scalars $f^\#_s:k(f(s))\to k(s)$ acts.}
+\[f^\ast(\al\circ s^T_I)\res s:k(s)^k\to Q_{f(s)}\otimes_{\Oc_{T,f(s)}}k(s).\]
+By Nakayama's lemma we can again consider equivalently $f^\ast(\al\circ s^T_I)_s=(f^\ast\al)_{s}\circ (s^S_I)_s$.\\
+We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_I)_s$ is surjective, therefore $f$ factors through $U_I$ if and only if $(f^\ast\al)\circ s^S_I$ is surjective, i.e. $f^\ast\al\in \G_I(k,n)(S)$.
 \end{proof}
 
 
