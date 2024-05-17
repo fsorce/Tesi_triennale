@@ -28,40 +28,41 @@
 % <Theorem head spec>
 
 % I nuovi ambienti sono costruiti in modo da andare alla riga successiva
-\newtheoremstyle{customth}
-{\topsep}{\topsep}{\itshape}{}{\bfseries}{.}{\newline}{}
-\newtheoremstyle{customdef}
-{\topsep}{\topsep}{\normalfont}{}{\bfseries}{.}{\newline}{}
-\newtheoremstyle{customrem}
-{\topsep}{\topsep}{\normalfont}{}{\itshape}{.}{\newline}{}
 
-\theoremstyle{customth}
+%\newtheoremstyle{customth}
+%{\topsep}{\topsep}{\itshape}{}{\bfseries}{.}{\newline}{}
+%\newtheoremstyle{customdef}
+%{\topsep}{\topsep}{\normalfont}{}{\bfseries}{.}{\newline}{}
+%\newtheoremstyle{customrem}
+%{\topsep}{\topsep}{\normalfont}{}{\itshape}{.}{\newline}{}
+
+
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{application}[theorem]{Application}
-\theoremstyle{customrem}
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\theoremstyle{customdef}
+\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{example}[theorem]{Example}
 
-\makeatletter
-\renewenvironment{proof}[1][\proofname]
-{
-    \par
-    \pushQED{\qed}
-    \normalfont \topsep6\p@\@plus6\p@\relax
-    \trivlist
-    \item[\hskip\labelsep\itshape#1\@addpunct{.}]\mbox{}\\*
-}
-{
-    \popQED\endtrivlist\@endpefalse
-}
-\makeatother
+%\makeatletter
+%\renewenvironment{proof}[1][\proofname]
+%{
+%    \par
+%    \pushQED{\qed}
+%    \normalfont \topsep6\p@\@plus6\p@\relax
+%    \trivlist
+%    \item[\hskip\labelsep\itshape#1\@addpunct{.}]\mbox{}\\*
+%}
+%{
+%    \popQED\endtrivlist\@endpefalse
+%}
+%\makeatother
 
 
 

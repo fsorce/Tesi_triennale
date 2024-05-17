@@ -1,19 +1,20 @@
 \chapter{Representability of the Grassmannian functor}
-In this chapter, unless otherwise specified, we have fixed a basis $e_1,\cdots, e_n$ of $\K^n$ and a basis $e_1,\cdots, e_k$ of $\K^k$. In case of ambiguity we will refer to these bases as \textit{canonical}.
+In this chapter we assume a fixed basis $e_1,\cdots, e_n$ of $\K^n$ and $e_1,\cdots, e_k$ of $\K^k$. We also identify $\Hom_\K(\K^n,\K^k)$ with $\Mc(k,n)$.
 \medskip
 
-\noindent Having fixed a base, we will identify $\Hom_\K(\K^n,\K^k)$ with the set of $k\times n$ matrices with coefficients in $\K$, which we will denote $\Mc(k,n)$. As a consequence of this we find yet another form for $\Gr(k,n)$:
-\[\Gr(k,n)=\quot{\cpa{A\in \Mc(k,n)\mid \rnk A=k}}{\sim},\] 
-where $A\sim B\coimplies \exists P\in \GL(k)\ s.t.\ A=PB$.
-\bigskip
-
-\noindent We may rewrite the maps from the previous chapter as follows:
+To differentiate the scheme morphisms we define in this chapter from the morphisms of varieties defined previously we use a superscript $s$ for the latter, i.e.
 \[\phi^s:\funcDef{\Mc(k,n)}{\bigwedge^k\K^n}{A}{\sum_{I\in \omega(k,n)}\det A_I e_I}\]
 \[\Pl^s:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{\spa{\sum_{I\in \omega(k,n)}\det A_I e_I}_{\K^\ast}}\]
-where we use the superscript $s$ to distinguish these maps with the ones we will define for schemes.
+
+\begin{notation}
+Let $I$ be an ideal of the ring $A$ and $J$ be a homogeneous ideal of the graded ring $B$. We adopt the following notation
+\[V(I)=\cpa{\pf\in\Spec A\mid I\subseteq \pf},\qquad V_+(J)=\cpa{\pf\in\Proj B\mid I\subseteq \pf}.\]
+If the sets above are considered as closed subschemes we take the reduced structure.
+\end{notation}
+
 
 \section{Grassmannians as projective schemes}
-To connect Grassmannians to the world of representable functors we shall redefine them scheme-theoretically by emulating the construction from the previous chapter using rings and ring homomorphisms.
+To connect Grassmannians to the world of representable functors we describe them scheme-theoretically by emulating the construction from the previous chapter using rings and ring homomorphisms.
 
 \begin{definition}[Bracket ring]
 We define the \textbf{bracket ring} (see page 79 of \cite{matroids}) as the ring of polynomial functions on $\bigwedge^k\K^n$, i.e.
@@ -26,7 +27,7 @@ Let $\K[X_{k,n}]\doteqdot\K[x_{1,1},\cdots,x_{k,n}]$ denote the polynomial ring 
     x_{1,1} & \cdots & x_{1,n}\\
     \vdots & \ddots & \vdots\\
     x_{k,1} &\cdots & x_{k,n}}\]
-and by the same token we denote by $X_I$ the generic $k\times k$ minor determined by the multiindex $I$ and by $\det X_I$ the formal determinant of this minor.
+and by the same token we use $X_I$ to denote the generic $k\times k$ minor determined by the multiindex $I$ and $\det X_I$ to write the formal determinant of this minor.
 \end{definition}
 \begin{remark}
 The ring $\K[X_{k,n}]$ is the coordinate ring of $\Mc(k,n)$. 
@@ -37,64 +38,61 @@ The familiar $\Mc(k,n)$ and $\bigwedge^k\K^n$ can be identified with the $\K$-po
 \end{remark}
 
 \begin{definition}[Pl\"ucker ring homomorphism]
-We define the \textbf{Pl\"ucker ring homomorphism} or simply \textbf{Pl\"ucker homomorphism} as
+We define\footnote{This definition is inspired by that of $\phi$ at page 79 of \cite{matroids}.} the \textbf{Pl\"ucker ring homomorphism} or simply \textbf{Pl\"ucker homomorphism} as
 \[\phi^\#:\funcDef{\Bc_{k,n}}{\K[X_{k,n}]}{z_I}{\det X_I}\]
-For brevity we will denote $\Spec \phi^\#$ by $\phi$.\\
-This definition is inspired by that of $\phi$ at page 79 of \cite{matroids}.
+For brevity we will denote $\Spec \phi^\#$ by $\phi$.
 \end{definition}
+\begin{remark}\label{PluckerRingHomomorphismWorksForKPoints}
+If we interpret $\Bc_{k,n}$ and $\K[X_{k,n}]$ as the coordinate rings of the affine spaces $\bigwedge^k\K^n$ and $\Mc(k,n)$ respectively, then it is a well known result that the map induced between them from $\phi^\#$ is $A\mapsto \sum_{I\in\omega(k,n)}\det A_I e_I$, which we already know as $\phi^s$.
+\end{remark}
+
+\begin{proposition} $\ker\phi^\#$ is an homogeneous prime ideal which does not contain all of the $z_I$, i.e.
+\[\ker\phi^\#\in \Proj\Bc_{k,n}.\]
+\end{proposition}
+\begin{proof}
+We prove the three properties
+\begin{itemize}
+\item $\ker\phi^\#$ is prime because $\K[X_{k,n}]$ is an integral domain.
+\item $\ker\phi^\#$ is homogeneous because if $\sum_d f_d\in\ker\phi^\#$ for $f_d$ homogeneous of degree $d$ then $0=\sum_d \phi^\#(f_d)$, but $\phi^\#(f_d)$ is homogeneous of degree $kd$, so for every $d$ it must be the case that $f_d\in\ker\phi^\#$. 
+\item $(z_I)\not\subseteq \ker\phi^\#$ because $\deg \phi^\#(z_I)=\deg(\det X_I)=k>0$ for all $z_I$.
+\end{itemize}
+%We prove the three properties
+%\begin{itemize}
+%\item $\ker\phi^\#$ is prime because $\K[X_{k,n}]$ is an integral domain.
+%\item By definition of homogeneous ideal, we want to show that if $f=\sum f_d$ for $d$ homogeneous and $f\in \ker\phi^\#$ then $f_d\in \ker \phi^\#$ for all $d$.
+%
+%Looking at the definition of $\phi^\#$, we see that $\phi^\#(f_d)$ is a homogeneous polynomial of degree $kd$, in particular if $d\neq h$ then $\deg \phi^\#(f_d)\neq \deg \phi^\#(f_h)$. Since
+%\[0=\phi^\#(f)=\sum \phi^\#(f_d)\]
+%this proves that $\phi^\#(f_d)=0$ for all $d$.
+%\item We prove the stronger claim $\forall I\in\omega(k,n),\ z_I\notin \ker \phi^\#$:
+%\[\deg\phi^\#(z_I)=\deg(\det X_I)=k>0,\]
+%so $z_I\notin \ker\phi^\#$.
+%\end{itemize}
+\end{proof}
 
 \begin{proposition}
-The kernel of the Pl\"ucker homomorphism is an homogeneous prime ideal which does not contain $(\cpa{z_I}_{I\in\omega(k,n)})$.
+Let $t:\mathrm{Var}/\K\to \Sch \K$ be the fully faithfull functor defined as in Proposition 2.6 of \cite{Hartshorne}. Then $V_+(\ker\vp^\#)\cong t(\imm\Pl^s)$.
 \end{proposition}
 \begin{proof}
-Since $\K[X_{k,n}]$ is an integral domain, $\ker\phi^\#$ is prime.\\
-By definition of homogeneous ideal, we want to show that if $f=\sum f_d$ for $d$ homogeneous and $f\in \ker\phi^\#$ then $f_d\in \ker \phi^\#$ for all $d$.\\
-Looking at the definition of $\phi^\#$ we see that $\phi^\#(f_d)$ is a homogeneous polynomial of degree $kd$, in particular if $d\neq h$ then $\deg \phi^\#(f_d)\neq \deg \phi^\#(f_h)$. Since
-\[0=\phi^\#(f)=\sum \phi^\#(f_d)\]
-this proves that $\phi^\#(f_d)=0$ for all $d$.\\
-Finally, observe that $\deg\phi^\#(z_I)=\deg(\det X_I)=k>0$, so $z_I\notin \ker\phi^\#$.
+Because $t$ is fully faithfull, we only need to show that $V_+(\ker(\vp^\#))(\K)\cong \imm \Pl^s$. This is equivalent to 
+\[\imm \phi^s\cong V(\ker\phi^\#)(\K)=\ol{\imm \phi\res{\Mc(k,n)}}\pasgnl={(\ref{PluckerRingHomomorphismWorksForKPoints})}\ol{\imm \phi^s},\]
+which is true because\footnote{this is the main result of section 2.3} $\imm \phi^s=\ol{\imm \phi^s}$
 \end{proof}
 
-\begin{proposition}\label{PluckerRingHomomorphismWorksForKPoints}
-The induced map $\phi\res{\Spec(\K[X_{k,n}])(\K)}:\Spec(\K[X_{k,n}])(\K)\to \Spec(\Bc_{k,n})(\K)$ is equal to $\phi^s:\Mc(k,n)\to \bigwedge^k\K^n$ under the identification mentioned above, i.e. for all matrices $A\in\Mc(k,n)$ with entries $a_{i,j}$ we have
-\[(\phi^\#)\ii((x_{i,j}-a_{i,j}))=(z_I-\det A_I).\]
-\end{proposition}
-\begin{proof}
-First we observe that for any multiindex $I$
-\[\det X_I-\det A_I\in (x_{i,j}-a_{i,j}),\]
-thus $(z_I-\det A_I)\subseteq (\phi^\#)\ii((x_{i,j}-a_{i,j}))$.\\
-Since $(z_I-\det A_I)$ is a $\K$-point, it is in particular a maximal ideal of the Bracket ring, thus we have the desired equality if $1\notin (\phi^\#)\ii((x_{i,j}-a_{i,j}))$, which is the case because otherwise $(x_{i,j}-a_{i,j})$ would not be proper.
-\end{proof}
-
-\begin{proposition}
-The $\K$-points of $V_+(\ker(\phi^\#))$ correspond to $\imm \Pl^s$.
-\end{proposition}
-\begin{proof}
-First we note that
-\[V_+(\ker\phi^\#)=\Proj\frac{\Bc_{k,n}}{\ker\phi^\#}\subseteq \Proj\Bc_{k,n}.\]
-Since $\phi$ becomes $\phi^s$ on $\K$-points we see that
-\[Z(\ker\phi^\#)=\ol{\imm \pa{\Spec\phi^\#}\res{\Spec(\K[X_{k,n}])(\K)}}=\ol{\imm \phi^s}\pasgnl={$\emat{\text{previous}\\\text{chapter}}$}\imm \phi^s.\] 
-It follows from Corollary 2.3.44 in \cite{QingLiu} that the $\K$-points of $V_+(\ker\phi^\#)$ correspond to 
-\[Z_+(\ker\phi^\#)=\Pj(Z(\ker\phi^\#))=\Pj(\imm \phi^s)=\imm \Pl^s.\]
-\end{proof}
-
-\noindent This result allows us to redefine the Grassmannian as a projective scheme. We can obtain the Pl\"ucker embedding of the classical Grassmannian back by looking at $\K$-points.
-\medskip
-
-\noindent From now on $\Gr(k,n)$ will denote $V_+(\ker \phi^\#)$, while $\Gr(k,n)(\K)$ will denote what we used to write as $\Gr(k,n)$.
+From now on $\Gr(k,n)$ will denote $V_+(\ker \phi^\#)$, while $\Gr(k,n)(\K)$ will denote what we used to write as $\Gr(k,n)$.
 
 \subsection{Standard affine cover of the Grassmannian scheme}
-Recall that projective space admits a standard affine cover given by the locus of where one indeterminate does not vanish. In our case we see that
-\[\Proj \Bc_{k,n}=\bigcup_{I\in\omega(k,n)}\Spec \pa{\pa{\Bc_{k,n}}_{z_I}^0}=\bigcup_{I\in\omega(k,n)}\Spec \pa{\K\spa{\frac{z_J}{z_I}\mid J\in \omega(k,n)}}.\]
+Recall that projective space admits a standard affine cover given by the loci where one indeterminate does not vanish. In our case we see that
+\[\Proj \Bc_{k,n}=\bigcup_{I\in\omega(k,n)}\Spec \pa{\pa{\Bc_{k,n}}_{z_I}^0}=\bigcup_{I\in\omega(k,n)}\Spec \pa{\K\spa{\frac{z_J}{z_I}\mid J\in \omega(k,n)}},\]
 where the subscript denotes localization with multiplicative part $\cpa{1,z_I,z_I^2,\cdots}$ and the superscript $0$ denotes the fact that we are only considering terms of degree $0$ in this ring (this is the notation used in \cite{QingLiu}).
 \medskip
 
-\noindent This open affine cover of $\Proj\Bc_{k,n}$ induces an open cover on $\Gr(k,n)$ as follows:
+This open affine cover of $\Proj\Bc_{k,n}$ induces an open cover on $\Gr(k,n)$ as follows:
 \[\Gr(k,n)=V_+(\ker\phi^\#)=\bigcup_{I\in \omega(k,n)}\Spec\pa{\pa{\frac{\Bc_{k,n}}{\ker\phi^\#}}_{z_I}^0}.\]
 
 \begin{notation}
-Let us fix $I\in\omega(k,n)$, then we denote the localization of $\phi^\#$ as
-\[\phi^\#_I:\funcDef{\K\spa{\frac{z_J}{z_I}\mid J\in \omega(k,n)}}{\K[X]_{\det X_I}^0}{\frac{z_J}{z_I}}{\frac{\det X_J}{\det X_I}}\]
+Let us fix $I\in\omega(k,n)$, then we denote the restriction of $\phi^\#$ as
+\[\phi^\#_I:\funcDef{\K\spa{\frac{z_J}{z_I}\mid J\in \omega(k,n)}}{\K[X_{k,n}]_{\det X_I}^0}{\frac{z_J}{z_I}}{\frac{\det X_J}{\det X_I}}\]
 \end{notation}
 
 \begin{remark}
@@ -102,27 +100,28 @@ The image of $\phi^\#_I$ is
 \[\K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)},\]
 thus by the first isomorphism theorem we have
 \[\frac{\pa{\Bc_{k,n}}_{z_I}^0}{\ker \phi^\#_I}\cong \K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)}.\]
+For brevity we will usually shorten the notation to $\K\spa{\frac{\det X_J}{\det X_I}}$.
 \end{remark}
 
 \begin{remark}
 The following equality holds by the properties of localization
 \[\pa{\frac{\Bc_{k,n}}{\ker\phi^\#}}_{z_I}=\frac{\pa{\Bc_{k,n}}_{z_I}}{(\ker\phi^\#)_{z_I}},\]
 thus
-\[\pa{\frac{\Bc_{k,n}}{\ker\phi^\#}}_{z_I}^0=\pa{\frac{\pa{\Bc_{k,n}}_{z_I}}{(\ker\phi^\#)_{z_I}}}^0=\frac{\pa{\Bc_{k,n}}_{z_I}^0}{\ker \phi^\#_I}\cong \K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)}\]
+\[\pa{\frac{\Bc_{k,n}}{\ker\phi^\#}}_{z_I}^0=\pa{\frac{\pa{\Bc_{k,n}}_{z_I}}{(\ker\phi^\#)_{z_I}}}^0=\frac{\pa{\Bc_{k,n}}_{z_I}^0}{\ker \phi^\#_I}\cong \K\spa{\frac{\det X_J}{\det X_I}}\]
 \end{remark}
 
-\noindent Putting what we have said together, we have shown that up to some canonical identifications
-\[\Gr(k,n)=\bigcup_{I\in \omega(k,n)}\Spec\pa{\K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)}}\doteqdot \bigcup_{I\in \omega(k,n)}\Gr_I(k,n).\]
+Putting what we have said together, we have shown that up to some canonical identifications
+\[\Gr(k,n)=\bigcup_{I\in \omega(k,n)}\Spec\pa{\K\spa{\frac{\det X_J}{\det X_I}}}\doteqdot \bigcup_{I\in \omega(k,n)}\Gr_I(k,n).\]
 
 \begin{proposition}\label{GrassmannianIsCoveredByAffineSpaces}
 $\Gr_I(k,n)$ is isomorphic to $\A^{k(n-k)}_\K$ as a scheme.
 \end{proposition}
 \begin{proof}
-Since they are both affine schemes, it is enough to show that their coordinate rings are isomorphic.\\
+Since they are both affine schemes, it is enough to show that their coordinate rings are isomorphic.
 To simplify the notation we will set $w_J=\frac{\det X_J}{\det X_I}$ and if $S$ is a multiindex we will write $S^i_j$ for the multiindex where the $i$-th entry is substituted by $j\in\cpa{1,\cdots, n}$.
-\medskip
+\bigskip
 
-\noindent Without loss of generality we may assume that $I=\pa{1,\cdots, k}$. An analogous argument will work for any choice of multiindex.\\
+Without loss of generality we may assume that $I=\pa{1,\cdots, k}$. An analogous argument will work for any choice of multiindex.
 First we will prove that
 \[\K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)}=\K\spa{\frac{\det X_J}{\det X_I}\mid J=I^j_{\ell_j},\ j\in \cpa{1,\cdots, k},\ \ell_j\notin I},\]
 then we will show that the RHS (which we will denote $R$ for brevity) is isomorphic to $\K[Y_{k,n-k}]=\K[y_{1,1},\cdots, y_{k,n-k}]$.
@@ -133,42 +132,39 @@ then we will show that the RHS (which we will denote $R$ for brevity) is isomorp
 1 &        &   & w_{I^1_{k+1}} & \cdots & w_{I^1_n}\\
   & \ddots &   & \vdots        & \ddots & \vdots\\
   &        & 1 & w_{I^k_{k+1}} & \cdots & w_{I^k_n}
-}\]
+}.\]
 We can see that $M=\pa{X_I}\ii X$, where $\pa{X_I}\ii$ is the formal inverse of $X_I$, which exists because $\det X_I$ is invertible. More precisely
 \[\pa{X_I}\ii=\frac1{\det X_I}\Adj(X_I)\]
-where $\Adj(X_I)$ is the adjugate matrix to $X_I$. The equality $M=\pa{X_I}\ii X$ holds for the first $k$ columns by definition of inverse, for the other columns we can see that they agree on every entry:
+where $\Adj(X_I)$ is the adjugate matrix of $X_I$.
+The equality $M=\pa{X_I}\ii X$ holds for the first $k$ columns by definition of inverse, for the other columns we can see that they agree on every entry:
 \begin{align*}
 \frac1{\det X_I}(\Adj(X_I) X)_{i,j}=&\frac1{\det X_I}\sum_{\ell=1}^k\pa{(-1)^{i+\ell} \det \pa{X_I}_{\times \ell,\times i}}x_{\ell,j}=\\
 =&\frac1{\det X_I}\det X_{I^i_j}=\\
-=&w_{I^i_j}
+=&w_{I^i_j}.
 \end{align*}
 We have thus proven that for any $(k,n)$-multiindex $J$ we have
 \[\det M_J=\det (X_I\ii X)_J=\frac1{\det X_I}\det X_J=w_J.\]
 Since $\det M_J$ is a polynomial expression in the ring $R$ by definition of $M$ and the $w_J$ are generators for $\K\spa{\frac{\det X_J}{\det X_I}\mid J\in \omega(k,n)}$, we have shown the nontrivial inclusion and thus equality.
 \item Let us consider the following ring homomorphism
 \[\chi:\funcDef{\K[Y_{k,n-k}]}{R}{y_{i,j}}{w_{I^i_j}}.\]
-It is obviously surjective so we just need to show that it is injective to find the desired isomorphism.\\
-Suppose by contradiction that there exists a nonzero polynomial $p\in \K[Y_{k,n-k}]$ which maps to $0$. If $\ol \K$ is an algebraic closure\footnote{we can take any field extension $\K\subseteq \F$ where $\F$ is an infinite field.} of $\K$ we can consider the lift $\wt\chi:\ol\K[Y_{k,n-k}]\to \wt R=\ol \K[w_{I^i_j}]$. Observe that if $p$ maps to $0$ according to the original map, then it would also map to $0$ according to this extension. Consider now any matrix of the form
+It is surjective by construction, so we just need to show that it is injective to find the desired isomorphism.\smallskip
+
+Suppose by contradiction that there exists a nonzero polynomial $p\in \K[Y_{k,n-k}]$ which maps to $0$. If $\ol \K$ is an algebraic closure\footnote{we can take any field extension $\K\subseteq \F$ where $\F$ is an infinite field.} of $\K$ we can consider the lift 
+\[\wt\chi:\funcDef{\ol\K[Y_{k,n-k}]}{\wt R=\ol \K[w_{I^i_j}]}{y_{i,j}}{w_{I^i_j}}\]
+Note that if $\chi(p)=0$ then $\wt\chi(p)=0$ because $R\subseteq \wt R$ and $\wt \chi\res{\K[Y_{k,n-k}]}=\chi$. Consider now any matrix of the form
 \[A=\mat{I_k\mid \wt A}=\pa{a_{i,j}}_{i,j}\]
-where $I_k$ is the $k\times k$ identity matrix and $\wt A\in \Mc(k,n-k,\ol \K)$. From what we have said above it follows that $\det A_{I^i_j}=a_{i,j}$, so \[p(\wt A)=p\pa{\pa{\det A_{I^i_j}}_{\smat{i\in\cpa{1,\cdots, k},~~~\\ j\in \cpa{k+1,\cdots, n}}}}=\wt \chi(p)(A)=0.\] We have shown that $p$ has infinitely many roots, so if we fix the value of $k(n-k)-1$ indeterminates the resulting polynomial is the $0$ polynomial. If we reiterate this reasoning we eventually prove that $p=0$ in $\ol \K[Y_{k,n-k}]$, but $0\in \K[Y_{k,n-k}]\subseteq \ol \K[Y_{k,n-k}]$, so $p$ is the zero polynomial in the original ring, contradicting our hypothesis.
+where $I_k$ is the $k\times k$ identity matrix and $\wt A\in \Mc(k,n-k,\ol \K)$. 
+From what we have said above it follows that $\det A_{I^i_j}=a_{i,j}$, so 
+\[p(\wt A)=p\pa{\pa{\det A_{I^i_j}}_{\smat{i\in\cpa{1,\cdots, k},~~~\\ j\in \cpa{k+1,\cdots, n}}}}=\wt \chi(p)(A)=0.\] 
+We have shown that $p$ has infinitely many roots in $\ol K$, so if we fix the value of $k(n-k)-1$ indeterminates the resulting polynomial is the $0$ polynomial. 
+If we reiterate this reasoning we eventually prove that $p=0$ in $\ol \K[Y_{k,n-k}]$, but $0\in \K[Y_{k,n-k}]\subseteq \ol \K[Y_{k,n-k}]$, so $p$ is the zero polynomial in the original ring, contradicting our hypothesis.
 \end{itemize}
 \setlength{\leftmargini}{0.5cm}
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{remark}
+Since $\Gr_I(k,n)$ is affine, the scheme $\Gr_I(k,n)\cap \Gr_J(k,n)=\Gr_I(k,n)_{z_J}$ is affine for any choice of multiindices.
+\end{remark}
 
 
 
@@ -189,23 +185,23 @@ We have functoriality because of the composition properties of pullbacks.
 
 \bigskip
 
-\noindent In this this section we will prove that the Grassmann scheme represents this functor.
+\noindent In this this section we prove that the Grassmann scheme represents this functor.
 
 \subsection{Open subfunctor cover of the Grassmannian}
 \begin{notation}
-For any multiindex $I$ and any scheme $T$ we define the following morphism of sheaves
+For any multiindex $I\in\omega(k,n)$ and any scheme $T$ we define the following morphism of sheaves
 \[s_I^T:\funcDef{\Oc_T^k}{\Oc_T^n}{e_j}{e_{i_j}}.\]
-If there is no ambiguity on the scheme we will write $s_I$.
+If there is no ambiguity we write $s_I$.
 \end{notation}
 
 \begin{definition}[Principal subfunctor of the Grassmannian]
-Fixed a multiindex $I\in \omega(k,n)$ we define the following association
+Fixed a multiindex $I\in \omega(k,n)$ we define the following functor
 \[\G_I(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surjective}}}\sim}{f}{\al\mapsto f^\ast \al}\]
 where the equivalence relation is the same as the one defined for $\G(k,n)$.
 \end{definition}
 
 \begin{remark}
-The association $\G_I(k,n)$ is functor.
+The functor $\G_I(k,n)$ is well defined.
 \end{remark}
 \begin{proof}
 First we observe that $\G_I(k,n)(T)$ is well defined because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves then on each stalk we have
@@ -213,28 +209,28 @@ First we observe that $\G_I(k,n)(T)$ is well defined because if $\psi=\theta\cir
 which is surjective if and only if $\vp_x\circ (s_I)_x$ is surjective.
 \medskip
 
-\noindent
-Consider now a map $f:S\to T$, then
+Consider now a morphism $f:S\to T$, then
 \[f^\ast\al \circ s_I^S=f^\ast\al\circ f^\ast s_I^T=f^\ast(\al\circ s_I^T)\]
 is surjective if and only if it is surjective on all stalks, i.e. if and only if for all $s\in S$ we have that the following map is surjective
-\[f^\ast(\al\circ s_I^T)_s=(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s}\]
+\[f^\ast(\al\circ s_I^T)_s=(\al\circ s_I^T)_{f(s)}\otimes_{\Oc_{T,f(s)}}\Oc_{S,s},\]
 which is true because the tensor product is right-exact.
 \end{proof}
 
+We recall a well known result of sheaf theory
 \begin{lemma}\label{CriterionForClosedSupport}
 The support of a finite type quasicoherent sheaf $\Fc$ on a scheme $X$ is a
-closed subset\footnote{This statement is presented as Exercise 4.D. in \cite{VakilClass26}}.
+closed subset\footnote{For more detail see \href{https://stacks.math.columbia.edu/tag/01B4}{Section 01B4} in \cite{stacks}}.
 \end{lemma}
-\begin{proof}
-Since the support is a local notion and we can take an open affine cover of any scheme, we may assume $X=\Spec A$.\\
-From the theory of quasicoherent sheaves on affine schemes we know that there exists a finitely generated $A$-module $M$ such that $\Fc=\wt M$. Let $m_1,\cdots, m_k$ be generators for $M$, then 
-\[\Supp M=\bigcup_{i=1}^k\Supp m_{i}.\]
-Since we have written $\Supp M$ as a finite union of sets, it is enough to show that $\Supp m$ is closed for all $m\in M$, which is true because
-\[\Supp m=V(0:_Am),\]
-indeed
-\[0=m_\pf\coimplies \exists s\in A\bs \pf\ s.t.\ sm=0\coimplies \exists t\in (0:_A m)\bs \pf,\]
-thus $\pf\in \Supp m$ if and only if $0:_A m\subseteq \pf$, i.e. $\pf\in V(0:_Am)$.
-\end{proof}
+%\begin{proof}
+%Since the support is a local notion and we can take an open affine cover of any scheme, we may assume $X=\Spec A$.\\
+%From the theory of quasicoherent sheaves on affine schemes\footnote{see Theorem 5.1.7 in \cite{QingLiu}, page 160} we know that there exists a finitely generated $A$-module $M$ such that $\Fc=\wt M$. Let $m_1,\cdots, m_k$ be generators for $M$, then 
+%\[\Supp M=\bigcup_{i=1}^k\Supp m_{i}A.\]
+%Since we have written $\Supp M$ as a finite union of sets, it is enough to show that $\Supp mA\doteqdot \Supp m$ is closed for all $m\in M$, which is true because
+%\[\Supp m=V(0:_Am),\]
+%indeed
+%\[0=m_\pf\coimplies \exists s\in A\bs \pf\ s.t.\ sm=0\coimplies \exists t\in (0:_A m)\bs \pf,\]
+%thus $\pf\in \Supp m$ if and only if $0:_A m\subseteq \pf$, i.e. $\pf\in V(0:_Am)$.
+%\end{proof}
 
 
 
@@ -242,18 +238,28 @@ thus $\pf\in \Supp m$ if and only if $0:_A m\subseteq \pf$, i.e. $\pf\in V(0:_Am
 The $\G_I(k,n)$ are open subfunctors of $\G(k,n)$.
 \end{proposition}
 \begin{proof}
-We will follow the approach showcased in \cite{Bejleri2}.\\
-The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is apparent so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\G(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\G(k,n)}\G_I(k,n)$.\medskip
+The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is apparent, so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\G(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\G(k,n)}\G_I(k,n)$.\medskip
 
-\noindent Let us fix a representative $\al$ for the given quotient and define $\al\circ s_I:\Oc_T^k\to Q$. The locus where this map is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. $\al\circ s_I$ is surjective on $\Oc_{T,x}^k$ if and only if $x\notin \Supp\Kc$. By lemma (\ref{CriterionForClosedSupport}) the set $U_I$ where $\al\circ s_I$ is surjective is an open subset of $T$ ($\Kc$ is of finite type because locally it is the sheaf associated to the quotient of finite rank free modules).\\
+Let us fix a representative $\al$ for the given quotient. The locus where $\al\circ s_I:\Oc_T^k\to Q$ is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. 
+\[(\al\circ s_I)_x\text{ surjective} \coimplies x\notin \Supp\Kc.\]
+Note that by the definition of $\sim$ and properties of isomorphisms of sheaves, the first condition does not depend of the choice of representative for $[\al]$, so $\Supp\Kc$ only depends on $[\al]$. By lemma\footnote{$\Kc$ is of finite type because locally it is given by quotients of finite rank free modules.} (\ref{CriterionForClosedSupport}) the set $U_I=T\bs \Supp \Kc$ is open.\medskip
+
 We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $f^\ast\al:\Oc_S^n\to f^\ast Q \in \Gr_I(S)$.\medskip
 
-\noindent Note that $f(s)\in U_I$ if and only if $(\al\circ s_I^T)_{f(s)}$ is surjective which, by Nakayama's lemma applied to the cokernels, is equivalent to the surjectivity of
+Note that $f(s)\in U_I$ if and only if $(\al\circ s_I^T)_{f(s)}$ is surjective which, by Nakayama's lemma applied to the cokernels, is equivalent to the surjectivity of
 \[(\al\circ s_I^T)\res{f(s)}:k(f(s))^k\to Q_{f(s)}\otimes_{\Oc_{T,f(s)}}k(f(s)).\]
-This is a linear map of vector spaces, so we can consider the pullback by the field extension $f^\#_s:k(f(s))\to k(s)$ by keeping the same matrix. This operation preserves surjectivity and yields\footnote{$f^\ast(\al\circ s^T_I)\res s=f^\ast(\al\circ s^T_I)_s\otimes_{\Oc_{S,s}} id_{k(s)}=((\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{\Oc_{S,s}})\otimes_{\Oc_{S,s}}id_{k(s)}=(\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{k(s)}=(\al\circ s^T_I)\res{f(s)}\otimes_{\Oc_{T,f(s)}} id_{k(s)}$ where the last equality is simply emphasizing how the restriction of scalars $f^\#_s:k(f(s))\to k(s)$ acts.}
-\[f^\ast(\al\circ s^T_I)\res s:k(s)^k\to Q_{f(s)}\otimes_{\Oc_{T,f(s)}}k(s).\]
-By Nakayama's lemma we can again consider equivalently $f^\ast(\al\circ s^T_I)_s=(f^\ast\al)_{s}\circ (s^S_I)_s$.\\
-We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_I)_s$ is surjective, therefore $f$ factors through $U_I$ if and only if $(f^\ast\al)\circ s^S_I$ is surjective, i.e. $f^\ast\al\in \G_I(k,n)(S)$.
+Observe that
+\begin{align*}
+f^\ast(\al\circ s^T_I)\res s=&f^\ast(\al\circ s^T_I)_s\otimes_{\Oc_{S,s}} id_{k(s)}=\\
+=&((\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{\Oc_{S,s}})\otimes_{\Oc_{S,s}}id_{k(s)}=\\
+=&(\al\circ s^T_I)_{f(s)}\otimes_{\Oc_{T,f(s)}}id_{k(s)}=\\
+=&(\al\circ s^T_I)\res{f(s)}\otimes_{\Oc_{T,f(s)}} id_{k(s)}
+\end{align*}
+where the last equality is simply emphasizing how the restriction of scalars by $f^\#_s$ acts. From the last line we see that \[f^\ast(\al\circ s^T_I)\res s\text{ is surjective }\quad\coimplies\quad (\al\circ s^T_I)\res{f(s)}\text{ is surjective}.\]
+By Nakayama's lemma we can again consider equivalently $f^\ast(\al\circ s^T_I)_s=(f^\ast\al)_{s}\circ (s^S_I)_s$.\medskip
+
+
+We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_I)_s$ is surjective, i.e. $f$ factors through $U_I$ if and only if $(f^\ast\al)\circ s^S_I$ is surjective, i.e. $f^\ast\al\in \G_I(k,n)(S)$.
 \end{proof}
 
 
@@ -261,45 +267,63 @@ We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_
 The collection $\cpa{\G_I(k,n)}$ is a Zariski open subfunctor cover of $\G(k,n)$.
 \end{proposition}
 \begin{proof}
-For any $\K$-scheme $S$ and any quotient $[\al]\in \Gr(k,n)(S)$ (without loss of generality we choose a representative $\al$) we need to show that for any $s\in S$ there exists a multiindex $I$ such that $s\in U_I$ defined as in the previous proposition.\\
-We are therefore looking for a multiindex $I$ such that $(\al\circ s_I)_s$ is surjective. By Nakayama's lemma this is equivalent to showing that there exists and $I$ such that
+For any $\K$-scheme $S$ and any quotient $[\al]\in \Gr(k,n)(S)$ (without loss of generality we choose a representative $\al$) we need to show that for any $s\in S$ there exists a multiindex $I$ such that $s\in U_I$ defined as in the previous proposition.
+
+We are therefore looking for a multiindex $I$ such that $(\al\circ s_I)_s$ is surjective. By Nakayama's lemma this is equivalent to showing that there exists an $I$ such that
 \[k(s)^k\overset{s_I}\to k(s)^n\overset{\al_s}\to Q_s\otimes_{\Oc_{S,s}}k(s),\]
 which is trivially true since $\rnk \al_s=k$.
 \end{proof}
 
 
 \subsection{Representability of the Grassmannian functor}
-\begin{proposition}
+\begin{lemma}\label{UniqueIsomorphismInGrassmannFunctor}
+Let $\al:\Oc^n\onto Q$ and $\beta:\Oc^n\onto Q'$ be surjective sheaf morphisms. If there exists an isomorphism $\theta:Q\to Q'$ such that $\beta=\theta\circ \al$ then $\theta$ is unique.
+\end{lemma}
+\begin{proof}
+First, observe that if $\al=\beta$ then by surjectivity and commutativity $\theta=id_Q$.
+
+Let $\theta,\eta:Q\to Q'$ be isomorphisms such that $\beta=\theta\circ \al$ and $\beta=\eta\circ \al$. Then $\theta\ii \circ \eta:Q\to Q$ is an isomorphism such that $\theta\ii\circ \eta\circ \al=\theta\ii\circ \beta=\al$, so $\theta\ii\circ \eta=id_Q$ and thus $\theta=\eta$.
+\end{proof}
+
+\begin{proposition}\label{GrassmannianIsSheaf}
 The Grassmannian functor $\G(k,n)$ is a Zariski sheaf.
 \end{proposition}
 \begin{proof}
-Consider a $\K$-scheme $T$ and an open cover $\cpa{U_i}$. Consider now quotients $\al_i:\Oc_{U_i}^n\onto Q_i$ such that 
-\[\al_i\res{U_i\cap U_j}\sim \al_j\res{U_i\cap U_j}.\]	
-By definition of $\sim$ there exist isomorphisms of sheaves $\vp_{ji}:Q_i\res{U_{i}\cap U_j}\to Q_j\res{U_i\cap U_j}$. If we define $\vp_{ii}=id_{Q_i}$ and fix the isomorphisms in such a way that $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$ we have the data to glue the $Q_i$ to a locally free sheaf of rank $k$ over $T$, which we denote by $Q$. Now, up to isomorphism let us consider $\al_i:\Oc_{U_i}^n\onto Q\res{U_i}$ for all $i$. If we fix any open set $V\subseteq T$ we see that if $s\in \Oc_T^n(V)$ is a section, we can define $\al_V(s)$ by gluing the $\al_i(s\res{U_i})$, which we can do by construction of $Q$ and the choice of representative for the $\al_i$. By construction $\al_{U_i}=\al_i$ and it is in fact the only such morphism, so we have verified the gluing property of sheaves for $\G(k,n)$.
+Consider a $\K$-scheme $T$ and an open cover $\cpa{U_i\to T}$. Consider now quotients $\al_i:\Oc_{U_i}^n\onto Q_i$ such that 
+\[\al_i\res{U_i\cap U_j}\sim \al_j\res{U_i\cap U_j}.\]
+Because of lemma (\ref{UniqueIsomorphismInGrassmannFunctor}), the isomorphism giving the equivalence above is unique. Let $\vp_{ji}:Q_i\res{U_{i}\cap U_j}\to Q_j\res{U_i\cap U_j}$ be this isomorphism. Because of the uniqueness $\vp_{ii}=id_{Q_i}$ and $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$, so have the data to glue the $Q_i$ to a locally free sheaf of rank $k$ over $T$, which we denote by $Q$. 
+
+Up to isomorphism, let us consider $\al_i:\Oc_{U_i}^n\onto Q\res{U_i}$ for all $i$. 
+If we fix any open set $V\subseteq T$ we see that, if $s\in \Oc_T^n(V)$ is a section, we can define $\al_V(s)$ by gluing the $\al_i(s\res{U_i})$, which we can do by construction of $Q$ and the choice of representative for the $\al_i$. 
+By construction $\al_{U_i}=\al_i$ and it is in fact the only such morphism, so we have verified the gluing property of sheaves for $\G(k,n)$.
 \end{proof}
 
 \begin{proposition}\label{GrIRepresentGrIFunctors}
 The affine scheme $\Gr_I(k,n)$ represents the functor $\G_I(k,n)$.
 \end{proposition}
 \begin{proof}
-First we prove that for any $\K$-scheme $\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \G_I(T)$, then we need to check that given a map $f:S\to T$ the pullbacks behave well.
+First we prove that for any $\K$-scheme $\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \G_I(T)$, then we need to check that, given a map $f:S\to T$, the pullbacks behave well.
 \setlength{\leftmargini}{0cm}
 \begin{itemize}
 \item From our work in the first section of this chapter we can see that
 \[\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}.\]
 Let us now consider the following maps
 \[\correspDef{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}}{\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\vp}{\eta(\vp)}{\rho(\al):\frac{\det X_J}{\det X_I}\mapsto \frac{d(\al,J)}{d(\al,I)}}{\al}\]
-where $d(\al,L)$ is the determinant of the $L$ minor of the matrix associated to $\al_T$ in the canonical basis and $\eta(\vp)$ is defined on an open subset $V$ of $T$ as follows\footnote{$\mathrm{res}^T_V:\Oc_T(T)\to \Oc_T(V)$ denotes the restriction map given by the structure of sheaf.}:
-\[\eta(\vp)_V(e_j)=\sum_{i=1}^k (\mathrm{res}^T_V\circ\vp)\pa{\frac{\det X_{I^i_j}}{\det X_I}}e_i.\]
-An argument similar to the one presented in the proof of proposition (\ref{GrassmannianIsCoveredByAffineSpaces}) tells us that $\eta$ and $\rho$ are inverses.
+where $d(\al,L)$ is the determinant of the $L$ minor of the matrix associated to $\al_T$ in the canonical basis and $\eta(\vp)$ is defined on an open subset $V$ of $T$ by\footnote{$\mathrm{res}^T_V:\Oc_T(T)\to \Oc_T(V)$ denotes the restriction map given by the structure of sheaf.}
+\[\eta(\vp)_V(e_j)=
+\sum_{r=1}^k (\mathrm{res}^T_V\circ\vp)\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}e_r=(\mathrm{res}^T_V\circ \vp)\pa{X_I\ii X} e_j.
+\]
+The maps are well defined because $\al\circ s_I=id_{\Oc^k_T}\implies d(\al,I)=1$ and 
+\[\dfrac{\det X_{I^{i_r}_{i_s}}}{\det X_I}=\delta_{r,s}\implies \eta(\vp)\circ s_I=id_{\Oc^k_T}.\]
+An argument analogous to the one presented in the proof of proposition (\ref{GrassmannianIsCoveredByAffineSpaces}) tells us that $\eta$ and $\rho$ are inverses.
 \medskip
 
-\noindent Observe now that
+Observe now that
 \[\correspDef{\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\quot{\cpa{\al:\Oc_T^n\onto Q\mid \al\circ s_I\text{ isomorphism}}}\sim}{\al}{[\al]}{(\beta\circ s_I)\ii\circ \beta}{[\beta]}\]
 is a bijection. Indeed $(\beta\circ s_I)\ii\circ \beta\sim \beta$ by definition of $\sim$ and if $\theta:Q\to Q'$ is any isomorphism of sheaves then
 \[(\theta \circ \al \circ s_I)\ii \circ \theta\circ \al=(\al\circ s_I)\ii\circ \theta\ii\circ \theta\circ \al=id_{\Oc^k_T}\circ \al=\al.\]
 Finally, we see that
-\[\quot{\cpa{\al:\Oc_T^n\onto \Oc_T^k\mid \al\circ s_I\text{ isomorphism}}}\sim=\quot{\cpa{\al:\Oc_T^n\onto \Oc_T^k\mid \al\circ s_I\text{ surjective}}}\sim\]
+\[\quot{\cpa{\al:\Oc_T^n\onto Q\mid \al\circ s_I\text{ isomorphism}}}\sim=\quot{\cpa{\al:\Oc_T^n\onto Q\mid \al\circ s_I\text{ surjective}}}\sim\]
 because on all stalks $\al\circ s_I$ is an endomorphism of finitely generated modules.
 \item Let $f:S\to T$ be a morphism of $\K$-schemes. Recall that
 \[\funcDef{\G_I(k,n)(T)}{\G_I(k,n)(S)}{[\al]}{[f^\ast \al]}.\]
@@ -308,24 +332,28 @@ Under the bijection presented, imposing naturality gives
 since $f^\ast\al\circ s_I^S=f^\ast(\al\circ s_I^T)=f^\ast(id_{\Oc^k_T})=id_{\Oc^k_S}$.
 \smallskip
 
-\noindent
+
 If we impose naturality again we get
 \[\funcDef{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}}{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_S(S)}}{\vp}{\rho(f^\ast\eta(\vp))}\]
-We claim that $\rho(f^\ast(\eta(\vp)))=f^\#(T)\circ \vp$. Since $\eta$ is bijective and the inverse of $\rho$, it is enough to prove that $f^\ast(\eta(\vp))=\eta(f^\#(T)\circ \vp)$. Since they are both sheaf morphisms on $S$ it is enough to show that they induce the same morphism on all stalks. Let us fix $s\in S$ and $t=f(s)\in T$, then
-\begin{align*}
-f^\ast(\eta(\vp))_s((e_j)_s)=&\eta(\vp)_t((e_j)_t)\otimes_{\Oc_{T,t}}\Oc_{S,s}=\\
-=&\sum_{i=1}^k \pa{\vp\pa{\frac{\det X_{I^i_j}}{\det X_I}}}_t (e_i)_t\otimes_{\Oc_{T,t}}\Oc_{S,s}\overset{\text{[NOT SURE IF THIS WORKS]}}=\\
-=&\sum_{i=1}^k f^\#_s\pa{\pa{\vp\pa{\frac{\det X_{I^i_j}}{\det X_I}}}_t} (e_i)_s=\\
-=&\sum_{i=1}^k \pa{f^\#(T)\circ \vp\pa{\frac{\det X_{I^i_j}}{\det X_I}}}_s (e_i)_s=\eta(f^\#(T)\circ \vp)_s.
-\end{align*}
+We claim that $\rho(f^\ast(\eta(\vp)))=f^\#(T)\circ \vp$. Since $\eta$ is the inverse of $\rho$, it is enough to prove that $f^\ast(\eta(\vp))=\eta(f^\#(T)\circ \vp)$. 
+The equality holds because for all $s\in S$, if $t=f(s)\in T$, then both maps are represented by the matrix
+\[f^\#_s\pa{\pa{\vp(X_I\ii X)}_t}.\]
+%Since they are both sheaf morphisms on $S$ it is enough to show that they induce the same morphism on all stalks. Let us fix $s\in S$ and $t=f(s)\in T$, then
+%\begin{align*}
+%f^\ast(\eta(\vp))_s((e_j)_s)=&\eta(\vp)_t((e_j)_t)\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}=\\
+%=&\sum_{r=1}^k \pa{\vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_t (e_r)_t\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}=\\
+%=&\sum_{r=1}^k f^\#_s\pa{\pa{\vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_t} (e_r)_s=\\
+%=&\sum_{r=1}^k \pa{f^\#(T)\circ \vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_s (e_r)_s=\eta(f^\#(T)\circ \vp)_s,
+%\end{align*}
+%where we have used twice the fact that $(e_j)_s\equiv (e_j)_t\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}$ under the canonical isomorphism $\Oc_{S,s}^k\cong \Oc_{T,t}^k\otimes_{\Oc_{T,t}}\Oc_{S,s}$.
 We conclude by recalling that the following diagram commutes
-% https://q.uiver.app/#q=WzAsNCxbMSwwLCJcXEhvbV97XFxLXFx0ZXh0ey1hbGd9fVxccGF7XFxLXFxzcGF7XFxmcmFje1xcZGV0IFhfSn17XFxkZXQgWF9JfX0sXFxPY19UKFQpfSJdLFsxLDEsIlxcSG9tX3tcXEtcXHRleHR7LWFsZ319XFxwYXtcXEtcXHNwYXtcXGZyYWN7XFxkZXQgWF9KfXtcXGRldCBYX0l9fSxcXE9jX1MoUyl9Il0sWzAsMCwiXFxIb21fe1xcU2NoXFxLfShULFxcR3JfSShrLG4pKSJdLFswLDEsIlxcSG9tX3tcXFNjaFxcS30oUyxcXEdyX0koayxuKSkiXSxbMiwwLCJcXFNwZWMiXSxbMywxLCJcXFNwZWMiXSxbMiwzLCJcXGNpcmMgZiJdLFswLDEsImZeXFwjKFQpXFxjaXJjIiwyXV0=
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJcXEhvbV97XFxLXFx0ZXh0ey1hbGd9fVxccGF7XFxLXFxzcGF7XFxmcmFje1xcZGV0IFhfSn17XFxkZXQgWF9JfX0sXFxPY19UKFQpfSJdLFsxLDEsIlxcSG9tX3tcXEtcXHRleHR7LWFsZ319XFxwYXtcXEtcXHNwYXtcXGZyYWN7XFxkZXQgWF9KfXtcXGRldCBYX0l9fSxcXE9jX1MoUyl9Il0sWzAsMCwiXFxIb21fe1xcU2NoXFxLfShULFxcR3JfSShrLG4pKSJdLFswLDEsIlxcSG9tX3tcXFNjaFxcS30oUyxcXEdyX0koayxuKSkiXSxbMiwwLCJcXFNwZWMiXSxbMywxLCJcXFNwZWMiXSxbMiwzLCJoX3tcXEdyX0koayxuKX0oZikiLDJdLFswLDEsIlxcSG9tXFxwYXtcXEtcXHNwYXtcXGZyYWN7XFxkZXQgWF9KfXtcXGRldCBYX0l9fSxmXlxcIyhUKX0iXV0=
 \[\begin{tikzcd}
 	{\Hom_{\Sch\K}(T,\Gr_I(k,n))} & {\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}} \\
 	{\Hom_{\Sch\K}(S,\Gr_I(k,n))} & {\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_S(S)}}
 	\arrow["\Spec", from=1-1, to=1-2]
-	\arrow["{\circ f}", from=1-1, to=2-1]
-	\arrow["{f^\#(T)\circ}"', from=1-2, to=2-2]
+	\arrow["{h_{\Gr_I(k,n)}(f)}"', from=1-1, to=2-1]
+	\arrow["{\Hom\pa{\K\spa{\frac{\det X_J}{\det X_I}},f^\#(T)}}", from=1-2, to=2-2]
 	\arrow["\Spec", from=2-1, to=2-2]
 \end{tikzcd}\]
 \end{itemize}
@@ -336,16 +364,20 @@ We conclude by recalling that the following diagram commutes
 The Grassmann scheme $\Gr(k,n)$ is a fine moduli space for the Grassmann functor $\G(k,n)$.
 \end{theorem}
 \begin{proof}
-We know that $\G(k,n)$ is representable because of theorem (\ref{RepresentabilityByOpenSubfunctorCover}), indeed we have shown that $\cpa{\G_I(k,n)}$ is an open subfunctor cover of $\G(k,n)$ (\ref{GrIAreOpenCover}) and that each $\G_I(k,n)$ is representable (\ref{GrIRepresentGrIFunctors}). Recall that in the proof of theorem (\ref{RepresentabilityByOpenSubfunctorCover}) we constructed the fine moduli space of the functor by gluing fine moduli spaces of each open subfunctor in the cover. Since $\Gr(k,n)=\bigcup_{I\in\omega(k,n)}\Gr_I(k,n)$ and each $\Gr_I(k,n)$ represents $\G_I(k,n)$, the theorem follows if we can show that the gluing maps found in the proof of theorem (\ref{RepresentabilityByOpenSubfunctorCover}) correspond to the identity of $\Gr_I(k,n)\cap \Gr_J(k,n)$ for any pair of ordered multiindicies.\\
-Recall that the morphisms we are trying to identify correspond to the identity of $\G_I(k,n)\times_{\G(k,n)}\G_J(k,n)$. Note that
-\[(\G_I(k,n)\times_{\G(k,n)}\G_J(k,n))(T)=\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}\sim\]
-can be identified as we did while proving (\ref{GrIRepresentGrIFunctors}) with
-\[\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}},\]
-which corresponds to
-\[\cpa{\beta\in \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_L}{\det X_I}},\Oc_T(T)}\mid \beta\pa{\frac{\det X_J}{\det X_I}}\neq 0},\]
-which in turn can be identified by the universal property of localization with
-\[\Hom_{\K\text{-alg}}\pa{\pa{\K\spa{\det X_L}_{\det X_I\det X_J}}^0,\Oc_T(T)}.\]
-Applying $\Spec$ this corresponds to \[\Hom_{\Sch\K}\pa{T,\Gr(k,n)\cap D_+(z_Iz_J)}=\Hom_{\Sch\K}\pa{T,\Gr_I(k,n)\cap \Gr_J(k,n)}.\]
-By functoriality of all the maps involved, we have shown that $\Gr_I(k,n)\cap \Gr_J(k,n)$ represents $\G_I(k,n)\times_{\G(k,n)}\G_J(k,n)$.\\
-Following the isomorphisms involved we see that the identity of $\G_I(k,n)\times_{\G(k,n)}\G_J(k,n)$ translates to the identity of $h_{\Gr_I(k,n)\cap \Gr_J(k,n)}$, so the gluing maps are the image under the identity functor of the identity map in $h_{\Gr_I(k,n)\cap \Gr_J(k,n)}(\Gr_I(k,n)\cap \Gr_J(k,n))$ i.e. they are the identity on the intersections.
+We know that $\cpa{\G_I(k,n)\to\G(k,n)}$ is an open cover (\ref{GrIAreOpenCover}), that $\G(k,n)$ is a Zariski sheaf (\ref{GrassmannianIsSheaf}) and that $h_{\Gr_I(k,n)}\cong \G_I(k,n)$ (\ref{GrIRepresentGrIFunctors}). If we can show that these isomorphisms restrict well to the double intersection we have the desired result by proposition (\ref{MapGluingForZariskiSheaves}).
+\bigskip
+
+Let $T$ be a scheme and let us consider a morphism
+\[f\in\Hom_{\Sch\K}\pa{T,\Gr_I(k,n)\cap \Gr_J(k,n)}=\Hom_{\Sch\K}\pa{T,\Gr(k,n)\cap D_+(z_Iz_J)}.\]
+If we apply a well known adjunction result for morphisms towards an affine scheme we get 
+\[f^\#(T)\in\Hom_{\K\text{-alg}}\pa{\pa{\K\spa{\det X_L}_{\det X_I\det X_J}}^0,\Oc_T(T)}.\]
+By the universal property of localization, we may identify this set with
+\[\cpa{\beta\in \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_L}{\det X_I}},\Oc_T(T)}\mid \beta\pa{\frac{\det X_J}{\det X_I}}\neq 0}.\]
+Applying the functor $\eta$  defined during proposition (\ref{GrIRepresentGrIFunctors}), which we will denote $\eta^I$ to emphasize which determinant we consider at the denominator. we obtain 
+\[\eta^I(f^\#(T))\in\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}},\]
+which we can identify with
+\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\G_I(k,n)\times_{\G(k,n)}\G_J(k,n))(T).\]
+To conclude the proof we need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\G(k,n)$. Note that $\eta^I_V(f^\#(T))(e_j)=f^\#(V)(X_I\ii X)e_j$, so if the matrix $X_J\ii X_I$ can be described only using elements in $\K\spa{\det X_L}_{\det X_I\det X_J}^0$, we can define $\theta_V(e_j)$ to be $f^\#(V)(X_J\ii X_I)e_j$ and see that $\theta\circ \eta^I=\eta^J$. Indeed, the map is well defined because
+\[X_J\ii X=\pa{\frac{\det X_{J^{j_i}_j}}{\det X_J}}_{i\in \cpa{1,\cdots, k}, j\in \cpa{1,\cdots, n}}\implies X_J\ii X_I=\pa{\frac{\det X_{J^{j_r}_{i_\ell}}}{\det X_J}}_{r,\ell\in \cpa{1,\cdots, k}}.\]
+An analogous procedure for $X_I\ii X_J$ would define an inverse of $\theta$. 
 \end{proof}

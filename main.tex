@@ -28,10 +28,12 @@
 \newcommand{\Can}{{\mathcal{C}\mathrm{an}}}
 
 
-\usepackage[utf8]{inputenc}
-\DeclareFontFamily{U}{min}{}
-\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
-\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
+%\usepackage[utf8]{inputenc}
+%\DeclareFontFamily{U}{min}{}
+%\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+%\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
+\newcommand{\yo}{{h_\bullet}}
+
 
 %--------- Comandi dattilografici ------------
 \newcommand{\comm}[1]{}
@@ -47,10 +49,23 @@ Dipartimento di Matematica}
 \begin{document}
 \maketitle
 
+\begin{abstract}
+In this document we introduce the concept of moduli spaces in algebraic geometry through the example of the Grassmannian scheme.
+
+The first chapter introduces the basics of the functorial approach to algebraic geometry and its relation to moduli problems.
+
+The second chapter is a quick overview of Grassmannians as defined set theoretically. We focus our attention on the Pl\"ucker embedding and prove that it identifies the Grassmannian with a projective variety.
+
+In the third chapter we describe the reduced scheme structure on the Grassmannian and prove that it is a fine moduli space for the functor of quotients from $\Oc_T^n$ to a rank $k$ vector bundle on $T$.
+
+%The last chapter is an overview of Hilbert schemes and how they generalize the Grassmannian as seen in the third chapter.
+\end{abstract}
+
 %\newpage
 \tableofcontents
 \newpage
 
+\include{00Introduction}
 \include{01ModuliSpaces}
 \include{02ClassicalGrassmannians}
 \include{03GrassmannFunctor}

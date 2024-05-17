@@ -1,35 +1,35 @@
 \chapter{Moduli Spaces}
-The following type of \textit{classification problem} occurs often in math:
-\begin{center}
-Consider some type of object and a notion of isomorphism which can be defined between them. We are interested in understanding the behaviour of isomorphism classes and how they relate to each other.
-\end{center}
-Finding a bijection between isomorphism classes and known objects is usually trivial\footnote{for example, if the classes form a set they can be identified with a canonical set of the same cardinality}, but for an answer to a classification problem to be satisfactory we usually require some information on \textit{families} of isomorphism classes.\medskip
 
-Miraculously, many such classification problems turn out to have a natural answer in the form of a space whose points are isomorphism classes and whose geometry encodes how families behave. Such an object is usually called a \textit{moduli space}.\\
-The best result we can hope for is finding a space which completely encodes how families behave\footnote{what will be formalized as a fine moduli space}, but this requirement is usually too strict. 
-In this document we shall mostly deal with problems for which such a nice space exists.\medskip
+In this chapter we introduce the basic category theory used in the study of moduli spaces. After a quick review of the Yoneda embedding, we define representability of a functor and give the definition of fine and coarse moduli space. After that we give a quick overview of Zariski sheves and prove the representability criterion we will need in the third chapter.\medskip
 
-The most fruitful formalization of family as intended above has been the functorial approach, the basics of which will be introduced in this chapter.
-\medskip
+Most definitions given in this chapter follow section 0.3 of \cite{Alper}.
 
-\noindent Most definitions given in this chapter follow \cite{Alper} and \cite{Bejleri1}.
 
 \section{Representable functors}
 In this section we introduce the basic concepts of the functorial approach and some of the required category theory.
 
 \subsection{Yoneda lemma and embedding}
-All categories considered in this document will be small. If $\Cc$ is a category, we shall write $X\in \Cc$ to mean ``$X$ is an object in $\Cc$".\\
-If $A$ and $B$ are objects in a category (resp. categories / functors) then $\Hom(A,B)$ denotes the set of morphisms (resp. functors / natural transformations) from $A$ to $B$.\\
-The notation $\Fun(\Cc,\Dc)$ denotes the category of functors from $\Cc$ to $\Dc$, with morphisms being natural transformations.
+We use the following conventions:
+\begin{itemize}
+\item All categories considered in this document will be small.
+\item If $\Cc$ is a category, we shall write $X\in \Cc$ to mean ``$X$ is an object in $\Cc$".
+\item If $A$ and $B$ are objects in a category (respectively categories / functors) then $\Hom(A,B)$ denotes the set of morphisms (respectively functors / natural transformations) from $A$ to $B$.
+
+In the first case, if $A,B\in\Cc$ we sometimes write $\Hom_\Cc(A,B)$ to emphasize the category in which we are considering the morphisms.
+\item The notation $\Fun(\Cc,\Dc)$ denotes the category of functors from $\Cc$ to $\Dc$, with morphisms being natural transformations.
+\end{itemize}
 
 \begin{definition}[Presheaf]
-A contravariant functor $F:\Cc\op\to \Set$ is called a \textbf{presheaf} on $\Cc$. For any fixed category $\Cc$, the presheaves on $\Cc$ form a category $\Fun(\Cc\op,\Set)$ with morphisms given by natural transformations.\\
-If $T\in \Cc$ then we call the elements of $F(T)$ \textbf{families} over $T$.
+A contravariant functor $F:\Cc\op\to \Set$ is called a \textbf{presheaf} on $\Cc$. If $T\in \Cc$ then we call the elements of $F(T)$ \textbf{families} over $T$.
+\end{definition}
+\begin{definition}[Presheaf category]
+For any fixed category $\Cc$, the presheaves on $\Cc$ form a category $\Fun(\Cc\op,\Set)$ with morphisms given by natural transformations.
 \end{definition}
 
 \begin{definition}[Hom-functor]
 Let $\Cc$ be a category and $X\in \Cc$. We define the \textbf{Hom-functor} of $X$ to be
-\[h_X:\functorDef{\Cc\op}{\Set}{T}{\Hom(T,X)}{f:T\to S}{\circ f:\Hom(S,X)\to \Hom(T,X)}\]
+\[h_X:\functorDef{\Cc\op}{\Set}{T}{\Hom(T,X)}{f:T\to S}{h_X(f):\Hom(S,X)\to \Hom(T,X)}\]
+where, if $g:S\to X$ then $h_X(f)(g)=g\circ f:T\to X$.
 \end{definition}
 \begin{remark}
 The Hom-functor is a presheaf.
@@ -42,7 +42,7 @@ Let $S$ be a scheme. A presheaf on $\Sch S$ is called a \textbf{moduli problem}.
 \begin{remark}
 Usually we study moduli problems of the following form
 \[\functorDef{\Sch S}{\Set}{T}{\quot{\cpa{\text{families over $T$}}}\sim}{f:T\to R}{\text{pullback of families along }f}\]
-where $\sim$ refers to the equivalence relation we are studying the families of classes of.
+where $\sim$ refers to an equivalence relation imposed on the objects we are studying.
 \end{remark}
 
 \noindent To proceed we will need the following
@@ -52,17 +52,17 @@ Let $\Cc$ be a category and $X\in \Cc$. For all contravariant functors $F:\Cc\op
 \[\Hom(h_X,F)\longleftrightarrow F(X).\]
 \end{lemma}
 \begin{proof}
-Given a natural trasformation $\zeta$, we can take its image in $F(X)$ to be $\zeta_X(id_X)$.\\
+Given a natural trasformation $\zeta$, we can take its image in $F(X)$ to be $\zeta_X(id_X)$.
 On the other hand, for any given element $u\in F(X)$ we can define an arrow $h_X(T)\to F(T)$ for any $T\in \Cc$ by taking $f\mapsto F(f)(u)$. This collection of maps defines a natural transformation from $h_X$ to $F$ by commutativity of the following diagram for all $g:S\to T$
 \[\begin{tikzcd}
 	{\Hom(X,X)} \\
 	& {\Hom(T,X)} & {\Hom(S,X)} \\
 	& {F(T)} & {F(S)} \\
 	{F(X)}
-	\arrow["{\circ f}"', from=1-1, to=2-2]
-	\arrow["{\circ (f\circ g)}", from=1-1, to=2-3]
+	\arrow["{h_X(f)}"', from=1-1, to=2-2]
+	\arrow["{h_X(f\circ g)}", from=1-1, to=2-3]
 	\arrow["{F(\cdot)(u)}"', from=1-1, to=4-1]
-	\arrow["{\circ g}"', from=2-2, to=2-3]
+	\arrow["{h_X(g)}"', from=2-2, to=2-3]
 	\arrow["{F(\cdot)(u)}"', from=2-2, to=3-2]
 	\arrow["{F(\cdot)(u)}", from=2-3, to=3-3]
 	\arrow["{F(g)}", from=3-2, to=3-3]
@@ -73,8 +73,14 @@ On the other hand, for any given element $u\in F(X)$ we can define an arrow $h_X
 
 \begin{definition}[Yoneda embedding]
 We define the \textbf{Yoneda embedding} of a category $\Cc$ to be the following functor
-\[\yo:\functorDef{\Cc}{\Fun(\Cc\op,\Set)}{X}{h_X}{f:X\to Y}{f\circ:h_X\to h_Y}\]
+\[\yo:\functorDef{\Cc}{\Fun(\Cc\op,\Set)}{X}{h_X}{f:X\to Y}{h_f:h_X\to h_Y}\]
+where if $g:T\to X$ then $h_f(g)=f\circ g:T\to Y$.
 \end{definition}
+
+\begin{remark}
+If $X=Y$ then $h_{id_X}=id_{h_X}$. Indeed if $f:T\to X$ then
+\[(h_{id_X})_T(f)=id_X\circ f=f=(id_{h_X})_T(f).\]
+\end{remark}
 
 \begin{proposition}
 The functor $\yo$ is fully faithful.
@@ -88,23 +94,25 @@ which is exactly the statement of the Yoneda lemma (\ref{YonedaLemma}).
 The Yoneda embedding is injective up to isomorphism on isomorphism classes of objects in $\Cc$.
 \end{remark}
 \begin{proof}
-Suppose $\zeta:h_X\to h_Y$ is an isomorphism of functors, then $id_X\in h_X(X)$ corresponds to some $f=\zeta_X(id_X):X\to Y$. Similarly $id_Y\in h_Y(Y)$ corresponds to some $g=\zeta_Y\ii(id_Y):Y\to X$. By naturality of $\zeta$ we see can pull back $id_X$ and $f$ by $g$ to see that 
+If $\vp:h_A\to h_B$ is an isomorphism with inverse $\vp'$, by the Yoneda lemma they coorespond to maps $f:A\to B$ and $f':B\to A$, which must be inverses because the Yoneda embedding is fully faithful.
+
+%Suppose $\zeta:h_X\to h_Y$ is an isomorphism of functors, then $id_X\in h_X(X)$ corresponds to some $f=\zeta_X(id_X):X\to Y$. Similarly $id_Y\in h_Y(Y)$ corresponds to some $g=\zeta_Y\ii(id_Y):Y\to X$. By naturality of $\zeta$ we see can pull back $id_X$ and $f$ by $g$ to see that 
 % https://q.uiver.app/#q=WzAsOCxbMywwLCJcXEhvbShYLFkpIl0sWzIsMSwiZiJdLFswLDAsIlxcSG9tKFgsWCkiXSxbMSwxLCJpZF9YIl0sWzAsMywiXFxIb20oWSxYKSJdLFsxLDIsImciXSxbMywzLCJcXEhvbShZLFkpIl0sWzIsMiwiaWRfWT1mXFxjaXJjIGciXSxbMywxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzIsMCwiXFx6ZXRhX1giXSxbMiw0LCJcXGNpcmMgZyIsMl0sWzMsNSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDYsIlxcemV0YV9ZIiwyXSxbMCw2LCJcXGNpcmMgZyJdLFsxLDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
-\[\begin{tikzcd}
-	{\Hom(X,X)} &&& {\Hom(X,Y)} \\
-	& {id_X} & f \\
-	& g & {id_Y=f\circ g} \\
-	{\Hom(Y,X)} &&& {\Hom(Y,Y)}
-	\arrow["{\zeta_X}", from=1-1, to=1-4]
-	\arrow["{\circ g}"', from=1-1, to=4-1]
-	\arrow["{\circ g}", from=1-4, to=4-4]
-	\arrow[maps to, from=2-2, to=2-3]
-	\arrow[maps to, from=2-2, to=3-2]
-	\arrow[maps to, from=2-3, to=3-3]
-	\arrow[maps to, from=3-2, to=3-3]
-	\arrow["{\zeta_Y}"', from=4-1, to=4-4]
-\end{tikzcd}\]
-and similarly we can show that $g\circ f=id_X$.
+%\[\begin{tikzcd}
+%	{\Hom(X,X)} &&& {\Hom(X,Y)} \\
+%	& {id_X} & f \\
+%	& g & {id_Y=f\circ g} \\
+%	{\Hom(Y,X)} &&& {\Hom(Y,Y)}
+%	\arrow["{\zeta_X}", from=1-1, to=1-4]
+%	\arrow["{\circ g}"', from=1-1, to=4-1]
+%	\arrow["{\circ g}", from=1-4, to=4-4]
+%	\arrow[maps to, from=2-2, to=2-3]
+%	\arrow[maps to, from=2-2, to=3-2]
+%	\arrow[maps to, from=2-3, to=3-3]
+%	\arrow[maps to, from=3-2, to=3-3]
+%	\arrow["{\zeta_Y}"', from=4-1, to=4-4]
+%\end{tikzcd}\]
+%and similarly we can show that $g\circ f=id_X$.
 \end{proof}
 
 \begin{lemma}[Yoneda embedding is continuous]\label{YonedaEmbeddingPreservesLimits}
@@ -112,20 +120,21 @@ The Yoneda embedding preserves limits.
 \end{lemma}
 \begin{proof}
 Suppose $X$ is the limit of the diagram $\cpa{f_{ij}:X_j\to X_i}$. If we apply the Yoneda embedding to the diagram we obtain
-\[\cpa{\circ f_{ij}:h_{X_j}\to h_{X_i}}\]
-Let $F$ be any presheaf on $\Cc$ and suppose that we have morphisms $F\to h_{X_i}$ which make the diagram commute, then for all $T\in \Cc$ we have compatible and natural $F(T)\to \Hom(T,X_i)$. 
-If $f\in F(T)$ then these arrows define several $f_i\in \Hom(T,X_i)$ which compose respecting the diagram. 
+\[\cpa{h_{f_{ij}}:h_{X_j}\to h_{X_i}}\]
+Let $F$ be any presheaf on $\Cc$ and suppose that we have morphisms $F\to h_{X_i}$ which make the diagrams commute, then for all $T\in \Cc$ we have compatible and natural $F(T)\to \Hom(T,X_i)$. 
+If $f\in F(T)$ then these arrows define several $f_i\in \Hom(T,X_i)$ which compose with the $f_{ij}$ respecting the diagram. 
 By the universal property of limits this defines uniquely a morphism $f_\ell\in \Hom(T,X)$ and we see that the assignment $f\mapsto f_\ell$ is the unique map from $F(T)$ to $\Hom(T,X)$ which makes the diagram in $\Set$ commute. 
-Since all that we have done is natural in $T$ we have effectively constructed a morphism $F\to h_X$ as we desired.
+Since all that we have done is natural in $T$, we have effectively constructed a morphism $F\to h_X$ as we desired.
 \end{proof}
 
 \subsection{Moduli spaces}
 \begin{definition}[Representable functor]
-A presheaf $F$ on $\Cc$ is \textbf{representable} if there exists a natural isomorphism $\zeta:F\to h_X$ for some $X\in \Cc$. In this case we say that the pair\footnote{usually we just say that $X$ represents $F$} $(X,\zeta)$ \textbf{represents} $F$.\\
-If $a\in F(T)$ we call the map $\zeta_T(a):T\to X$ the \textbf{classifying map} of the family $a$.
+A presheaf $F$ on $\Cc$ is \textbf{representable} if there exists a natural isomorphism $\zeta:F\to h_X$ for some $X\in \Cc$. 
+In this case we say that the pair\footnote{usually we just say that $X$ represents $F$} $(X,\zeta)$ \textbf{represents} $F$.
+If $a\in F(T)$ we call $\zeta_T(a):T\to X$ the \textbf{classifying map} of the family $a$.
 \end{definition}
 \begin{definition}[Universal family]
-Instead of the pair $(X,\zeta)$ for $\zeta:F\to h_X$, we may consider the pair $(X,\xi)$ where $\xi\in F(X)$ is the image of $\zeta\ii$ under the bijection predicated by the Yoneda lemma.\\
+Instead of the pair $(X,\zeta)$ for $\zeta:F\to h_X$, we may consider the pair $(X,\xi)$ where $\xi\in F(X)$ is the image of $\zeta\ii$ under the bijection predicated by the Yoneda lemma.
 The object $\xi$ is called the \textbf{universal family} of $X$.
 \end{definition}
 \begin{remark}
@@ -152,7 +161,7 @@ Consider the functor
 \[\Pj_n:\functorDef{\mathrm{Sch}\op}{\Set}{S}{\quot{\cpa{(\Lc,s_0,\cdots,s_n)\mid \emat{\Lc\text{ line bundle on $S$, }s_0,\cdots,s_n\in\Lc(S),\\\forall x\in S,\ \ps{(s_0)_x,\cdots,(s_n)_x}_{\Oc_{S,x}}=\Lc_x}}}\sim}{f}{\text{pullback of sheaves and sections via $f$}}\]
 where $(\Lc,(s_i))\sim (\Lc',(s_i'))$ is there exists a sheaf isomorphism $\al:\Lc\to\Lc'$ such that $s_i=\al^\ast s_i'$ for all $i\in\cpa{0,\cdots, n}$.\medskip
 
-\noindent It is a well know fact (Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.\\
+\noindent It is a well know fact (Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.
 From the statement of Proposition 5.1.31 in \cite{QingLiu} it is also clear that $\Oc_{\Pj^n_\Z}(1)$ is a universal family.
 \end{example}
 
@@ -224,6 +233,17 @@ A moduli problem $F\in \Psh S\Set$ is a \textbf{Zariski sheaf} if for any $S$-sc
 where the arrows are induced by the inclusions.
 \end{definition}
 
+\begin{remark}
+Using the Yoneda lemma (\ref{YonedaLemma}) we may equivalently require the following diagram to be an equalizer
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEhvbShoX1gsRikiXSxbMiwwLCJcXGRpc3BsYXlzdHlsZSBcXHByb2RfayBcXEhvbShoX3tVX2t9LEYpIl0sWzQsMCwiXFxkaXNwbGF5c3R5bGUgXFxwcm9kX3tpLGp9XFxIb20oaF97VV9pXFxjYXAgVV9qfSxGKSJdLFswLDFdLFsxLDIsIiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCIiLDIseyJvZmZzZXQiOjF9XV0=
+\[\begin{tikzcd}
+	{\Hom(h_X,F)} && {\displaystyle \prod_k \Hom(h_{U_k},F)} && {\displaystyle \prod_{i,j}\Hom(h_{U_i\cap U_j},F)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[shift left, from=1-3, to=1-5]
+	\arrow[shift right, from=1-3, to=1-5]
+\end{tikzcd}\]
+\end{remark}
+
 
 \begin{proposition}[Representable moduli functors are Zariski sheaves]\label{RepresentableModuliFunctorsAreZariskiSheaves}
 Let $F:\Psh S\Set$ be a moduli problem, then if there exists a fine moduli space $M$ for $F$ it must be the case that $F$ is a Zariski sheaf.
@@ -244,7 +264,7 @@ The arrows in this case correspond to restriction of morphisms, so what we need 
 \item $\mathrm{res}^{U_i}_{U_i\cap U_j}\circ \mathrm{res}^X_{U_i}=\mathrm{res}^{U_j}_{U_i\cap U_j}\circ \mathrm{res}^X_{U_j}$
 \item a collection of maps $\cpa{f_i:U_i\to M}$ such that $f_i\res{U_i\cap U_j}=f_j\res{U_i\cap U_j}$ glues uniquely to a map $f:X\to M$
 \end{itemize}
-both of which are true.
+both of which are well known properties of maps and scheme morphisms respectively.
 \end{proof}
 
 \subsection{Open cover of a moduli problem}
@@ -263,7 +283,7 @@ where the fibered product $F(X)\times_{H(X)}G(X)$ in defined through the maps $\
 \end{definition}
 
 \begin{definition}[Open subfunctor]
-Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ is \textbf{open} if for any $S$-scheme $T$ and any natural transformation $h_T\to F$, there exists an open subscheme $U$ of $T$ such that $U$ represents $h_T\times_FG$, i.e.
+Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ is \textbf{open} if for any $S$-scheme $T$ and any natural transformation $h_T\to F$, there exists an open subscheme $U\subseteq T$ such that
 % https://q.uiver.app/#q=WzAsNixbMSwwLCJoX1UiXSxbMSwxLCJoX1QiXSxbMiwxLCJGIl0sWzIsMCwiRyJdLFswLDAsIlUiXSxbMCwxLCJUIl0sWzMsMl0sWzEsMl0sWzAsMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMSwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XSxbNCw1LCJcXHN1YnNldGVxIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMCwiXFx5byJdLFs1LDEsIlxceW8iXV0=
 \[\begin{tikzcd}
 	U & {h_U} & G \\
@@ -277,47 +297,78 @@ Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ 
 	\arrow["\yo", from=2-1, to=2-2]
 	\arrow[from=2-2, to=2-3]
 \end{tikzcd}\]
+i.e. $U$ represents $h_T\times_F G$ and the map from $h_U$ to $h_T$ is given by the inclusion.
 \end{definition}
 
-\begin{remark}
-By the Yoneda lemma, giving a natural transformation like in the above definition is equivalent to choosing a family $\xi\in F(T)$. We can thus rephrase the definition as follows:\medskip
+Because of the Yoneda lemma, giving a natural transformation like in the above definition is equivalent to choosing a family $\xi\in F(T)$. We can thus rephrase the definition as follows
 
-\noindent
-A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open subscheme $U\subseteq T$ such that the following diagram is natural in $R$, commutes and for any map $f:R\to U$ there exists a $g:R\to U$ such that $f=\subseteq \circ g$ if and only if $F(f)(\xi)\in G(R)$\footnote{the ``only if" is trivially true by commutativity but for the ``if" we are using the fact that $h_U\cong h_T\times_FG$.}
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE1vcihSLFUpIl0sWzAsMSwiXFxNb3IoUixUKSJdLFsyLDAsIkcoUikiXSxbMiwxLCJGKFIpIl0sWzAsMSwiXFxzdWJzZXRlcVxcY2lyYyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsMiwiRyhcXHN1YnNldGVxIFxcY2lyYyB+flxcY2RvdH4pKFxceGkpIl0sWzEsMywiRihcXGNkb3QpKFxceGkpIiwyXSxbMiwzLCJcXHN1YnNldGVxIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+\begin{definition}[Open subfunctor v.2]
+A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open subscheme $\iota:U\inj T$ such that the following diagram is natural in $R$, commutes and is cartesian\footnote{for any map $f:R\to U$ there exists a $g:R\to U$ such that $f=\iota\circ g$ if and only if $F(f)(\xi)\in G(R)$.}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhvbShSLFUpIl0sWzAsMSwiXFxIb20oUixUKSJdLFsyLDAsIkcoUikiXSxbMiwxLCJGKFIpIl0sWzAsMSwiXFxzdWJzZXRlcVxcY2lyYyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsMiwiRyhcXHN1YnNldGVxIFxcY2lyYyB+flxcY2RvdH4pKFxceGkpIl0sWzEsMywiRihcXGNkb3QpKFxceGkpIiwyXSxbMiwzLCJcXHN1YnNldGVxIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCw2LCIiLDEseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XV0=
 \[\begin{tikzcd}
 	{\Hom(R,U)} && {G(R)} \\
 	{\Hom(R,T)} && {F(R)}
-	\arrow["\subseteq\circ"', hook, from=1-1, to=2-1]
-	\arrow["{G(\subseteq \circ ~~\cdot~)(\xi)}", from=1-1, to=1-3]
-	\arrow["{F(\cdot)(\xi)}"', from=2-1, to=2-3]
+	\arrow["{G\circ h_\iota(\cdot)(\xi)}", from=1-1, to=1-3]
+	\arrow["h_\iota"', hook, from=1-1, to=2-1]
 	\arrow["\subseteq", hook, from=1-3, to=2-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{F(\cdot)(\xi)}"', from=2-1, to=2-3]
+	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
 \end{tikzcd}\]
-\end{remark}
+\end{definition}
 
 \begin{definition}[Open cover of a functor]
 Let $F:\Psh S\Set$ be a moduli problem. A collection of open subfunctors $\cpa{F_i\to F}$ is an \textbf{open cover} of $F$ if for any $S$-scheme $T$ and any natural transformation $h_T\to F$, there exists an open cover $\cpa{U_i\to T}$ of $T$ such that $U_i$ represents $h_T\times_F F_i$ for all $i$.
 \end{definition}
+Like before we can rephrase this definition in terms of families
+
+
+\begin{definition}[Open cover of a functor v.2]
+Let $F:\Psh S\Set$ be a moduli problem. A collection of open subfunctors $F_i\subseteq F$ forms an open cover of $F$ if for any $S$-scheme $T$ and any family $\xi\in F(T)$, the subschemes $U_i\subseteq T$ determined by the openness of the $F_i$ form a cover of $T$.
+\end{definition}
 \begin{remark}
-Like above, we can rephrase the definition as follows:\\
-A collections of open subfunctors $F_i\subseteq F$ form an open cover of $F$ if for any $S$-scheme $T$ and any family $\xi\in F(T)$, there exists an open cover $\cpa{U_i\to T}$ of $T$ such that $\xi\res{U_i}\in F_i(U_i)$ for all $i$.
+If $\cpa{F_i\to F}$ is an open cover of the functor $F$ then for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open cover $\cpa{U_i\to T}$ of $T$ such that $\xi\res{U_i}\in F_i(U_i)$ for all $i$.
 \end{remark}
 
 \subsection{Representability criterion}
-Finally, we come to the main result of this chapter
+Finally, we come to the main results of this chapter
+
+\begin{proposition}\label{MapGluingForZariskiSheaves}
+Let $F$ and $G$ be Zariski sheaves, $\cpa{F_i\to F}$ and $\cpa{G_i\to G}$ be open covers and $f_i:F_i\to G_i$ be natural transformations such that $f_i\res{F_i\cap F_j}=f_j\res{F_i\cap F_j}$. Then there exists a natural transformation $f:F\to G$ which restricts to $f_i$ on $F_i$.
+
+Moreover, if each $f_i$ is an isomorphism then $f$ too is an isomorphism.
+\end{proposition}
+\begin{proof}
+Let $T$ be a scheme and $\zeta:h_T\to F$ a natural transformation. Let $\cpa{\iota_i:U_i\to T}$ be the open cover induced by $\cpa{F_i\to F}$ through $\zeta$ by the definition of open subfunctor cover.
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJGIl0sWzEsMCwiRl9pIl0sWzIsMCwiR19pIl0sWzIsMSwiRyJdLFswLDEsImhfVCJdLFswLDAsImhfe1VfaX0iXSxbMSwyLCJmX2kiXSxbMSwwLCJcXHN1YnNldGVxIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxzdWJzZXRlcSIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsImhfe1xcaW90YV9pfSIsMl0sWzQsMCwiXFx6ZXRhIiwyXSxbNSwxLCJcXHpldGFcXGNpcmMgaF97XFxpb3RhX2l9Il0sWzUsMCwiIiwyLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XV0=
+\[\begin{tikzcd}
+	{h_{U_i}} & {F_i} & {G_i} \\
+	{h_T} & F & G
+	\arrow["{\zeta\circ h_{\iota_i}}", from=1-1, to=1-2]
+	\arrow["{h_{\iota_i}}"', from=1-1, to=2-1]
+	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow["{f_i}", from=1-2, to=1-3]
+	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-2, to=2-2]
+	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
+	\arrow["\zeta"', from=2-1, to=2-2]
+\end{tikzcd}\]
+Let $g_i=f_i\circ \zeta\circ h_{\iota_i}$ and note that
+\[g_i\res{h_{U_i\cap U_j}}=f_i\res{F_i\cap F_j}\circ \zeta\circ h_{\iota_i\res{U_i\cap U_j}}=f_j\res{F_i\cap F_j}\circ \zeta\circ h_{\iota_j\res{U_i\cap U_j}}=g_j\res{h_{U_i\cap U_j}}.\]
+Because $G$ is a Zariski sheaf, there exists $\zeta':h_T\to G$ such that $\zeta'\circ h_{\iota_i}=g_i$. Because of the Yoneda lemma (\ref{YonedaLemma}), we have constructed a map $F(T)\to G(T)$ which is functorial in $T$, i.e. $f:F\to G$. By construction it is also clear that $f\res{F_i}=f_i$.\bigskip
+
+Suppose now that the $f_i$ are isomorphisms. Let $f$ be the morphism $F\to G$ obtained as above and let $g:G\to F$ be the morphism obtained the same way but from the morphisms $f_i\ii:G_i\to F_i$. By checking the restrictions to a cover and double intersections, it is easy to see that $f$ and $g$ are inverses.
+\end{proof}
 
 \begin{theorem}[Representability by open cover]\label{RepresentabilityByOpenSubfunctorCover}
 Let $F:\Psh{S}{\Set}$ be a Zariski sheaf and let $\cpa{F_i\to F}$ be an open cover of it by representable subfunctors, then $F$ is representable.
 \end{theorem}
 \begin{proof}
-For this proof we will mainly follow the version presented in \cite{GortzAlgGeoISchemes} (Theorem 8.9, page 212).\\
-Let us fix $X_i$ schemes and $\xi_i\in F_i(X_i)$ such that $(X_i,\xi_i)$ is a fine moduli space for $F_i$.\\
-For all $S$-schemes $T$ we have
-\[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
-thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ analogously.
-\medskip
+For this proof we will mainly follow the version presented in \cite{GortzAlgGeoISchemes} (Theorem 8.9, page 212).\bigskip
 
-\noindent Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both moduli spaces for $F_{i,j}$ they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
+We fix schemes $X_i$ and families $\xi_i\in F_i(X_i)$ such that $(X_i,\xi_i)$ is a fine moduli space for $F_i$. For all $S$-schemes $T$ we have
+\[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
+thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ analogously.\bigskip
+
+Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both fine moduli spaces for $F_{i,j}$, they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJoX3tVX3tpan19Il0sWzAsMSwiaF97VV97aml9fSJdLFsxLDAsImhfe1hfaX1cXHRpbWVzX0YgRl9qIl0sWzIsMCwiRl97aSxqfSJdLFsyLDEsIkZfe2ksan0iXSxbMSwxLCJGX2lcXHRpbWVzX0YgaF97WF9qfSJdLFsyLDMsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIj0iLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCJcXGFscGhhIiwyXSxbMCwyLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
 	{h_{U_{ij}}} & {h_{X_i}\times_F F_j} & {F_{i,j}} \\
@@ -331,14 +382,14 @@ thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ a
 \end{tikzcd}\]
 Note that if $T$ is an $S$-scheme and $f\in h_{U_{ij}}(T)$ then
 \[h_{\vp_{ji}}(f)=\al_{U_{ij}}(id_{U_{ij}})\circ f =\al_T(id_{U_{ij}}\circ f)=\al_T(f),\]
-so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.
-\medskip
+so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.\bigskip
 
-\noindent We want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.
+We want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.
 
-The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.
-
-Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
+\setlength{\leftmargini}{0cm}
+\begin{itemize}
+\item The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.
+\item Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
 % https://q.uiver.app/#q=WzAsOCxbMSwwLCJoX3tVX3tpan19XFx0aW1lc197aF97WF9pfX1oX3tVX3tpa319Il0sWzEsMSwiaF97VV97aml9fVxcdGltZXNfe2hfe1hfan19aF97VV97amt9fSJdLFsyLDAsIkZfe2ksan1cXHRpbWVzX3tGX2l9IEZfe2ksa30iXSxbMywwLCJGX3tpLGosa30iXSxbMywxLCJGX3tpLGosa30iXSxbMiwxLCJGX3tpLGp9XFx0aW1lc197Rl9qfSBGX3tqLGt9Il0sWzAsMCwiaF97VV97aWp9XFxjYXAgVV97aWt9fSJdLFswLDEsImhfe1Vfe2ppfVxcY2FwIFVfe2prfX0iXSxbMiwzLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCI9IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwi44KIIl0sWzcsMSwi44KIIl0sWzYsNywiXFx2cF97aml9IiwyXV0=
 \[\begin{tikzcd}
 	{h_{U_{ij}\cap U_{ik}}} & {h_{U_{ij}}\times_{h_{X_i}}h_{U_{ik}}} & {F_{i,j}\times_{F_i} F_{i,k}} & {F_{i,j,k}} \\
@@ -350,17 +401,16 @@ Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits
 	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
 	\arrow["{\yo}", from=1-1, to=1-2]
 	\arrow["{\yo}", from=2-1, to=2-2]
-	\arrow["{\vp_{ji}}"', from=1-1, to=2-1]
+	\arrow["{h_{\vp_{ji}}}"', from=1-1, to=2-1]
 \end{tikzcd}\]
 therefore, to prove that $\vp_{kj}\circ \vp_{ji}=\vp_{ki}$ it is enough to verify the trivial equality \[id_{F_{i,j,k}}\circ id_{F_{i,j,k}}=id_{F_{i,j,k}}.\]
+\end{itemize}
+\setlength{\leftmargini}{0.5cm}
 
-\noindent
 Let $X$ to be the scheme obtained by gluing the $X_i$ as indicated above.\\
-Note that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\medskip
+Note that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\bigskip
 
-\noindent To finish the proof we need to verify that $(X,\xi)$ is a fine moduli space for $F$:\\
-Let $T$ be an $S$-scheme and and let us consider a family $\zeta\in F(T)$. Since $\cpa{F_i\to F}$ is an open cover of $F$, there exists an open cover $\cpa{V_i\to T}$ of $T$ such that $\zeta\res{V_i}\in F_i(V_i)\cong \Hom(V_i,X_i)$. Since $F$ is a sheaf and $\zeta_i\res{V_i\cap V_j}=\zeta_j\res{V_i\cap V_j}$, the morphisms $V_i\to X_i$ corresponding to the $\zeta_i$ glue to a morphism $f:T\to X$ such that $f^\ast\xi=\zeta$ (by construction).
-\end{proof}
+To finish the proof we need to verify that $(X,\xi)$ is a fine moduli space for $F$, which is the case because of proposition (\ref{MapGluingForZariskiSheaves}) applied to $h_X$ and $F$ where we consider the open covers $\cpa{h_{X_i}\to h_X}$ and $\cpa{F_i\to F}$.\end{proof}
 \begin{remark}
 Adopting the notation of the proof we see that if we have a candidate fine moduli space $X$, an open cover $\cpa{X_i\to X}$ such that $X_i$ represents $F_i$ and we can verify that $\vp_{ji}:X_i\cap X_j\to X_i\cap X_j$ is the identity for all $i,j$, then $X$ represents $F$.
 \end{remark}

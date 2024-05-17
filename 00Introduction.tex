@@ -1,0 +1,30 @@
+\chapter*{Introduction}
+The following type of \textit{classification problem} occurs often in math:
+\begin{center}
+Consider some type of object and a notion of isomorphism which can be defined between them. We are interested in understanding the behaviour of isomorphism classes and how they relate to each other.
+\end{center}
+Finding a bijection between isomorphism classes and known objects is usually trivial\footnote{for example, if the classes form a set they can be identified with a canonical set of the same cardinality}, but for an answer to a classification problem to be satisfactory we usually require some information on \textit{families} of isomorphism classes.\medskip
+
+Miraculously, many such classification problems turn out to have a natural answer in the form of a space whose points are isomorphism classes and whose geometry encodes how families behave. Such an object is usually called a \textit{moduli space}.
+
+The best result we can hope for is finding a space which completely encodes how families behave\footnote{what will be formalized as a fine moduli space}, but this requirement is usually too strict. 
+In this document we mostly deal with problems for which such a nice space exists.\medskip
+
+
+
+\section*{Historical background and motivation}
+
+[IGNORE WHAT IS WRITTEN HERE, I WILL COME BACK LATER]
+
+**************************************
+
+The most fruitful formalization of family as intended above has been the functorial approach, the basics of which will be introduced in the first chapter.
+
+
+Projective space $\K\Pj^{n-1}$ may be considered the simplest nontrivial example of a moduli space. By definition, its points are in bijection with lines in $\K^n$. We would like to define a family of lines in $\K^n$ over some variety $S$ to be a ``continuously varying" (according to the geometry of $S$) assignment of lines to each point of $S$. 
+
+One way to approach this, by definition of $\K\Pj^{n-1}$, is to give a morphism $S\to \K\Pj^{n-1}$. Such a morphism is a function that to every point of $S$ assigns a point of $\K\Pj^{n-1}$, i.e. a line in $\K^n$, such that it is continuous and preserves pullbacks of homogeneous polynomials. This can intuitively be taken to be the definition of a ``continuous" family.\bigskip
+
+This example motivates the idea that if we want $M$ to be a moduli space for some objects up to some isomorphism then we want something of the form
+\[\Hom(S,M)\cong\quot{\cpa{\text{families of objects over $S$}}}\sim.\]
+If $T\to S$ is a morphism then we may define $T\to M$ by the composition $T\to S\to M$, so we also desire a pullback property for families. This suggest that we may want to consider families of the form $F(S)$ for $F$ a functor.

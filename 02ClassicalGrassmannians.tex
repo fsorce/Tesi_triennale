@@ -1,4 +1,4 @@
-\chapter{Classical Grassmannians}
+\chapter{Grassmannians as projective varieties}
 In this chapter we introduce Grassmannians from the point of view of classical algebraic geometry. We are interested in Grassmannians in the context of classification problems because their definition leads us to suspect that they are a moduli space for certain families of vector spaces. In the next chapter we will indeed find that they are fine moduli spaces for a functor that formalizes \textit{families of $k$-vector subspaces of $\K^n$}.\medskip
 
 We first define Grassmannians set-theoretically, then we will find a bijection between this set and Zariski-closed subset of some projective space. This bijection will allow us to endow the Grassmannian with the structure of a projective algebraic variety.
@@ -12,14 +12,14 @@ Let $k\leq n$ be a pair of positive integers. We define the \textbf{$(n,k)$-Gras
 We may equivalently define $\Gr(k,n)$ to be the following set:
 \[\cpa{\ker \vp\mid \vp\in \Hom_\K(\K^n,\K^k),\ \rnk \vp=k}.\]
 \end{remark}
-\begin{proof}
-If $H\in \Gr(k,n)$, let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $H=\Span(z_1,\cdots, z_{n-k})$ and let $e_1,\cdots, e_k$ be any basis of $\K^k$. We can view $H$ as the kernel of the (rank $k$) linear map given by
-\[\vp(z_i)=\begin{cases}
-0 &\text{if }i\leq n-k\\
-e_{i-n+k} &\text{otherwise}
-\end{cases}\]
-On the other hand, if $\vp$ is a rank $k$ linear map then, by the rank-nullity theorem, its kernel is an $n-k$ dimensional subspace of $\K^n$.
-\end{proof}
+%\begin{proof}
+%If $H\in \Gr(k,n)$, let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $z_1,\cdots, z_{n-k}$ is a basis of $H$ and let $e_1,\cdots, e_k$ be any basis of $\K^k$. We can view $H$ as the kernel of the (rank $k$) linear map given by
+%\[\vp(z_i)=\begin{cases}
+%0 &\text{if }i\leq n-k\\
+%e_{i-n+k} &\text{otherwise}
+%\end{cases}\]
+%On the other hand, if $\vp$ is a rank $k$ linear map then, by the rank-nullity theorem, its kernel is an $n-k$ dimensional subspace of $\K^n$.
+%\end{proof}
 
 \begin{lemma}\label{kerAkerBVSActionOfGLk}
 Let $\vp,\psi\in \Hom_\K(\K^n,\K^k)$ be linear maps of full rank. The following conditions are equivalent:
@@ -29,14 +29,15 @@ Let $\vp,\psi\in \Hom_\K(\K^n,\K^k)$ be linear maps of full rank. The following 
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-Let us prove both implications:
-\setlength{\leftmargini}{0cm}
-\begin{itemize}
-\item[$\boxed{2.\implies 1.}$] $\ker \vp=\ker(\theta\circ \psi)=\psi\ii(\ker \theta)=\psi\ii(\cpa{0})=\ker \psi$. 
-\item[$\boxed{1.\implies 2.}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $\ker\vp=\ker\psi=\Span(z_1,\cdots, z_{n-k})$. By construction $\vp(z_{n-k+1}),\cdots, \vp(z_n)$ and $\psi(z_{n-k+1}),\cdots, \psi(z_n)$ are bases of $\K^k$. 
-Let $\theta$ be the change of basis on $\K^k$ determined by $\theta(\psi(z_i))=\vp(z_i)$ for all $n-k<i\leq n$. By construction $\theta$ is nonsingular and $\vp$ agrees with $\theta\circ \psi$ on a basis of $\K^n$.
-\end{itemize}
-\setlength{\leftmargini}{0.5cm}
+The implication $2.\implies 1.$ is a straight forward computation, the other can be derived by completing a basis of $H$ to a basis $\Bc$ of $\K^n$ and defining $\theta$ to be the change of basis between the images of $\Bc$ under $\vp$ and $\psi$.
+%Let us prove both implications:
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{2.\implies 1.}$] $\ker \vp=\ker(\theta\circ \psi)=\psi\ii(\ker \theta)=\psi\ii(\cpa{0})=\ker \psi$. 
+%\item[$\boxed{1.\implies 2.}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $\ker\vp=\ker\psi=\Span(z_1,\cdots, z_{n-k})$. By construction $\vp(z_{n-k+1}),\cdots, \vp(z_n)$ and $\psi(z_{n-k+1}),\cdots, \psi(z_n)$ are bases of $\K^k$. 
+%Let $\theta$ be the change of basis on $\K^k$ determined by $\theta(\psi(z_i))=\vp(z_i)$ for all $n-k<i\leq n$. By construction $\theta$ is nonsingular and $\vp$ agrees with $\theta\circ \psi$ on a basis of $\K^n$.
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
 \end{proof}
 
 \begin{corollary}\label{LinearQuotientDefinition}
@@ -51,28 +52,38 @@ where $\vp\sim \psi$ if and only if $\exists \theta\in \GL(\K^k)$ such that $\vp
 We define a \textbf{$(k,n)$-multiindex} as an element of $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$.\\
 We denote the set of \textbf{ordered $(k,n)$-multiindicies} with
 \[\omega(k,n)=\cpa{(i_1,\cdots, i_k)\in \cpa{1,\cdots, n}^k\mid i_1<\cdots<i_k}.\]
-If $I\in \omega(k,n)$, we denote by $\wh I$ the element of $\omega(n-k,n)$ whose elements are those of $\cpa{1,\cdots, n}$ missing from $I$.\\
-For a given multiindex $I\in\omega(k,n)$, define $\sigma_I$ to be the permutation that sends $\wh I\cup I$ to $\cpa{1,\cdots, n}$, where $\cup$ denotes concatenation.\\
+If $I\in \omega(k,n)$, we write\footnote{$\cup$ and $\ast$ denote the union of the underlying sets and concatenation respectively.}
+\begin{itemize}
+\item $\wh I$ for the element of $\omega(n-k,n)$ such that $I\cup \wh I=\cpa{1,\cdots, n}$ and 
+\item $\sigma_I$ for the permutation that sends $\wh I\ast I$ to $\pa{1,\cdots, n}$.
+\end{itemize}
 If $A$ is a $k\times n$ matrix and $I$ is a $(k,n)$-multiindex, we denote the \textbf{$I$-minor of $A$} by $A_I$, i.e.
 \[A_I=\mat{a_{1,i_1} &\cdots &a_{1,i_{k}}\\\vdots &\ddots &\vdots\\a_{k,i_1}&\cdots&a_{k,i_k}}.\]
 If $B$ is an $\al\times \beta$ matrix, $i\in\cpa{1,\cdots, \al}$ and $j\in \cpa{1,\cdots, \beta}$ we denote the $(\al-1)\times (\beta-1)$ matrix obtained from $B$ by deleting the $i$-th row and the $j$-th column with $B_{\times i,\times j}$.
 \end{definition}
 
 \begin{remark}
-If $I=(i_1,\cdots, i_k)$ is a $(k,n)$-multiindex and $e_1,\cdots,e_n$ is a basis of $\K^n$ we define
+If $I=(i_1,\cdots, i_k)$ is a $(k,n)$-multiindex and $\Bc=\cpa{e_1,\cdots,e_n}$ is a basis of $\K^n$ we define
 \[e_I=e_{i_1}\wedge\cdots\wedge e_{i_k}.\]
 Note that
 \[\cpa{e_{i_1}\wedge\cdots\wedge e_{i_k}\mid 1\leq i_1<\cdots<i_k\leq n}=\cpa{e_I\mid I\in \omega(k,n)}\]
-forms a basis for $\bigwedge^k\K^n$.
+forms a basis for $\bigwedge^k\K^n$, which we call the \textbf{basis induced by $\Bc$} and denote with $\wedge^k\Bc$ or simply $\Bc$ with a slight abuse of notation.
 \end{remark}
 
 \begin{notation}
-Whenever a basis $\Bc$ of $\K^\ell$ is fixed, we will identify $\bigwedge^\ell\K^\ell$ with $\K$ by sending the wedge of the ordered basis to $1\in\K$. This isomorphism is denoted $\eta_\Bc:\bigwedge^\ell\K^\ell\to \K$. If $\Dc$ is a basis of $\K^m$ then we define $\eta^\Bc_\Dc=\eta_\Dc\ii\circ \eta_\Bc$.
+Whenever a basis $\Bc$ of $\K^\ell$ is fixed, we will identify $\bigwedge^\ell\K^\ell$ with $\K$ by sending only element of $\wedge^\ell\Bc$ to $1\in\K$. This isomorphism is denoted $\eta_\Bc:\bigwedge^\ell\K^\ell\to \K$. If $\Dc$ is a basis of $\K^m$ then we define $\eta^\Bc_\Dc=\eta_\Dc\ii\circ \eta_\Bc$.
 \end{notation}
 
+\begin{remark}[Matrix form for the Grassmannian]
+If we fix bases $e_1,\cdots, e_n$ of $\K^n$ and $e_1,\cdots, e_k$ of $\K^k$, then we can identify $\Hom_\K(\K^n,\K^k)$ with the set of $k\times n$ matrices with coefficients in $\K$. As a consequence of this we find yet another form for $\Gr(k,n)$:
+\[\Gr(k,n)=\quot{\cpa{A\in \Mc(k,n)\mid \rnk A=k}}{\sim},\] 
+where $A\sim B\coimplies \exists P\in \GL(k)\ s.t.\ A=PB$.
+\end{remark}
+
 \section{The Pl\"ucker embedding}
-In this section we define an injection from the Grassmannian to a projective space.\\
-The idea behind this map is to take appropriate wedge products in such a way as to trasform the several vectors defining a vector subspace into a single vector and then to projectivize.
+In this section we define an injection from the Grassmannian to a projective space.
+The idea behind this map is to take appropriate wedge products in such a way as to trasform the several vectors defining a vector subspace into a single vector and then to projectivize. 
+Our approach differs slightly from the usual one\footnote{briefly illustrated in \cite{matroids}, pages 79 and 80} because we consider equivalence classes of maps rather than equivalence classes of bases.
 
 \begin{definition}[Pl\"ucker map]
 Let $k\leq n$ be a pair of positive integers. We define the \textbf{Pl\"ucker map} as\footnote{the map $\wedge^k\vp$ is well defined because if we view it as a map $\wedge^k\vp:(\K^n)^k\to \bigwedge^k\K^k$ then it is multilinear and alternating.}
@@ -82,18 +93,24 @@ where $(\wedge^k\vp)(v_1\wedge\cdots\wedge v_k)=\vp(v_1)\wedge\cdots\wedge\vp(v_
 
 \begin{remark}
 If $\Bc=\cpa{v_1,\cdots, v_k}$ is a basis of $\K^k$, $\Can=\cpa{e_1,\cdots,e_k}$ is the canonical basis and $[\cdot]_\Bc:\K^k\to\K^k$ is the isomorphism which sends $v_i$ to $e_i$ then
-\[\wedge^k(\vp)(v_1\wedge\cdots\wedge v_k)=\det\mat{[\vp(v_1)]_\Bc|\cdots|[\vp(v_k)]_\Bc} e_1\wedge\cdots\wedge e_k,\]
-which we will often identify with the coefficient, i.e. its image under $\eta^\Bc_\Can$.\medskip
-
-\noindent In the interest of readability, when $\Bc$ is fixed we will write $\wedge^k(\vp)(v_1\wedge\cdots\wedge v_k)$ or $\vp(v_1)\wedge\cdots\wedge\vp(v_k)$ to mean $\det\mat{[\vp(v_1)]_\Bc|\cdots|[\vp(v_k)]_\Bc}$. This gives the first notation two interpretations but which is meant will be clear from context.
+\[\wedge^k(\vp)(v_1\wedge\cdots\wedge v_k)=\det\mat{[\vp(v_1)]_\Bc|\cdots|[\vp(v_k)]_\Bc} e_1\wedge\cdots\wedge e_k.\]
 \end{remark}
 
 \begin{remark}\label{CodomainOfPluckerMap}
 The codomain of the Pl\"ucker map is isomorphic to $\bigwedge^k\K^n$, indeed
 \[\Hom_\K\pa{\bigwedge^k\K^n,\bigwedge^k\K^k}\cong \pa{\bigwedge^k\K^n}^{\vee}\cong \bigwedge^k\K^n.\]
-The isomorphism depends on the choice of basis for $\K^n$ and $\K^k$:\\
-If $\Bc=\cpa{e_1,\cdots, e_n}$ is a basis of $\K^n$ and $\Dc=\cpa{e_1,\cdots, e_k}$ is a basis of $\K^k$ then the isomorphism takes on the following form
-\[\zeta_{\Bc,\Dc}:\funcDef{\Hom_\K(\K^n,\K^k)}{\bigwedge^k\K^n}{\psi}{\displaystyle\sum_{I\in\omega(k,n)} \eta_\Dc(\psi(e_I))e_I}.\]
+If $\Bc=\cpa{e_1,\cdots, e_n}$ is a basis of $\K^n$ and $\Dc=\cpa{e_1,\cdots, e_k}$ is a basis of $\K^k$ then we can write one such isomorphism concretely as
+\[\zeta_{\Bc,\Dc}:\funcDef{\Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)}{\bigwedge^k\K^n}{\psi}{\displaystyle\sum_{I\in\omega(k,n)} \eta_\Dc(\psi(e_I))e_I}.\]
+When the bases are fixed we simply write $\zeta$.
+\end{remark}
+
+\begin{notation}
+If bases are fixed we define $\phi\doteqdot \zeta\circ \wedge^k$.
+\end{notation}
+
+\begin{remark}[Matrix form of the Pl\"ucker map]
+If we fix bases $e_1,\cdots, e_n$ of $\K^n$ and $e_1,\cdots, e_k$ of $\K^k$ then, up to identifying $\Hom_\K(\K^n,\K^k)$ with $\Mc(k,n)$, we have
+\[\phi:\funcDef{\Mc(k,n)}{\bigwedge^k\K^n}{A}{\sum_{I\in \omega(k,n)}\det A_I e_I}\]
 \end{remark}
 
 
@@ -101,15 +118,16 @@ If $\Bc=\cpa{e_1,\cdots, e_n}$ is a basis of $\K^n$ and $\Dc=\cpa{e_1,\cdots, e_
 The image of the Pl\"ucker map is a cone.
 \end{proposition}
 \begin{proof}
-For any $\la\in \K^\ast$ and any map $\vp\in \Hom_\K(\K^n,\K^k)$ note that
-\[\la\wedge^k(\vp)=\wedge^k(\al\circ \vp)\]
-for any automorphism $\al$ of $\K^k$ with determinant $\la$. We can construct one such $\al$ by fixing a basis of $\K^k$ and defining $\al$ to be the map corresponding to the matrix
-\[\mat{
-\la &   &        &\\
-    & 1 &        &\\
-	&   & \ddots &\\
-	&   &        &  1
-}\]
+We have $\la\wedge^k\vp=\wedge^k(\al\circ \vp)$ for any $\al\in \GL(\K^k)$ with determinant $\la$. 
+%For any $\la\in \K^\ast$ and any map $\vp\in \Hom_\K(\K^n,\K^k)$ note that
+%\[\la\wedge^k(\vp)=\wedge^k(\al\circ \vp)\]
+%for any automorphism $\al$ of $\K^k$ with determinant $\la$. We can construct one such $\al$ by fixing a basis of $\K^k$ and defining $\al$ to be the map corresponding to the matrix
+%\[\mat{
+%\la &   &        &\\
+%    & 1 &        &\\
+%	&   & \ddots &\\
+%	&   &        &  1
+%}\]
 \end{proof}
 
 
@@ -125,11 +143,12 @@ Let $\vp:\K^n\to \K^k$ be a full rank linear map, then
 \[\ker\vp=\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=0}.\]
 \end{lemma}
 \begin{proof}
-If $\vp(z)=0$ then for any $w_2,\cdots, w_k\in \K^k$ we see that 
-\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=0\wedge \vp(w_2)\wedge\cdots\wedge \vp(w_k)=0.\]
-Suppose now that $\vp(z)\neq 0$ and let $v_2,\cdots, v_k$ be such that $\cpa{\vp(z), v_2,\cdots,v_k}$ forms a basis for $\K^k$. Since $\vp$ is surjective, there exist $w_2,\cdots, w_k$ such that $\vp(w_i)=v_i$ for all $2\leq i\leq k$.
-By construction 
-\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=\vp(z)\wedge v_2\wedge\cdots\wedge v_k\neq0.\]
+The inclusion $\subseteq$ is trivial. If $\vp(z)\neq 0$ we can find $k-1$ vectors of the desired form by completing $\vp(z)$ to a basis $\vp(z),v_2,\cdots,v_k$ of $\K^k$ and then taking $w_i$ to be any element of $\vp\ii(v_i)$. The set is not empty by surjectivity of $\vp$.
+%If $\vp(z)=0$ then for any $w_2,\cdots, w_k\in \K^k$ we see that 
+%\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=0\wedge \vp(w_2)\wedge\cdots\wedge \vp(w_k)=0.\]
+%Suppose now that $\vp(z)\neq 0$ and let $v_2,\cdots, v_k$ be such that $\cpa{\vp(z), v_2,\cdots,v_k}$ forms a basis for $\K^k$. Since $\vp$ is surjective, there exist $w_2,\cdots, w_k$ such that $\vp(w_i)=v_i$ for all $2\leq i\leq k$.
+%By construction 
+%\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=\vp(z)\wedge v_2\wedge\cdots\wedge v_k\neq0.\]
 \end{proof}
 
 \begin{proposition}[Injectivity of the Pl\"ucker map up to scalars]\label{PluckerMapInjectiveOnGrassmanniansUpToScalar}
@@ -140,7 +159,8 @@ Let $\sim$ be the equivalence relation defined in corollary (\ref{LinearQuotient
 We prove both implications:
 \setlength{\leftmargini}{0cm}
 \begin{itemize}
-\item[$\boxed{\implies}$] If $\vp=\theta\circ \psi$ for $\theta\in \GL(\K^k)$ then it follows easily from known properties of the determinant that \[\wedge^k(\vp)=\wedge^k(\theta\circ \psi)=(\det\theta) \wedge^k(\psi).\]
+\item[$\boxed{\implies}$] If $\vp=\theta\circ \psi$ for $\theta\in \GL(\K^k)$ then
+\[\wedge^k(\vp)=\wedge^k(\theta\circ \psi)=(\det\theta) \wedge^k(\psi).\]
 \item[$\boxed{\impliedby}$] From lemma (\ref{kerAkerBVSActionOfGLk}) we see that it is enough to prove that $\ker \vp=\ker \psi$. We conclude by applying lemma (\ref{CharacterizationOfKernels}) as follows:
 \begin{align*}
 \ker\vp=&\cpa{z\in\K^n\mid \forall w_2,\cdots, w_k\in \K^n,\ \wedge^k(\vp)(z\wedge w_2\wedge \cdots\wedge w_k)=0}=\\
@@ -152,7 +172,7 @@ We prove both implications:
 \end{proof}
 
 \begin{remark}
-Because of proposition (\ref{PluckerMapInjectiveOnGrassmanniansUpToScalar}) and lemma (\ref{WhenPluckerMapIsZero}) there exists a unique $h$ such that the diagram commutes
+Because of proposition (\ref{PluckerMapInjectiveOnGrassmanniansUpToScalar}) and lemma (\ref{WhenPluckerMapIsZero}), there exists a unique $h$ such that the diagram commutes
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGNwYXtcXHZwXFxpbiBcXEhvbV9cXEsoXFxLXm4sXFxLXmspXFxtaWQgXFxybmsgXFx2cD1rfSJdLFswLDEsIlxcR3IoayxuKSJdLFsxLDAsIlxcUGooXFxiaWd3ZWRnZV5rXFxIb21fXFxLKFxcS15uLFxcS15rKSkiXSxbMCwxLCJcXHBpIl0sWzAsMiwiW1xccGhpXSJdLFsxLDIsImgiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
 \[\begin{tikzcd}
 	{\cpa{\vp\in \Hom_\K(\K^n,\K^k)\mid \rnk \vp=k}} & {\Pj(\Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k))} \\
@@ -166,7 +186,7 @@ Moreover, such an $h$ must be injective by proposition (\ref{PluckerMapInjective
 
 
 \begin{definition}[Pl\"ucker embedding]
-Let us fix a basis $e_1,\cdots, e_n$ of $\K^n$ and a basis $e_1,\cdots, e_k$ of $\K^k$. We define the \textbf{Pl\"ucker embedding} as follows
+Let us fix a basis $e_1,\cdots, e_n$ of $\K^n$ and a basis $e_1,\cdots, e_k$ of $\K^k$. We define the \textbf{Pl\"ucker embedding} as follows\footnote{we can omit the basis in which we calulated the determinats because we will soon see that the resulting point in $\Pj(\bigwedge^k\K^n)$ does not depend on this choice.}
 \[\Pl:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[\vp]}{\displaystyle\spa{\sum_{1\leq i_1<\cdots<i_k\leq n}\det(\vp(e_{i_1})\mid\cdots\mid\vp(e_{i_k}))e_{i_1}\wedge\cdots\wedge e_{i_k}}}\]
 The entries of the homogeneous $\binom nk$-tuple associated to $[\vp]\in \Gr(k,n)$ are called the \textbf{Pl\"ucker coordinates} of $[\vp]$. 
 \end{definition}
@@ -185,24 +205,29 @@ This proves that the Pl\"ucker embedding is well defined and injective.
 \end{remark}
 
 \begin{remark}
-If we define $\phi=\zeta\circ \wedge^k$ then we see that \[\Pl\circ \pi_\sim=\Pj(\phi).\]
-This identity will guide our definition of the Pl\"ucker embedding in the next chapter.
+$\Pl\circ \pi_\sim=\Pj(\zeta\circ\wedge^k)=\Pj(\phi)$.
 \end{remark}
 
 
 \begin{remark}
-The Pl\"ucker embedding depends on the choice of basis for $\K^n$ but not on the one for $\K^k$, since the effect of changing the basis of $\K^k$ is that of multiplying all Pl\"ucker coordinates by the same nonzero scalar (the determinant of the change of basis), which doesn't change the point they describe in $\Pj(\bigwedge^k\K^k)$.\\
+The Pl\"ucker embedding depends on the choice of basis for $\K^n$ but not on the one for $\K^k$. 
+
+Changing the basis of $\K^k$ simply multiplies all Pl\"ucker coordinates by the same nonzero scalar (the determinant of the change of basis), which does not change the point they describe in $\Pj(\bigwedge^k\K^k)$.
+
 The dependence on the basis of $\K^n$ is inevitable because $\GL(\K^n)$ acts transitively on $\Gr(k,n)$ viewed as the set of $(n-k)$-dimentional subspaces of $\K^n$.
+\end{remark}
+
+\begin{remark}[Matrix form of the Pl\"ucker embedding]
+If we fix a basis $e_1,\cdots, e_n$ of $\K^n$ and identify $\Hom_\K(\K^n,\K^k)$ with $\Mc(k,n)$  then
+\[\Pl:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{\spa{\sum_{I\in \omega(k,n)}\det A_I e_I}_{\K^\ast}}\]
 \end{remark}
 
 
 
-\section{The image of the Pl\"ucker embedding is closed}
-Thus far we have identified $\Gr(k,n)$ with a subset of some projective space. We seek to show that it is a closed subset in the Zariski topology. Our approach mostly adapts parts of \cite{McKernan}.
-\medskip
+\section{The image of the Pl\"ucker embedding is closed}\label{ImagePluckerEmbeddingIsClosed}
+Thus far we have identified $\Gr(k,n)$ with a subset of some projective space. We seek to show that this subset is closed in the Zariski topology.
 
-\noindent First we need some linear algebra results
-
+\subsection{Some linear algebra results}
 \begin{definition}[Divisibility]
 We say that $\omega\in \bigwedge^k\K^n$ is \textbf{divisible} by $v\in\K^n$ if there exists $\e\in \bigwedge^{k-1}\K^n$ such that $\omega=\e\wedge v$.
 \end{definition}
@@ -210,27 +235,32 @@ We say that $\omega\in \bigwedge^k\K^n$ is \textbf{divisible} by $v\in\K^n$ if t
 Let $\omega\in \bigwedge^k\K^n$. For any given nonzero vector $v$, $\omega$ is divisible by $v$ if and only if $\omega\wedge v=0$.
 \end{lemma}
 \begin{proof}
-If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$.\\
-Suppose now that $\omega\wedge v=0$. Let $v_1,\cdots, v_n$ be a basis of $\K^n$ such that $v_1=v$. 
-If we write
-\[\omega=\sum_{I\in\omega(k,n)}p_I v_I\]
-then we see that for any given multiindex $I$, either $p_I=0$ or $v_I\wedge v=0$. 
-Since $v_1,\cdots, v_n$ is a basis, $v_I\wedge v_1=0$ if and only if $1\in I$, i.e. $v_I=v\wedge v_{\pa{i_2,\cdots, i_k}}$, therefore
-\[\omega=v\wedge \under{\doteqdot (-1)^{k-1}\e}{\pa{\sum_{2\leq i_2<\cdots i_k\leq n} p_{\pa{1,i_2,\cdots, i_k}} e_{\pa{i_2,\cdots, i_k}}}}=\e\wedge v.\]
+If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$. If $\omega\wedge v=0$ then by writing $\omega$ in a base containing $v$ we can see that the simple multivectors with nonzero coefficients must contain $v$ as a factor, so can factor out $v$ by multilinearity and get a decomposition of the form $\omega=\e\wedge v$.
+%If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$.\\
+%Suppose now that $\omega\wedge v=0$. Let $v_1,\cdots, v_n$ be a basis of $\K^n$ such that $v_1=v$. 
+%If we write
+%\[\omega=\sum_{I\in\omega(k,n)}p_I v_I\]
+%then we see that for any given multiindex $I$, either $p_I=0$ or $v_I\wedge v=0$. 
+%Since $v_1,\cdots, v_n$ is a basis, $v_I\wedge v_1=0$ if and only if $1\in I$, i.e. $v_I=v\wedge v_{\pa{i_2,\cdots, i_k}}$, therefore
+%\[\omega=v\wedge \under{\doteqdot (-1)^{k-1}\e}{\pa{\sum_{2\leq i_2<\cdots i_k\leq n} p_{\pa{1,i_2,\cdots, i_k}} e_{\pa{i_2,\cdots, i_k}}}}=\e\wedge v.\]
 \end{proof}
 
 \begin{corollary}[Total decomposibility criterion]\label{TotalDecomposibilityCriterion}
-Let $\omega\in \bigwedge^k\K^n$. If $\dim\cpa{v\in\K^n\mid \omega\wedge v=0}\geq k$ then $\omega=\la v_1\wedge \cdots\wedge v_k$ for any set of linearly independent vectors $\cpa{v_1,\cdots, v_k}$ in $\cpa{v\in\K^n\mid \omega\wedge v=0}$ and some scalar $\la$. Moreover $\la\neq 0$ if and only if $\dim\cpa{v\in\K^n\mid \omega\wedge v=0}= k$.
+Let $\omega\in \bigwedge^k\K^n$ and define 
+\[D_\omega=\cpa{v\in\K^n\mid \omega\wedge v=0}.\]
+If $\dim D_\omega\geq k$ then $\omega=\la v_1\wedge \cdots\wedge v_k$ for any set of linearly independent vectors $\cpa{v_1,\cdots, v_k}$ in $D_\omega$ and some scalar $\la$. 
+Moreover $\la\neq 0$ if and only if $\dim D_\omega= k$.
 \end{corollary}
 \begin{proof}
-The set $\cpa{v\in\K^n\mid \omega\wedge v=0}$ is clearly a subspace of $\K^n$. Let $\cpa{v_1,\cdots, v_k}$ be linearly independent vectors of this space. By iterating the above lemma we see that
-\[\omega=\la\wedge v_1\wedge\cdots\wedge v_k\]
-for some $\la\in \bigwedge^0\K^n=\K$.\\
-If $\la=0$ then clearly $\cpa{v\in\K^n\mid \omega\wedge v=0}=\K^n$. If $v_{k+1}$ is such that $\omega\wedge v_{k+1}=0$ and $\cpa{v_1,\cdots, v_{k+1}}$ is linearly independent then, proceding as above,
-\[\la v_1\wedge\cdots\wedge v_{k}=\omega=\mu v_1\wedge\cdots\wedge v_{k-1}\wedge v_{k+1}.\]
-By multilinearity
-\[0=v_1\wedge\cdots\wedge v_{k-1}\wedge(\la v_k-\mu v_{k+1}),\]
-i.e. $\la v_k-\mu v_{k+1}\in \Span(v_1,\cdots, v_{k-1})$. By linear independence $\la v_k-\mu v_{k+1}=0$ and thus, again by linear independence, $\la=\mu=0$.
+For the first part of the result we may just iterate the above lemma. If $\la=0$ then $D_\omega=\K^n$, so its dimention is not $k$. If the dimention is greater than $k$ then we may subtract two total decompositions differing only by one vector and use linear independence to check that the coefficients must have been zero.
+%The set $D_\omega$ is clearly a subspace of $\K^n$. Let $\cpa{v_1,\cdots, v_k}$ be linearly independent vectors of this space. By iterating the above lemma we see that
+%\[\omega=\la\wedge v_1\wedge\cdots\wedge v_k\]
+%for some $\la\in \bigwedge^0\K^n=\K$.\\
+%If $\la=0$ then clearly $D_\omega=\K^n$. If $v_{k+1}$ is such that $\omega\wedge v_{k+1}=0$ and $\cpa{v_1,\cdots, v_{k+1}}$ is linearly independent then, proceding as above,
+%\[\la v_1\wedge\cdots\wedge v_{k}=\omega=\mu v_1\wedge\cdots\wedge v_{k-1}\wedge v_{k+1}.\]
+%By multilinearity
+%\[0=v_1\wedge\cdots\wedge v_{k-1}\wedge(\la v_k-\mu v_{k+1}),\]
+%i.e. $\la v_k-\mu v_{k+1}\in \Span(v_1,\cdots, v_{k-1})$. By linear independence $\la v_k-\mu v_{k+1}=0$ and thus, again by linear independence, $\la=\mu=0$.
 \end{proof}
 
 
@@ -242,25 +272,26 @@ For any basis $\Bc=\cpa{e_1,\cdots, e_n}$ of $\K^n$ the map
 is the inverse of $\Xi$.
 \end{proposition}
 \begin{proof}
-The map is clearly base independent and linear.\\
-For all $e_J$
-\begin{align*}
-\Xi(\Gamma_\Bc(\psi))(e_J)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\psi(e_{\wh I}))e_I\wedge e_J=\\
-=&\sgn\sigma_{\wh J}\eta_\Bc(\psi(e_{J}))e_{\wh J}\wedge e_J=\\
-=&\eta_\Bc(\psi(e_{J}))e_{(1,\cdots,n)}=\\
-=&\psi(e_{J}),
-\end{align*}
-so $\Xi(\Gamma_\Bc(\psi))$ agrees with $\psi$ on a basis.\medskip
+The map is clearly base independent and linear. Let $\wedge^k\Bc$ be the basis induced on $\bigwedge^k\K^n$ by $\Bc$. Concluding from here is simply a matter of computing $\Gamma_\Bc(\Xi(\omega))$ by writing $\omega$ in terms of its coordinates in $\wedge^k\Bc$ and verifying that $\Xi(\Gamma_\Bc(\psi))$ and $\psi$ agree on $\wedge^k\Bc$. 
+%The map is clearly base independent and linear.\\
+%For all $e_J$
+%\begin{align*}
+%\Xi(\Gamma_\Bc(\psi))(e_J)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\psi(e_{\wh I}))e_I\wedge e_J=\\
+%=&\sgn\sigma_{\wh J}\eta_\Bc(\psi(e_{J}))e_{\wh J}\wedge e_J=\\
+%=&\eta_\Bc(\psi(e_{J}))e_{(1,\cdots,n)}=\\
+%=&\psi(e_{J}),
+%\end{align*}
+%so $\Xi(\Gamma_\Bc(\psi))$ agrees with $\psi$ on a basis.\medskip
 
-\noindent
-If $\omega=\sum_{J\in\omega(n-k,n)} p_J e_J$ then
-\begin{align*}
-\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})=&\sum_{J\in\omega(n-k,n)}p_J\sgn\sigma_I\eta_\Bc(e_J\wedge e_{\wh I})=\\
-=&p_I\eta_\Bc(\sgn \sigma_I e_I\wedge e_{\wh I})=\\
-=&p_I\eta_\Bc(e_{(1,\cdots, n)})=\\
-=&p_I,
-\end{align*}
-thus \[\Gamma_\Bc(\Xi(\omega))=\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})e_I=\sum_{I\in\omega(n-k,n)}p_Ie_I=\omega.\]
+%\noindent
+%If $\omega=\sum_{J\in\omega(n-k,n)} p_J e_J$ then
+%\begin{align*}
+%\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})=&\sum_{J\in\omega(n-k,n)}p_J\sgn\sigma_I\eta_\Bc(e_J\wedge e_{\wh I})=\\
+%=&p_I\eta_\Bc(\sgn \sigma_I e_I\wedge e_{\wh I})=\\
+%=&p_I\eta_\Bc(e_{(1,\cdots, n)})=\\
+%=&p_I,
+%\end{align*}
+%thus \[\Gamma_\Bc(\Xi(\omega))=\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})e_I=\sum_{I\in\omega(n-k,n)}p_Ie_I=\omega.\]
 \end{proof}
 \begin{corollary}\label{UpToScalarCanonicalIso}
 Let $\psi\in \Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)$. If $\Bc=\cpa{e_1,\cdots, e_n}$ and $\Bc'=\cpa{e_1',\cdots, e_n'}$ are two bases for $\K^n$ and $\Dc=\cpa{e_1,\cdots,e_k}$ and $\Dc'=\cpa{e_1',\cdots,e_k'}$ are bases for $\K^k$, there exists $\mu\in\K\nz$ such that
@@ -269,51 +300,64 @@ Let $\psi\in \Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)$. If $\Bc=\cpa{e_1,\cdots,
 \begin{proof}
 Note that
 \[\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(e_{\wh I}))e_I=\Xi\ii(\eta^\Dc_\Bc\circ \psi)\]
-and similarly the other expression is $\Xi\ii(\eta^{\Dc'}_{\Bc'}\circ \psi)$.\\
+and similarly the other expression is $\Xi\ii(\eta^{\Dc'}_{\Bc'}\circ \psi)$. 
 It is therefore enough to show that $\eta^\Bc_\Dc=\mu\eta^{\Bc'}_{\Dc'}$ for some $\mu\in \K\nz$, which is true because $\dim_\K\Hom_\K(\bigwedge^n\K^n,\bigwedge^k\K^k)=1$ and both $\eta^{\Bc}_{\Dc}$ and $\eta^{\Bc'}_{\Dc'}$ are not the zero map.
 \end{proof}
 
-
+\subsection{Rank condition for the image}
 \begin{lemma}\label{DecomposabilityOfMultilinearForm}
 Fix bases $\Bc=\cpa{e_1,\cdots, e_n}$ of $\K^n$ and $\Dc=\cpa{e_1,\cdots, e_k}$ of $\K^k$. A multilinear alternating form $\psi\in \Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)$ is in the image of the Pl\"ucker map $\wedge^k$ if and only if there exists $\la\in\K$ and linearly independent vectors $z_1,\cdots,z_{n-k}$ such that
 \[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(e_{\wh I}))e_I=\la z_{(1,\cdots, n-k)}.\]
 \end{lemma}
 \begin{proof}
-For simplicity we omit the $\eta_\Dc$. 
+We show both implications
 \setlength{\leftmargini}{0cm}
 \begin{itemize}
-\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\cpa{z_1,\cdots, z_n}$ be a basis of $\K^n$ such that $z_1,\cdots, z_{n-k}$ are linearly independent vectors in $\ker \vp$, then
-\begin{align*}
-&\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I\pasgnl={(\ref{UpToScalarCanonicalIso})}\\
-&\qquad\qquad\qquad=\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(z_{\wh I})z_I=\\
-&\qquad\qquad\qquad=\pa{\mu\ \sgn\sigma_{(1,\cdots,n-k)}\wedge^k\vp(z_{(n-k+1,\cdots,n)}) }z_{\pa{1,\cdots, n-k}}.
-\end{align*}
-\item[$\boxed{\impliedby}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ which extends $\cpa{z_1,\cdots, z_{n-k}}$ and define $\wt\vp$ by
-\[\wt\vp(z_i)=\begin{cases}
-0 & \text{if }1\leq i\leq n-k\\
-e_1 & \text{if }i=n-k+1\\
-e_{i-n+k} & \text{if }i>n-k+1
-\end{cases}\]
-Let $\al=\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)})$ and consider the following chain of equalities
-\begin{align*}
-\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=&\la z_{(1,\cdots, n-k)}=\\
-=&\frac\la\al\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)}) z_{(1,\cdots, n-k)}=\\
-=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(z_{\wh I})z_I=\\
-=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(e_{\wh I})e_I
-\end{align*}
-where the third equality follows from the construction of $\wt\vp$ and the last is (\ref{UpToScalarCanonicalIso}). If we now define $\vp$ by
+\item[$\boxed{\implies}$] If $\psi=\wedge^k\vp$, the equality follows by choosing $z_1,\cdots, z_{n-k}$ to be a basis of $\ker\vp$. Completing this set to a basis of $\K^n$ and using corollary (\ref{UpToScalarCanonicalIso}) gives the result after a simple calculation.
+\item[$\boxed{\impliedby}$] Let $\Zc=\cpa{z_1,\cdots, z_n}$ be a basis of $\K^n$ which extends the given $z_1,\cdots, z_{n-k}$. We can take $\vp$ to be
 \[\vp(z_i)=\begin{cases}
 0 & \text{if }1\leq i\leq n-k\\
-\mu\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}} e_1 & \text{if }i=n-k+1\\
+\pa{\mu\la\sgn\sigma_{(1,\cdots,n-k)}} e_1 & \text{if }i=n-k+1\\
 e_{i-n+k} & \text{if }i>n-k+1
 \end{cases}\]
-with the same reasoning we see that
-\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I.\]
-By linear independence, this shows that for all $J\in\omega(k,n)$ we have
-\[\psi(e_J)=\wedge^k \vp(e_J),\]
-so $\psi$ and $\wedge^k(\vp)$ agree on a basis of $\bigwedge^k\K^n$ and are thus the same map. 
+where $\mu\in\K\nz$ is such that $\eta^\Bc_\Dc=\mu \eta^{\Zc}_{\Dc}$.
 \end{itemize}
 \setlength{\leftmargini}{0.5cm}
+%For simplicity we omit the $\eta_\Dc$. 
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\cpa{z_1,\cdots, z_n}$ be a basis of $\K^n$ such that $z_1,\cdots, z_{n-k}$ are linearly independent vectors in $\ker \vp$, then
+%\begin{align*}
+%&\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I\pasgnl={(\ref{UpToScalarCanonicalIso})}\\
+%&\qquad\qquad\qquad=\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(z_{\wh I})z_I=\\
+%&\qquad\qquad\qquad=\pa{\mu\ \sgn\sigma_{(1,\cdots,n-k)}\wedge^k\vp(z_{(n-k+1,\cdots,n)}) }z_{\pa{1,\cdots, n-k}}.
+%\end{align*}
+%\item[$\boxed{\impliedby}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ which extends $\cpa{z_1,\cdots, z_{n-k}}$ and define $\wt\vp$ by
+%\[\wt\vp(z_i)=\begin{cases}
+%0 & \text{if }1\leq i\leq n-k\\
+%e_1 & \text{if }i=n-k+1\\
+%e_{i-n+k} & \text{if }i>n-k+1
+%\end{cases}\]
+%Let $\al=\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)})$ and consider the following chain of equalities
+%\begin{align*}
+%\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=&\la z_{(1,\cdots, n-k)}=\\
+%=&\frac\la\al\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)}) z_{(1,\cdots, n-k)}=\\
+%=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(z_{\wh I})z_I=\\
+%=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(e_{\wh I})e_I
+%\end{align*}
+%where the third equality follows from the construction of $\wt\vp$ and the last is (\ref{UpToScalarCanonicalIso}). If we now define $\vp$ by
+%\[\vp(z_i)=\begin{cases}
+%0 & \text{if }1\leq i\leq n-k\\
+%\mu\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}} e_1 & \text{if }i=n-k+1\\
+%e_{i-n+k} & \text{if }i>n-k+1
+%\end{cases}\]
+%with the same reasoning we see that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I.\]
+%By linear independence, this shows that for all $J\in\omega(k,n)$ we have
+%\[\psi(e_J)=\wedge^k \vp(e_J),\]
+%so $\psi$ and $\wedge^k(\vp)$ agree on a basis of $\bigwedge^k\K^n$ and are thus the same map. 
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
 \end{proof}
 
 \begin{definition}
@@ -324,8 +368,9 @@ Let $\Bc=\cpa{e_1,\cdots, e_n}$ and $\Dc=\cpa{e_1,\cdots, e_k}$ be bases of $\K^
 \begin{remark}\label{RankPhiIsBaseIndependent}
 The rank of $\Phi_{\Bc,\Dc}(\psi)$ does not depend on the choice of basis. Indeed if we change basis, by corollary (\ref{UpToScalarCanonicalIso}) we see that
 \[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(e_{\wh I}))e_I\wedge v=\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_{\Dc'}(\psi(e'_{\wh I}))e'_I\wedge v,\]
-so $\Phi_{\Bc,\Dc}(\psi)(v)=0$ holds for a pair of bases $(\Bc,\Dc)$ if and only if it holds for all such pairs.\\
-Because of this we will write propositions which concern only the rank of $\Phi_{\Bc,\Dc}(\psi)$ omitting the bases.
+so $\ker \Phi_{\Bc,\Dc}(\psi)$ does not depend on the basis and thus neither do nullity or rank.\bigskip
+
+For this reason we will write propositions which only concern the rank of $\Phi_{\Bc,\Dc}(\psi)$ omitting the bases.
 \end{remark}
 
 \begin{remark}
@@ -336,31 +381,41 @@ $\Phi_{\Bc,\Dc}(\psi)$ is linear in $\psi$.
 An alternating multilinear map $\psi\in \Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)$ is in the image of the Pl\"ucker map $\wedge^k$ if and only if $\Phi(\psi)$ has rank at most $k$.
 \end{proposition}
 \begin{proof}
-Let $\Dc$ be any basis of $\K^k$. We prove both implications
-\setlength{\leftmargini}{0cm}
-\begin{itemize}
-\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\Zc=\cpa{z_1,\cdots, z_{n}}$ be a basis of $\K^n$ such that the first $n-k$ vectors are a basis of $\ker \vp$. Note that
-\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\sgn\sigma_{(1,\cdots,n-k)}\eta_\Dc(\wedge^k\vp(z_{(n-k+1,\cdots,n)}))z_{(1,\cdots, n-k)}.\]
-If $v\in \ker \vp$ then $z_{(1,\cdots, n-k)}\wedge v=0$ and therefore by the above equality $v\in \ker \Phi_{\Zc,\Dc}(\psi)$. This means that $\Phi(\psi)$ has a nullity of at least $n-k$ (i.e. rank at most $k$).
-\item[$\boxed{\impliedby}$] Suppose that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the total decomposability criterion (\ref{TotalDecomposibilityCriterion}) there exists $\la\in\K$ such that
+For the $\implies$ arrow, choose a basis $\Zc=\cpa{z_1,\cdots, z_n}$ for $\K^n$ which extends a basis for $\ker\vp$. Because of how we proved lemma (\ref{DecomposabilityOfMultilinearForm}), we see that if $v\in\ker\vp$ then $\Phi_{\Zc,\Dc}(\wedge^k\vp)(v)=\la z_{(1,\cdots, n-k)}\wedge v$, which is zero by linear dependence. Thus the nullity of $\Phi(\wedge^k\vp)$ is at least $\dim\ker\vp=n-k$.\bigskip
+
+Given $n-k$ linearly independent vectors in $\ker\Phi(\psi)$, by the total decomposibility criterion (\ref{TotalDecomposibilityCriterion}) there exists $\la\in\K$ such that
 \[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]
 This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
-\end{itemize}
-\setlength{\leftmargini}{0.5cm}
+%Let $\Dc$ be any basis of $\K^k$. We prove both implications
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\Zc=\cpa{z_1,\cdots, z_{n}}$ be a basis of $\K^n$ such that the first $n-k$ vectors are a basis of $\ker \vp$. Note that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\sgn\sigma_{(1,\cdots,n-k)}\eta_\Dc(\wedge^k\vp(z_{(n-k+1,\cdots,n)}))z_{(1,\cdots, n-k)}.\]
+%If $v\in \ker \vp$ then $z_{(1,\cdots, n-k)}\wedge v=0$ and therefore by the above equality $v\in \ker \Phi_{\Zc,\Dc}(\psi)$. This means that $\Phi(\psi)$ has a nullity of at least $n-k$ (i.e. rank at most $k$).
+%\item[$\boxed{\impliedby}$] Suppose that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the total decomposability criterion (\ref{TotalDecomposibilityCriterion}) there exists $\la\in\K$ such that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]
+%This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
 \end{proof}
 
 \begin{definition}
 Let $\Bc=\cpa{e_1,\cdots, e_n}$ and $\Dc=\cpa{e_1,\cdots, e_k}$ be bases of $\K^n$ and $\K^k$ respectively. Let $\zeta_{\Bc,\Dc}:\Hom_\K(\bigwedge^k\K^n,\bigwedge^k\K^k)\to\bigwedge^k\K^n$ be the isomorphism discussed during remark (\ref{CodomainOfPluckerMap}). We define
 \[\wt \Phi_{\Bc,\Dc}:\funcDef{\bigwedge^k\K^n}{ \Hom_\K\pa{\K^n,\bigwedge^{n-k+1}\K^n}}{\omega}{\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))}\]
 \end{definition}
+
 \begin{remark}
-Let $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$.
-\begin{align*}
-\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))(v)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\zeta_{\Bc,\Dc}\ii(\omega)(e_{\wh I}))e_I\wedge v=\\
-=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_Ip_{\wh I}e_I\wedge v,
-\end{align*}
-so $v\in \ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$ if and only if $\omega=0$ or $v=0$. This is a base independent condition, so the rank of $\wt\Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
+The rank of $\wt \Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
 \end{remark}
+\begin{proof}
+If $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$ then an easy calculation shows that $v$ is an element of $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$. The last condition is base independent so $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ must be also.
+%Let $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$.
+%\begin{align*}
+%\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))(v)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\zeta_{\Bc,\Dc}\ii(\omega)(e_{\wh I}))e_I\wedge v=\\
+%=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_Ip_{\wh I}e_I\wedge v,
+%\end{align*}
+%so $v\in \ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$ if and only if $\omega=0$ or $v=0$. This is a base independent condition, so the rank of $\wt\Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
+\end{proof}
 
 \begin{remark}
 $\wt\Phi_{\Bc,\Dc}$ is linear.
@@ -369,9 +424,9 @@ $\wt\Phi_{\Bc,\Dc}$ is linear.
 
 
 \noindent
-Let us define a matrix with coefficients in\footnote{what we will later call $(k,n)$-braket ring} $\K[z_I\mid I\in\omega(k,n)]$ which represents $\wt\Phi_{\Bc,\Dc}$:\medskip
+Let us define a matrix with coefficients in\footnote{what we will later call the Bracket ring} $\K[z_I\mid I\in\omega(k,n)]$ which represents $\wt\Phi_{\Bc,\Dc}$:\medskip
 
-\noindent Let $B^I\in \Mc\pa{\binom{n}{n-k+1},n,\K}$ be the matrix which represents $\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(e_I))$ in the bases induced by $\Bc$ and $\Dc$. By linearity
+Let $B^I\in \Mc\pa{\binom{n}{n-k+1},n,\K}$ be the matrix which represents $\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(e_I))$ in the bases induced by $\Bc$ and $\Dc$. By linearity
 \[\wt \Phi_{\Bc,\Dc}\pa{\sum_{I\in \omega(k,n)}a_I e_I}(v)=\sum_{I\in \omega(k,n)}a_I \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(e_I))(v)=\sum_{I\in \omega(k,n)}a_I B^I v.\]
 We define the matrix which represents $\wt\Phi_{\Bc,\Dc}$ to be
 \[M_{\Bc,\Dc}=\sum_{I,\omega(k,n)}B^I z_I=\pa{\sum_{I\in\omega(k,n)}(B^I)_{i,j}z_I}_{i,j}.\]
@@ -383,17 +438,16 @@ The rank of $\Phi_{\Bc,\Dc}(\sum_{I\in\omega(k,n)}p_Ie_I)$ is exactly the rank o
 
 \noindent The previous remark together with proposition (\ref{RankCriterionForImageOfPlucker}) tells us that
 \begin{align*}
-\imm (\zeta_{\Bc,\Dc}\circ \wedge^k)=&\cpa{\sum_{I\in \omega(k,n)}p_Ie_I\mid \rnk \rbar{M}_{z_I=p_I}<n-k+1}=\\
-=&V(\cpa{\det m\mid m\text{ is a $(n-k+1)\times(n-k+1)$ minor of $M$}}),
+\imm (\zeta_{\Bc,\Dc}\circ \wedge^k)=&\cpa{\sum_{I\in \omega(k,n)}p_Ie_I\mid \rnk \rbar{M}_{z_I=p_I}<k+1}=\\
+=&V(\cpa{\det m\mid m\text{ is a $(k+1)\times(k+1)$ minor of $M$}}),
 \end{align*}
-which is evidently a Zariski-closed subset of $\bigwedge^k\K^n$.\smallskip
+which is evidently a Zariski-closed subset of $\bigwedge^k\K^n$.\bigskip
 
-\noindent
 It follows trivially that the projectivization\footnote{recall (\ref{ImagePluckerMapIsCone}) that $\imm \wedge^k$ is a cone.} of this set (i.e. the image of $\Pl$) is closed in $\Pj(\bigwedge^k\K^n)$, so we found a bijection between $\Gr(k,n)$ and a projective variety, which we can use to endow $\Gr(k,n)$ with the structure of one.
 
 
 \begin{remark}
-The determinants we used to show that the image of the Pl\"ucker embedding is closed do not generate the ideal of that variety. The most well known set of generators for that ideal are the \textbf{Pl\"ucker relations}. For their construction [BUT NOT THE PROOF THAT THEY ARE GENERATORS, STILL HAVE TO CHOOSE A REFERENCE] see \cite{McKernan}.
+The determinants we used to show that the image of the Pl\"ucker embedding is closed do not generate the ideal of that variety. The most well known set of generators for that ideal are the \textbf{Pl\"ucker relations} (Theorem 2.4.3 in \cite{matroids}, page 80).
 \end{remark}
 
 
