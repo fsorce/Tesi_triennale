@@ -5,8 +5,9 @@ We first define Grassmannians set-theoretically, then we will find a bijection b
 
 \section{First definitions and conventions}
 \begin{definition}[Grassmannian]
-Let $k\leq n$ be a pair of positive integers. We define the \textbf{$(n,k)$-Grassmannian}, denoted\footnote{the field will be omitted when clear from context} $\Gr(k,n,\K)$, as the set of $(n-k)$-dimensional $\K$-vector subspaces of $\K^n$.
+Let $k\leq n$ be a pair of positive integers. We define the \textbf{$(n,k)$-Grassmannian}, denoted\footnote{the field will be omitted when clear from context} $\Gr(k,n,\K)$, as the set of $(n-k)$-dimensional\footnote{The most natural choice might be to take the $k$-dimentional subspaces, but for later convenience we adopt this convention. It is also worth noting that if we fix a basis, the map $H\mapsto H^\perp$ gives a  bijection between $\Gr(k,n)$ and $\Gr(n-k,n)$.} $\K$-vector subspaces of $\K^n$.
 \end{definition}
+
 
 \begin{remark}
 We may equivalently define $\Gr(k,n)$ to be the following set:
@@ -50,7 +51,7 @@ where $\vp\sim \psi$ if and only if $\exists \theta\in \GL(\K^k)$ such that $\vp
 \noindent We conclude this introductory section with some notation and conventions.
 \begin{definition}[Multiindicies]
 We define a \textbf{$(k,n)$-multiindex} as an element of $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$.\\
-We denote the set of \textbf{ordered $(k,n)$-multiindicies} with
+We denote the set of \textbf{ordered $(k,n)$-multiindicies} by
 \[\omega(k,n)=\cpa{(i_1,\cdots, i_k)\in \cpa{1,\cdots, n}^k\mid i_1<\cdots<i_k}.\]
 If $I\in \omega(k,n)$, we write\footnote{$\cup$ and $\ast$ denote the union of the underlying sets and concatenation respectively.}
 \begin{itemize}
@@ -82,7 +83,7 @@ where $A\sim B\coimplies \exists P\in \GL(k)\ s.t.\ A=PB$.
 
 \section{The Pl\"ucker embedding}
 In this section we define an injection from the Grassmannian to a projective space.
-The idea behind this map is to take appropriate wedge products in such a way as to trasform the several vectors defining a vector subspace into a single vector and then to projectivize. 
+The idea behind this map is to take appropriate wedge products in such a way as to transform the several vectors defining a vector subspace into a single vector and then to projectivize. 
 Our approach differs slightly from the usual one\footnote{briefly illustrated in \cite{matroids}, pages 79 and 80} because we consider equivalence classes of maps rather than equivalence classes of bases.
 
 \begin{definition}[Pl\"ucker map]
@@ -404,9 +405,9 @@ Let $\Bc=\cpa{e_1,\cdots, e_n}$ and $\Dc=\cpa{e_1,\cdots, e_k}$ be bases of $\K^
 \[\wt \Phi_{\Bc,\Dc}:\funcDef{\bigwedge^k\K^n}{ \Hom_\K\pa{\K^n,\bigwedge^{n-k+1}\K^n}}{\omega}{\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))}\]
 \end{definition}
 
-\begin{remark}
+\begin{proposition}
 The rank of $\wt \Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
-\end{remark}
+\end{proposition}
 \begin{proof}
 If $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$ then an easy calculation shows that $v$ is an element of $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$. The last condition is base independent so $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ must be also.
 %Let $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$.

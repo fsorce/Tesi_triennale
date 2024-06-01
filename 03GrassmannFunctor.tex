@@ -43,11 +43,10 @@ We define\footnote{This definition is inspired by that of $\phi$ at page 79 of \
 For brevity we will denote $\Spec \phi^\#$ by $\phi$.
 \end{definition}
 \begin{remark}\label{PluckerRingHomomorphismWorksForKPoints}
-If we interpret $\Bc_{k,n}$ and $\K[X_{k,n}]$ as the coordinate rings of the affine spaces $\bigwedge^k\K^n$ and $\Mc(k,n)$ respectively, then it is a well known result that the map induced between them from $\phi^\#$ is $A\mapsto \sum_{I\in\omega(k,n)}\det A_I e_I$, which we already know as $\phi^s$.
+If we interpret $\Bc_{k,n}$ and $\K[X_{k,n}]$ as the coordinate rings of the affine spaces $\bigwedge^k\K^n$ and $\Mc(k,n)$ respectively, then it is clear by construction that the map induced between them from $\phi^\#$ is $A\mapsto \sum_{I\in\omega(k,n)}\det A_I e_I$, which we already know as $\phi^s$.
 \end{remark}
 
-\begin{proposition} $\ker\phi^\#$ is an homogeneous prime ideal which does not contain all of the $z_I$, i.e.
-\[\ker\phi^\#\in \Proj\Bc_{k,n}.\]
+\begin{proposition} $\ker\phi^\#$ is a homogeneous prime ideal which does not contain all of the $z_I$.
 \end{proposition}
 \begin{proof}
 We prove the three properties
@@ -216,7 +215,7 @@ is surjective if and only if it is surjective on all stalks, i.e. if and only if
 which is true because the tensor product is right-exact.
 \end{proof}
 
-We recall a well known result of sheaf theory
+We recall a basic fact about sheaves
 \begin{lemma}\label{CriterionForClosedSupport}
 The support of a finite type quasicoherent sheaf $\Fc$ on a scheme $X$ is a
 closed subset\footnote{For more detail see \href{https://stacks.math.columbia.edu/tag/01B4}{Section 01B4} in \cite{stacks}}.
@@ -373,11 +372,11 @@ If we apply a well known adjunction result for morphisms towards an affine schem
 \[f^\#(T)\in\Hom_{\K\text{-alg}}\pa{\pa{\K\spa{\det X_L}_{\det X_I\det X_J}}^0,\Oc_T(T)}.\]
 By the universal property of localization, we may identify this set with
 \[\cpa{\beta\in \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_L}{\det X_I}},\Oc_T(T)}\mid \beta\pa{\frac{\det X_J}{\det X_I}}\neq 0}.\]
-Applying the functor $\eta$  defined during proposition (\ref{GrIRepresentGrIFunctors}), which we will denote $\eta^I$ to emphasize which determinant we consider at the denominator. we obtain 
-\[\eta^I(f^\#(T))\in\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}},\]
-which we can identify with
-\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\G_I(k,n)\times_{\G(k,n)}\G_J(k,n))(T).\]
-To conclude the proof we need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\G(k,n)$. Note that $\eta^I_V(f^\#(T))(e_j)=f^\#(V)(X_I\ii X)e_j$, so if the matrix $X_J\ii X_I$ can be described only using elements in $\K\spa{\det X_L}_{\det X_I\det X_J}^0$, we can define $\theta_V(e_j)$ to be $f^\#(V)(X_J\ii X_I)e_j$ and see that $\theta\circ \eta^I=\eta^J$. Indeed, the map is well defined because
+Applying the functor $\eta$  defined during the proof of proposition (\ref{GrIRepresentGrIFunctors}), which we will denote $\eta^I$ to emphasize which determinant we consider at the denominator, we obtain 
+\[\eta^I(f^\#(T))\in\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}}.\]
+Observe that we can identify this set with
+\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\G_I(k,n)\times_{\G(k,n)}\G_J(k,n))(T),\]
+so to conclude the proof we just need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\G(k,n)$. Note that $\eta^I_V(f^\#(T))(e_j)=f^\#(V)(X_I\ii X)e_j$, so if the matrix $X_J\ii X_I$ can be described only using elements in $\K\spa{\det X_L}_{\det X_I\det X_J}^0$, we can define $\theta_V(e_j)$ to be $f^\#(V)(X_J\ii X_I)e_j$ and see that $\theta\circ \eta^I=\eta^J$. Indeed, the map is well defined because
 \[X_J\ii X=\pa{\frac{\det X_{J^{j_i}_j}}{\det X_J}}_{i\in \cpa{1,\cdots, k}, j\in \cpa{1,\cdots, n}}\implies X_J\ii X_I=\pa{\frac{\det X_{J^{j_r}_{i_\ell}}}{\det X_J}}_{r,\ell\in \cpa{1,\cdots, k}}.\]
 An analogous procedure for $X_I\ii X_J$ would define an inverse of $\theta$. 
 \end{proof}

@@ -45,7 +45,7 @@ Usually we study moduli problems of the following form
 where $\sim$ refers to an equivalence relation imposed on the objects we are studying.
 \end{remark}
 
-\noindent To proceed we will need the following
+To proceed we will need the following
 
 \begin{lemma}[Yoneda Lemma]\label{YonedaLemma}
 Let $\Cc$ be a category and $X\in \Cc$. For all contravariant functors $F:\Cc\op\to\Set$ the following sets are in a natural bijection
@@ -161,19 +161,19 @@ Consider the functor
 \[\Pj_n:\functorDef{\mathrm{Sch}\op}{\Set}{S}{\quot{\cpa{(\Lc,s_0,\cdots,s_n)\mid \emat{\Lc\text{ line bundle on $S$, }s_0,\cdots,s_n\in\Lc(S),\\\forall x\in S,\ \ps{(s_0)_x,\cdots,(s_n)_x}_{\Oc_{S,x}}=\Lc_x}}}\sim}{f}{\text{pullback of sheaves and sections via $f$}}\]
 where $(\Lc,(s_i))\sim (\Lc',(s_i'))$ is there exists a sheaf isomorphism $\al:\Lc\to\Lc'$ such that $s_i=\al^\ast s_i'$ for all $i\in\cpa{0,\cdots, n}$.\medskip
 
-\noindent It is a well know fact (Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.
+It is a well know fact (Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.
 From the statement of Proposition 5.1.31 in \cite{QingLiu} it is also clear that $\Oc_{\Pj^n_\Z}(1)$ is a universal family.
 \end{example}
 
-\noindent Fine moduli spaces do not always exist. The simplest obstructions to having a fine moduli spaces are
+Fine moduli spaces do not always exist. The simplest obstructions to having a fine moduli spaces are
 \begin{itemize}
 \item the functor is not a Zariski sheaf (see proposition (\ref{RepresentableModuliFunctorsAreZariskiSheaves}))
 \item existence of non trivial automorphisms.
 \end{itemize}
 
-\noindent To get an idea of why the second condition is an obstruction consider the following
+To get an idea of why the second condition we cite the following
 \begin{proposition}
-Let $F\in \Psh{\C}{\Set}$ be a moduli functor. If there exists an \textbf{isotrivial family} $\Ec\in F(S)$ for $S\in \Sch\C$ variety, i.e.
+Let $F\in \Psh{\C}{\Set}$ be a moduli functor. If there exists a variety $S\in \Sch \C$ such that $\Ec\in F(S)$ is an \textbf{isotrivial family}, i.e.
 \begin{itemize}
 \item for all $s,t\in S(\C)$, the fiber $F(s)(\Ec)=\Ec_s=\Ec_t$ and
 \item the family $\Ec$ is not the pullback of an object $E\in F(\Spec \C)$ along the structural morphism $S\to \Spec \C$,
@@ -181,10 +181,10 @@ Let $F\in \Psh{\C}{\Set}$ be a moduli functor. If there exists an \textbf{isotri
 then there exists no fine moduli space for $F$.
 \end{proposition}
 \begin{proof}
-This is Proposition 0.3.21 in \cite{Alper}. [ISERT LATER MAYBE]
+This is Proposition 0.3.21 in \cite{Alper}.
 \end{proof}
 
-\noindent A weaker notion of moduli space is that of coarse moduli space:
+A weaker notion of moduli space is that of coarse moduli space:
 \begin{definition}[Coarse moduli space]
 Let $F$ be a moduli problem. A pair $(X,\zeta)$ for $X\in \Sch S$ and $\zeta:F\to h_X$ natural transformation is a \textbf{coarse moduli space} for $F$ if
 \begin{itemize}
@@ -303,7 +303,7 @@ i.e. $U$ represents $h_T\times_F G$ and the map from $h_U$ to $h_T$ is given by 
 Because of the Yoneda lemma, giving a natural transformation like in the above definition is equivalent to choosing a family $\xi\in F(T)$. We can thus rephrase the definition as follows
 
 \begin{definition}[Open subfunctor v.2]
-A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open subscheme $\iota:U\inj T$ such that the following diagram is natural in $R$, commutes and is cartesian\footnote{for any map $f:R\to U$ there exists a $g:R\to U$ such that $f=\iota\circ g$ if and only if $F(f)(\xi)\in G(R)$.}
+A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\xi\in F(T)$ there exists an open subscheme $\iota:U\inj T$ such that the following diagram is natural in $R$ for all $R\in \Sch S$, commutes and is cartesian\footnote{for any map $f:R\to U$ there exists a $g:R\to U$ such that $f=\iota\circ g$ if and only if $F(f)(\xi)\in G(R)$.}
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhvbShSLFUpIl0sWzAsMSwiXFxIb20oUixUKSJdLFsyLDAsIkcoUikiXSxbMiwxLCJGKFIpIl0sWzAsMSwiXFxzdWJzZXRlcVxcY2lyYyIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsMiwiRyhcXHN1YnNldGVxIFxcY2lyYyB+flxcY2RvdH4pKFxceGkpIl0sWzEsMywiRihcXGNkb3QpKFxceGkpIiwyXSxbMiwzLCJcXHN1YnNldGVxIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCw2LCIiLDEseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XV0=
 \[\begin{tikzcd}
 	{\Hom(R,U)} && {G(R)} \\
@@ -317,9 +317,11 @@ A subfunctor $G\subseteq F$ is open if for any $S$-scheme $T$ and any family $\x
 \end{definition}
 
 \begin{definition}[Open cover of a functor]
-Let $F:\Psh S\Set$ be a moduli problem. A collection of open subfunctors $\cpa{F_i\to F}$ is an \textbf{open cover} of $F$ if for any $S$-scheme $T$ and any natural transformation $h_T\to F$, there exists an open cover $\cpa{U_i\to T}$ of $T$ such that $U_i$ represents $h_T\times_F F_i$ for all $i$.
+Let $F:\Psh S\Set$ be a moduli problem. A collection of open subfunctors $\cpa{F_i\to F}$ is an \textbf{open cover} of $F$ if for any $S$-scheme $T$ and any natural transformation $h_T\to F$, the open subschemes $U_i$ of $T$ determined by the $F_i$ form an open cover of $T$.
 \end{definition}
 Like before we can rephrase this definition in terms of families
+
+
 
 
 \begin{definition}[Open cover of a functor v.2]
@@ -339,11 +341,11 @@ Moreover, if each $f_i$ is an isomorphism then $f$ too is an isomorphism.
 \end{proposition}
 \begin{proof}
 Let $T$ be a scheme and $\zeta:h_T\to F$ a natural transformation. Let $\cpa{\iota_i:U_i\to T}$ be the open cover induced by $\cpa{F_i\to F}$ through $\zeta$ by the definition of open subfunctor cover.
-% https://q.uiver.app/#q=WzAsNixbMSwxLCJGIl0sWzEsMCwiRl9pIl0sWzIsMCwiR19pIl0sWzIsMSwiRyJdLFswLDEsImhfVCJdLFswLDAsImhfe1VfaX0iXSxbMSwyLCJmX2kiXSxbMSwwLCJcXHN1YnNldGVxIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxzdWJzZXRlcSIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsImhfe1xcaW90YV9pfSIsMl0sWzQsMCwiXFx6ZXRhIiwyXSxbNSwxLCJcXHpldGFcXGNpcmMgaF97XFxpb3RhX2l9Il0sWzUsMCwiIiwyLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XV0=
+% https://q.uiver.app/#q=WzAsNixbMSwxLCJGIl0sWzEsMCwiRl9pIl0sWzIsMCwiR19pIl0sWzIsMSwiRyJdLFswLDEsImhfVCJdLFswLDAsImhfe1VfaX0iXSxbMSwyLCJmX2kiXSxbMSwwLCJcXHN1YnNldGVxIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxzdWJzZXRlcSIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsImhfe1xcaW90YV9pfSIsMl0sWzQsMCwiXFx6ZXRhIiwyXSxbNSwxLCJcXGV0YV9pIl0sWzUsMCwiIiwyLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lci1pbnZlcnNlIn19XV0=
 \[\begin{tikzcd}
 	{h_{U_i}} & {F_i} & {G_i} \\
 	{h_T} & F & G
-	\arrow["{\zeta\circ h_{\iota_i}}", from=1-1, to=1-2]
+	\arrow["{\eta_i}", from=1-1, to=1-2]
 	\arrow["{h_{\iota_i}}"', from=1-1, to=2-1]
 	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
 	\arrow["{f_i}", from=1-2, to=1-3]
@@ -351,66 +353,76 @@ Let $T$ be a scheme and $\zeta:h_T\to F$ a natural transformation. Let $\cpa{\io
 	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
 	\arrow["\zeta"', from=2-1, to=2-2]
 \end{tikzcd}\]
-Let $g_i=f_i\circ \zeta\circ h_{\iota_i}$ and note that
-\[g_i\res{h_{U_i\cap U_j}}=f_i\res{F_i\cap F_j}\circ \zeta\circ h_{\iota_i\res{U_i\cap U_j}}=f_j\res{F_i\cap F_j}\circ \zeta\circ h_{\iota_j\res{U_i\cap U_j}}=g_j\res{h_{U_i\cap U_j}}.\]
+where $\eta_i$ is the map $\zeta\circ h_{\iota_i}$ with its codomain restricted. This map is well defined because the square is cartesian.
+Let $g_i=f_i\circ \eta_i$ and note that
+\[g_i\res{h_{U_i\cap U_j}}=f_i\res{F_i\cap F_j}\circ \eta_i \res{h_{U_i\cap U_j}}=f_j\res{F_i\cap F_j}\circ \eta_j\res{h_{U_i\cap U_j}}=g_j\res{h_{U_i\cap U_j}}.\]
 Because $G$ is a Zariski sheaf, there exists $\zeta':h_T\to G$ such that $\zeta'\circ h_{\iota_i}=g_i$. Because of the Yoneda lemma (\ref{YonedaLemma}), we have constructed a map $F(T)\to G(T)$ which is functorial in $T$, i.e. $f:F\to G$. By construction it is also clear that $f\res{F_i}=f_i$.\bigskip
 
-Suppose now that the $f_i$ are isomorphisms. Let $f$ be the morphism $F\to G$ obtained as above and let $g:G\to F$ be the morphism obtained the same way but from the morphisms $f_i\ii:G_i\to F_i$. By checking the restrictions to a cover and double intersections, it is easy to see that $f$ and $g$ are inverses.
+Suppose now that the $f_i$ are isomorphisms. Let $f$ be the morphism $F\to G$ obtained as above and let $g:G\to F$ be the morphism obtained the same way but from the morphisms $f_i\ii:G_i\to F_i$. It is easy to see that the restrictions of $f\circ g$ (respectively  $g\circ f$) to the $G_i$ (respectively $F_i$) and the double intersections yield the identity, so the compositions themselves must glue to the identity of $F$ and $G$.
 \end{proof}
 
 \begin{theorem}[Representability by open cover]\label{RepresentabilityByOpenSubfunctorCover}
 Let $F:\Psh{S}{\Set}$ be a Zariski sheaf and let $\cpa{F_i\to F}$ be an open cover of it by representable subfunctors, then $F$ is representable.
 \end{theorem}
-\begin{proof}
-For this proof we will mainly follow the version presented in \cite{GortzAlgGeoISchemes} (Theorem 8.9, page 212).\bigskip
-
+\begin{proof}[Sketch.]
 We fix schemes $X_i$ and families $\xi_i\in F_i(X_i)$ such that $(X_i,\xi_i)$ is a fine moduli space for $F_i$. For all $S$-schemes $T$ we have
 \[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
-thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ analogously.\bigskip
+thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. 
 
-Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both fine moduli spaces for $F_{i,j}$, they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
+Using the openness of $F_j$ we find $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_FF_j\cong F_{i,j}$. By uniqueness of moduli spaces we see that there exists an isomorphism $\vp_{ji}:U_{ij}\to U_{ji}$, which we can choose in such a way as to translate to the identity transformation $F_{i,j}= F_{j,i}$.
+
+Our choice for the maps $\vp_{ji}$ makes the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$ hold. We can thus glue the $X_i$ to a scheme $X$. Since $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$ by construction of $\vp_{ji}$, we find a family $\xi\in F(X)$ by the sheaf property of $F$. It follows easily that $(X,\xi)$ represents $F$.
+
+
+%We fix schemes $X_i$ and families $\xi_i\in F_i(X_i)$ such that $(X_i,\xi_i)$ is a fine moduli space for $F_i$. 
+%For all $S$-schemes $T$ we have
+%\[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
+%thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ analogously.\bigskip
+
+%Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both fine moduli spaces for $F_{i,j}$, they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJoX3tVX3tpan19Il0sWzAsMSwiaF97VV97aml9fSJdLFsxLDAsImhfe1hfaX1cXHRpbWVzX0YgRl9qIl0sWzIsMCwiRl97aSxqfSJdLFsyLDEsIkZfe2ksan0iXSxbMSwxLCJGX2lcXHRpbWVzX0YgaF97WF9qfSJdLFsyLDMsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIj0iLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCJcXGFscGhhIiwyXSxbMCwyLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-	{h_{U_{ij}}} & {h_{X_i}\times_F F_j} & {F_{i,j}} \\
-	{h_{U_{ji}}} & {F_i\times_F h_{X_j}} & {F_{i,j}}
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
-	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
-	\arrow["\alpha"', from=1-1, to=2-1]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
-\end{tikzcd}\]
-Note that if $T$ is an $S$-scheme and $f\in h_{U_{ij}}(T)$ then
-\[h_{\vp_{ji}}(f)=\al_{U_{ij}}(id_{U_{ij}})\circ f =\al_T(id_{U_{ij}}\circ f)=\al_T(f),\]
-so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.\bigskip
+%\[\begin{tikzcd}
+%	{h_{U_{ij}}} & {h_{X_i}\times_F F_j} & {F_{i,j}} \\
+%	{h_{U_{ji}}} & {F_i\times_F h_{X_j}} & {F_{i,j}}
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+%	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
+%	\arrow["\alpha"', from=1-1, to=2-1]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
+%\end{tikzcd}\]
+%Note that if $T$ is an $S$-scheme and $f\in h_{U_{ij}}(T)$ then
+%\[h_{\vp_{ji}}(f)=\al_{U_{ij}}(id_{U_{ij}})\circ f =\al_T(id_{U_{ij}}\circ f)=\al_T(f),\]
+%so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.\bigskip
 
-We want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.
+%We want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.
 
-\setlength{\leftmargini}{0cm}
-\begin{itemize}
-\item The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.
-\item Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.
+%\item Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
 % https://q.uiver.app/#q=WzAsOCxbMSwwLCJoX3tVX3tpan19XFx0aW1lc197aF97WF9pfX1oX3tVX3tpa319Il0sWzEsMSwiaF97VV97aml9fVxcdGltZXNfe2hfe1hfan19aF97VV97amt9fSJdLFsyLDAsIkZfe2ksan1cXHRpbWVzX3tGX2l9IEZfe2ksa30iXSxbMywwLCJGX3tpLGosa30iXSxbMywxLCJGX3tpLGosa30iXSxbMiwxLCJGX3tpLGp9XFx0aW1lc197Rl9qfSBGX3tqLGt9Il0sWzAsMCwiaF97VV97aWp9XFxjYXAgVV97aWt9fSJdLFswLDEsImhfe1Vfe2ppfVxcY2FwIFVfe2prfX0iXSxbMiwzLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCI9IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwi44KIIl0sWzcsMSwi44KIIl0sWzYsNywiXFx2cF97aml9IiwyXV0=
-\[\begin{tikzcd}
-	{h_{U_{ij}\cap U_{ik}}} & {h_{U_{ij}}\times_{h_{X_i}}h_{U_{ik}}} & {F_{i,j}\times_{F_i} F_{i,k}} & {F_{i,j,k}} \\
-	{h_{U_{ji}\cap U_{jk}}} & {h_{U_{ji}}\times_{h_{X_j}}h_{U_{jk}}} & {F_{i,j}\times_{F_j} F_{j,k}} & {F_{i,j,k}}
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-3, to=1-4]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-3, to=2-4]
-	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
-	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
-	\arrow["{\yo}", from=1-1, to=1-2]
-	\arrow["{\yo}", from=2-1, to=2-2]
-	\arrow["{h_{\vp_{ji}}}"', from=1-1, to=2-1]
-\end{tikzcd}\]
-therefore, to prove that $\vp_{kj}\circ \vp_{ji}=\vp_{ki}$ it is enough to verify the trivial equality \[id_{F_{i,j,k}}\circ id_{F_{i,j,k}}=id_{F_{i,j,k}}.\]
-\end{itemize}
-\setlength{\leftmargini}{0.5cm}
+%\[\begin{tikzcd}
+%	{h_{U_{ij}\cap U_{ik}}} & {h_{U_{ij}}\times_{h_{X_i}}h_{U_{ik}}} & {F_{i,j}\times_{F_i} F_{i,k}} & {F_{i,j,k}} \\
+%	{h_{U_{ji}\cap U_{jk}}} & {h_{U_{ji}}\times_{h_{X_j}}h_{U_{jk}}} & {F_{i,j}\times_{F_j} F_{j,k}} & {F_{i,j,k}}
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-3, to=1-4]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-3, to=2-4]
+%	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+%	\arrow["{\yo}", from=1-1, to=1-2]
+%	\arrow["{\yo}", from=2-1, to=2-2]
+%	\arrow["{h_{\vp_{ji}}}"', from=1-1, to=2-1]
+%\end{tikzcd}\]
+%therefore, to prove that $\vp_{kj}\circ \vp_{ji}=\vp_{ki}$ it is enough to verify the trivial equality \[id_{F_{i,j,k}}\circ id_{F_{i,j,k}}=id_{F_{i,j,k}}.\]
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
 
-Let $X$ to be the scheme obtained by gluing the $X_i$ as indicated above.\\
-Note that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\bigskip
+%Let $X$ to be the scheme obtained by gluing the $X_i$ as indicated above.\\
+%Note that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\bigskip
 
-To finish the proof we need to verify that $(X,\xi)$ is a fine moduli space for $F$, which is the case because of proposition (\ref{MapGluingForZariskiSheaves}) applied to $h_X$ and $F$ where we consider the open covers $\cpa{h_{X_i}\to h_X}$ and $\cpa{F_i\to F}$.\end{proof}
+%To finish the proof we need to verify that $(X,\xi)$ is a fine moduli space for $F$, which is the case because of proposition (\ref{MapGluingForZariskiSheaves}) applied to $h_X$ and $F$ where we consider the open covers $\cpa{h_{X_i}\to h_X}$ and $\cpa{F_i\to F}$.
+\end{proof}
 \begin{remark}
 Adopting the notation of the proof we see that if we have a candidate fine moduli space $X$, an open cover $\cpa{X_i\to X}$ such that $X_i$ represents $F_i$ and we can verify that $\vp_{ji}:X_i\cap X_j\to X_i\cap X_j$ is the identity for all $i,j$, then $X$ represents $F$.
 \end{remark}
