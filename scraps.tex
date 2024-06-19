@@ -1,0 +1,334 @@
+% 01 ========================================
+
+%Suppose $\zeta:h_X\to h_Y$ is an isomorphism of functors, then $id_X\in h_X(X)$ corresponds to some $f=\zeta_X(id_X):X\to Y$. Similarly $id_Y\in h_Y(Y)$ corresponds to some $g=\zeta_Y\ii(id_Y):Y\to X$. By naturality of $\zeta$ we see can pull back $id_X$ and $f$ by $g$ to see that 
+% https://q.uiver.app/#q=WzAsOCxbMywwLCJcXEhvbShYLFkpIl0sWzIsMSwiZiJdLFswLDAsIlxcSG9tKFgsWCkiXSxbMSwxLCJpZF9YIl0sWzAsMywiXFxIb20oWSxYKSJdLFsxLDIsImciXSxbMywzLCJcXEhvbShZLFkpIl0sWzIsMiwiaWRfWT1mXFxjaXJjIGciXSxbMywxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzIsMCwiXFx6ZXRhX1giXSxbMiw0LCJcXGNpcmMgZyIsMl0sWzMsNSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDYsIlxcemV0YV9ZIiwyXSxbMCw2LCJcXGNpcmMgZyJdLFsxLDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+%\[\begin{tikzcd}
+%	{\Hom(X,X)} &&& {\Hom(X,Y)} \\
+%	& {id_X} & f \\
+%	& g & {id_Y=f\circ g} \\
+%	{\Hom(Y,X)} &&& {\Hom(Y,Y)}
+%	\arrow["{\zeta_X}", from=1-1, to=1-4]
+%	\arrow["{\circ g}"', from=1-1, to=4-1]
+%	\arrow["{\circ g}", from=1-4, to=4-4]
+%	\arrow[maps to, from=2-2, to=2-3]
+%	\arrow[maps to, from=2-2, to=3-2]
+%	\arrow[maps to, from=2-3, to=3-3]
+%	\arrow[maps to, from=3-2, to=3-3]
+%	\arrow["{\zeta_Y}"', from=4-1, to=4-4]
+%\end{tikzcd}\]
+%and similarly we can show that $g\circ f=id_X$.
+
+%We fix schemes $X_i$ and families $\xi_i\in F_i(X_i)$ such that $(X_i,\xi_i)$ is a fine moduli space for $F_i$. 
+%For all $S$-schemes $T$ we have
+%\[(F_i\times_F F_j)(T)=F_i(T)\times_{F(T)}F_j(T)=F_i(T)\cap F_j(T)\subseteq F(T),\]
+%thus $F_i\times_F F_j=F_j\times_F F_i\doteqdot F_{i,j}$. We define $F_{i,j,k}$ analogously.\bigskip
+
+%Since $F_j$ is an open subfunctor of $F$, there exists an open subscheme $U_{ij}\subseteq X_i$ which represents $h_{X_i}\times_F F_j\cong F_i\times_F F_j=F_{i,j}$. We can define $U_{ji}\subseteq X_j$ similarly and since they are both fine moduli spaces for $F_{i,j}$, they are isomorphic. Let $\vp_{ji}:U_{ij}\to U_{ji}$ be the isomorphism given by $\vp_{ji}=\al_{U_{ij}}(id_{U_{ij}})$ for $\al$ natural isomorphism which makes the following diagram commute
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJoX3tVX3tpan19Il0sWzAsMSwiaF97VV97aml9fSJdLFsxLDAsImhfe1hfaX1cXHRpbWVzX0YgRl9qIl0sWzIsMCwiRl97aSxqfSJdLFsyLDEsIkZfe2ksan0iXSxbMSwxLCJGX2lcXHRpbWVzX0YgaF97WF9qfSJdLFsyLDMsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIlxcY29uZyIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIj0iLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCJcXGFscGhhIiwyXSxbMCwyLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSw1LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+%\[\begin{tikzcd}
+%	{h_{U_{ij}}} & {h_{X_i}\times_F F_j} & {F_{i,j}} \\
+%	{h_{U_{ji}}} & {F_i\times_F h_{X_j}} & {F_{i,j}}
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+%	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
+%	\arrow["\alpha"', from=1-1, to=2-1]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-1, to=1-2]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-1, to=2-2]
+%\end{tikzcd}\]
+%Note that if $T$ is an $S$-scheme and $f\in h_{U_{ij}}(T)$ then
+%\[h_{\vp_{ji}}(f)=\al_{U_{ij}}(id_{U_{ij}})\circ f =\al_T(id_{U_{ij}}\circ f)=\al_T(f),\]
+%so $\al$ is the image of $\vp_{ji}$ under the Yoneda embedding.\bigskip
+
+%We want to show that the $X_i$ can be glued along the $U_{ij}$ using the isomorphisms $\vp_{ji}$. First we need to show that $\vp_{ji}(U_{ij}\cap U_{ik})=U_{ji}\cap U_{jk}$ and then we have to verify the cocycle condition $\vp_{ki}=\vp_{kj}\circ \vp_{ji}$.
+
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item The first condition follows immediately from the fact that $F_k$ is an open subfunctor and our construction of the $\vp_{ji}$.
+%\item Since the Yoneda embedding preserves limits (\ref{YonedaEmbeddingPreservesLimits}) it preserves fibered products, so we see that the following diagram commutes
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJoX3tVX3tpan19XFx0aW1lc197aF97WF9pfX1oX3tVX3tpa319Il0sWzEsMSwiaF97VV97aml9fVxcdGltZXNfe2hfe1hfan19aF97VV97amt9fSJdLFsyLDAsIkZfe2ksan1cXHRpbWVzX3tGX2l9IEZfe2ksa30iXSxbMywwLCJGX3tpLGosa30iXSxbMywxLCJGX3tpLGosa30iXSxbMiwxLCJGX3tpLGp9XFx0aW1lc197Rl9qfSBGX3tqLGt9Il0sWzAsMCwiaF97VV97aWp9XFxjYXAgVV97aWt9fSJdLFswLDEsImhfe1Vfe2ppfVxcY2FwIFVfe2prfX0iXSxbMiwzLCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw0LCJcXGNvbmciLDMseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCI9IiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxjb25nIiwzLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsMCwi44KIIl0sWzcsMSwi44KIIl0sWzYsNywiXFx2cF97aml9IiwyXV0=
+%\[\begin{tikzcd}
+%	{h_{U_{ij}\cap U_{ik}}} & {h_{U_{ij}}\times_{h_{X_i}}h_{U_{ik}}} & {F_{i,j}\times_{F_i} F_{i,k}} & {F_{i,j,k}} \\
+%	{h_{U_{ji}\cap U_{jk}}} & {h_{U_{ji}}\times_{h_{X_j}}h_{U_{jk}}} & {F_{i,j}\times_{F_j} F_{j,k}} & {F_{i,j,k}}
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-3, to=1-4]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-3, to=2-4]
+%	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-4, to=2-4]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=1-2, to=1-3]
+%	\arrow["\cong"{marking, allow upside down}, draw=none, from=2-2, to=2-3]
+%	\arrow["{\yo}", from=1-1, to=1-2]
+%	\arrow["{\yo}", from=2-1, to=2-2]
+%	\arrow["{h_{\vp_{ji}}}"', from=1-1, to=2-1]
+%\end{tikzcd}\]
+%therefore, to prove that $\vp_{kj}\circ \vp_{ji}=\vp_{ki}$ it is enough to verify the trivial equality \[id_{F_{i,j,k}}\circ id_{F_{i,j,k}}=id_{F_{i,j,k}}.\]
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
+
+%Let $X$ to be the scheme obtained by gluing the $X_i$ as indicated above.\\
+%Note that $\xi_i=\vp_{ji}^\ast\xi_j$, so if we look at these families as elements of $F(X)$ we see that $\xi_i\res{U_ij}=\xi_j\res{U_{ij}}$. Since $F$ is a Zariski sheaf, the $\xi_i$ can be glued to a family $\xi\in F(X)$.\bigskip
+
+%To finish the proof we need to verify that $(X,\xi)$ is a fine moduli space for $F$, which is the case because of proposition (\ref{MapGluingForZariskiSheaves}) applied to $h_X$ and $F$ where we consider the open covers $\cpa{h_{X_i}\to h_X}$ and $\cpa{F_i\to F}$.
+
+
+%\begin{remark}
+%Adopting the notation of the proof we see that if we have a candidate fine moduli space $X$, an open cover $\cpa{X_i\to X}$ such that $X_i$ represents $F_i$ and we can verify that $\vp_{ji}:X_i\cap X_j\to X_i\cap X_j$ is the identity for all $i,j$, then $X$ represents $F$.
+%\end{remark}
+
+
+% 02 =========================================
+
+%Let us prove both implications:
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{2.\implies 1.}$] $\ker \vp=\ker(\theta\circ \psi)=\psi\ii(\ker \theta)=\psi\ii(\cpa{0})=\ker \psi$. 
+%\item[$\boxed{1.\implies 2.}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ such that $\ker\vp=\ker\psi=\Span(z_1,\cdots, z_{n-k})$. By construction $\vp(z_{n-k+1}),\cdots, \vp(z_n)$ and $\psi(z_{n-k+1}),\cdots, \psi(z_n)$ are bases of $\K^k$. 
+%Let $\theta$ be the change of basis on $\K^k$ determined by $\theta(\psi(z_i))=\vp(z_i)$ for all $n-k<i\leq n$. By construction $\theta$ is nonsingular and $\vp$ agrees with $\theta\circ \psi$ on a basis of $\K^n$.
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
+
+
+%For any $\la\in \K^\ast$ and any map $\vp\in \Hom_\K(\K^n,\K^k)$ note that
+%\[\la\wedge^k(\vp)=\wedge^k(\al\circ \vp)\]
+%for any automorphism $\al$ of $\K^k$ with determinant $\la$. We can construct one such $\al$ by fixing a basis of $\K^k$ and defining $\al$ to be the map corresponding to the matrix
+%\[\mat{
+%\la &   &        &\\
+%    & 1 &        &\\
+%	&   & \ddots &\\
+%	&   &        &  1
+%}\]
+
+
+%If $\vp(z)=0$ then for any $w_2,\cdots, w_k\in \K^k$ we see that 
+%\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=0\wedge \vp(w_2)\wedge\cdots\wedge \vp(w_k)=0.\]
+%Suppose now that $\vp(z)\neq 0$ and let $v_2,\cdots, v_k$ be such that $\cpa{\vp(z), v_2,\cdots,v_k}$ forms a basis for $\K^k$. Since $\vp$ is surjective, there exist $w_2,\cdots, w_k$ such that $\vp(w_i)=v_i$ for all $2\leq i\leq k$.
+%By construction 
+%\[\wedge^k(\vp)(z\wedge w_2\wedge\cdots\wedge w_k)=\vp(z)\wedge v_2\wedge\cdots\wedge v_k\neq0.\]
+
+
+%If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$.\\
+%Suppose now that $\omega\wedge v=0$. Let $v_1,\cdots, v_n$ be a basis of $\K^n$ such that $v_1=v$. 
+%If we write
+%\[\omega=\sum_{I\in\omega(k,n)}p_I v_I\]
+%then we see that for any given multiindex $I$, either $p_I=0$ or $v_I\wedge v=0$. 
+%Since $v_1,\cdots, v_n$ is a basis, $v_I\wedge v_1=0$ if and only if $1\in I$, i.e. $v_I=v\wedge v_{\pa{i_2,\cdots, i_k}}$, therefore
+%\[\omega=v\wedge \under{\doteqdot (-1)^{k-1}\e}{\pa{\sum_{2\leq i_2<\cdots i_k\leq n} p_{\pa{1,i_2,\cdots, i_k}} e_{\pa{i_2,\cdots, i_k}}}}=\e\wedge v.\]
+
+
+%The set $D_\omega$ is clearly a subspace of $\K^n$. Let $\cpa{v_1,\cdots, v_k}$ be linearly independent vectors of this space. By iterating the above lemma we see that
+%\[\omega=\la\wedge v_1\wedge\cdots\wedge v_k\]
+%for some $\la\in \bigwedge^0\K^n=\K$.\\
+%If $\la=0$ then clearly $D_\omega=\K^n$. If $v_{k+1}$ is such that $\omega\wedge v_{k+1}=0$ and $\cpa{v_1,\cdots, v_{k+1}}$ is linearly independent then, proceding as above,
+%\[\la v_1\wedge\cdots\wedge v_{k}=\omega=\mu v_1\wedge\cdots\wedge v_{k-1}\wedge v_{k+1}.\]
+%By multilinearity
+%\[0=v_1\wedge\cdots\wedge v_{k-1}\wedge(\la v_k-\mu v_{k+1}),\]
+%i.e. $\la v_k-\mu v_{k+1}\in \Span(v_1,\cdots, v_{k-1})$. By linear independence $\la v_k-\mu v_{k+1}=0$ and thus, again by linear independence, $\la=\mu=0$.
+
+
+%The map is clearly base independent and linear.\\
+%For all $e_J$
+%\begin{align*}
+%\Xi(\Gamma_\Bc(\psi))(e_J)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\psi(e_{\wh I}))e_I\wedge e_J=\\
+%=&\sgn\sigma_{\wh J}\eta_\Bc(\psi(e_{J}))e_{\wh J}\wedge e_J=\\
+%=&\eta_\Bc(\psi(e_{J}))e_{(1,\cdots,n)}=\\
+%=&\psi(e_{J}),
+%\end{align*}
+%so $\Xi(\Gamma_\Bc(\psi))$ agrees with $\psi$ on a basis.\medskip
+
+%\noindent
+%If $\omega=\sum_{J\in\omega(n-k,n)} p_J e_J$ then
+%\begin{align*}
+%\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})=&\sum_{J\in\omega(n-k,n)}p_J\sgn\sigma_I\eta_\Bc(e_J\wedge e_{\wh I})=\\
+%=&p_I\eta_\Bc(\sgn \sigma_I e_I\wedge e_{\wh I})=\\
+%=&p_I\eta_\Bc(e_{(1,\cdots, n)})=\\
+%=&p_I,
+%\end{align*}
+%thus \[\Gamma_\Bc(\Xi(\omega))=\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\omega\wedge e_{\wh I})e_I=\sum_{I\in\omega(n-k,n)}p_Ie_I=\omega.\]
+
+
+
+%For simplicity we omit the $\eta_\Dc$. 
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\cpa{z_1,\cdots, z_n}$ be a basis of $\K^n$ such that $z_1,\cdots, z_{n-k}$ are linearly independent vectors in $\ker \vp$, then
+%\begin{align*}
+%&\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I\pasgnl={(\ref{UpToScalarCanonicalIso})}\\
+%&\qquad\qquad\qquad=\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(z_{\wh I})z_I=\\
+%&\qquad\qquad\qquad=\pa{\mu\ \sgn\sigma_{(1,\cdots,n-k)}\wedge^k\vp(z_{(n-k+1,\cdots,n)}) }z_{\pa{1,\cdots, n-k}}.
+%\end{align*}
+%\item[$\boxed{\impliedby}$] Let $z_1,\cdots, z_n$ be a basis of $\K^n$ which extends $\cpa{z_1,\cdots, z_{n-k}}$ and define $\wt\vp$ by
+%\[\wt\vp(z_i)=\begin{cases}
+%0 & \text{if }1\leq i\leq n-k\\
+%e_1 & \text{if }i=n-k+1\\
+%e_{i-n+k} & \text{if }i>n-k+1
+%\end{cases}\]
+%Let $\al=\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)})$ and consider the following chain of equalities
+%\begin{align*}
+%\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=&\la z_{(1,\cdots, n-k)}=\\
+%=&\frac\la\al\wedge^k\wt\vp(z_{(n-k+1,\cdots, n)}) z_{(1,\cdots, n-k)}=\\
+%=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(z_{\wh I})z_I=\\
+%=&\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}}\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\wt\vp(e_{\wh I})e_I
+%\end{align*}
+%where the third equality follows from the construction of $\wt\vp$ and the last is (\ref{UpToScalarCanonicalIso}). If we now define $\vp$ by
+%\[\vp(z_i)=\begin{cases}
+%0 & \text{if }1\leq i\leq n-k\\
+%\mu\pa{\frac\la\al\sgn\sigma_{(1,\cdots,n-k)}} e_1 & \text{if }i=n-k+1\\
+%e_{i-n+k} & \text{if }i>n-k+1
+%\end{cases}\]
+%with the same reasoning we see that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\psi(e_{\wh I})e_I=\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\wedge^k\vp(e_{\wh I})e_I.\]
+%By linear independence, this shows that for all $J\in\omega(k,n)$ we have
+%\[\psi(e_J)=\wedge^k \vp(e_J),\]
+%so $\psi$ and $\wedge^k(\vp)$ agree on a basis of $\bw \K^n$ and are thus the same map. 
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
+
+
+%Let $\Dc$ be any basis of $\K^k$. We prove both implications
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\Zc=\cpa{z_1,\cdots, z_{n}}$ be a basis of $\K^n$ such that the first $n-k$ vectors are a basis of $\ker \vp$. Note that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\sgn\sigma_{(1,\cdots,n-k)}\eta_\Dc(\wedge^k\vp(z_{(n-k+1,\cdots,n)}))z_{(1,\cdots, n-k)}.\]
+%If $v\in \ker \vp$ then $z_{(1,\cdots, n-k)}\wedge v=0$ and therefore by the above equality $v\in \ker \Phi_{\Zc,\Dc}(\psi)$. This means that $\Phi(\psi)$ has a nullity of at least $n-k$ (i.e. rank at most $k$).
+%\item[$\boxed{\impliedby}$] Suppose that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the total decomposability criterion (\ref{TotalDecomposabilityCriterion}) there exists $\la\in\K$ such that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]
+%This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
+
+
+%\begin{definition}
+%Let $\Bc$ and $\Dc$ be bases of $V$ and $W$ respectively. For any $\psi\in \Hom_\K(\bw V,\bw W)$ we define $\Phi_{\Bc,\Dc}(\psi)$ to be
+%\[\Phi_{\Bc,\Dc}(\psi):\funcDef{V}{\bigwedge^{n-k+1}V}{v}{\displaystyle\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(v_{\wh I}))v_I\wedge v}.\]
+%\end{definition}
+
+%\begin{remark}\label{RankPhiIsBaseIndependent}
+%The rank of $\Phi_{\Bc,\Dc}(\psi)$ does not depend on the choice of basis. Indeed if we change basis, by corollary (\ref{UpToScalarCanonicalIso}) we see that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(e_{\wh I}))e_I\wedge v=\mu\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_{\Dc'}(\psi(e'_{\wh I}))e'_I\wedge v,\]
+%so $\ker \Phi_{\Bc,\Dc}(\psi)$ does not depend on the basis and thus neither do nullity or rank.\bigskip
+
+%For this reason we will write propositions which only concern the rank of $\Phi_{\Bc,\Dc}(\psi)$ omitting the bases.
+%\end{remark}
+
+%\begin{remark}
+%$\Phi_{\Bc,\Dc}(\psi)$ is linear in $\psi$.
+%\end{remark}
+
+%\begin{proposition}\label{RankCriterionForImageOfPlucker}
+%An alternating multilinear map $\psi\in \Hom_\K(\bw \K^n,\bw \K^k)$ is in the image of the Pl\"ucker map $\wedge^k$ if and only if $\Phi(\psi)$ has rank at most $k$.
+%\end{proposition}
+%\begin{proof}
+%For the $\implies$ arrow, choose a basis $\Zc=\cpa{z_1,\cdots, z_n}$ for $\K^n$ which extends a basis for $\ker\vp$. Because of how we proved lemma (\ref{DecomposabilityOfMultilinearForm}), we see that if $v\in\ker\vp$ then $\Phi_{\Zc,\Dc}(\wedge^k\vp)(v)=\la z_{(1,\cdots, n-k)}\wedge v$, which is zero by linear dependence. Thus the nullity of $\Phi(\wedge^k\vp)$ is at least $\dim\ker\vp=n-k$.\bigskip
+
+%Given $n-k$ linearly independent vectors in $\ker\Phi(\psi)$, by the total decomposability criterion (\ref{TotalDecomposabilityCriterion}) there exists $\la\in\K$ such that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]
+%This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
+%Let $\Dc$ be any basis of $\K^k$. We prove both implications
+%\setlength{\leftmargini}{0cm}
+%\begin{itemize}
+%\item[$\boxed{\implies}$] Suppose that $\psi=\wedge^k(\vp)$ and let $\Zc=\cpa{z_1,\cdots, z_{n}}$ be a basis of $\K^n$ such that the first $n-k$ vectors are a basis of $\ker \vp$. Note that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\sgn\sigma_{(1,\cdots,n-k)}\eta_\Dc(\wedge^k\vp(z_{(n-k+1,\cdots,n)}))z_{(1,\cdots, n-k)}.\]
+%If $v\in \ker \vp$ then $z_{(1,\cdots, n-k)}\wedge v=0$ and therefore by the above equality $v\in \ker \Phi_{\Zc,\Dc}(\psi)$. This means that $\Phi(\psi)$ has a nullity of at least $n-k$ (i.e. rank at most $k$).
+%\item[$\boxed{\impliedby}$] Suppose that $\cpa{z_1\cdots, z_{n-k}}$ are linearly independent elements of $\ker \Phi(\psi)$. By the total decomposability criterion (\ref{TotalDecomposabilityCriterion}) there exists $\la\in\K$ such that
+%\[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(z_{\wh I}))z_I=\la z_1\wedge\cdots \wedge z_{n-k}.\]
+%This concludes by lemma (\ref{DecomposabilityOfMultilinearForm}).
+%\end{itemize}
+%\setlength{\leftmargini}{0.5cm}
+%\end{proof}
+
+%\begin{definition}
+%Let $\Bc=\cpa{e_1,\cdots, e_n}$ and $\Dc=\cpa{e_1,\cdots, e_k}$ be bases of $\K^n$ and $\K^k$ respectively. Let $\zeta_{\Bc,\Dc}:\Hom_\K(\bw \K^n,\bw \K^k)\to\bw \K^n$ be the isomorphism discussed during remark (\ref{CodomainOfPluckerMap}). We define
+%\[\wt \Phi_{\Bc,\Dc}:\funcDef{\bw \K^n}{ \Hom_\K\pa{\K^n,\bigwedge^{n-k+1}\K^n}}{\omega}{\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))}\]
+%\end{definition}
+
+%\begin{proposition}
+%The rank of $\wt \Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
+%\end{proposition}
+%\begin{proof}
+%If $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$ then an easy calculation shows that $v$ is an element of $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$. The last condition is base independent so $\ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ must be also.
+
+%Let $\omega=\sum_{I\in\omega(k,n)}p_Ie_I$.
+%\begin{align*}
+%\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))(v)=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\zeta_{\Bc,\Dc}\ii(\omega)(e_{\wh I}))e_I\wedge v=\\
+%=&\sum_{I\in\omega(n-k,n)}\sgn\sigma_Ip_{\wh I}e_I\wedge v,
+%\end{align*}
+%so $v\in \ker \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(\omega))$ if and only if for all $I\in \omega(k,n)$ either $p_I=0$ or $e_{\wh I}\wedge v=0$, which is the same as saying $\omega\wedge v= 0$ if and only if $\omega=0$ or $v=0$. This is a base independent condition, so the rank of $\wt\Phi_{\Bc,\Dc}(\omega)$ does not depend on the choice of basis.
+%\end{proof}
+
+%\begin{remark}
+%$\wt\Phi_{\Bc,\Dc}$ is linear.
+%\end{remark}
+
+%\noindent
+%Let us consider the matrix with coefficients in\footnote{what we will later call the Bracket ring} $\K[z_I\mid I\in\omega(k,n)]$ which represents $\wt\Phi_{\Bc,\Dc}$:\medskip
+
+%Let $B^I\in \Mc\pa{\binom{n}{n-k+1},n,\K}$ be the matrix which represents $\Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(e_I))$ in the bases induced by $\Bc$ and $\Dc$. By linearity
+%\[\wt \Phi_{\Bc,\Dc}\pa{\sum_{I\in \omega(k,n)}a_I e_I}(v)=\sum_{I\in \omega(k,n)}a_I \Phi_{\Bc,\Dc}(\zeta_{\Bc,\Dc}\ii(e_I))(v)=\sum_{I\in \omega(k,n)}a_I B^I v.\]
+%We define the matrix which represents $\wt\Phi_{\Bc,\Dc}$ to be
+%\[M_{\Bc,\Dc}=\sum_{I,\omega(k,n)}B^I z_I=\pa{\sum_{I\in\omega(k,n)}(B^I)_{i,j}z_I}_{i,j}.\]
+
+
+%\begin{remark}
+%The rank of $\Phi_{\Bc,\Dc}(\sum_{I\in\omega(k,n)}p_Ie_I)$ is exactly the rank of $\rbar{M}_{z_I=p_I}$.
+%\end{remark}
+
+%\noindent The previous remark together with proposition (\ref{RankCriterionForImageOfPlucker}) tells us that
+%\begin{align*}
+%\imm (\zeta_{\Bc,\Dc}\circ \wedge^k)=&\cpa{\sum_{I\in \omega(k,n)}p_Ie_I\mid \rnk \rbar{M}_{z_I=p_I}<k+1}=\\
+%=&V(\cpa{\det m\mid m\text{ is a $(k+1)\times(k+1)$ minor of $M$}}),
+%\end{align*}
+%which is evidently a Zariski-closed subset of $\bw \K^n$.\bigskip
+
+%It follows trivially that the projectivization\footnote{recall (\ref{ImagePluckerMapIsCone}) that $\imm \wedge^k$ is a cone.} of this set (i.e. the image of $\Pl$) is closed in $\Pj(\bw \K^n)$, so we found a bijection between $\Gr(k,n)$ and a projective variety, which we can use to endow $\Gr(k,n)$ with the structure of one.
+
+
+%\begin{remark}
+%The determinants we used to show that the image of the Pl\"ucker embedding is closed do not generate the ideal of that variety. The most well known set of generators for that ideal are the \textbf{Pl\"ucker relations} (Theorem 2.4.3 in \cite{matroids}, page 80).
+%\end{remark}
+
+
+% 03 =========================================
+
+%We prove the three properties
+%\begin{itemize}
+%\item $\ker\phi^\#$ is prime because $\K[X_{k,n}]$ is an integral domain.
+%\item $\ker\phi^\#$ is homogeneous because if $\sum_d f_d\in\ker\phi^\#$ for $f_d$ homogeneous of degree $d$ then $0=\sum_d \phi^\#(f_d)$, but $\phi^\#(f_d)$ is homogeneous of degree $kd$, so for every $d$ it must be the case that $f_d\in\ker\phi^\#$. 
+%\item $(z_I)\not\subseteq \ker\phi^\#$ because $\deg \phi^\#(z_I)=\deg(\det X_I)=k>0$ for all $z_I$.
+%\end{itemize}
+
+%We prove the three properties
+%\begin{itemize}
+%\item $\ker\phi^\#$ is prime because $\K[X_{k,n}]$ is an integral domain.
+%\item By definition of homogeneous ideal, we want to show that if $f=\sum f_d$ for $d$ homogeneous and $f\in \ker\phi^\#$ then $f_d\in \ker \phi^\#$ for all $d$.
+%
+%Looking at the definition of $\phi^\#$, we see that $\phi^\#(f_d)$ is a homogeneous polynomial of degree $kd$, in particular if $d\neq h$ then $\deg \phi^\#(f_d)\neq \deg \phi^\#(f_h)$. Since
+%\[0=\phi^\#(f)=\sum \phi^\#(f_d)\]
+%this proves that $\phi^\#(f_d)=0$ for all $d$.
+%\item We prove the stronger claim $\forall I\in\omega(k,n),\ z_I\notin \ker \phi^\#$:
+%\[\deg\phi^\#(z_I)=\deg(\det X_I)=k>0,\]
+%so $z_I\notin \ker\phi^\#$.
+%\end{itemize}
+
+
+%We recall a basic fact about sheaves
+%\begin{lemma}\label{CriterionForClosedSupport}
+%The support of a finite type quasicoherent sheaf $\Fc$ on a scheme $X$ is a
+%closed subset.
+%\end{lemma}
+%\begin{proof}
+%Since the support is a local notion and we can take an open affine cover of any scheme, we may assume $X=\Spec A$.\\
+%From the theory of quasicoherent sheaves on affine schemes\footnote{see Theorem 5.1.7 in \cite{QingLiu}, page 160} we know that there exists a finitely generated $A$-module $M$ such that $\Fc=\wt M$. Let $m_1,\cdots, m_k$ be generators for $M$, then 
+%\[\Supp M=\bigcup_{i=1}^k\Supp m_{i}A.\]
+%Since we have written $\Supp M$ as a finite union of sets, it is enough to show that $\Supp mA\doteqdot \Supp m$ is closed for all $m\in M$, which is true because
+%\[\Supp m=V(0:_Am),\]
+%indeed
+%\[0=m_\pf\coimplies \exists s\in A\bs \pf\ s.t.\ sm=0\coimplies \exists t\in (0:_A m)\bs \pf,\]
+%thus $\pf\in \Supp m$ if and only if $0:_A m\subseteq \pf$, i.e. $\pf\in V(0:_Am)$.
+%\end{proof}
+
+
+%Since they are both sheaf morphisms on $S$ it is enough to show that they induce the same morphism on all stalks. Let us fix $s\in S$ and $t=f(s)\in T$, then
+%\begin{align*}
+%f^\ast(\eta(\vp))_s((e_j)_s)=&\eta(\vp)_t((e_j)_t)\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}=\\
+%=&\sum_{r=1}^k \pa{\vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_t (e_r)_t\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}=\\
+%=&\sum_{r=1}^k f^\#_s\pa{\pa{\vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_t} (e_r)_s=\\
+%=&\sum_{r=1}^k \pa{f^\#(T)\circ \vp\pa{\frac{\det X_{I^{i_r}_j}}{\det X_I}}}_s (e_r)_s=\eta(f^\#(T)\circ \vp)_s,
+%\end{align*}
+%where we have used twice the fact that $(e_j)_s\equiv (e_j)_t\otimes_{\Oc_{T,t}}1_{\Oc_{S,s}}$ under the canonical isomorphism $\Oc_{S,s}^k\cong \Oc_{T,t}^k\otimes_{\Oc_{T,t}}\Oc_{S,s}$.
