@@ -33,7 +33,7 @@ Let $\Cc$ be a category and $X\in \Cc$. If $F$ is a presheaf on $\Cc$ then the f
 \[\Hom(h_X,F)\longleftrightarrow F(X).\]
 \end{lemma}
 \begin{proof}
-Given a natural trasformation $\zeta$, we can take its image in $F(X)$ to be $\zeta_X(id_X)$.
+Given a natural transformation $\zeta$, we can take its image in $F(X)$ to be $\zeta_X(id_X)$.
 On the other hand, for any given element $u\in F(X)$ we can define an arrow $h_X(T)\to F(T)$ for any $T\in \Cc$ by taking $f\mapsto F(f)(u)$. This collection of maps defines a natural transformation from $h_X$ to $F$ because for all $g:S\to T$ and for all $f\in h_X(T)$
 \[F(g)(F(f)(u))=(F(g)\circ F(f))(u)=F(f\circ g)(u)=F(h_X(g)(f))(u).\]
 To conclude it is enough to check that the two assignments are inverses:
@@ -304,7 +304,7 @@ If $\cpa{F_i\to F}$ is an open cover of the functor $F$ then for any $S$-scheme 
 Finally, we come to the main results of this chapter
 
 \begin{proposition}\label{MapGluingForZariskiSheaves}
-Let $F$ and $G$ be Zariski sheaves, $\cpa{F_i\to F}$ and $\cpa{G_i\to G}$ be open covers with the same indicization and $f_i:F_i\to G_i$ be natural transformations such that\footnote{for a natural trasformation $\zeta:F\to H$ and a subfunctor $G\subseteq F$, we define $\zeta\res G$ as the natural transformation $G\to H$ given by $(\zeta\res G)_T=\zeta_T\res{G(T)}$. Naturality follows from the naturality of $f$ and the definition of subfunctor.} $f_i\res{F_i\cap F_j}=f_j\res{F_i\cap F_j}$. 
+Let $F$ and $G$ be Zariski sheaves, $\cpa{F_i\to F}$ and $\cpa{G_i\to G}$ be open covers with the same indexation and $f_i:F_i\to G_i$ be natural transformations such that\footnote{for a natural transformation $\zeta:F\to H$ and a subfunctor $G\subseteq F$, we define $\zeta\res G$ as the natural transformation $G\to H$ given by $(\zeta\res G)_T=\zeta_T\res{G(T)}$. Naturality follows from the naturality of $f$ and the definition of subfunctor.} $f_i\res{F_i\cap F_j}=f_j\res{F_i\cap F_j}$. 
 Then there exists a natural transformation $f:F\to G$ which restricts to $f_i$ on $F_i$.
 \end{proposition}
 \begin{proof}

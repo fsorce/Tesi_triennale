@@ -25,3 +25,14 @@
 \makeatletter
 \let\ps@plain\ps@empty
 \makeatother
+
+%==== Colore dei footnote, link e citazioni ====
+\definecolor{DarkBlue}{HTML}{00518B}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DarkBlue,
+    filecolor=DarkBlue,
+    citecolor = DarkBlue,
+    urlcolor=DarkBlue,
+}
+\renewcommand\thefootnote{\textcolor{blue}{\arabic{footnote}}}
