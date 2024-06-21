@@ -156,7 +156,7 @@ Since $\Gr_I(k,n)$ and $\Gr_J(k,n)$ are affine and $\Gr(k,n)$ is projective and 
 \section{Grassmannian moduli problem}
 
 Let us consider the following moduli problem
-\[\G(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
+\[\gr(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
 where $Q$ is a locally free sheaf of rank $k$ on $T$ and two surjections $\al:\Oc_T^n\onto Q$, $\beta:\Oc_T^n\onto V$ are equivalent if and only if there exist an isomorphism of sheaves $\theta:Q\to V$ such that the diagram commutes
 \[\begin{tikzcd}
 	{\Oc_T^n} & Q \\
@@ -169,7 +169,7 @@ We have functoriality because of the composition properties of pullbacks.
 
 \begin{remark}
 This functor formalizes the classification problem of $(n-k)$-dimensional subspaces of an $n$-dimensional space. Indeed
-\[\G(k,n)(\Spec\K)=\quot{\cpa{\al:\Oc_{\Spec \K}^n\onto Q}}\sim\cong\quot{\cpa{\vp:\K^n\onto \K^k}}\sim=\Gr(k,n)(\K).\]
+\[\gr(k,n)(\Spec\K)=\quot{\cpa{\al:\Oc_{\Spec \K}^n\onto Q}}\sim\cong\quot{\cpa{\vp:\K^n\onto \K^k}}\sim=\Gr(k,n)(\K).\]
 For the middle isomorphism we used the fact that sheaves over a point are skyscrapers and that $\Oc_{\Spec\K,\Spec \K}=\K$. The last equality is our first definition for the Grassmannian up to the choice of a basis.
 \end{remark}
 
@@ -184,15 +184,15 @@ If there is no ambiguity we write $s_I$.
 
 \begin{definition}[Principal subfunctors of the Grassmannian]
 Fixed a multiindex $I\in \omega(k,n)$ we define the following functor
-\[\G_I(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surjective}}}\sim}{f}{\al\mapsto f^\ast \al}\]
-where the equivalence relation is the same as the one defined for $\G(k,n)$.
+\[\gr_I(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surjective}}}\sim}{f}{\al\mapsto f^\ast \al}\]
+where the equivalence relation is the same as the one defined for $\gr(k,n)$.
 \end{definition}
 
 \begin{proposition}
-The functor $\G_I(k,n)$ is well defined.
+The functor $\gr_I(k,n)$ is well defined.
 \end{proposition}
 \begin{proof}
-First we observe that $\G_I(k,n)(T)$ is well defined because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves then on each stalk we have
+First we observe that $\gr_I(k,n)(T)$ is well defined because if $\psi=\theta\circ \al$ with $\theta$ isomorphism of sheaves then on each stalk we have
 \[\psi_x\circ (s_I)_x=\theta_x\circ \vp_x\circ (s_I)_x,\]
 which is surjective if and only if $\vp_x\circ (s_I)_x$ is surjective.
 
@@ -205,16 +205,16 @@ which is true because the tensor product is right-exact.
 
 
 \begin{proposition}\label{GrIAreOpenSubfunctors}
-The $\G_I(k,n)$ are open subfunctors of $\G(k,n)$.
+The $\gr_I(k,n)$ are open subfunctors of $\gr(k,n)$.
 \end{proposition}
 \begin{proof}
-The inclusion $\G_I(k,n)(T)\subseteq \G(k,n)(T)$ is apparent, so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\G(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\G(k,n)}\G_I(k,n)$.\medskip
+The inclusion $\gr_I(k,n)(T)\subseteq \gr(k,n)(T)$ is apparent, so we just need to show that if we fix a quotient $[\al:\Oc_T^n\onto Q]$ in $\gr(k,n)(T)$ then we can find an open subscheme of $T$ which represents $h_T\times_{\gr(k,n)}\gr_I(k,n)$.\medskip
 
 Let us fix a representative $\al$ for the given quotient. The locus where $\al\circ s_I:\Oc_T^k\to Q$ is surjective is the complement of the support of its cokernel sheaf $\Kc$, i.e. 
 \[(\al\circ s_I)_x\text{ surjective} \coimplies x\notin \Supp\Kc.\]
 Note that by the definition of $\sim$ and properties of isomorphisms of sheaves, the first condition does not depend of the choice of representative for $[\al]$, so $\Supp\Kc$ only depends on $[\al]$. Note that $\Kc$ is of finite type because the codomains are locally free of finite rank, so $\Supp\Kc$ is closed\footnote{For more detail see \href{https://stacks.math.columbia.edu/tag/01B4}{Section 01B4} in \cite{stacks}} and hence $U_I=T\bs \Supp \Kc$ is open.\medskip
 
-We now want to show that $U_I$ represents the functor $h_T\times_{\G(k,n)}\G_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $[f^\ast\al:\Oc_S^n\to f^\ast Q] \in \Gr_I(S)$.\medskip
+We now want to show that $U_I$ represents the functor $h_T\times_{\gr(k,n)}\gr_I(k,n)$, that is we want to show that if $f:S\to T$ is a morphism of $\K$-schemes then $f$ factors through $U_I$ if and only if $[f^\ast\al:\Oc_S^n\to f^\ast Q] \in \Gr_I(S)$.\medskip
 
 Note that $f(s)\in U_I$ if and only if $(\al\circ s_I^T)_{f(s)}$ is surjective which, by Nakayama's lemma applied to the cokernels, is equivalent to the surjectivity of
 \[(\al\circ s_I^T)\res{f(s)}:k(f(s))^n\to Q_{f(s)}\otimes_{\Oc_{T,f(s)}}k(f(s)).\]
@@ -231,12 +231,12 @@ Note that we used the fact that $\Oc_{T,f(s)}\to \Oc_{S,s}\to k(s)=\Oc_{T,f(s)}\
 By Nakayama's lemma we can again consider equivalently $f^\ast(\al\circ s^T_I)_s=(f^\ast\al)_{s}\circ (s^S_I)_s$.
 
 
-We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_I)_s$ is surjective, i.e. $f$ factors through $U_I$ if and only if $(f^\ast\al)\circ s^S_I$ is surjective, i.e. $f^\ast\al\in \G_I(k,n)(S)$.
+We have thus shown that $f(s)\in U_I$ if and only if $(f^\ast\al)_{s}\circ (s^S_I)_s$ is surjective, i.e. $f$ factors through $U_I$ if and only if $(f^\ast\al)\circ s^S_I$ is surjective, i.e. $f^\ast\al\in \gr_I(k,n)(S)$.
 \end{proof}
 
 
 \begin{proposition}\label{GrIAreOpenCover}
-The collection $\cpa{\G_I(k,n)}$ is a Zariski open cover of $\G(k,n)$.
+The collection $\cpa{\gr_I(k,n)}$ is a Zariski open cover of $\gr(k,n)$.
 \end{proposition}
 \begin{proof}
 For any $\K$-scheme $S$ and any quotient $[\al]\in \Gr(k,n)(S)$ (without loss of generality we choose a representative $\al$) we need to show that for any $s\in S$ there exists a multiindex $I$ such that $s\in U_I$ defined as in the previous proposition.
@@ -249,7 +249,7 @@ is surjective, which is trivially true since $\rnk \al_s=k$.
 
 \subsection{Representability of the Grassmannian functor}
 \begin{lemma}\label{UniqueIsomorphismInGrassmannFunctor}
-Let $T$ be a scheme and $[\al:\Oc_T^n\onto Q],[\beta:\Oc_T^n\onto Q']\in\G(k,n)$. If $[\al]=[\beta]$ then the isomorphism $\theta:Q\to Q'$ such that $\beta=\theta\circ \al$ is unique.
+Let $T$ be a scheme and $[\al:\Oc_T^n\onto Q],[\beta:\Oc_T^n\onto Q']\in\gr(k,n)$. If $[\al]=[\beta]$ then the isomorphism $\theta:Q\to Q'$ such that $\beta=\theta\circ \al$ is unique.
 \end{lemma}
 \begin{proof}
 First, observe that if $\al=\beta$ then by surjectivity and commutativity $\theta=id_Q$.
@@ -257,7 +257,7 @@ Let $\theta,\eta:Q\to Q'$ be isomorphisms such that $\beta=\theta\circ \al$ and 
 \end{proof}
 
 \begin{proposition}\label{GrassmannianIsSheaf}
-The Grassmannian functor $\G(k,n)$ is a Zariski sheaf.
+The Grassmannian functor $\gr(k,n)$ is a Zariski sheaf.
 \end{proposition}
 \begin{proof}
 Consider a $\K$-scheme $T$ and an open cover $\cpa{U_i\to T}$. Let $\al_i:\Oc_{U_i}^n\onto Q_i$ be representatives of quotients such that 
@@ -269,10 +269,10 @@ Let $V\subseteq T$ be an open subset. For any section $s\in \Oc_T^n(V)$ we can d
 \end{proof}
 
 \begin{proposition}\label{GrIRepresentGrIFunctors}
-The affine scheme $\Gr_I(k,n)$ represents the functor $\G_I(k,n)$.
+The affine scheme $\Gr_I(k,n)$ represents the functor $\gr_I(k,n)$.
 \end{proposition}
 \begin{proof}
-First we prove that for any $\K$-scheme $T$, $\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \G_I(T)$, then we need to check naturality.
+First we prove that for any $\K$-scheme $T$, $\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \gr_I(T)$, then we need to check naturality.
 
 By definition $\Gr_I(k,n)=\Spec\pa{\K \spa{\frac{\det X_J}{\det X_I}}}$, so
 \[\Hom_{\Sch\K}(T,\Gr_I(k,n))\cong \Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}.\]
@@ -298,7 +298,7 @@ because on all stalks $\al\circ s_I$ is an endomorphism of finitely generated mo
 \bigskip
 
 To prove naturality we consider a morphism  $f:S\to T$ of $\K$-schemes. Recall that
-\[\funcDef{\G_I(k,n)(T)}{\G_I(k,n)(S)}{[\al]}{[f^\ast \al]}.\]
+\[\funcDef{\gr_I(k,n)(T)}{\gr_I(k,n)(S)}{[\al]}{[f^\ast \al]}.\]
 Under the bijection above, imposing naturality gives
 \[\funcDef{\cpa{\al:\Oc_T^n\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\cpa{\beta:\Oc_S^n\to \Oc_S^k\mid \beta\circ s_I=id_{\Oc_S^k}}}{\al}{f^\ast\al}\]
 since $f^\ast\al\circ s_I^S=f^\ast(\al\circ s_I^T)=f^\ast(id_{\Oc^k_T})=id_{\Oc^k_S}$.
@@ -320,10 +320,10 @@ We conclude by recalling that the following diagram commutes
 \end{proof}
 
 \begin{theorem}\label{GrassmannianIsModuliSpace}
-The Grassmann scheme $\Gr(k,n)$ is a fine moduli space for the Grassmann functor $\G(k,n)$.
+The Grassmann scheme $\Gr(k,n)$ is a fine moduli space for the Grassmann functor $\gr(k,n)$.
 \end{theorem}
 \begin{proof}
-We know that $\cpa{\G_I(k,n)\to\G(k,n)}$ is an open cover (\ref{GrIAreOpenCover}), that $\G(k,n)$ is a Zariski sheaf (\ref{GrassmannianIsSheaf}) and that $h_{\Gr_I(k,n)}\cong \G_I(k,n)$ (\ref{GrIRepresentGrIFunctors}). If we can show that these isomorphisms restrict well to double intersections we have the desired result by proposition (\ref{MapGluingForZariskiSheaves}).
+We know that $\cpa{\gr_I(k,n)\to\gr(k,n)}$ is an open cover (\ref{GrIAreOpenCover}), that $\gr(k,n)$ is a Zariski sheaf (\ref{GrassmannianIsSheaf}) and that $h_{\Gr_I(k,n)}\cong \gr_I(k,n)$ (\ref{GrIRepresentGrIFunctors}). If we can show that these isomorphisms restrict well to double intersections we have the desired result by proposition (\ref{MapGluingForZariskiSheaves}).
 Let $T$ be a scheme and let us consider a morphism
 \[f\in\Hom_{\Sch\K}\pa{T,\Gr_I(k,n)\cap \Gr_J(k,n)}=\Hom_{\Sch\K}\pa{T,\Gr(k,n)\cap D_+(z_Iz_J)}.\]
 Applying a standard result for morphisms towards an affine scheme\footnote{see remark (\ref{IntersectionIsAffine}).} we get 
@@ -333,6 +333,6 @@ By the universal property of localization, we may identify this set with
 Applying the functor $\eta$  defined during the proof of proposition (\ref{GrIRepresentGrIFunctors}), which we will denote $\eta^I$ to emphasize which determinant we consider at the denominator, we obtain\footnote{the condition on the image of $\frac{\det X_J}{\det X_I}$ corresponds to $\det(\al\circ s_J)$ being invertible, and thus to $\al\circ s_J$ being an isomorphism.} 
 \[\eta^I(f^\#(T))\in\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}}.\]
 Observe that we can identify this set with
-\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\G_I(k,n)\times_{\G(k,n)}\G_J(k,n))(T),\]
-so to conclude the proof we just need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\G(k,n)$. By lemma (\ref{FormalBasisChange}), the matrix $X_J\ii X_I$ can be described only using elements in the ring $\K\spa{\det X_L}_{\det X_I\det X_J}^0$. We can thus define $\theta$ by setting $\theta_V(e_j)=f^\#(V)(X_J\ii X_I)e_j$. It is clear by construction that $\theta\circ \eta^I(f^\#(T))=\eta^J(f^\#(T))$. Defining $\delta$ from $X_I\ii X_J$ analogously yields an inverse of $\theta$, realizing the sought out equivalence. 
+\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\gr_I(k,n)\times_{\gr(k,n)}\gr_J(k,n))(T),\]
+so to conclude the proof we just need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\gr(k,n)$. By lemma (\ref{FormalBasisChange}), the matrix $X_J\ii X_I$ can be described only using elements in the ring $\K\spa{\det X_L}_{\det X_I\det X_J}^0$. We can thus define $\theta$ by setting $\theta_V(e_j)=f^\#(V)(X_J\ii X_I)e_j$. It is clear by construction that $\theta\circ \eta^I(f^\#(T))=\eta^J(f^\#(T))$. Defining $\delta$ from $X_I\ii X_J$ analogously yields an inverse of $\theta$, realizing the sought out equivalence. 
 \end{proof}
