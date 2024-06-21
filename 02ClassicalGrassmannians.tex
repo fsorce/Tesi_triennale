@@ -36,7 +36,8 @@ The implication $2.\implies 1.$ is a straight forward computation, the other can
 
 \noindent We conclude this introductory section with some notation and conventions.
 \begin{definition}[Multiindicies]
-We define a \textbf{$(k,n)$-multiindex} as an element of $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$. We denote the set of \textbf{ordered $(k,n)$-multiindicies} by
+We define a \textbf{$(k,n)$-multiindex} as an element of the set $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$. 
+We denote the set of \textbf{ordered $(k,n)$-multiindicies} by
 \[\omega(k,n)=\cpa{(i_1,\cdots, i_k)\in \cpa{1,\cdots, n}^k\mid i_1<\cdots<i_k}.\]
 If $I\in \omega(k,n)$, we write\footnote{$\cup$ and $\ast$ denote the union of the underlying sets and concatenation respectively.}
 \begin{itemize}
@@ -129,7 +130,7 @@ We prove both implications:
 \begin{definition}[Pl\"ucker embedding]
 Let us fix bases $\Bc$ and $\Dc$ of $V$ and $W$. We define the \textbf{Pl\"ucker embedding} as follows
 \[\Pl_\Bc:\funcDef{\Gr(k,n)}{\Pj(\bw V)}{[\vp]}{\displaystyle\spa{\sum_{I\in \omega(k,n)} \eta_\Dc(\wedge^k\vp(v_I))v_I}}\]
-The entries of the homogeneous $\binom nk$-tuple $\spa{\cpa{\eta_\Dc(\wedge^k(\vp(v_I)))}_{I\in\omega(k,n)}}$ are called the \textbf{Pl\"ucker coordinates} of $[\vp]$. 
+The entries of the $\binom nk$-tuple $\spa{\cpa{\eta_\Dc(\wedge^k(\vp(v_I)))}_{I\in\omega(k,n)}}$ are called the \textbf{Pl\"ucker coordinates} of $[\vp]$. 
 \end{definition}
 \begin{remark}
 If the Pl\"ucker embedding is well defined, it does not depend on the choice of basis for $W$. Indeed changing the basis of $W$ simply multiplies all Pl\"ucker coordinates by the same nonzero scalar\footnote{the determinant of the change of basis}, so the resulting point in $\Pj(\bw V)$ is left unchanged.

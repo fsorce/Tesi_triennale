@@ -1,0 +1,27 @@
+%PER CAMBIARE I MARGINI
+\usepackage[margin=4cm]{geometry}
+
+\usepackage{emptypage} % Pagine vuote non numerate
+\usepackage{fancyhdr} % Sistema headers
+\usepackage[Lenny]{fncychap} % Capitoli fighi
+\ChTitleVar{\Huge\bfseries}
+\usepackage[hang,flushmargin]{footmisc} % Footnote non indentata
+%========== Stile header e footer ==============
+
+\pagestyle{fancy}
+% Left, Right, Even(pages), Odd(pages), Center
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\fancyfoot[C]{}
+
+\renewcommand{\chaptermark}[1]{\markboth{\textsc{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textsc{#1}}}
+
+%\renewcommand{\headrulewidth}{0.05pt}
+%\renewcommand{\footnoterule}{\kern 0pt	\hrule width \textwidth height 0.5pt \kern 5pt}
+
+%Numeri pagina in prima pagina capitoli
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother

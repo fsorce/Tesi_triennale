@@ -1,17 +1,17 @@
-\documentclass[a4paper]{report}
-\input{preamble.tex}
-%\usepackage{biblatex}
-%PER CAMBIARE I MARGINI
-\usepackage[margin=4cm]{geometry}
+\documentclass{book}
+\input{style/fancystyle.tex}
+\input{style/fancythm.tex}
+\input{style/preamble.tex}
+
 
 %----------- Setup stilistico ----------------
-\definecolor{DarkRed}{HTML}{B6321C}
+\definecolor{DarkBlue}{HTML}{00518B}
 \hypersetup{
     colorlinks=true,
-    linkcolor=DarkRed,
-    filecolor=blue,
-    citecolor = black,
-    urlcolor=cyan,
+    linkcolor=DarkBlue,
+    filecolor=DarkBlue,
+    citecolor = DarkBlue,
+    urlcolor=DarkBlue,
 }
 \renewcommand\thefootnote{\textcolor{blue}{\arabic{footnote}}}
 % ============================================
@@ -48,33 +48,25 @@ Dipartimento di Matematica}
 
 
 \begin{document}
-\maketitle
+\frontmatter
+\include{frontespizio}
 
-\begin{abstract}
-In this document we introduce the concept of moduli spaces in algebraic geometry through the example of the Grassmannian scheme.
+%\include{Abstract}
 
-The first chapter introduces the basics of the functorial approach to algebraic geometry and its relation to moduli problems.
-
-The second chapter is a quick overview of Grassmannians as defined set theoretically. We focus our attention on the Pl\"ucker embedding and prove that it identifies the Grassmannian with a projective variety.
-
-In the third chapter we describe the reduced scheme structure on the Grassmannian and prove that it is a fine moduli space for the functor of quotients from $\Oc_T^n$ to a rank $k$ vector bundle on $T$.
-
-%The last chapter is a brief overview of the construction of the Hilbert and Quot schemes and how they generalize Grassmannians.
-\end{abstract}
-
-%\newpage
 \tableofcontents
-\newpage
 
 \include{00Introduction}
-\include{01ModuliSpaces}
-\include{02ClassicalGrassmannians}\include{03GrassmannFunctor}
 
-\bibliographystyle{plain}
+\mainmatter
+\include{01ModuliSpaces}
+\include{02ClassicalGrassmannians}
+\include{03GrassmannFunctor}
+\include{04QuotAndHilb}
+
+\appendix
+\bibliographystyle{alpha}
 \bibliography{refs}
 
-
-%\appendix
 %\include{Riconoscimenti.tex}
 
 \end{document}
