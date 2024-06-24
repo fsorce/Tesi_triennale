@@ -2,13 +2,12 @@
 In this chapter we will work with $\K^n$ and $\K^k$ instead of abstract vector spaces. This means that we have canonical bases $\Can_n=\cpa{e_1,\cdots, e_n}$ and $\Can_k=\cpa{e_1,\cdots, e_k}$ and that we identify $\Hom_\K(\K^n,\K^k)$ with $\Mc(k,n)$.
 \medskip
 
-To differentiate the scheme morphisms we define in this chapter from the morphisms of varieties defined previously we use a superscript $s$ for the latter, i.e.
+To distingish the scheme morphisms we define in this chapter from the morphisms of varieties defined previously we use a superscript $s$ (for ``set-theoretic") for the latter, i.e.
 \[\phi^s:\funcDef{\Mc(k,n)}{\bigwedge^k\K^n}{A}{\displaystyle\sum_{I\in \omega(k,n)}\det A_I e_I},\quad \Pl^s:\funcDef{\Gr(k,n)}{\Pj(\bigwedge^k\K^n)}{[A]_\sim}{\spa{\phi^s(A)}_{\K^\ast}}\]
 
 \begin{notation}
 Let $I$ be an ideal of the ring $A$ and $J$ be a homogeneous ideal of the graded ring $B$. We adopt the following notation
 \[V(I)=\cpa{\pf\in\Spec A\mid I\subseteq \pf},\qquad V_+(J)=\cpa{\pf\in\Proj B\mid I\subseteq \pf}.\]
-If the sets above are considered as closed subschemes we take the reduced structure.
 \end{notation}
 
 
@@ -33,7 +32,7 @@ The ring $\K[X_{k,n}]$ is the coordinate ring of $\Mc(k,n)$.
 \end{remark}
 
 \begin{remark}
-The familiar $\Mc(k,n)$ and $\bigwedge^k\K^n$ can be identified with the $\K$-points of the affine schemes $\Spec \K[X_{k,n}]$ and $\Spec \Bc_{k,n}$ respectively (Example 2.3.32 of \cite{QingLiu}). We will impose this identification for the rest of the chapter.
+The familiar $\Mc(k,n)$ and $\bigwedge^k\K^n$ can be identified with the $\K$-points of the affine schemes $\Spec \K[X_{k,n}]$ and $\Spec \Bc_{k,n}$ respectively (Example 2.3.32 of \cite{QingLiu}). We will use this identification for the rest of the chapter.
 \end{remark}
 
 \begin{definition}[Pl\"ucker ring homomorphism]
@@ -173,7 +172,16 @@ This functor formalizes the classification problem of $(n-k)$-dimensional subspa
 For the middle isomorphism we used the fact that sheaves over a point are skyscrapers and that $\Oc_{\Spec\K,\Spec \K}=\K$. The last equality is our first definition for the Grassmannian up to the choice of a basis.
 \end{remark}
 
-\noindent In this this section we prove that the Grassmann scheme represents this functor.
+\begin{remark}
+We could have defined the moduli problem equivalently as follows:
+\[\gr'(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\cpa{\Fc\mid \emat{\Fc\text{ vector subbundle of $\Oc_T^n$ of}\\ \text{ rank $k$ s.t. $\Oc^n_T/\Fc$ is locally free}}}}{f:S\to T}{\Fc\mapsto f^\ast\Fc},\]
+indeed the following is the data of a natural isomorphism
+\[\correspDef{\gr(k,n)(T)}{\gr'(n-k,n)(T)}{[q:\Oc^n_T\onto Q]}{\ker q}{[\Oc^n_T\to \Oc^n_T/\Fc]}{\Fc}\]
+We chose to adopt the first definition because it is easier to verify whether a map is a valid quotient (as in, we do not need to compute a quotient sheaf) and because the first definition generalizes well to objects like the functor of quotients, which we will introduce in the next chapter.
+\end{remark}
+
+
+\noindent In this section we prove that the Grassmann scheme is a fine modul space for the Grassmannian moduli problem.
 
 \subsection{Open subfunctor cover of the Grassmannian}
 \begin{notation}
@@ -333,6 +341,6 @@ By the universal property of localization, we may identify this set with
 Applying the functor $\eta$  defined during the proof of proposition (\ref{GrIRepresentGrIFunctors}), which we will denote $\eta^I$ to emphasize which determinant we consider at the denominator, we obtain\footnote{the condition on the image of $\frac{\det X_J}{\det X_I}$ corresponds to $\det(\al\circ s_J)$ being invertible, and thus to $\al\circ s_J$ being an isomorphism.} 
 \[\eta^I(f^\#(T))\in\cpa{\al:\Oc_T^n\to \Oc^k_T\mid \al\circ s_I=id_{\Oc^k_T},\ \al\circ s_J\text{ isomorphism}}.\]
 Observe that we can identify this set with
-\[\quot{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}{\sim}=(\gr_I(k,n)\times_{\gr(k,n)}\gr_J(k,n))(T),\]
+\[{\cpa{\al:\Oc^n_T\to Q\mid \al\circ s_I \text{ and }\al\circ s_J\text{ surjective}}}/_{\sim}=(\gr_I(k,n)\times_{\gr(k,n)}\gr_J(k,n))(T),\]
 so to conclude the proof we just need to verify that $\eta^I(f^\#(T))\sim \eta^J(f^\#(T))$ in $\gr(k,n)$. By lemma (\ref{FormalBasisChange}), the matrix $X_J\ii X_I$ can be described only using elements in the ring $\K\spa{\det X_L}_{\det X_I\det X_J}^0$. We can thus define $\theta$ by setting $\theta_V(e_j)=f^\#(V)(X_J\ii X_I)e_j$. It is clear by construction that $\theta\circ \eta^I(f^\#(T))=\eta^J(f^\#(T))$. Defining $\delta$ from $X_I\ii X_J$ analogously yields an inverse of $\theta$, realizing the sought out equivalence. 
 \end{proof}

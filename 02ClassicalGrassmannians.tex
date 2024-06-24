@@ -1,5 +1,5 @@
 \chapter{Grassmannians as projective varieties}
-In this chapter we introduce Grassmannians from the point of view of classical algebraic geometry. We are interested in Grassmannians in the context of classification problems because their definition leads us to suspect that they are a moduli space for certain families of vector spaces. In the next chapter we will indeed find that they are fine moduli spaces for a functor that formalizes \textit{families of $k$-vector subspaces of $\K^n$}.
+In this chapter we introduce Grassmannians from the point of view of classical algebraic geometry. We are interested in Grassmannians in the context of classification problems because given their definition, we can expect them to be moduli spaces for families of quotient vector spaces. In the next chapter we will indeed find that they are fine moduli spaces for a functor that formalizes \textit{families of fixed rank vector subspaces of $\K^n$}.
 
 We first define Grassmannians set-theoretically, then we will find a bijection between this set and a Zariski-closed subset of some projective space. This bijection will allow us to endow the Grassmannians with the structure of projective algebraic varieties.
 
@@ -39,10 +39,10 @@ The implication $2.\implies 1.$ is a straight forward computation, the other can
 We define a \textbf{$(k,n)$-multiindex} as an element of the set $\cpa{1,\cdots, n}^k$. Our notation for a multiindex $I$ will usually be $I=(i_1,\cdots, i_k)$. 
 We denote the set of \textbf{ordered $(k,n)$-multiindicies} by
 \[\omega(k,n)=\cpa{(i_1,\cdots, i_k)\in \cpa{1,\cdots, n}^k\mid i_1<\cdots<i_k}.\]
-If $I\in \omega(k,n)$, we write\footnote{$\cup$ and $\ast$ denote the union of the underlying sets and concatenation respectively.}
+If $I\in \omega(k,n)$, we write
 \begin{itemize}
-\item $\wh I$ for the element of $\omega(n-k,n)$ such that $I\cup \wh I=\cpa{1,\cdots, n}$ and 
-\item $\sigma_I$ for the permutation that sends $\wh I\ast I$ to $\pa{1,\cdots, n}$.
+\item $\wh I$ for the element of $\omega(n-k,n)$ whose entries are the elements of $\cpa{1,\cdots, n}$ missing from $I$ and 
+\item $\sigma_I$ for the permutation that sends the concatenation $\wh I\ast I$ to $\pa{1,\cdots, n}$.
 \end{itemize}
 \end{definition}
 
@@ -130,8 +130,10 @@ We prove both implications:
 \begin{definition}[Pl\"ucker embedding]
 Let us fix bases $\Bc$ and $\Dc$ of $V$ and $W$. We define the \textbf{Pl\"ucker embedding} as follows
 \[\Pl_\Bc:\funcDef{\Gr(k,n)}{\Pj(\bw V)}{[\vp]}{\displaystyle\spa{\sum_{I\in \omega(k,n)} \eta_\Dc(\wedge^k\vp(v_I))v_I}}\]
-The entries of the $\binom nk$-tuple $\spa{\cpa{\eta_\Dc(\wedge^k(\vp(v_I)))}_{I\in\omega(k,n)}}$ are called the \textbf{Pl\"ucker coordinates} of $[\vp]$. 
+The entries of the $\binom nk$-tuple $\spa{\cpa{\eta_\Dc(\wedge^k(\vp(v_I)))}_{I\in\omega(k,n)}}$ are called the \textbf{Pl\"ucker coordinates} of $[\vp]$. We will give a cleaner form of the Pl\"ucker coordinates once we express this map in terms of matricies.
 \end{definition}
+
+
 \begin{remark}
 If the Pl\"ucker embedding is well defined, it does not depend on the choice of basis for $W$. Indeed changing the basis of $W$ simply multiplies all Pl\"ucker coordinates by the same nonzero scalar\footnote{the determinant of the change of basis}, so the resulting point in $\Pj(\bw V)$ is left unchanged.
 \end{remark}
@@ -196,7 +198,7 @@ We say that $\omega\in \bw V$ is \textbf{divisible} by $v\in V$ if there exists 
 $\omega\in \bw V$ is divisible by $v\in V\nz$ if and only if $\omega\wedge v=0$.
 \end{lemma}
 \begin{proof}
-If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$. If $\omega\wedge v=0$ then by writing $\omega$ in a base containing $v$ we can see that the simple multivectors with nonzero coefficients must contain $v$ as a factor, so we can factor out $v$ by multilinearity and get a decomposition of the form $\omega=\e\wedge v$.
+If $\omega=\e\wedge v$ then $\omega\wedge v=\e\wedge v\wedge v=0$. If $\omega\wedge v=0$ then by writing $\omega$ in a basis containing $v$ we can see that the simple multivectors with nonzero coefficients must contain $v$ as a factor, so we can factor out $v$ by multilinearity and get a decomposition of the form $\omega=\e\wedge v$.
 \end{proof}
 
 \begin{corollary}[Total decomposability criterion]\label{TotalDecomposabilityCriterion}

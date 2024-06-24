@@ -3,41 +3,56 @@ The following type of \textit{classification problem} occurs often in math:
 \begin{center}
 Consider some type of object and a notion of isomorphism which can be defined between them. We are interested in understanding the behavior of isomorphism classes and how they relate to each other.
 \end{center}
-Finding a bijection between isomorphism classes and known objects is usually trivial\footnote{for example, if the classes form a set they can be identified with a canonical set of the same cardinality.}, but for an answer to a classification problem to be satisfactory we usually require some information on \textit{families} of isomorphism classes.\medskip
+The set or class of isomorphism classes is a tautological answer to the set-theoretic question, but for an answer to a classification problem to be satisfactory we usually require it to encode some information on \textit{families} of isomorphism classes.\medskip
 
-Miraculously, many such classification problems turn out to have a natural answer in the form of some geometric object. Usually the object can only be defined as the families themselves together with some geometric structure (this is the realm of the theory of stacks), but in more special circumstances one can find a more concrete space (usually a scheme) whose points represent isomorphism classes for our problem and whose geometric structure encodes information on the families. Such objects are called \textit{moduli spaces} for the classification problem.\medskip
+Miraculously, many such classification problems turn out to have a natural answer in the form of some geometric object. 
+In general the object can only be defined as the category of families together with some geometric structure (this is the realm of the theory of stacks), but in more special circumstances one can find a more concrete space, usually a scheme, whose points represent isomorphism classes for our problem and whose geometric structure encodes information on the families. 
+Such objects are called \textit{moduli spaces} for the classification problem.\medskip
 
 The best result we can hope for is finding a space which completely encodes how families behave\footnote{what will be formalized as a fine moduli space}, but this requirement is usually too strict.
-In this document we mostly deal with problems for which such a nice space exists: the Grassmannian and the Hilbert scheme.\medskip
-
+In this document we mostly deal with problems for which such a nice space exists: the Grassmannian, Quot and Hilbert schemes.
 
 
 \section*{Historical background}
-The history of moduli spaces begins with the article \cite{riemann54theorie}, where Riemann computes what we would now call the dimension of $M_g$, the moduli space of smooth projective algebraic curves of genus $g$, to be $3g-3$.\medskip
+The history of moduli theory aligns remarkably well with that of the moduli space of smooth curves of fixed genus. Indeed the word moduli was introduced by Riemann in the article \cite{riemann54theorie} to denote what we would now call the dimension of $M_g$, the moduli space of smooth projective algebraic curves of genus $g$, which he computed to be $3g-3$. 
 
-Although the argument given by Riemann can be made rigorous in modern language, he did not prove the existence of the space $M_g$ itself. The first general construction of $M_g$ as a space of some kind can be attributed to Teichm\"uller, which realized $M_g$ as the quotient of the Teichm\"uller space $T_g$ parametrizing complex structures up to isomorphism on a surface of genus $g$ by the action of the group $\Gamma_g$ of diffeomorphisms of the surface up to isotopy. The paper which establishes these ideas is \cite{teichmuller1939extremale}.\medskip
+Although the argument given by Riemann can be made rigorous in modern language, he did not prove the existence of the space $M_g$ itself.
+The first general construction of $M_g$ as a space of some kind can be attributed to Teichm\"uller, which realized $M_g$ as the quotient of the Teichm\"uller space $T_g$ parametrizing complex structures up to isomorphism on a surface of genus $g$ by the action of the group $\Gamma_g$ of diffeomorphisms of the surface up to isotopy. The paper which establishes these ideas is \cite{teichmuller1939extremale}.
 
-Alexander Grothendieck introduced the functorial approach to analytic moduli theory and later on to algebraic geometry in general. Grothendieck was very interested in algebraic moduli theory and contributed to it greatly by introducing the Hilbert, Quot and Picard functors and showing their representability by schemes. However, Grothendieck did not end up publishing on $M_g$.\medskip
+The basis for the modern theory were laid by Alexander Grothendieck and his functorial approach.
+He first introduced his methods to analytic moduli theory and later on to algebraic geometry in general.
+Grothendieck was very interested in algebraic moduli theory and contributed to it greatly by introducing the Hilbert, Quot and Picard functors and showing their representability by schemes. However, Grothendieck did not end up publishing on $M_g$.
 
-Among the first to study moduli spaces systematically was David Mumford. Inspired by invariant theory, Grothendieck's functorial approach and the existing constructions of moduli spaces like the one of principally polarized
-abelian varieties or the Chow varieties, Mumford developed Geometric Invariant Theory (commonly referred to as GIT), which can be described as a method to study and construct moduli spaces as quotients of algebraic groups. In the book \cite{mumford1994geometric} Mumford gives two constructions of $M_g$ as a coarse moduli space.
+Among the first to study moduli spaces systematically was David Mumford.
+Inspired by invariant theory, Grothendieck's functorial approach and the existing constructions of moduli spaces like the one of principally polarized abelian varieties or the Chow varieties, Mumford developed Geometric Invariant Theory (commonly referred to as GIT), which can be described as a method to study and construct moduli spaces as quotients of algebraic groups.
+In the book \cite{GIT} Mumford gives two constructions of $M_g$ as a coarse moduli space.
+
+For a more detailed history and more references see section 0.1 in \cite{Alper}.
 
 \section*{Why category theory?}
-As we briefly mentioned, the modern approach to moduli problems if formalized via functors. It might not be clear why this is the most appropriate tool, and indeed it can seem more complicated than more concrete treatments in simple cases like the classification of lines through a point via projective space.\medskip
+As we briefly mentioned, the modern approach to moduli problems if formalized via functors. It might not be clear why this is the most appropriate tool, and indeed it can seem more complicated than more concrete treatments in simple cases like the classification of lines through a point via projective space.
 
-Nevertheless, the functorial approach has proven itself to be effective in many aspects, chief among them the formalization of the nebulous concept of ``family" described above.\bigskip
+Nevertheless, the functorial approach has proven itself to be effective in many aspects, chief among them the formalization of the nebulous concept of ``family" described above.\medskip
 
 Following Grothendieck's ideas, a moduli problem is expressed as a contravariant functor
 \[F:T\mapsto \quot{\cpa{\text{families of objects over $T$}}}\sim\]
 where $\sim$ is the isomorphism relation imposed on families of objects.
-
-Since we are mostly concerned about problems in algebraic geometry, and thus families over schemes, the functor is usually taken to be a presheaf on $\Sch S$ for some base scheme $S$\footnote{usually $\Spec \K$ for an algebraically closed field $\K$ or $\Spec \Z$.}, i.e. $F:\Sch S\op\to\Set$.
+Since we are mostly concerned about problems in algebraic geometry, and thus families over schemes, the functor is usually taken to be a presheaf on $\Sch S$ for some base scheme\footnote{usually $\Spec \K$ for an algebraically closed field $\K$ or $\Spec \Z$.} $S$.
 To find the set of objects we want to classify up to isomorphism we can simply evaluate $F$ on a point.
 
-The functorial language allows for families to be pulled back via morphisms: if $f:S\to T$ is a morphism and $a\in F(T)$ is a family over $T$, then $F(f):F(T)\to F(S)$ by contravariance and thus $F(f)(a)\doteqdot f^\ast a\in F(S)$ is a family over $S$.
+The functorial language allows for families to be \textit{pulled back} via morphisms: if $f:S\to T$ is a morphism and $a\in F(T)$ is a family over $T$, then $F(f):F(T)\to F(S)$ by contravariance and thus $F(f)(a)\doteqdot f^\ast a\in F(S)$ is a family over $S$.
 \medskip
 
-There are several ways in which we can define a moduli space. The two most relevant are \textit{fine} and \textit{coarse} moduli spaces. A scheme $M$ is a fine moduli space if we can recover the whole moduli functor from it\footnote{formally, when $h_M$ and $F$ are naturally isomorphic functors.}. $M$ is a coarse moduli space if its $\K$-points are in bijection with $F(\Spec \K)$ and if $M$ is universal for this property. 
+There are several ways in which we can define a moduli space. The two most relevant are \textit{fine} and \textit{coarse} moduli spaces. A scheme $M$ is a fine moduli space if we can recover the whole moduli functor from it\footnote{formally, when $h_M$ and $F$ are naturally isomorphic functors.}. $M$ is a coarse moduli space if its $\K$-points are in bijection with $F(\Spec \K)$, all families over $T$ induce a morphism $T\to M$ which behaves well with pullbacks and $M$ is universal for these properties.
 
-In both cases we can interpret a family of objects over a scheme $T$ as a morphism from $T$ to $M$. Intuitively this is because a function from $T$ to $M$ is an assignment of an isomorphism class to each point of $T$, the added structure of a scheme morphism serves to define a ``niceness" condition to the considered families. If $M$ is a fine moduli space, then every family over $T$ can be viewed as the pullback under a morphism $T\to M$ of a specific family $u\in F(M)$, called the \textit{universal family}.
+In both cases we can interpret a family of objects over a scheme $T$ as a morphism from $T$ to $M$ called \textit{classifying map}.  Intuitively this is the function that to each point of $T$ assigns the corresponding isomorphism class. The added structure of a scheme morphism serves to define a ``niceness" on families. If $M$ is a fine moduli space, then every family over $T$ can be viewed as the pullback under a morphism $T\to M$ of a specific family $u\in F(M)$, called the \textit{universal family}.
 
+\section*{Why Grassmannians?}
+Grassmannians are among the first nontrivial examples of spaces whose points represent some type of object one can encounter in their mathematical carreer. Given two positive integers $k$ and $n$, the first definition of a Grassmannian $\Gr(k,n)$ one encounters is
+\[\Gr'(k,n)=\cpa{H\subseteq\K^n\mid \text{$H$ vector subspace, }\dim_\K H=k}.\]
+This definition invites us to think about the classification problem of $k$-dimensional vector subspaces of $n$-dimensional space. This classification problem is best formalized in terms vector bundle quotients as
+\[\gr(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
+where $q\sim q'\coimplies \ker q=\ker q'$, so the definition we will use for $\Gr(k,n)$ is actually
+\[\Gr(k,n)=\quot{\cpa{\vp:\K^n\to \K^k\mid \rnk \vp=k}}\sim\qquad \text{where }\vp\sim \psi\coimplies \ker\vp=\ker\psi,\]
+but the two are related, up to canonical identifications, by $\Gr(k,n)=\Gr'(n-k,n)$.
+Showing that Grassmannians are schemes and that they are fine moduli spaces for this classification problem is a good introduction to the elementary tools of the theory of fine moduli spaces. Grassmannians also serve as a warmup and a necessary stepping stone in the construction of the Quot schemes, which generalize Grassmannians and yield important results like the existence of Hilbert schemes.
