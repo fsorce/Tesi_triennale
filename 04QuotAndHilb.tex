@@ -1,11 +1,19 @@
 \chapter{Quot and Hilbert schemes}
-In the definition of the Grassmannian moduli problem the concept of quotient sheaves turned out to be instrumental. Since we have only considered quotients that are vector bundles of a fixed rank $k$, a natural next step might be to generalize the construction to general coherent sheaves. This generalization has proven itself to be vital in the construction of many fine moduli spaces, the most important example being the Hilbert schemes. The representability of both the functor of quotients and the Hilbert moduli problem were prover by Grothendieck in \cite{FGAVI}.
+In the definition of the Grassmannian moduli problem the concept of quotient sheaves turned out to be instrumental. 
+Since we have only considered quotients that are vector bundles of a fixed rank $k$, a natural next step might be to generalize the construction to general coherent sheaves. 
+This generalization has proven itself to be vital in the construction of many fine moduli spaces, the most important example being the Hilbert schemes. 
+The representability of both the functor of quotients and the Hilbert moduli problem were proven by Grothendieck in \cite{FGAVI}.
 
-In this chapter we will present a proof of the representability of a particular class of functors of quotients while taking most technical results about Castelnuovo-Mumford regularity, flat base change and flattening stratifications as a given. Along the way we will show some examples of how this problem correlates to the one of Hilbert schemes and Grassmannians. Our approach will follow closely the one given in \cite{Alper} and \cite{FGAEXPLAINED}.\smallskip
+In this chapter we will present a proof of the representability of a particular class of functors of quotients while taking most technical results about Castelnuovo-Mumford regularity, flat base change and flattening stratifications as a given. 
+Along the way we will show some examples of how this problem correlates to the one of Hilbert schemes and Grassmannians. Our approach will follow closely the one given in \cite{Alper} and \cite{FGAEXPLAINED}.\smallskip
 
-From now on we will only consider locally noetherian schemes. In particular $\Sch S$ now refers to the full subcategory of locally noetherian schemes over $S$. We will also consider our universal basis scheme to be $\Spec \K$ instead of the more general $\Spec\Z$ for consistency with our work from the previous chapters. For simplicity we will sometimes write $\K$ instead of $\Spec \K$.
+%From now on we will only consider locally noetherian schemes. 
+%In particular $\Sch S$ now refers to the full subcategory of locally noetherian schemes over $S$. 
+%We will also consider our universal base scheme to be $\Spec \K$ instead of the more general $\Spec\Z$ for consistency with our work from the previous chapters.
+We will usually consider our base scheme to be $\Spec \K$ for consistency with our work from the previous chapters.
+For simplicity we will sometimes write $\K$ instead of $\Spec \K$.
 \begin{notation}
-If $T$ is a locally noetherian scheme we use $\pi_T$ to denote the structure map $\Pj^n_T\to T$. When $T=\Spec\K$ we omit the subscript.
+If $T$ is a scheme we use $\pi_T$ to denote the structure map $\Pj^n_T\to T$. When $T=\Spec\K$ we omit the subscript.
 \end{notation}
 
 \begin{notation}
@@ -15,25 +23,36 @@ If $X$ and $T$ are $S$-schemes we write the base change of $X$ as $X_T=X\times_S
 
 \section{Functor of quotients}
 \begin{definition}[Functor of quotients]
-Let $S$ be a noetherian scheme and let $X\to S$ be a morphism of finite type. Let $\Ec$ be a coherent sheaf on $X$. If $T\in \Sch S$, a \textbf{family of quotients of $\Ec$ parametrized by $T$} is a sheaf morphism\footnote{we will usually simply state ``$q:\Ec_T\to \Fc$ is a coherent quotient sheaf flat over $T$ with proper support".} $q:\Ec_T\to \Fc$ where $\Ec_T$ is the pullback of $\Ec$ under $X_T\to X$ and $\Fc$ is a coherent sheaf on $X_T$ which is flat over $T$ and whose support is proper over $T$.
+Let $S$ be a noetherian scheme and let $X\to S$ be a morphism of finite type. Let $\Ec$ be a coherent sheaf on $X$. If $T\in \Sch S$, a \textbf{family of quotients of $\Ec$ parameterized by $T$} (or \textbf{over $T$}) is a sheaf morphism\footnote{we will usually simply state ``$q:\Ec_T\to Q$ is a quasi-coherent locally finitely presented quotient sheaf flat over $T$ with proper support".} $q:\Ec_T\to Q$ where $\Ec_T$ is the pullback of $\Ec$ under $X_T\to X$ and $Q$ is a quasi-coherent locally finitely presented sheaf on $X_T$ which is flat over $T$ and whose support is proper over $T$.
 
-Two families of quotients $q$ and $q'$ are said to be equivalent, written $q\sim q'$, if $\ker q=\ker q'$. We denote the equivalence class $[q]$ or more explicitly $[q:\Ec_T\to \Fc]$. We define the \textbf{functor of quotients of $\Ec$ over the base $S$} as
-\[\quotf_{\Ec/X/S}:\functorDef{\Sch S\op}{\Set}{T}{\cpa{[q]\mid q\text{ family of quotients of $\Ec$ parametrized by $T$}}}{f:T'\to T}{[q:\Ec_T\to\Fc]\mapsto f^\ast[q]=[f^\ast q:\Ec_{T'}\to f^\ast\Fc]}\]
+Two families of quotients $q$ and $q'$ are said to be equivalent, written $q\sim q'$, if $\ker q=\ker q'$. We denote the equivalence class $[q]$ or more explicitly $[q:\Ec_T\to Q]$. We define the \textbf{functor of quotients of $\Ec$ over the base $S$} as
+\[\quotf_{\Ec/X/S}:\functorDef{\Sch S\op}{\Set}{T}{\cpa{[q]\mid q\text{ family of quotients of $\Ec$ over $T$}}}{f:T'\to T}{[q:\Ec_T\to Q]\mapsto f^\ast[q]=[f^\ast q:\Ec_{T'}\to f^\ast Q]}\]
 \end{definition}
 
 \begin{remark}
-The functor is well defined because properness and flatness are preserved under base change (so $f^\ast \Fc$ is a valid target) and the tensor product is right exact, so surjectivity of the maps is also preserved.
+The functor is well defined because properness, flatness, quasi-coherence and finite local presentation are preserved under base change (so $f^\ast Q$ is a valid target) and the tensor product is right exact, so surjectivity of the maps is also preserved.
+\end{remark}
+
+\begin{remark}
+A family of quotients over a locally noetherian scheme $q:\Ec_T\to Q$ is such that $Q$ is coherent. We can restrict to considering this case for local considerations in the following way:
+\begin{itemize}
+\item all commutative rings are the colimit of their subrings which are finitely generated $\Z$-algebras, i.e. they are the colimit of noetherian rings
+\item it follows that affine schemes are the limit of noetherian affine schemes
+\item all schemes are locally affine by definition
+\item the locally finitely presented quasi-coherent sheaves over an affine scheme $\Spec A=\lim \Spec A_i$ can be obtained as the colimit of the locally finitely presented quasi-coherent sheaves over each $\Spec A_i$.
+\end{itemize}
+Because of this we will implicitly consider the schemes in the following sections to be locally noetherian when checking for local conditions.
 \end{remark}
 
 
 \subsection{Stratification by Hilbert polynomials}
 \begin{notation}
-If a line bundle $\Lc$ on $X$ is fixed and $\Fc$ is a coherent sheaf on $X$ we denote the $r$-twist $\Fc\otimes_{\Oc_X}\Lc^{\otimes r}$ as $\Fc(r)$ for all integers $r$.
+If a line bundle $\Lc$ on $X$ is fixed and $\Fc$ is a quasi-coherent sheaf on $X$ we denote the $r$-twist $\Fc\otimes_{\Oc_X}\Lc^{\otimes r}$ as $\Fc(r)$ for all integers $r$.
 \end{notation}
 \begin{definition}[Euler characteristic of a sheaf]
-Let $X$ be a noetherian scheme of finite type over $\K$. If $\Fc$ is a coherent sheaf on $X$ with proper support over $\K$ we define the \textbf{Euler characteristic} of $\Fc$ as
+Let $X$ be a closed subscheme of $\Pj^n_\K$. If $\Fc$ is a coherent sheaf on $X$ with proper support over $\K$ we define the \textbf{Euler characteristic} of $\Fc$ as
 \[\chi(\Fc)=\sum_{i\geq 0}(-1)^i\dim_\K H^i(X,\Fc).\]
-It is a well known result that, given our hypothesies, this sum is finite. See Theorem {\sc III}.2.7 from \cite{Hartshorne}.
+It is a well known result that, given our hypotheses, this sum is finite. See Theorem {\sc III}.2.7 from \cite{Hartshorne}.
 \end{definition}
 
 \begin{theorem}[Snapper's lemma]
@@ -44,10 +63,10 @@ See Theorem B.7, page 314 of \cite{FGAEXPLAINED}.
 \end{proof}
 
 \begin{remark}\label{HilbertoPolynomialGivesDimentionForLargeInput}
-If $\Lc$ is ample, for large $r$, $\Phi(r)=\dim_\K H^0(X,\Fc(r))$. This is a consequence of Serre's vanishing theorem (proposition {\rm III}.5.3 in \cite{Hartshorne}).
+If $\Lc$ is ample and $r$ is sufficiently large, $\Phi(r)=\dim_\K H^0(X,\Fc(r))$. This follows from Serre's vanishing theorem (proposition {\rm III}.5.3 in \cite{Hartshorne}).
 \end{remark}
 
-We are interested in Hilbert polynomials because of the following well known result 
+We are interested in Hilbert polynomials because of the following property
 
 \begin{theorem}\label{SemicontinuityTheorem}
 Let $X\to S$ be a proper morphism of noetherian schemes, $\Lc$ a line bundle on $X$ and $\Fc$ a coherent sheaf on $X$ with proper support and flat over $S$. For all $s\in S$ let $X_s$ be the fiber of $s$. We define $\Phi_s$ to be the Hilbert polynomial of $\Fc\res{X_s}$ calculated with respect to the line bundle $\Lc\res{X_s}$. The function
@@ -62,7 +81,7 @@ Because of this, we can decompose the functor of quotients as the following copr
 \[\quotf_{\Ec/X/S}=\coprod_{\Phi\in\Q[\la]}\quotf^{\Phi,\Lc}_{\Ec/X/S},\text{ where}\]
 \[\quotf^{\Phi,\Lc}_{\Ec/X/S}(T)=\quot{\cpa{\text{families of quotients over $T$ such that $\forall t\in T,\ \Phi_t=\Phi$}}}\sim.\]
 
-\subsection{Grassmannians and Hilbert functors in terms of quotients}
+\subsection{Special cases of the functor of quotients}
 This finer decomposition allows us to formalize how the Grassmannian moduli problem is a special case of the functor of quotients.
 \begin{proposition}
 We have the equality
@@ -81,26 +100,25 @@ Since $\Lc_T=\Oc_T$ we have $\Fc_t(r)\cong \Fc_t$, so $\rnk \Fc_t=k$ for all $t\
 so for all fibers, $\Phi_t$ is the constant polynomial $k$.
 \end{itemize}
 \setlength{\leftmargini}{0.5cm}
-[I THINK THIS PROOF WORKS?]
 \end{proof}
 
 Now we define the Hilbert moduli problem and show how it relates to the functor of quotients:
 
 \begin{definition}[Hilbert functor]
 Let $X$ be a closed subscheme of $\Pj^n_\K$.
-If $T$ is a locally noetherian scheme, a \textbf{family of subschemes of $X$} is a closed subscheme $Y\subseteq X\times T$ such that $Y$ is flat over $T$. 
+If $T$ is a scheme, a \textbf{family of subschemes of $X$} is a closed subscheme $Y\subseteq X\times T$ such that $Y$ is flat and finitely presented over $T$. 
 We can define the \textbf{Hilbert functor of $X$} as
-\[\hilb_{X}:\functorDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\mid Y\text{ flat over }T}}{f:T\to S}{Y\subseteq X\times S\mapsto f^\ast Y=(id_{X}\times f)\ii(Y)\subseteq X\times T}\]
+\[\hilb_{X}:\functorDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\mid Y\text{ flat and finitely presented over }T}}{f:T\to S}{Y\subseteq X\times S\mapsto f^\ast Y=(id_{X}\times f)\ii(Y)\subseteq X\times T}\]
 \end{definition}
 
 \begin{proposition}\label{HilbertIsAQuotScheme}
 We have a canonical identification
 \[\hilb_X=\quotf_{\Oc_X/X/\K}.\]
 In particular, we can also define a decomposition of the Hilbert moduli problem in terms of Hilbert polynomials\footnote{the Hilbert polynomial of a closed subscheme is the Hilbert polynomial of its sheaf of ideals.}
-\[\hilb^{\Phi,\Lc}_{X}:\funcDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\mid \emat{Y\text{ flat over $T$ s.t. the fiber $Y_t$ has}\\\text{Hilbert polynomial $\Phi$ for all $t\in T$}}}}\]
+\[\hilb^{\Phi,\Lc}_{X}:\funcDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\left| \emat{Y\text{ flat and finitely presented over $T$}\\\text{such that the fiber $Y_t$ has}\\\text{Hilbert polynomial $\Phi$ for all $t\in T$}}\right.}}\]
 \end{proposition}
 \begin{proof}
-There is a well known bijection between closed subschemes of a given scheme and quasi-coherent sheaves of ideals on the scheme (Proposition 5.1.15 in \cite{QingLiu}). Since we are considering locally noetherian schemes we may take the sheaves to be coherent instead [IS THIS THE REASON?]. The ideal sheaf which defines $Y$ can be expressed as the kernel of the quotient of coherent sheaves $q:\Oc_{X_T}\to \Oc_Y$. The flatness of $Y$ over $T$ translates to the flatness of $\Oc_Y$ over $T$. Given how the equivalence of quotients is defined this shows that a class of quotients of $\Oc_{X_T}$ corresponds exactly to a family $Y$, giving us the identification we wanted.
+There is a well known bijection between closed subschemes of a given scheme and quasi-coherent sheaves of ideals on the scheme (Proposition 5.1.15 in \cite{QingLiu}). By construction the structure sheaf of $Y$ is finitely presented and flat over $T$, so the ideal sheaf which defines $Y$ can be expressed as the kernel of the quotient of coherent sheaves $q:\Oc_{X_T}\to \Oc_Y$. Given how the equivalence of quotients is defined this shows that a class of quotients of $\Oc_{X_T}$ corresponds exactly to a family $Y$, giving us the identification we wanted.
 \end{proof}
 
 \section{Castelnuovo-Mumford regularity and Flattening stratification}
@@ -161,7 +179,7 @@ This is statement (b) from the lemma where we choose $r=m'-i\geq m-i$.
 \end{proof}
 
 \begin{theorem}[Mumford]\label{MumfordTheorem}
-Let $p$ and $n$ be non-negative integers, then there exists a polynomial $F_{p,n}\in\Z[x_0,\cdot, x_n]$ such that, if $\Fc$ is a coherent sheaf on $\Pj^n_\K$ which is isomorphic to a subscheaf of $\Oc^p_{\Pj^n_\K}$ with Hilbert polynomial\footnote{Recall that every polynomial with rational coefficients can be written in this form uniquely.}
+Let $p$ and $n$ be non-negative integers, then there exists a polynomial $F_{p,n}\in\Z[x_0,\cdot, x_n]$ such that, if $\Fc$ is a coherent sheaf on $\Pj^n_\K$ which is isomorphic to a subsheaf of $\Oc^p_{\Pj^n_\K}$ with Hilbert polynomial\footnote{Recall that every polynomial with rational coefficients can be written in this form uniquely.}
 \[\chi(\Fc(r))=\sum_{i=0}^na_i\binom ri,\quad a_i\in\Z,\]
 then $\Fc$ is $m$-regular for $m=F_{p,n}(a_0,\cdots, a_n)$.
 \end{theorem}
@@ -189,8 +207,7 @@ Let $S$ be a noetherian scheme and let $\Fc$ be a coherent sheaf on $\Pj^n_S$.
 \item For all polynomials $\Phi\in\Q[\la]$ there exists a locally closed subscheme $S_\Phi\subseteq S$ such that a morphism $T\to S$ factors through $S_\Phi$ if and only if the pullback $\Fc_T$ of $\Fc$ to $\Pj^n_T$ is flat over $T$ and for all $t\in T$, $\Fc_{k(t)}$ has Hilbert polynomial $\Phi$.
 \item There exists a finite subset $I\subseteq \Q[\la]$ such that set-theoretically
 \[S=\coprod_{\Phi\in I}S_\Phi\]
-\item The closure of $S_\Phi$ in $S$ is contained set-theoretically in the union $\bigcup_{P\leq Q}S_Q$,
-where $P\leq Q\coimplies P(m)\leq Q(m)$ for $m\gg 0$.
+\item The closure of $S_\Phi$ in $S$ is a subset of the union $\bigcup_{P\leq Q}S_Q$, where $P\leq Q\coimplies P(m)\leq Q(m)$ for $m\gg 0$.
 \end{itemize}
 \end{theorem}
 \begin{proof}
@@ -203,9 +220,9 @@ This is Theorem 5.13 in \cite{FGAEXPLAINED}.
 
 Note that $\quotf$ is not always representable\footnote{A counterexample is given chapter 5, section 5.1.5, example (8).}. The result that we will show is
 \begin{theorem}\label{AltmanKelimanEasy}
-Let $X$ be a closed subscheme of $\Pj^n_\K$ for some $n$, $\Lc=\Oc_{\Pj^n_\K}(1)\res X$, $\Ec$ a coherent quotient of $\Oc_{X}(\nu)^p$ for some integers $r$ and $\nu$ and $\Phi\in\Q[\la]$. Then the functor of quotients $\quotf^{\Phi,\Lc}_{\Ec/X/\K}$ is representable by a scheme $\Quot^{\Phi,\Lc}_{\Ec/X/\K}$. 
+Let $X$ be a closed subscheme of $\Pj^n_\K$ for some $n$, $\Lc=\Oc_{\Pj^n_\K}(1)\res X$, $\Ec$ a coherent quotient of $\Oc_{X}(\nu)^p$ for some integers $p$ and $\nu$ and $\Phi\in\Q[\la]$. Then the functor of quotients $\quotf^{\Phi,\Lc}_{\Ec/X/\K}$ is representable by a scheme $\Quot^{\Phi,\Lc}_{\Ec/X/\K}$. 
 \end{theorem}
-This is a specific case of the version showcased in \cite{ALTMAN198050}. For more historical background see \cite{FGAEXPLAINED}.
+This is a specific case of the version showcased in \cite{ALTMAN198050}. For more historical background see subsection 5.5.2 of \cite{FGAEXPLAINED}.
 
 \begin{remark}
 If the theorem holds, we can define the Hilbert schemes as
@@ -264,20 +281,33 @@ Therefore, if we can construct $\Quot^{\Phi(\la-\nu),\Lc}_{\Oc^p_{\Pj^n_\K}/\Pj^
 \end{proof}
 
 \subsection{Embedding into a Grassmannian}
-For simplicity of notation we set $\Ec=\Oc^n_{\Pj^n_\K}$. 
+For simplicity of notation we set $\Ec=\Oc^p_{\Pj^n_\K}$. Recall that $\pi:\Pj^n_\K\to \Spec \K$ and $\pi_T:\Pj^n_T\to T$ are the structural morphisms.
 \begin{lemma}\label{PushforwardEr}
 The pushforward
-$\pi_\ast\Ec(r)$ is a skyscraper sheaf with stalk $\K^p\otimes \Sym^r\K^n$.
+$\pi_\ast\Ec(r)$ is a skyscraper sheaf with stalk $\K^p\otimes \Sym^r\K^{n+1}$.
 \end{lemma}
 \begin{proof}
 Since $\Spec\K$ consists of a single point, $\pi_\ast\Ec(r)$ must be a skyscraper sheaf with stalk $\pi_\ast\Ec(r)(\Spec\K)=\Ec(r)(\Pj^n_\K)=\Gamma(\Pj^n_\K,\Ec(r))$. Since $\Lc=\Oc_{\Pj^n_\K}(1)$ we see that $\Ec(r)=\Oc_{\Pj^n_\K}^p\otimes_{\Oc_{\Pj^n_\K}}\Oc_{\Pj^n_\K}(r)$, so
-\[\pi_\ast\Ec(r)(\Spec\K)=\Gamma(\Pj^n_\K,\Oc_{\Pj^n_\K}(r)^p)=(\Sym^r\K^n)^p\cong \K^p\otimes\Sym^r\K^n.\]
+\[\pi_\ast\Ec(r)(\Spec\K)=\Gamma(\Pj^n_\K,\Oc_{\Pj^n_\K}(r)^p)=(\Sym^r\K^{n+1})^p\cong \K^p\otimes\Sym^r\K^{n+1}.\]
+\end{proof}
+
+\begin{lemma}\label{HilbetPolynomialOfProjectiveSpace}
+The Hilbert polynomial of $\Oc_{\Pj^n_\K}^p$ is the one determined by
+\[r\mapsto p\binom{r+n}n,\]
+in particular it depends only on $p$ and $n$.
+\end{lemma}
+\begin{proof}
+For sufficiently large $r$ we have
+\begin{align*}
+\chi(\Oc_{\Pj^n_\K}(r)^p)=&p\chi(\Oc_{\Pj^n_\K}(r))=p\dim_\K H^0(\Pj^n_\K,\Oc_{\Pj^n_\K}(r))=\\
+=&p\dim_\K \Sym^r \K^{n+1}=p\binom{r+n}n.
+\end{align*}
 \end{proof}
 
 
-Let $T$ be a noetherian $\K$-scheme. The main idea for the proof of the representability of $\quotf$ is building a natural transformation of the form
+Let $T$ be a noetherian\footnote{we can supposre $T$ to be noetherian because all properties that we want to verify are local.} $\K$-scheme. The main idea for the proof of the representability of $\quotf$ is building a natural transformation of the form
 \[\funcDef{\quotf^{\Phi,\Lc}_{\Ec/\Pj^n_\K/\K}(T)}{\gr(\Phi(r),\dim_\K\pi_\ast\Ec(r))(T)}{[\Ec_T\onto Q]}{[{\pi_T}_\ast\Ec_T(r)\to {\pi_T}_\ast Q(r)]}\]
-for an appopriate integer $r$. We are identifying $\pi_\ast\Ec(r)$ with the vector space $\K^p\otimes\Sym^r\K^n$ as in the above lemma. We separate the proof into three steps
+for an appropriate integer $r$. We are identifying $\pi_\ast\Ec(r)$ with the vector space $\K^p\otimes\Sym^r\K^{n+1}$ as in the above lemma. We separate the proof into three steps
 \setlength{\leftmargini}{0cm}
 \begin{enumerate}
 \item[Step 1.] Find $m_0\in\Z$ such that if $r\geq m_0$ then the above map is well defined and natural.
@@ -291,9 +321,9 @@ Since the Grassmannian functor is representable (\ref{GrassmannianIsModuliSpace}
 \begin{proof}[Proof.(Step 1)]
 We want to use the first claim of proposition (\ref{RegularityInFamilies}) to show that ${\pi_T}_\ast\Ec_T(r)$ and ${\pi_T}_\ast Q(r)$ are vector bundles which behave well with respect to pullbacks for $r$ greater then some positive integer $m_0$. So what we seek to show is that there exists a number $m_0>0$ such that for all $t\in T$, $\Ec_T\res{\Pj^n_{k(t)}}$ and $Q\res{\Pj^n_{k(t)}}$ are $m_0$-regular. 
 
-The more convenient approach for $\Ec$ is to study it on $\Pj^n_\K$, which we can do because $T$ is a $\K$-scheme and the nature of proposition (\ref{RegularityInFamilies}) itself. Since $\Spec \K$ consists of only one point, there is only one fiber to consider for the restrictions of $\Ec$: the whole of $\Pj^n_\K$. Let $m$ be the integer given by Mumford's theorem (\ref{MumfordTheorem}) applied to $\Ec$. The proposition shows that if $r\geq m$ then $\pi_\ast\Ec(r)=\Oc_\K^p\otimes\Sym^r\Oc_\K^n$ is a vector bundle which commutes with base change. Changing the basis to $T$ yields the result we wanted on ${\pi_T}_\ast\Ec_T(r)$.
+The more convenient approach for $\Ec$ is to study it on $\Pj^n_\K$, which we can do because $T$ is a $\K$-scheme and the nature of proposition (\ref{RegularityInFamilies}) itself. Since $\Spec \K$ consists of only one point, there is only one fiber to consider for the restrictions of $\Ec$: the whole of $\Pj^n_\K$. Let $m$ be the integer given by Mumford's theorem (\ref{MumfordTheorem}) applied to $\Ec$. The proposition shows that if $r\geq m$ then $\pi_\ast\Ec(r)=\Oc_\K^p\otimes\Sym^r\Oc_\K^{n+1}$ is a vector bundle which commutes with base change. Changing the basis to $T$ yields the result we wanted on ${\pi_T}_\ast\Ec_T(r)$.
 
-Let $q:\Ec_T\onto Q$ be a quotient on $\Pj^n_T$ with Hilbert polynomial $\Phi$ on each fiber. If we denote by $q_t$ its restriction to the fiber of $t\in T$ and define $\Kc=\ker q_t$, we see that $\Kc$ is a subsheaf of $\Ec_{k(t)}=\Oc_{\Pj^n_{k(t)}}^p$ whose Hilbert polynomial is determined\footnote{This is a consequence of the additivity of the Euler characteristic on exact sequences.} by $\Phi$ and the Hilbert polynomial of $\Ec_{k(t)}$, which is field independent. By Mumford's theorem (\ref{MumfordTheorem}) there exists an integer $m_0$ which depends only on $n,\ p$ and $\Phi$ such that $\Kc$ is $m_0$-regular. Without loss of generality we may take $m_0\geq m$ by applying corollary (\ref{RegularityUnboundedAbove}). Because of lemma (\ref{RegularityOnExactSequences}), we see that $Q$ too is $m_0$-regular on each fiber. Since $\Ec_T$ and $Q$ are flat over $T$, $\Kc$ is also flat over $T$ by properties of short exact sequences. 
+Let $q:\Ec_T\onto Q$ be a quotient on $\Pj^n_T$ with Hilbert polynomial $\Phi$ on each fiber. If we denote by $q_t$ its restriction to the fiber of $t\in T$ and define $\Kc=\ker q_t$, we see that $\Kc$ is a subsheaf of $\Ec_{k(t)}=\Oc_{\Pj^n_{k(t)}}^p$ whose Hilbert polynomial is determined\footnote{This is a consequence of the additivity of the Euler characteristic on exact sequences.} by $\Phi$ and the Hilbert polynomial of $\Oc_{\Pj^n_{k(t)}}^p$, which by lemma (\ref{HilbetPolynomialOfProjectiveSpace}) does not depend on $t$. By Mumford's theorem (\ref{MumfordTheorem}) there exists an integer $m_0$ which depends only on $n,\ p$ and $\Phi$ such that $\Kc$ is $m_0$-regular. Without loss of generality we may take $m_0\geq m$ by applying corollary (\ref{RegularityUnboundedAbove}). Because of lemma (\ref{RegularityOnExactSequences}), we see that $Q$ too is $m_0$-regular on each fiber. Since $\Ec_T$ and $Q$ are flat over $T$, $\Kc$ is also flat over $T$ by properties of short exact sequences. 
 
 Putting all of this together, we may apply proposition (\ref{RegularityInFamilies}) to see that ${\pi_T}_\ast Q(r)$ and ${\pi_T}_\ast\Kc$ are vector bundles which behave well with pullbacks and that $R^1{\pi_T}_\ast \Kc(r)=0$. 
 By looking at the long exact sequence of higher direct images induced by
@@ -319,24 +349,30 @@ Let $q:\Ec_T\to Q$ be a quotient sheaf which is flat over $T$ and let $\Kc=\ker 
 	\arrow[from=2-3, to=2-4]
 	\arrow[from=2-4, to=2-5]
 \end{tikzcd}\]
-where the rows are exact and the vertical maps are surjective by the last statement in proposition (\ref{RegularityInFamilies}). Let $\al$ be given by the composition ${\pi_T}^\ast{\pi_T}_\ast(\Kc(r))\to \Kc(r)\to \Ec_T(r)$. Because of the surjectivity of the vertical map, $\imm\al=\Kc(r)\subseteq \Ec_T(r)$, so $Q(r)=\coker\al$.
+where the rows are exact and the vertical maps are surjective by the last statement in proposition (\ref{RegularityInFamilies}). Let $\al$ be given by the composition 
+\[{\pi_T}^\ast{\pi_T}_\ast(\Kc(r))\to \Kc(r)\to \Ec_T(r).\]
+Because of the surjectivity of the vertical map, $\imm\al=\Kc(r)\subseteq \Ec_T(r)$, so $Q(r)=\coker\al$.
 
-By commutativity, $\al$ can also be written as ${\pi_T}^\ast{\pi_T}_\ast(\Kc(r))\to {\pi_T}^\ast{\pi_T}_\ast(\Ec_T(r))\to \Ec_T(r)$ and in this form it is clear that ${\pi_T}_\ast(\Ec_T(r))\to {\pi_T}_\ast(Q(r))$ uniquely determines $\al$ and thus the cokernel $\Ec_T(r)\to Q(r)$. This construction behaves well with changing representatives for the quotients.
+By commutativity, $\al$ can also be written as the composition
+\[{\pi_T}^\ast{\pi_T}_\ast(\Kc(r))\to {\pi_T}^\ast{\pi_T}_\ast(\Ec_T(r))\to \Ec_T(r)\] 
+and in this form it is clear that ${\pi_T}_\ast(\Ec_T(r))\to {\pi_T}_\ast(Q(r))$ uniquely determines $\al$ and thus the cokernel $\Ec_T(r)\to Q(r)$. This construction behaves well with changing representatives for the quotients.
 \end{proof}
 
 \begin{proof}[Proof.(Step 3)]
 Let $\tau:T\to \Gr(\Phi(r),\pi_\ast\Ec(r))$ be the classifying map of the quotient $[q:{\pi_T}_\ast\Ec_T(r)\onto V]$ and let $\Kc=\ker q$. Let us consider the fiber product
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhmIl0sWzEsMCwiaF9UIl0sWzAsMSwiXFxxdW90Zl57XFxQaGksXFxMY31fe1xcRWMvXFxQal5uX1xcSy9cXEt9Il0sWzEsMSwiXFxncihcXFBoaShyKSxcXGRpbV9cXEtcXHBpX1xcYXN0XFxFYyhyKSkiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMiwzXSxbMSwzLCJoX1xcdGF1Il0sWzAsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsNSwiIiwyLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJjb3JuZXItaW52ZXJzZSJ9fV1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhmX3EiXSxbMSwwLCJoX1QiXSxbMCwxLCJcXHF1b3RmXntcXFBoaSxcXExjfV97XFxFYy9cXFBqXm5fXFxLL1xcS30iXSxbMSwxLCJcXGdyKFxcUGhpKHIpLFxcZGltX1xcS1xccGlfXFxhc3RcXEVjKHIpKSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsMywiaF9cXHRhdSJdLFswLDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDUsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyLWludmVyc2UifX1dXQ==
 \[\begin{tikzcd}
-	\Hf & {h_T} \\
+	{\Hf_q} & {h_T} \\
 	{\quotf^{\Phi,\Lc}_{\Ec/\Pj^n_\K/\K}} & {\gr(\Phi(r),\dim_\K\pi_\ast\Ec(r))}
 	\arrow[dashed, from=1-1, to=1-2]
 	\arrow[dashed, from=1-1, to=2-1]
 	\arrow["{h_\tau}", from=1-2, to=2-2]
-	\arrow[""{name=0, anchor=center, inner sep=0}, from=2-1, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, hook, from=2-1, to=2-2]
 	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
 \end{tikzcd}\]
-We seek to show that $\Hf$ is representable by a locally closed subscheme of $T$ in such a way as to make the upper horizontal map of the cartesian square the one induced by inclusion. Let us consider this version of the diagram from the previous proof
+We seek to show that $\Hf_q$ is representable by a locally closed subscheme of $T$ in such a way as to make the upper horizontal map of the cartesian square the one induced by inclusion. Note that because of the injectivity of the bottom morphism of presheaves we have that the upper horizontal map is always injective. 
+
+Let us consider this version of the diagram from the previous proof
 % https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwie1xccGlfVH1eXFxhc3RcXEtjIl0sWzIsMCwie1xccGlfVH1eXFxhc3R7XFxwaV9UfV9cXGFzdChcXEVjX1QocikpIl0sWzMsMCwie1xccGlfVH1eXFxhc3QgViJdLFsyLDEsIlxcRWNfVChyKSJdLFszLDEsIlEocikiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFszLDZdLFs1LDddLFsyLDNdLFs0LDVdLFsxLDJdLFswLDFdLFszLDVdLFsyLDRdLFsxLDQsIlxcYWwiLDJdXQ==
 \[\begin{tikzcd}
 	0 & {{\pi_T}^\ast\Kc} & {{\pi_T}^\ast{\pi_T}_\ast(\Ec_T(r))} & {{\pi_T}^\ast V} & 0 \\
@@ -362,11 +398,13 @@ Observe that, if $Q$ if flat over $T$ with Hilbert polynomial $\Phi$, then $[\Ec
 	\arrow["\eta", dashed, from=2-1, to=1-2]
 	\arrow["{h_\tau}"', from=2-1, to=2-2]
 \end{tikzcd}\]
-This data gives an isomorphism $\Hf\cong h_T$ by definition of fibered product. Conversely, if $Q$ does not have Hilbert polynomial $\Phi$ or is not flat over $T$ we cannot have factorization by definition of the functor of quotients. We have thus identified $\Hf$ with the following subfunctor of $h_T$
+Since $\Hf_q\to h_T$ is injective and we have a morphism $\eta:h_T\to \quotf^{\Phi,\Lc}_{\Ec/\Pj^n_\K/\K}$ which commutes with the maps to the Grassmannian, it easy to check set-theoretically by evaluating the functors on an arbitrary scheme that $\Hf_q\to h_T$ is an isomorphism. 
+
+Conversely, if $Q$ does not have Hilbert polynomial $\Phi$ or is not flat over $T$ we cannot have factorization by definition of the functor of quotients. We have thus identified $\Hf_q$ with the following subfunctor of $h_T$
 \[\funcDef{\Sch T}{\Set}{f:T'\to T}{\begin{cases}
 \cpa{f} &\text{if $Q_{T'}$ is flat over $T'$ and has Hilbert polynomial $\Phi$}
 \\
 \emptyset &\text{otherwise}
 \end{cases}}\]
-By the theorem on flattening stratifications (\ref{FlatetningStratifications}) this shows that $\Hf\cong h_{T_\Phi}$ and the isomorphism is exactly the one which respects the inclusion map.
+By the theorem on flattening stratifications (\ref{FlatetningStratifications}) this shows that $\Hf_q\cong h_{T_\Phi}$ and the isomorphism is exactly the one which respects the inclusion map.
 \end{proof}

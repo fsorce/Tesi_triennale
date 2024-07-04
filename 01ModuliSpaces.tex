@@ -111,15 +111,15 @@ Let $F$ be a moduli functor. A scheme $X\in \Sch S$ is a \textbf{fine moduli spa
 \end{definition}
 
 \begin{remark}
-Because the Yoneda embedding is injective on isomorphism classes (\ref{YonedaEmbeddingInjectiveOnIsoClasses}), fine moduli spaces are unique up to isomorphism.
+Because of proposition (\ref{YonedaEmbeddingInjectiveOnIsoClasses}), fine moduli spaces are unique up to isomorphism.
 \end{remark}
 
 \begin{example}[Projective space]
-Consider the functor
-\[\Pj_n:\functorDef{\mathrm{Sch}\op}{\Set}{S}{\quot{\cpa{(\Lc,s_0,\cdots,s_n)\mid \emat{\Lc\text{ line bundle on $S$, }s_0,\cdots,s_n\in\Lc(S),\\\forall x\in S,\ \ps{(s_0)_x,\cdots,(s_n)_x}_{\Oc_{S,x}}=\Lc_x}}}\sim}{f}{\text{pullback of sheaves and sections via $f$}}\]
+Consider the functor $\Pj_n$ given by
+\[\functorDef{\mathrm{Sch}\op}{\Set}{S}{\quot{\cpa{(\Lc,s_0,\cdots,s_n)\mid \emat{\Lc\text{ line bundle on $S$,}s_0,\cdots,s_n\in\Lc(S),\\\forall x\in S,\ \ps{(s_0)_x,\cdots,(s_n)_x}_{\Oc_{S,x}}=\Lc_x}}}\sim}{f}{\text{pullback of sheaves and sections via $f$}}\]
 where $(\Lc,(s_i))\sim (\Lc',(s_i'))$ is there exists a sheaf isomorphism $\al:\Lc\to\Lc'$ such that $s_i=\al^\ast s_i'$ for all $i\in\cpa{0,\cdots, n}$.\medskip
 
-It is a well know fact (Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.
+It is a well known property of projective spaces (see Proposition 5.1.31 in \cite{QingLiu}) that $\Pj_n(S)\cong \Hom(S,\Pj^n_\Z)$ and that pullbacks behave as expected, thus $\Pj^n_\Z$ is a fine moduli space for $\Pj_n$.
 From the statement of Proposition 5.1.31 in \cite{QingLiu} it is also clear that $\Oc_{\Pj^n_\Z}(1)$ is a universal family.
 \end{example}
 
@@ -293,7 +293,7 @@ Let $\zeta:G\to F$ be a natural transformation of moduli problems. $\zeta$ is an
 
 
 \begin{definition}[Open subfunctor]
-Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ is \textbf{open} if the natural trasformation given by the inclusion is an open immersion.
+Let $F:\Psh S\Set$ be a moduli problem. We say that a subfunctor $G\subseteq F$ is \textbf{open} if the natural transformation given by the inclusion is an open immersion.
 \end{definition}
 
 \begin{definition}[Open cover of a functor]

@@ -1,0 +1,444 @@
+\documentclass[a4paper]{beamer}
+\input{style/preamble_beamer.tex}
+
+% Title page
+\title{Moduli spaces and Grassmannians}
+\author{Francesco Sorce}
+\institute[]{Universit\`a di Pisa}
+\date{12 Luglio 2024}
+\logo{\includegraphics[height=1cm]{images/marchio_unipi_pant541.png}}
+\definecolor{LightBlue}{HTML}{3333B2}
+\definecolor{DarkBlue}{HTML}{00518B}
+
+\begin{document}
+%\frame{\titlepage}
+\begin{frame}{}
+\begin{center}
+{\Large \textcolor{LightBlue}{Moduli spaces and Grassmannians}}
+\vspace{1cm}
+
+\begin{tabular}{lm{4.5cm}r}
+\textcolor{LightBlue}{Candidato:} && \textcolor{LightBlue}{Relatore:}\\
+Sorce Francesco && Talpo Mattia
+\end{tabular}
+\vspace{0.8cm}
+
+{\footnotesize Prova finale per il corso di Laurea triennale in Matematica
+\vspace{0.5cm}
+
+Universit\`a di Pisa
+
+Anno accademico 2023/24}
+\medskip
+\vspace{0.5cm}
+
+12 Luglio 2024
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+{\huge \textbf{Grassmanniane}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Grassmanniane}
+\begin{block}{Grassmanniane, definizione standard}
+\[\Gr'(k,n,\K)=\cpa{\text{sottospazi di $\K^n$ di dimensione $k$}}.\]
+\end{block}
+\bigskip
+
+\pause
+Esempi:
+\begin{itemize}
+\item Spazi proiettivi $\Gr'(1,n,\R)=\Pj^n_\R$
+\item Sfera di Riemann $\Gr'(1,1,\C)=\Pj^1_\C=\C\cup \cpa{\infty}$
+\end{itemize}
+\pause
+\begin{itemize}
+\item Superficie di Pl\"ucker $\Gr'(2,4)$ parametrizza rette in $\Pj^3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Scrittura con quozienti}
+Nota: $\Gr'(n-k,n)=\cpa{\ker A\mid A\in \Mc(k,n),\ \rnk A=k}$.
+\medskip
+
+\begin{block}{Grassmanniane con quozienti}
+\[\Gr(k,n,\K)=\quot{\cpa{A\in \Mc(k,n,\K)\mid \rnk A=k}}\sim\]
+con $A\sim B\coimplies \ker A=\ker B\coimplies \exists P\in\GL_k$ t.c. $A=PB$.
+\end{block}
+\medskip
+\[\Gr'(k,n,\K)\cong\Gr(n-k,n,\K)\]
+\end{frame}
+
+\begin{frame}{Scrittura in carte}
+Scegliendo un multiindice $I$ di $k$ entrate
+\[\Gr_I(k,n)=\cpa{[A]\in \Gr(k,n)\mid \det A_I\neq 0}.\]
+cio\`e, i sottospazi con proiezione su $\Span(\cpa{e_i\mid i\in I})^\perp$ di rango massimo.\pause
+
+\begin{center}
+\begin{tikzpicture}
+\draw[white, ultra thick] (-5,0) -- (5,0);
+\draw[thick, ->] (-3,0) -- (3,0);
+\draw[thick, ->](0,-2) -- (0,2);
+\draw[red, ultra thick] (-2,0) -- (2,0);
+\draw[blue, ultra thick] (-1.41,-1.41) -- (1.41,1.41);
+\draw[blue, ultra thick] (-1.73,-1) -- (1.73,1);
+\draw[blue, ultra thick] (-1,1.73) -- (1,-1.73);
+\filldraw[black] (0,0) circle (3pt);
+\draw (-4,1.5) node [anchor=north west]  [font=\large]  {$\Gr_{(1)}(1,2,\R)$};
+\draw (1.8,0.5) node [anchor=north west]   {$e_1$};
+\draw (0,1.8) node [anchor=north west]  {$e_2$};
+%\draw[cyan, very thick,->] (-1,0) arc (180:0:1) node [anchor=south east]{$\R$};
+\draw[cyan, thick, ->] (-2,0.7) -- (2,0.7) node [anchor=west]{$\R$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Scrittura in carte}
+\[A_I\ii A=\mat{
+w_{I^1_{1}} & \cdots & w_{I^1_n}\\
+\vdots      & \ddots & \vdots\\
+w_{I^k_{1}} & \cdots & w_{I^k_n}
+},\qquad\text{dove }w_J=\frac{\det A_J}{\det A_I}\]
+
+Per esempio, con $I=(1,\cdots, k)$
+\[\left(\left.
+\emat{
+a_{1,1} & \cdots & a_{1,k}\\
+\vdots & \ddots &\vdots\\
+a_{k,1} & \cdots & a_{k,k}
+}\right|
+\emat{
+a_{1,k+1} &\cdots & a_{1,n}\\
+\vdots &\ddots & \vdots\\
+a_{k,k+1} &\cdots & a_{k,n}
+}\right)
+\leadsto
+\left( \emat{1&&\\&\ddots&\\&&1}\left| \emat{
+a'_{1,k+1} & \cdots & a'_{1,n}\\
+\vdots & \ddots &\vdots\\
+a'_{k,k+1} & \cdots & a'_{k,n}
+}\right.\right)\]
+\medskip
+\pause
+
+Segue che $\Gr_I(k,n,\K)\cong \Mc(k,n-k,\K)\cong \K^{k(n-k)}$.\bigskip
+\pause
+
+Per $\K=\R$ abbiamo variet\`a liscia.
+
+Per $\K=\C$ abbiamo variet\`a analitica complessa.
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+{\huge Ma stiamo facendo geometria algebrica!} 
+\pause
+\bigskip
+
+{\Large Vogliamo delle equazioni}
+\end{center}
+\end{frame}
+
+\begin{frame}{Mappa di Pl\"ucker}
+\begin{block}{Mappa di Pl\"ucker}
+\[\phi:\funcDef{\Mc(k,n)}{\bw\K^n}{A}{\displaystyle\sum_{I\in \omega(k,n)}\det A_I e_I}\]
+\end{block}
+
+\pause
+\begin{alertblock}{Iniettivit\`a a meno di scalare}
+$\rnk A<k$ se e solo se $\phi(A)=0$. 
+
+Se $\rnk A=k$ allora $\ker A=\ker B$ se e solo se $\phi(A)=\la \phi(B)$ per $\la\neq 0$.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Embedding di Pl\"ucker}
+\begin{block}{Embedding di Pl\"ucker}
+\[\Pl:\funcDef{\Gr(k,n)}{\Pj^{\binom nk-1}}{[A]}{[\det A_I\mid I\in\omega(k,n)]}\]
+\end{block}
+\pause
+\begin{alertblock}{Grassmanniane sono una variet\`a}
+L'immagine di $\phi$ \`e un cono algebrico e un chiuso di Zariski di $\bw \K^n$.
+\end{alertblock}
+\pause
+In particolare $\Gr(k,n)$ \`e anche uno schema proiettivo.
+\end{frame}
+
+%\begin{frame}{Grassmanniane come schema}
+%$\phi:\Mc(k,n)\to \bw \K^n$ corrisponde a
+%\[\phi^\#:\funcDef{\K[z_I\mid I\in\omega(k,n)]}{\K[x_{1,1},\cdots, x_{k,n}]}{z_I}{\det X_I}\]
+%da cui $\cpa{\phi^\#=0}=\ol{\imm\phi}=\imm\phi$\pause 
+%~e quindi
+%\[V_+(\ker\phi^\#)\cong t(\imm \Pl)\cong t(\Gr(k,n)).\]
+%\pause
+
+%Ritroviamo il ricoprimento $\Gr_I(k,n)=\Gr(k,n)_{z_I}\cong \A^{k(n-k)}_\K$.
+%\end{frame}
+
+\begin{frame}{}
+\begin{center}
+{\huge \textbf{Spazi di moduli}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Problema di moduli}
+\begin{block}{Problema di classificazione geometrico}
+Dati degli \textbf{oggetti} e una \textbf{equivalenza} tra questi cerchiamo uno \textbf{spazio} che parametrizza le classi ``ragionevolmente".
+\end{block}
+\pause
+Sia $F(T)$ l'insieme delle \textbf{famiglie} di oggetti parametrizzate da $T$ a meno di isomorfismo
+\begin{center}
+\begin{tikzpicture}
+%\draw[gray, thick, ->] (-3,0) -- (3,0);
+%\draw[gray, thick, ->](0,-2) -- (0,2);
+\draw[white] (-4.5,0) -- (5,0);
+\draw (-3,-0.3) node {$T$};
+\draw (4.2,-0.8) node {$a\in F(T)$};
+\draw[thick] (-1.2,1) .. controls (-4,0.6) and (-0.5,-0.4) .. (-3.5,-0.8);
+\draw[thick, ->] (-0.5,0) -- (0.7,0);
+\draw[thick] (-0.5,0.2) -- (-0.5,-0.2);
+\draw (0.1,0.6) node {$F$};
+\draw[thick] (3.8,1) .. controls (1,0.6) and (4.5,-0.4) .. (1.5,-0.8);
+\filldraw[black] (1.7,-0.77) circle (1pt);
+\filldraw[black] (2.35,-0.63) circle (1pt);
+\filldraw[black] (2.81,-0.2) circle (1pt);
+\filldraw[black] (2.63,0.4) circle (1pt);
+\filldraw[black] (2.92,0.77) circle (1pt);
+\filldraw[black] (3.53,0.95) circle (1pt);
+\draw[thick] (1.70,-1.17) -- (1.70,-0.37);
+\draw[thick] (2.60,-1.10) -- (2.16,-0.27);
+\draw[thick] (3.21,-0.28) -- (2.42,-0.12);
+\draw[thick] (2.92,0.51) -- (2.34,0.29);
+\draw[thick] (3.17,1.08) -- (2.78,0.60);
+\draw[thick] (3.66,1.32) -- (3.44,0.69);
+\end{tikzpicture}
+\end{center}
+\pause
+Un \textbf{problema di moduli} \`e un funtore $F:\Sch S\op\to \Set$
+\end{frame}
+
+%\begin{frame}{Approccio funtoriale}
+%\begin{block}{Funtore hom}
+%\[h_X:\functorDef{\Cc\op}{\Set}{T}{\Hom_\Cc(T,X)}{f:S\to T}{(g:T\to X)\mapsto (g\circ f:S\to X)}\]
+%\end{block}
+%\pause
+%\begin{alertblock}{Lemma di Yoneda}
+%\[\text{mappe classificanti}=\Hom(h_T,F)\cong F(T)=\text{famiglie}\]
+%\end{alertblock}
+%\pause
+%\begin{itemize}
+%\item Valutare il funtore in un punto restituisce gli oggetti da classificare.
+%\item La funtorialit\`a permette di definite un pullback di famiglie
+%\[f:S\to T,\; a\in F(T)\implies f^\ast a=F(f)(a)\in F(S).\]
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Esempio di problema di moduli}
+Una \textbf{famiglia di curve lisce di genere $g$} su uno schema $S$ \`e un morfismo liscio, proprio e finitamente presentato $C\to S$ tale che ogni fibra $C_s$ \`e una curva liscia connessa e propria di genere $g$.
+\[F_{M_g}:\functorDef{\Sch\C\op}{\Set}{S}{\quot{\cpa{\text{famiglia di curve lisce di genere $g$ su $S$}}}\sim}{T\to S}{(C\to S)\mapsto (C\times_S T\to T)}\]
+dove due famiglie $C\to S$ e $C'\to S$ sono equivalenti se esiste un isomorfismo tra $C$ e $C'$ compatibile con le mappe verso $S$.
+\begin{center}
+\begin{tikzpicture}
+\draw[white, thick, ->] (-5,0) -- (5,0);
+%\draw[gray, thick, ->](0,-1) -- (0,2);
+
+\draw[thick] (-3.5,-0.5) .. controls (-1,-0.2) and (0.6,-1) .. (3.5,-0.8);
+\draw (-2.5,-0.8) node {$S$};
+\draw[thick, ->] (0,0.15) -- (0,-0.35);
+
+\draw[gray, thick] (-3.5,1.4) .. controls (-1,1.8) and (0.6,1) .. (3.5,1.7);
+\draw[gray, thick] (-3.5,0.5) .. controls (-1,0.6) and (0.6,0) .. (3.5,0.6);
+\draw (-0.2,1.2) node {$C$};
+
+\filldraw[black] (-2,-0.45) circle (2pt);
+\draw (-2,-0.15) node {$s_1$};
+\draw[cyan, thick] (-2,1) ellipse (0.8 and 0.5);
+\draw[cyan, thick] (-1.6,1) arc (309:231:0.64);
+\draw[cyan, thick] (-1.7,0.93) arc (55.1:124.9:0.524);
+\draw (-2.4,1.8) node {$C_{s_1}$};
+
+\filldraw[black] (1.8,-0.81) circle (2pt);
+\draw (1.8,-0.51) node {$s_2$};
+\draw[cyan, thick] (1.8,0.9) ellipse (1 and 0.5);
+\draw[cyan, thick] (2.3,1) arc (315:225:0.71);
+\draw[cyan, thick] (2.113,0.88) arc (55.1:124.9:0.55);
+\draw (1.4,1.7) node {$C_{s_2}$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Spazi di moduli}
+$M$ \`e uno spazio di moduli\pause
+\begin{itemize}
+\item \textbf{fine} se $h_M\cong F$. La famiglia $u\in F(M)$ che corrisponde all'isomorfismo \`e detta \textbf{famiglia universale}.\pause
+\item \textbf{grezzo} se 
+\begin{itemize}
+\item $M(\K)\leftrightarrow F(\Spec\K)$ per ogni campo algebricamente chiuso
+\item ogni famiglia induce un morfismo verso $M$ (fissiamo $F\to h_M$ naturale)
+\item $M$ \`e universale per questa propriet\`a.
+\end{itemize}
+\end{itemize}
+\medskip\pause
+
+Esempio: $F_{M_g}$ ammette spazio di moduli grezzo ma non fine.
+\end{frame}
+
+\begin{frame}{Problema di moduli delle Grassmanniane}
+Sospettiamo che $\Gr'(n-k,n)\cong \Gr(k,n)$ sia uno spazio di moduli per
+\[\gr'(n-k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\cpa{\emat{\Fc\text{ sottofibrato vettoriale di $\Oc_T^n$ di}\\ \text{rango $n-k$ t.c. $\Oc^n_T/\Fc$ loc. libero}}}}{f:S\to T}{\Fc\mapsto f^\ast\Fc}\]
+\pause
+\[\cong\]
+\[\gr(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
+dove $Q$ fibrato vettoriale su $T$ di rango $k$ e $\al\sim \beta\coimplies \ker\al=\ker\beta$.
+\pause
+\[\gr(k,n)(\Spec\K)\cong{\cpa{\vp:\K^n\onto \K^k}}/_\sim=\Gr(k,n)(\K).\]
+\end{frame}
+
+\begin{frame}{Sottofuntori e ricoprimenti aperti}
+\[\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+	U \& {h_{U}} \& G \\
+	T \& {h_T} \& F
+	\arrow["\yo", from=1-1, to=1-2]
+	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-1, to=2-1]
+	\arrow[dashed, from=1-2, to=1-3]
+	\arrow[dashed, from=1-2, to=2-2]
+	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow["\yo", from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+\end{tikzcd}\]
+$\cpa{G_i\to F}$ ricoprimento quando gli $U_i$ coprono $T$.
+\pause
+\begin{block}{Sottofuntori aperti principali di $\gr(k,n)$}
+\[\gr_I(k,n):\funcDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surgettiva}}}\sim}\]
+\end{block}
+Dato $T$ e $h_T\to \gr(k,n)\leftrightarrow [\al]\in \gr(k,n)(T)$, abbiamo \[U_I=T\bs (\Supp (\coker(\al\circ s_I))).\]
+Sono anche un ricoprimento.
+\end{frame}
+
+\begin{frame}{Fasci di Zariski}
+\begin{block}{Fascio di Zariski}
+Dato $\cpa{U_i\to X}$, $\qquad F(X)\to \displaystyle \prod_k F(U_k) \rightrightarrows \displaystyle \prod_{i,j}F(U_i\cap U_j)$
+\end{block}
+\pause
+\begin{alertblock}{Incollamento di morfismi su ricoprimenti di fasci di Zariski}
+Se $F$ e $G$ fasci di Zariski, $\cpa{F_i}_{i\in I}$ e $\cpa{G_i}_{i\in I}$ ricoprimenti aperti e 
+\[f_i:F_i\to G_i,\qquad f_i\res{F_i\cap F_j}=f_j\res{F_i\cap F_j},\]
+esiste $f:F\to G$. 
+Se $f_i$ isomorfismo per ogni $i$ allora $f$ isomorfismo.
+\end{alertblock}
+\pause
+\begin{itemize}
+\item $h_X$ \`e un fascio di Zariski.\pause
+\item $\gr(k,n)$ \`e un fascio di Zariski: 
+%\begin{itemize}
+%\item incolla i fasci codominio (unicit\`a del cambio di base $\implies$ cociclo)
+%\item incolla i morfismi
+%\end{itemize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Incollamento di trasformazioni naturali}
+%\pause
+%\begin{proof}
+%\[\begin{tikzcd}[ampersand replacement=\&, column sep=small]
+%	{h_{U_i}} \& {F_i} \& {G_i} \\
+%	{h_T} \& F \& G
+%	\arrow["{\eta_i}", from=1-1, to=1-2]
+%	\arrow["{h_{\iota_i}}"', from=1-1, to=2-1]
+%	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+%	\arrow["{f_i}", from=1-2, to=1-3]
+%	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-2, to=2-2]
+%	\arrow["\subseteq"{marking, allow upside down}, draw=none, from=1-3, to=2-3]
+%	\arrow["\zeta"', from=2-1, to=2-2]
+%	\arrow["f"', dashed, from=2-2, to=2-3]
+%\end{tikzcd}\]
+%Siano $g_i=f_i\circ \eta_i$. $G$ \`e un fascio, quindi si incollano a $\zeta':h_T\to G$. Abbiamo $\Hom(h_T,F)\to \Hom(h_T,G)$ naturale, cio\`e $f:F\to G$.
+%\end{proof}
+%\pause
+%Se gli $f_i$ sono isomorfismi anche $f$ lo \`e.\\
+%~
+%\end{frame}
+
+\begin{frame}{Rappresentabilit\`a del funtore delle Grassmanniane}
+\begin{alertblock}{Grassmanniana \`e uno spazio di moduli fine}
+\[h_{\Gr(k,n)}\cong \gr(k,n).\]
+\end{alertblock}
+\begin{proof}
+Applichiamo il risultato di prima verificando che $h_{\Gr_I(k,n)}\cong \gr_I(k,n)$ con trasformazioni compatibili con l'intersezione.
+%\medskip
+%\[\correspDef{\Hom_{\K\text{-alg}}\pa{\K\spa{\frac{\det X_J}{\det X_I}},\Oc_T(T)}}{\cpa{\Oc_T^n\overset\al\to \Oc_T^k\mid \al\circ s_I=id_{\Oc_T^k}}}{\vp}{\eta(\vp)}{\rho(\al):\frac{\det X_J}{\det X_I}\mapsto \frac{\det (\Mc^{\Can_n}_{\Can_k}(\al_T))_J}{\det (\Mc^{\Can_n}_{\Can_k}(\al_T))_I}}{\al}\]
+%dove $\eta(\vp)$ \`e data dalla matrice $(\mathrm{res}^T_V\circ \vp)\pa{X_I\ii X}$.
+\end{proof}
+%~\\~\\~
+\end{frame}
+
+\begin{frame}{Funtore dei quozienti}
+\begin{center}
+Fibrati vettoriali su $(\Spec\K)_T$ 
+
+$\downarrow$ 
+
+fasci q.coerenti loc.fin.pres. su $X_T$, piatti e con supporto finito su $T$
+\end{center}
+\pause
+
+Se $X\in\Sch S$, $\Ec$ coerente su $X$ e $\Phi\in \Q[\la]$, definiamo $\quotf^{\Phi,\Lc}_{\Ec/X/S}$ come
+\[\functorDef{\Sch S\op}{\Set}{T}{\cpa{q:\Ec_T\onto Q\left| \emat{Q\text{ come sopra e tale che }\\\forall t\in T,\ \chi(Q\res{X_t}(r))=\Phi(r)}\right.}/_\sim}{f:T'\to T}{[q:\Ec_T\to Q]\mapsto [f^\ast q:\Ec_{T'}\to f^\ast Q]}\]
+dove $q\sim q'$ se $\ker q=\ker q'$.
+\end{frame}
+
+\begin{frame}{Casi particolari: Grassmanniane e funtore di Hilbert}
+Generalizza Grassmanniane: $\gr(k,n)=\quotf^{k,\Oc_{\K}}_{\Oc_{\K}^n/\K/\K}$.\pause
+\bigskip
+
+Se $\hilb^{\Phi,\Lc}_X$ problema dei moduli di sottoschemi chiusi di $X$ con polinomio di Hilbert $\Phi$ allora, poich\'e
+\begin{center}
+sottoschemi chiusi di $X$ 
+
+$\updownarrow$ 
+
+fasci quasi-coerenti di ideali di $\Oc_X$ 
+
+$\updownarrow$ 
+
+classi di quozienti di $\Oc_X$
+\end{center}
+si ha
+\[\hilb^{\Phi,\Lc}_X=\quotf^{\Phi,\Lc}_{\Oc_X/X/\K}\]
+
+\end{frame}
+
+\begin{frame}{Esistenza di Quot}
+\begin{alertblock}{Esistenza degli schemi $\Quot$}
+Sia $X$ un sottoschema chiuso di $\Pj^n_\K$, $\Lc=\Oc_{\Pj^n_\K}(1)\res X$, $\Ec$ un quoziente coerente di $\Oc_{X}(\nu)^p$ e $\Phi\in\Q[\la]$. Allora il funtore $\quotf^{\Phi,\Lc}_{\Ec/X/\K}$ \`e rappresentabile. 
+\end{alertblock}
+\pause
+\begin{proof}
+Ci riconduciamo a $X=\Pj^n_\K$ e $\Ec=\Oc^p_{\Pj^n_\K}$ e poi mostriamo che il seguente morfismo \`e una immersione localmente chiusa per $r\gg0$
+\[\funcDef{\quotf^{\Phi,\Lc}_{\Oc^p_{\Pj^n_\K}/\Pj^n_\K/\K}(T)}{\gr(\Phi(r),\dim_\K\pi_\ast\Oc^p_{\Pj^n_\K}(r))(T)}{[\Oc^p_{\Pj^n_T}\onto Q]}{[{\pi_T}_\ast\Oc_{\Pj^n_T}(r)^p\to {\pi_T}_\ast Q(r)]}\]
+\end{proof}
+~\\~\\~
+\end{frame}
+
+%\begin{frame}{Schemi di Hilbert}
+%Problema di classificazione $\hilb^{\Phi,\Lc}_{X}$ per $X$ sottoschema chiuso di $\Pj^n_\K$: 
+
+%sottoschemi chiusi di $X$ con polinomio di Hilbert $\Phi$.
+%\[\funcDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\mid \emat{Y\text{ piatto e finitamente presentato}\\\text{su $T$ tale che $Y_t$ ha polinomio}\\\text{di Hilbert $\Phi$ per ogni $t\in T$}}}}\]
+%\pause
+
+%Idea: sottoschema chiuso $\leftrightarrow$ fascio quasicoerente di ideali
+%\[\hilb^{\Phi,\Lc}_X=\quotf^{\Phi,\Lc}_{\Oc_X/X/\K}\]
+%\end{frame}
+
+\begin{frame}
+\begin{center}
+{\huge \textbf{Grazie per l'attenzione!}}
+\end{center}
+\end{frame}
+
+\end{document}

@@ -213,7 +213,7 @@ For the first part of the result we may just iterate the above lemma. If $\la=0$
 
 
 \begin{proposition}\label{CanonicalIso}
-There is a canonical isomorphism between $\Hom_\K(\bw V,\bw[n]V)$ and $\bw[n-k]V$ given by
+There is a canonical isomorphism between the set of linear maps $\Hom_\K(\bw V,\bw[n]V)$ and $\bw[n-k]V$ given by
 \[\Xi:\funcDef{\bw[n-k]V}{\Hom_\K(\bw V, \bw[n]V)}{\omega}{\omega\wedge \cdot}\]
 For any basis $\Bc$ of $V$, the inverse of $\Xi$ is given by 
 \[\Gamma_\Bc:\funcDef{\Hom_\K(\bw V,\bw[n]V)}{\bw[n-k]V}{\psi}{\displaystyle \sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\psi(v_{\wh I}))v_I}\]
@@ -229,7 +229,9 @@ Let $\psi\in \Hom_\K(\bw V,\bw W)$. If $\Bc=\cpa{v_1,\cdots, v_n}$ and $\Bc'=\cp
 Note that
 \[\sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(v_{\wh I}))v_I=\Xi\ii(\eta^\Dc_\Bc\circ \psi)\]
 and similarly the other expression is $\Xi\ii(\eta^{\Dc'}_{\Bc'}\circ \psi)$. 
-It is therefore enough to show that $\eta^\Bc_\Dc=\mu\eta^{\Bc'}_{\Dc'}$ for some $\mu\in \K^\ast$, which is true because $\dim_\K\Hom_\K(\bw[n]V,\bw W)=1$ and both $\eta^{\Bc}_{\Dc}$ and $\eta^{\Bc'}_{\Dc'}$ are not the zero map.
+It is therefore enough to show that $\eta^\Bc_\Dc=\mu\eta^{\Bc'}_{\Dc'}$ for some $\mu\in \K^\ast$, which is true because 
+\[\dim_\K\Hom_\K\pa{\bw[n]V,\bw W}=1\] 
+and both $\eta^{\Bc}_{\Dc}$ and $\eta^{\Bc'}_{\Dc'}$ are not the zero map.
 \end{proof}
 
 
@@ -301,7 +303,9 @@ It follows that the coordinates of the $k$-multivectors in the image of $\phi_{\
 $\Pl_\Bc$ endows $\Gr(k,n)$ with the structure of a projective variety.
 \end{corollary}
 \begin{proof}
-Since $\imm\phi_{\Bc,\Dc}$ is a cone (\ref{ImagePluckerMapIsCone}) and Zariski closed we see that $\Pj(\imm \phi_{\Bc,\Dc})=\imm \Pl_\Bc$ is Zariski closed.
+Since $\imm\phi_{\Bc,\Dc}$ is a cone (\ref{ImagePluckerMapIsCone}) and Zariski closed we see that 
+\[\Pj(\imm \phi_{\Bc,\Dc})=\imm \Pl_\Bc\]
+is Zariski closed.
 We conclude by recalling that $\imm\Pl_\Bc$ is in bijection with $\Gr(k,n)$ by injectivity of $\Pl_\Bc$ (\ref{PluckerEmbeddingWellDefinedInjective}).
 \end{proof}
 
