@@ -5,7 +5,7 @@ This generalization has proven itself to be vital in the construction of many fi
 The representability of both the functor of quotients and the Hilbert moduli problem were proven by Grothendieck in \cite{FGAVI}.
 
 In this chapter we will present a proof of the representability of a particular class of functors of quotients while taking most technical results about Castelnuovo-Mumford regularity, flat base change and flattening stratifications as a given. 
-Along the way we will show some examples of how this problem correlates to the one of Hilbert schemes and Grassmannians. Our approach will follow closely the one given in \cite{Alper} and \cite{FGAEXPLAINED}.\smallskip
+Along the way we will show some examples of how this problem is related to the one of Hilbert schemes and Grassmannians. Our approach will follow closely the one given in \cite{Alper} and \cite{FGAEXPLAINED}.\smallskip
 
 %From now on we will only consider locally noetherian schemes. 
 %In particular $\Sch S$ now refers to the full subcategory of locally noetherian schemes over $S$. 
@@ -30,7 +30,7 @@ Two families of quotients $q$ and $q'$ are said to be equivalent, written $q\sim
 \end{definition}
 
 \begin{remark}
-The functor is well defined because properness, flatness, quasi-coherence and finite local presentation are preserved under base change (so $f^\ast Q$ is a valid target) and the tensor product is right exact, so surjectivity of the maps is also preserved.
+The functor is well defined because properness, flatness, quasi-coherence and finite local presentation are preserved under base change (so $f^\ast Q$ is a valid output) and the tensor product is right exact, so surjectivity of the maps is also preserved.
 \end{remark}
 
 \begin{remark}
@@ -179,7 +179,7 @@ This is statement (b) from the lemma where we choose $r=m'-i\geq m-i$.
 \end{proof}
 
 \begin{theorem}[Mumford]\label{MumfordTheorem}
-Let $p$ and $n$ be non-negative integers, then there exists a polynomial $F_{p,n}\in\Z[x_0,\cdot, x_n]$ such that, if $\Fc$ is a coherent sheaf on $\Pj^n_\K$ which is isomorphic to a subsheaf of $\Oc^p_{\Pj^n_\K}$ with Hilbert polynomial\footnote{Recall that every polynomial with rational coefficients can be written in this form uniquely.}
+Let $p$ and $n$ be non-negative integers, then there exists a polynomial $F_{p,n}\in\Z[x_0,\cdots, x_n]$ such that, if $\Fc$ is a coherent sheaf on $\Pj^n_\K$ which is isomorphic to a subsheaf of $\Oc^p_{\Pj^n_\K}$ with Hilbert polynomial\footnote{Recall that every polynomial with rational coefficients can be written in this form uniquely.}
 \[\chi(\Fc(r))=\sum_{i=0}^na_i\binom ri,\quad a_i\in\Z,\]
 then $\Fc$ is $m$-regular for $m=F_{p,n}(a_0,\cdots, a_n)$.
 \end{theorem}
@@ -218,7 +218,7 @@ This is Theorem 5.13 in \cite{FGAEXPLAINED}.
 
 \section{The existence theorem}
 
-Note that $\quotf$ is not always representable\footnote{A counterexample is given chapter 5, section 5.1.5, example (8).}. The result that we will show is
+Note that $\quotf$ is not always representable\footnote{A case where representability fails is given in chapter 5, section 5.1.5, example (8) of \cite{FGAEXPLAINED}.}. The result that we will show is
 \begin{theorem}\label{AltmanKelimanEasy}
 Let $X$ be a closed subscheme of $\Pj^n_\K$ for some $n$, $\Lc=\Oc_{\Pj^n_\K}(1)\res X$, $\Ec$ a coherent quotient of $\Oc_{X}(\nu)^p$ for some integers $p$ and $\nu$ and $\Phi\in\Q[\la]$. Then the functor of quotients $\quotf^{\Phi,\Lc}_{\Ec/X/\K}$ is representable by a scheme $\Quot^{\Phi,\Lc}_{\Ec/X/\K}$. 
 \end{theorem}
@@ -321,7 +321,8 @@ Since the Grassmannian functor is representable (\ref{GrassmannianIsModuliSpace}
 \begin{proof}[Proof.(Step 1)]
 We want to use the first claim of proposition (\ref{RegularityInFamilies}) to show that ${\pi_T}_\ast\Ec_T(r)$ and ${\pi_T}_\ast Q(r)$ are vector bundles which behave well with respect to pullbacks for $r$ greater then some positive integer $m_0$. So what we seek to show is that there exists a number $m_0>0$ such that for all $t\in T$, $\Ec_T\res{\Pj^n_{k(t)}}$ and $Q\res{\Pj^n_{k(t)}}$ are $m_0$-regular. 
 
-The more convenient approach for $\Ec$ is to study it on $\Pj^n_\K$, which we can do because $T$ is a $\K$-scheme and the nature of proposition (\ref{RegularityInFamilies}) itself. Since $\Spec \K$ consists of only one point, there is only one fiber to consider for the restrictions of $\Ec$: the whole of $\Pj^n_\K$. Let $m$ be the integer given by Mumford's theorem (\ref{MumfordTheorem}) applied to $\Ec$. The proposition shows that if $r\geq m$ then $\pi_\ast\Ec(r)=\Oc_\K^p\otimes\Sym^r\Oc_\K^{n+1}$ is a vector bundle which commutes with base change. Changing the basis to $T$ yields the result we wanted on ${\pi_T}_\ast\Ec_T(r)$.
+By the nature of proposition (\ref{RegularityInFamilies}) and given that $T$ is a $\K$-scheme, the desired result for $\Ec_T$ follows if we prove it for $T=\Spec\K$.
+Since $\Spec \K$ consists of only one point, there is only one fiber to consider for the restrictions of $\Ec$: the whole of $\Pj^n_\K$. Let $m$ be the integer given by Mumford's theorem (\ref{MumfordTheorem}) applied to $\Ec$. The proposition shows that if $r\geq m$ then $\pi_\ast\Ec(r)=\Oc_\K^p\otimes\Sym^r\Oc_\K^{n+1}$ is a vector bundle which commutes with base change. Changing the basis to $T$ yields the result we wanted on ${\pi_T}_\ast\Ec_T(r)$.
 
 Let $q:\Ec_T\onto Q$ be a quotient on $\Pj^n_T$ with Hilbert polynomial $\Phi$ on each fiber. If we denote by $q_t$ its restriction to the fiber of $t\in T$ and define $\Kc=\ker q_t$, we see that $\Kc$ is a subsheaf of $\Ec_{k(t)}=\Oc_{\Pj^n_{k(t)}}^p$ whose Hilbert polynomial is determined\footnote{This is a consequence of the additivity of the Euler characteristic on exact sequences.} by $\Phi$ and the Hilbert polynomial of $\Oc_{\Pj^n_{k(t)}}^p$, which by lemma (\ref{HilbetPolynomialOfProjectiveSpace}) does not depend on $t$. By Mumford's theorem (\ref{MumfordTheorem}) there exists an integer $m_0$ which depends only on $n,\ p$ and $\Phi$ such that $\Kc$ is $m_0$-regular. Without loss of generality we may take $m_0\geq m$ by applying corollary (\ref{RegularityUnboundedAbove}). Because of lemma (\ref{RegularityOnExactSequences}), we see that $Q$ too is $m_0$-regular on each fiber. Since $\Ec_T$ and $Q$ are flat over $T$, $\Kc$ is also flat over $T$ by properties of short exact sequences. 
 
@@ -406,5 +407,5 @@ Conversely, if $Q$ does not have Hilbert polynomial $\Phi$ or is not flat over $
 \\
 \emptyset &\text{otherwise}
 \end{cases}}\]
-By the theorem on flattening stratifications (\ref{FlatetningStratifications}) this shows that $\Hf_q\cong h_{T_\Phi}$ and the isomorphism is exactly the one which respects the inclusion map.
+By the theorem on flattening stratifications (\ref{FlatetningStratifications}) this shows that $\Hf_q\cong h_{T_\Phi}$ via an isomorphism which is compatible with the inclusion map.
 \end{proof}
