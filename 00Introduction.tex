@@ -50,9 +50,21 @@ In both cases we can interpret a family of objects over a scheme $T$ as a morphi
 \section*{Why Grassmannians?}
 Grassmannians are among the first nontrivial examples of spaces whose points represent some type of object one can encounter in their mathematical career. Given two positive integers $k$ and $n$, the first definition of a Grassmannian $\Gr(k,n)$ one encounters is
 \[\Gr'(k,n)=\cpa{H\subseteq\K^n\mid \text{$H$ vector subspace, }\dim_\K H=k}.\]
-This definition invites us to think about the classification problem of $k$-dimensional vector subspaces of $n$-dimensional space. This classification problem is best formalized in terms vector bundle quotients as
+This definition invites us to think about the classification problem of $k$-\!\! dimensional vector subspaces of $n$-dimensional space. This classification problem is best formalized in terms vector bundle quotients as
 \[\gr(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
 where $q\sim q'\coimplies \ker q=\ker q'$, so the definition we will use for $\Gr(k,n)$ is actually
 \[\Gr(k,n)=\quot{\cpa{\vp:\K^n\to \K^k\mid \rnk \vp=k}}\sim\qquad \text{where }\vp\sim \psi\coimplies \ker\vp=\ker\psi,\]
 but the two are related, up to canonical identifications, by $\Gr(k,n)=\Gr'(n-k,n)$.
 Showing that Grassmannians are schemes and that they are fine moduli spaces for this classification problem is a good introduction to the elementary tools of the theory of fine moduli spaces. Grassmannians also serve as a warm up and necessary stepping stone in the construction of the Quot schemes, which generalize Grassmannians and yield important results like the existence of Hilbert schemes.
+
+
+\section*{Description of content}
+In this document we introduce the concept of moduli spaces in algebraic geometry and explore the example of the Grassmannian scheme.\medskip
+
+The first chapter introduces the basics of the functorial approach to algebraic geometry. After a brief summary on the Yoneda lemma, we define representable functors, moduli problems, Zariski sheaves, open subfunctors and open covers of a functor. We conclude by proving a representability criterion which we will use in the third chapter.\smallskip
+
+The second chapter provides a quick overview of Grassmannians as defined set theoretically and then shows how we can endow them with the structure of a projective variety. We define the Pl\"ucker embedding to identify Grassmannians with subsets of an appropriate projective space and then we prove that these subsets are closed with respect to the Zariski.\smallskip
+
+In the third chapter we describe the reduced scheme structure on the Grassmannian variety and the open cover of it given by fixing ordered multiindices. We then go on to formalize the moduli problem of classifying $(n-k)$-vector subspaces of an $n$-dimensional space and prove that the Grassmannian scheme is a fine moduli space for it. The proof revolves around finding an open cover for the Grassmannian moduli problem and then applying the criterion from Chapter 1.\smallskip
+
+We conclude by generalizing the Grassmannian moduli problem to the $\quotf$ functors. The main focus of the chapter is to showcase a construction of the $\Quot$ schemes while citing the main results involved like flat base change and Castelnuovo-Mumford regularity. Along the way we will show how this construction is related to Hilbert schemes.

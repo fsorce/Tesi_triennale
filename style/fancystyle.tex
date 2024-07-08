@@ -1,6 +1,10 @@
 %PER CAMBIARE I MARGINI
-\usepackage[margin=4cm]{geometry}
+%\usepackage[margin=4cm]{geometry}
 %\usepackage{geometry}
+%\usepackage[inner=3.5483cm,outer=5.2817cm,bottom=4.27cm,top=4.4cm]{geometry}
+%\usepackage[inner=2cm,outer=4cm, bindingoffset=0.9085cm]{geometry}
+\usepackage[inner=2.5cm,outer=2.5cm, bindingoffset=1cm]{geometry}
+%\usepackage[inner=3.5cm,outer=5cm,bottom=4cm,top=4cm]{geometry}
 
 \usepackage{emptypage} % Pagine vuote non numerate
 \usepackage{fancyhdr} % Sistema headers
@@ -11,9 +15,9 @@
 
 \pagestyle{fancy}
 % Left, Right, Even(pages), Odd(pages), Center
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO]{\leftmark}
-\fancyhead[RE]{\rightmark}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\leftmark}
+%\fancyhead[RE]{\rightmark}
 \fancyfoot[C]{}
 
 \renewcommand{\chaptermark}[1]{\markboth{\textsc{#1}}{}}

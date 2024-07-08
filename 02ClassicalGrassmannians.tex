@@ -112,7 +112,7 @@ Let $\sim$ be the equivalence relation on $\Hom_\K(V,W)$ which defines $\Gr(k,n)
 \end{proposition}
 \begin{proof}
 We prove both implications:
-\setlength{\leftmargini}{0cm}
+\setlength{\leftmargini}{1.2cm}
 \begin{itemize}
 \item[$\boxed{\implies}$] By lemma (\ref{kerAkerBVSActionOfGLk}), if $\vp\sim \psi$ then there exists $\theta\in \GL(W)$ such that $\vp=\theta\circ \psi$, thus
 \[\wedge^k(\vp)=\wedge^k(\theta\circ \psi)=(\det\theta) \wedge^k(\psi).\]
@@ -213,7 +213,7 @@ For the first part of the result we may just iterate the above lemma. If $\la=0$
 
 
 \begin{proposition}\label{CanonicalIso}
-There is a canonical isomorphism between the set of linear maps $\Hom_\K(\bw V,\bw[n]V)$ and $\bw[n-k]V$ given by
+There is a canonical isomorphism between $\Hom_\K(\bw V,\bw[n]V)$ and $\bw[n-k]V$ given by
 \[\Xi:\funcDef{\bw[n-k]V}{\Hom_\K(\bw V, \bw[n]V)}{\omega}{\omega\wedge \cdot}\]
 For any basis $\Bc$ of $V$, the inverse of $\Xi$ is given by 
 \[\Gamma_\Bc:\funcDef{\Hom_\K(\bw V,\bw[n]V)}{\bw[n-k]V}{\psi}{\displaystyle \sum_{I\in\omega(n-k,n)}\sgn\sigma_I\eta_\Bc(\psi(v_{\wh I}))v_I}\]
@@ -240,13 +240,13 @@ and both $\eta^{\Bc}_{\Dc}$ and $\eta^{\Bc'}_{\Dc'}$ are not the zero map.
 
 \subsection{Rank condition for the image}
 \begin{lemma}\label{DecomposabilityOfMultilinearForm}
-Fix bases $\Bc$ of $V$ and $\Dc$ of $W$. 
+Fix bases $\Bc$ and $\Dc$ of $V$ and $W$ respectively. 
 A multilinear alternating form $\psi\in \Hom_\K(\bw V,\bw W)$ is in the image of the Pl\"ucker map $\wedge^k$ if and only if there exists $\la\in\K$ and linearly independent vectors $z_1,\cdots,z_{n-k}$ such that
 \[\sum_{I\in \omega(n-k,n)}\sgn\sigma_I\eta_\Dc(\psi(v_{\wh I}))v_I=\la z_{(1,\cdots, n-k)}.\]
 \end{lemma}
 \begin{proof}
 We show both implications
-\setlength{\leftmargini}{0cm}
+\setlength{\leftmargini}{1.2cm}
 \begin{itemize}
 \item[$\boxed{\implies}$] If $\psi=\wedge^k\vp$, the equality follows by choosing $z_1,\cdots, z_{n-k}$ to be a basis of $\ker\vp$. Completing this set to a basis of $V$ and using corollary (\ref{UpToScalarCanonicalIso}) gives the result after a simple calculation.
 \item[$\boxed{\impliedby}$] Let $\Zc=\cpa{z_1,\cdots, z_n}$ be a basis of $V$ which extends the given $z_1,\cdots, z_{n-k}$. We can take $\vp$ to be

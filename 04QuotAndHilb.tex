@@ -23,7 +23,7 @@ If $X$ and $T$ are $S$-schemes we write the base change of $X$ as $X_T=X\times_S
 
 \section{Functor of quotients}
 \begin{definition}[Functor of quotients]
-Let $S$ be a noetherian scheme and let $X\to S$ be a morphism of finite type. Let $\Ec$ be a coherent sheaf on $X$. If $T\in \Sch S$, a \textbf{family of quotients of $\Ec$ parameterized by $T$} (or \textbf{over $T$}) is a sheaf morphism\footnote{we will usually simply state ``$q:\Ec_T\to Q$ is a quasi-coherent locally finitely presented quotient sheaf flat over $T$ with proper support".} $q:\Ec_T\to Q$ where $\Ec_T$ is the pullback of $\Ec$ under $X_T\to X$ and $Q$ is a quasi-coherent locally finitely presented sheaf on $X_T$ which is flat over $T$ and whose support is proper over $T$.
+Let $S$ be a noetherian scheme and let $X\to S$ be a morphism of finite type. Let $\Ec$ be a coherent sheaf on $X$. If $T\in \Sch S$, a \textbf{family of quotients of $\Ec$ parameterized by $T$} (or \textbf{over $T$}) is a surjective sheaf morphism\footnote{we will usually simply state ``$q:\Ec_T\to Q$ is a quasi-coherent locally finitely presented quotient sheaf flat over $T$ with proper support".} $q:\Ec_T\to Q$ where $\Ec_T$ is the pullback of $\Ec$ under $X_T\to X$ and $Q$ is a quasi-coherent locally finitely presented sheaf on $X_T$ which is flat over $T$ and whose support is proper over $T$.
 
 Two families of quotients $q$ and $q'$ are said to be equivalent, written $q\sim q'$, if $\ker q=\ker q'$. We denote the equivalence class $[q]$ or more explicitly $[q:\Ec_T\to Q]$. We define the \textbf{functor of quotients of $\Ec$ over the base $S$} as
 \[\quotf_{\Ec/X/S}:\functorDef{\Sch S\op}{\Set}{T}{\cpa{[q]\mid q\text{ family of quotients of $\Ec$ over $T$}}}{f:T'\to T}{[q:\Ec_T\to Q]\mapsto f^\ast[q]=[f^\ast q:\Ec_{T'}\to f^\ast Q]}\]
@@ -39,7 +39,7 @@ A family of quotients over a locally noetherian scheme $q:\Ec_T\to Q$ is such th
 \item all commutative rings are the colimit of their subrings which are finitely generated $\Z$-algebras, i.e. they are the colimit of noetherian rings
 \item it follows that affine schemes are the limit of noetherian affine schemes
 \item all schemes are locally affine by definition
-\item the locally finitely presented quasi-coherent sheaves over an affine scheme $\Spec A=\lim \Spec A_i$ can be obtained as the colimit of the locally finitely presented quasi-coherent sheaves over each $\Spec A_i$.
+\item the locally finitely presented sheaves over an affine scheme $\Spec A=\lim \Spec A_i$ can be obtained as the colimit of the locally finitely presented sheaves over each $\Spec A_i$.
 \end{itemize}
 Because of this we will implicitly consider the schemes in the following sections to be locally noetherian when checking for local conditions.
 \end{remark}
@@ -90,7 +90,7 @@ We have the equality
 \begin{proof}
 % VERY USEFUL Q&A ABOUT THIS: https://math.stackexchange.com/questions/1724850/if-the-hilbert-polynomial-of-coherent-sheaf-is-constant-number-then-locally-free
 The pullbacks and equivalence relations are defined in the same way, so it is enough to show that they agree when evaluated on a $\K$-scheme $T$. It is clear that $(\Oc_{\K}^n)_T=\Oc_T^n$ so we just need to show that $\Fc$ has Hilbert polynomial $k$ with respect to the line bundle $\Oc_T$ and is flat over $T$ if and only if $\Fc$ if a vector bundle or rank $k$ over $(\Spec \K)_T$. 
-\setlength{\leftmargini}{0cm}
+\setlength{\leftmargini}{1.2cm}
 \begin{itemize}
 \item[$\boxed{\implies}$] If $\Fc$ is coherent and flat over $T$ then\footnote{implication $(1)\implies (6)$ from \href{https://stacks.math.columbia.edu/tag/00NX}{Lemma 00NX} in \cite{stacks}} it is locally free over $T$ and since $T\cong(\Spec\K)_T$, $\Fc$ is locally free over $(\Spec\K)_T$. Because $T\cong(\Spec\K)_T$, the fibers $(\Spec\K)_t$ are points and so $\Fc\res{(\Spec \K)_t}=\Fc_t$. By assumption, the Hilbert polynomial of this sheaf is $k$ for all $t\in T$, so 
 \[k=\dim_\K H^0(\Spec k(t),\Fc_t(r))=\rnk \Fc_t(r)\quad \text{for large }r.\]
@@ -115,7 +115,7 @@ We can define the \textbf{Hilbert functor of $X$} as
 We have a canonical identification
 \[\hilb_X=\quotf_{\Oc_X/X/\K}.\]
 In particular, we can also define a decomposition of the Hilbert moduli problem in terms of Hilbert polynomials\footnote{the Hilbert polynomial of a closed subscheme is the Hilbert polynomial of its sheaf of ideals.}
-\[\hilb^{\Phi,\Lc}_{X}:\funcDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\left| \emat{Y\text{ flat and finitely presented over $T$}\\\text{such that the fiber $Y_t$ has}\\\text{Hilbert polynomial $\Phi$ for all $t\in T$}}\right.}}\]
+\[\hilb^{\Phi,\Lc}_{X}:\funcDef{(\Sch{\K})\op}{\Set}{T}{\cpa{Y\subseteq X\times T\left| \emat{Y\text{ flat and finitely presented}\\\text{over $T$ such that the fiber $Y_t$ has}\\\text{Hilbert polynomial $\Phi$ for all $t\in T$}}\right.}}\]
 \end{proposition}
 \begin{proof}
 There is a well known bijection between closed subschemes of a given scheme and quasi-coherent sheaves of ideals on the scheme (Proposition 5.1.15 in \cite{QingLiu}). By construction the structure sheaf of $Y$ is finitely presented and flat over $T$, so the ideal sheaf which defines $Y$ can be expressed as the kernel of the quotient of coherent sheaves $q:\Oc_{X_T}\to \Oc_Y$. Given how the equivalence of quotients is defined this shows that a class of quotients of $\Oc_{X_T}$ corresponds exactly to a family $Y$, giving us the identification we wanted.
@@ -156,7 +156,7 @@ We can conclude by studying the following chunk of the long exact sequence assoc
 We used the identity $m-i=m+1-(i+1)$ to show that the third term is zero.
 \end{proof}
 
-The following results were attributed to Castelnuovo by Mumford in \cite{mumford1966lectures}
+The following result was attributed to Castelnuovo by Mumford in \cite{mumford1966lectures}
 \begin{lemma}[Castelnuovo]\label{CastelnuovoLemma}
 Let $\Fc$ be an $m$-regular coherent sheaf on $\Pj^n_\K$, then the following results hold:
 \begin{enumerate}
@@ -190,7 +190,7 @@ This is Theorem 5.3 in \cite{FGAEXPLAINED}.
 \begin{proposition}[Regularity in Families]\label{RegularityInFamilies}
 Let $S$ be a noetherian scheme and let $Q$ be a coherent sheaf on $\Pj^n_S$ which is flat over $S$. Suppose that there exists $m>0$ such that for all $s\in S$, $Q\res{\Pj^n_{k(s)}}$ is $m$-regular, then for $r\geq m$
 \begin{enumerate}
-\item ${\pi_S}_\ast Q(r)$ is a vector bundle such that, if $f:T\to S$ is an $S$-scheme, then we have
+\item ${\pi_S}_\ast Q(r)$ is a vector bundle and, if $f:T\to S$ is an $S$-scheme, then we have
 \[f^\ast{\pi_S}_\ast Q(r)\cong {\pi_T}_\ast Q_T(r).\]
 \item If $i\geq 1$ the higher direct images $R^i{\pi_S}_\ast Q(d)$ vanish.
 \item The morphism ${\pi_S}^\ast{\pi_S}_\ast Q(d)\to Q(d)$ is surjective.
@@ -229,10 +229,10 @@ If the theorem holds, we can define the Hilbert schemes as
 \[\Hilb^{\Phi,\Lc}_{X}=\Quot^{\Phi,\Lc}_{\Oc_{X}/X/\K}\qquad\qquad \Hilb_X=\coprod_{\Phi\in\Q[\la]}\Hilb^{\Phi,\Lc}_{X}.\]
 \end{remark}
 
-The theorem is actually equivalent to the special case
-\begin{theorem}\label{AltmanKelimanEasier}
-Let $n$ and $p$ be natural numbers, let $\Lc=\Oc_{\Pj^n_\K}(1)$ and fix $\Phi\in\Q[\la]$. Then the functor of quotients $\quotf^{\Phi,\Lc}_{\Oc_{\Pj^n_\K}^p/\Pj^n_\K/\K}$ is representable by a scheme. 
-\end{theorem}
+\begin{proposition}\label{specialCaseOfExistence}
+It is enough to prove theorem (\ref{AltmanKelimanEasy}) in the case where $X=\Pj^n_\K$ and $\Ec=\Oc_{\Pj^n_\K}^p$.
+\end{proposition}
+
 
 \begin{lemma}\label{NoTwistLemma}
 If $\nu$ is an integer then 
@@ -263,14 +263,7 @@ This is part of lemma 5.17, page 127 in \cite{FGAEXPLAINED}.
 \end{proof}
 
 
-
-
-
-\begin{proposition}
-Theorems (\ref{AltmanKelimanEasy}) and (\ref{AltmanKelimanEasier}) are equivalent.
-\end{proposition}
-\begin{proof}
-It is clear that theorem (\ref{AltmanKelimanEasy}) implies (\ref{AltmanKelimanEasier}). Suppose then that the latter holds. 
+\begin{proof}[Proof of Proposition (\ref{specialCaseOfExistence})]
 By applying lemma (\ref{NoTwistLemma}) we have
 \[\quotf^{\Phi,\Lc}_{\Oc_{\Pj^n_\K}(\nu)^p/\Pj^n_\K/\K}\cong \quotf^{\Phi(\la-\nu),\Lc}_{\Oc_{\Pj^n_\K}^p/\Pj^n_\K/\K}.\]
 Observe now that, since $X\subseteq \Pj^n_\K$ is a closed subscheme, $\Oc_X$ is a quotient of $\Oc_{\Pj^n_\K}$. We thus obtain a surjective morphism of coherent sheaves
@@ -305,10 +298,10 @@ For sufficiently large $r$ we have
 \end{proof}
 
 
-Let $T$ be a noetherian\footnote{we can supposre $T$ to be noetherian because all properties that we want to verify are local.} $\K$-scheme. The main idea for the proof of the representability of $\quotf$ is building a natural transformation of the form
+Let $T$ be a noetherian\footnote{we can suppose $T$ to be noetherian because all properties that we want to verify are local.} $\K$-scheme. The main idea for the proof of the representability of $\quotf$ is building a natural transformation of the form
 \[\funcDef{\quotf^{\Phi,\Lc}_{\Ec/\Pj^n_\K/\K}(T)}{\gr(\Phi(r),\dim_\K\pi_\ast\Ec(r))(T)}{[\Ec_T\onto Q]}{[{\pi_T}_\ast\Ec_T(r)\to {\pi_T}_\ast Q(r)]}\]
-for an appropriate integer $r$. We are identifying $\pi_\ast\Ec(r)$ with the vector space $\K^p\otimes\Sym^r\K^{n+1}$ as in the above lemma. We separate the proof into three steps
-\setlength{\leftmargini}{0cm}
+for an appropriate integer $r$. We are identifying $\pi_\ast\Ec(r)$ with the vector space $\K^p\otimes\Sym^r\K^{n+1}$ as in the above lemma. We separate the proof into three steps:
+\setlength{\leftmargini}{1.3cm}
 \begin{enumerate}
 \item[Step 1.] Find $m_0\in\Z$ such that if $r\geq m_0$ then the above map is well defined and natural.
 \item[Step 2.] Show that if $r\geq m_0$ the map above is injective for all $T$.
@@ -360,7 +353,7 @@ and in this form it is clear that ${\pi_T}_\ast(\Ec_T(r))\to {\pi_T}_\ast(Q(r))$
 \end{proof}
 
 \begin{proof}[Proof.(Step 3)]
-Let $\tau:T\to \Gr(\Phi(r),\pi_\ast\Ec(r))$ be the classifying map of the quotient $[q:{\pi_T}_\ast\Ec_T(r)\onto V]$ and let $\Kc=\ker q$. Let us consider the fiber product
+Let $h_\tau:h_T\to \Gr(\Phi(r),\pi_\ast\Ec(r))$ be the natural transformation which corresponds to the quotient $[q:{\pi_T}_\ast\Ec_T(r)\onto V]$ via the Yoneda lemma (\ref{YonedaLemma}) and let $\Kc=\ker q$. Let us consider the fiber product
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEhmX3EiXSxbMSwwLCJoX1QiXSxbMCwxLCJcXHF1b3RmXntcXFBoaSxcXExjfV97XFxFYy9cXFBqXm5fXFxLL1xcS30iXSxbMSwxLCJcXGdyKFxcUGhpKHIpLFxcZGltX1xcS1xccGlfXFxhc3RcXEVjKHIpKSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsMywiaF9cXHRhdSJdLFswLDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDUsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyLWludmVyc2UifX1dXQ==
 \[\begin{tikzcd}
 	{\Hf_q} & {h_T} \\
