@@ -49,16 +49,10 @@ Anno accademico 2023/24}
 \pause
 Esempi:
 \begin{itemize}
-\item Spazi proiettivi $\Gr'(1,n)=\Pj^n$\pause
+\item Spazi proiettivi $\Gr'(1,n)=\Pj^{n-1}$\pause
 %\item Sfera di Riemann $\Gr'(1,1,\C)=\Pj^1_\C=\C\cup \cpa{\infty}$
 \item $\Gr'(2,4)$ parametrizza rette in $\Pj^3$
 \end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\begin{center}
-{\Large \textbf{Questo insieme \`e uno spazio?}}
-\end{center}
 \end{frame}
 
 \begin{frame}{Scrittura con quozienti}
@@ -73,10 +67,16 @@ con $A\sim B\coimplies \ker A=\ker B\coimplies \exists P\in\GL_k$ t.c. $A=PB$.
 \[\Gr'(k,n,\K)\cong\Gr(n-k,n,\K)\]
 \end{frame}
 
+\begin{frame}{}
+\begin{center}
+{\Large \textbf{Questo insieme \`e uno spazio?}}
+\end{center}
+\end{frame}
+
 \begin{frame}{Scrittura in carte}
-Scegliendo un multiindice $I$ di $k$ entrate
+Scegliendo un multiindice $I=(i_1,\cdots, i_k),\ 1\leq i_r\leq n$
 \[\Gr_I(k,n)=\cpa{[A]\in \Gr(k,n)\mid \det A_I\neq 0}.\]
-cio\`e, i sottospazi supplementari a $\Span(\cpa{e_i\mid i\in I})$.\pause
+cio\`e, i sottospazi supplementari a $\Span(\cpa{e_{i_r}\mid 1\leq r\leq k})$.\pause
 
 \begin{center}
 \begin{tikzpicture}
@@ -127,7 +127,7 @@ a'_{k,k+1} & \cdots & a'_{k,n}
 \medskip
 \pause
 
-Si pu\`o mostrare che $\Gr_I(k,n,\K)=\Gr(k,n)_{z_I}\cong \A_\K^{k(n-k)}$.\bigskip
+Si pu\`o mostrare che $\Gr_I(k,n,\K)\cong \A_\K^{k(n-k)}$.\bigskip
 \pause
 
 Per $\K=\R$ abbiamo variet\`a liscia.
@@ -246,7 +246,7 @@ Un \textbf{problema di moduli} \`e un funtore $F:\Sch S\op\to \Set$
 
 \begin{frame}{Esempio di problema di moduli}
 Una \textbf{famiglia di curve lisce di genere $g$} su uno schema $S$ \`e un morfismo liscio, proprio e finitamente presentato $C\to S$ tale che ogni fibra $C_s$ \`e una curva liscia connessa e propria di genere $g$.
-\[F_{M_g}:\functorDef{\Sch\C\op}{\Set}{S}{\quot{\cpa{\text{famiglia di curve lisce di genere $g$ su $S$}}}\sim}{T\to S}{(C\to S)\mapsto (C\times_S T\to T)}\]
+\[F_{M_g}:\functorDef{\Sch\C\op}{\Set}{S}{\quot{\cpa{\text{famiglia di curve lisce di genere $g$ su $S$}}}\sim}{T\to S}{(C\to S)\mapsto (C_T\doteqdot C\times_S T\to T)}\]
 dove due famiglie $C\to S$ e $C'\to S$ sono equivalenti se esiste un isomorfismo tra $C$ e $C'$ compatibile con le mappe verso $S$.
 \begin{center}
 \begin{tikzpicture}
@@ -345,7 +345,7 @@ Esempio: $F_{M_g}$ ammette spazio di moduli grezzo ma non fine.
 \[\gr(k,n):\functorDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\al:\Oc_T^n\onto Q}}\sim}{f:S\to T}{(\al:\Oc_T^n\to Q)\mapsto (f^\ast\al:\Oc_S^n\to f^\ast Q)}\]
 dove $Q$ fibrato vettoriale su $T$ di rango $k$ e $\al\sim \beta\coimplies \ker\al=\ker\beta$.
 \pause
-\[\gr(k,n)(\Spec\K)\cong{\cpa{\vp:\K^n\onto \K^k}}/_\sim=\Gr(k,n).\]
+\[\gr(k,n)(\Spec\K)\cong{\cpa{\vp:\K^n\onto \K^k}}/_\sim=\Gr(k,n)(\K).\]
 \end{frame}
 
 
@@ -395,9 +395,10 @@ dove $Q$ fibrato vettoriale su $T$ di rango $k$ e $\al\sim \beta\coimplies \ker\
 $\cpa{G_i\to F}$ ricoprimento quando gli $U_i$ coprono $T$.
 \pause
 \begin{block}{Sottofuntori aperti principali di $\gr(k,n)$}
-\[\gr_I(k,n):\funcDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \al\circ s_I\text{ surgettiva}}}\sim}\]
+\[\gr_I(k,n):\funcDef{(\Sch\K)\op}{\Set}{T}{\quot{\cpa{\Oc_T^n\overset{\al}\onto Q\mid \Oc_T^k\overset{\al_I}{\longrightarrow} Q\text{ surgettiva}}}\sim}\]
 \end{block}
-Dato $T$ e $h_T\to \gr(k,n)\leftrightarrow [\al]\in \gr(k,n)(T)$, abbiamo \[U_I=T\bs (\Supp (\coker(\al\circ s_I))).\]
+\pause
+Dato $T$ e $h_T\to \gr(k,n)\leftrightarrow [\al]\in \gr(k,n)(T)$, abbiamo \[U_I=T\bs (\Supp (\coker(\al_I))).\]
 Sono anche un ricoprimento.
 \end{frame}
 
@@ -407,7 +408,7 @@ Dato $\cpa{U_i\to X}$, $\qquad F(X)\to \displaystyle \prod_k F(U_k) \rightrighta
 \end{block}
 \pause
 \begin{alertblock}{Incollamento di morfismi su ricoprimenti di fasci di Zariski}
-Se $F$ e $G$ fasci di Zariski, $\cpa{F_i}_{i\in I}$ e $\cpa{G_i}_{i\in I}$ ricoprimenti aperti e 
+Se $F$ e $G$ fasci di Zariski, $\cpa{F_i}_{i\in J}$ e $\cpa{G_i}_{i\in J}$ ricoprimenti aperti e 
 \[f_i:F_i\to G_i,\qquad f_i\res{F_i\cap F_j}=f_j\res{F_i\cap F_j},\]
 esiste $f:F\to G$. 
 Se $f_i$ isomorfismo per ogni $i$ allora $f$ isomorfismo.
@@ -470,12 +471,12 @@ Fibrati vettoriali su $(\Spec\K)_T$
 
 $\downarrow$ 
 
-fasci q.coerenti loc.fin.pres. su $X_T$, piatti e con supporto proprio su $T$
+fasci LFP su $X_T$, piatti e con supporto proprio su $T$ tali che il polinomio di Hilbert sulle fibre di $X_T\to T$ calcolato con $\Lc$ sia costante.
 \end{center}
 \pause
 
-Se $X\in\Sch S$, $\Ec$ coerente su $X$ e $\Phi\in \Q[\la]$, definiamo $\quotf^{\Phi,\Lc}_{\Ec/X/S}$ come
-\[\functorDef{\Sch S\op}{\Set}{T}{\cpa{q:\Ec_T\onto Q\left| \emat{Q\text{ come sopra e tale che }\\\forall t\in T,\ \chi(Q\res{X_t}(r))=\Phi(r)}\right.}/_\sim}{f:T'\to T}{[q:\Ec_T\to Q]\mapsto [f^\ast q:\Ec_{T'}\to f^\ast Q]}\]
+Se $X\in\Sch S$, $\Ec$ LFP su $X$ e $\Phi\in \Q[\la]$, definiamo $\quotf^{\Phi,\Lc}_{\Ec/X/S}$ come
+\[\functorDef{\Sch S\op}{\Set}{T}{\cpa{q:\Ec_T\onto Q\left| \emat{Q\text{ come sopra dove $\forall t\in T$,}\\\chi(Q\res{X_t}(r))=\Phi(r)}\right.}/_\sim}{f:T'\to T}{[q:\Ec_T\to Q]\mapsto [f^\ast q:\Ec_{T'}\to f^\ast Q]}\]
 dove $q\sim q'$ se $\ker q=\ker q'$.
 \end{frame}
 
@@ -483,7 +484,7 @@ dove $q\sim q'$ se $\ker q=\ker q'$.
 Generalizza Grassmanniane: $\gr(k,n)=\quotf^{k,\Oc_{\K}}_{\Oc_{\K}^n/\K/\K}$.\pause
 \bigskip
 
-Se $\hilb^{\Phi,\Lc}_X$ problema dei moduli di sottoschemi chiusi di $X$ con polinomio di Hilbert $\Phi$ allora, poich\'e
+Se $\hilb^{\Phi,\Lc}_X$ problema dei moduli di sottoschemi chiusi di $X$ loc. noeth. con polinomio di Hilbert $\Phi$ allora, poich\'e
 \begin{center}
 sottoschemi chiusi di $X$ 
 
